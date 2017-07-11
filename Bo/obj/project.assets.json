@@ -3708,10 +3708,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tzahi\\Source\\Repos\\Ovadia\\Bo\\Bo.csproj",
+      "projectUniqueName": "D:\\Project\\Ovadia\\trunk\\Bo\\Bo.csproj",
       "projectName": "Bo",
-      "projectPath": "C:\\Users\\Tzahi\\Source\\Repos\\Ovadia\\Bo\\Bo.csproj",
-      "outputPath": "C:\\Users\\Tzahi\\Source\\Repos\\Ovadia\\Bo\\obj\\",
+      "projectPath": "D:\\Project\\Ovadia\\trunk\\Bo\\Bo.csproj",
+      "outputPath": "D:\\Project\\Ovadia\\trunk\\Bo\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netstandard1.4"
