@@ -58,3 +58,64 @@ C:\Users\Tzahi\Source\Repos\Ovadia\Repository\obj\Debug\Repository.pdb
 C:\Users\Tzahi\Source\Repos\Ovadia\Repository\bin\Debug\Repository.dll.config
 C:\Users\Tzahi\Source\Repos\Ovadia\Repository\bin\Debug\Repository.dll
 C:\Users\Tzahi\Source\Repos\Ovadia\Repository\obj\Debug\Repository.dll
+D:\trunk\Repository\obj\Debug\Repository.dll
+D:\trunk\Repository\obj\Debug\Repository.pdb
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\obj\Debug\Repository.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\obj\Debug\Repository.pdb
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Repository.dll.config
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Repository.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Repository.pdb
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\BO.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\EntityFramework.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.AspNet.Scaffolding.12.0.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\EnvDTE.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\EnvDTE80.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.CoreUtility.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Shell.Design.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Text.Data.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.TextTemplating.Interfaces.11.0.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.TextTemplating.Interfaces.10.0.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Shell.15.0.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.ComponentModelHost.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Editor.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\stdole.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Shell.Framework.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Shell.Interop.8.0.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Designer.Interfaces.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.VSHelp.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Utilities.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Imaging.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\System.Threading.Tasks.Dataflow.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Threading.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Shell.Interop.9.0.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.8.0.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.ProjectAggregator.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.ImageCatalog.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Text.Logic.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Text.UI.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Text.UI.Wpf.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.GraphModel.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Validation.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.MSXML.dll
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\BO.pdb
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\EntityFramework.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.AspNet.Scaffolding.EntityFramework.12.0.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.AspNet.Scaffolding.12.0.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.CoreUtility.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Text.Data.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Editor.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Designer.Interfaces.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Utilities.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Imaging.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Threading.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.ImageCatalog.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Text.Logic.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Text.UI.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Text.UI.Wpf.xml
+C:\Users\47\Documents\my work\OvadiaProject\trunk\Repository\bin\Debug\Microsoft.VisualStudio.Validation.xml
