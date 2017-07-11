@@ -5,6 +5,5 @@ C:\Users\47\Source\Repos\Ovadia\BO\obj\Debug\BO.dll
 C:\Users\47\Source\Repos\Ovadia\BO\obj\Debug\BO.pdb
 C:\GitubProject\Ovadia\BO\bin\Debug\BO.dll
 C:\GitubProject\Ovadia\BO\bin\Debug\BO.pdb
-C:\GitubProject\Ovadia\BO\obj\Debug\BO.csprojResolveAssemblyReference.cache
 C:\GitubProject\Ovadia\BO\obj\Debug\BO.dll
 C:\GitubProject\Ovadia\BO\obj\Debug\BO.pdb
