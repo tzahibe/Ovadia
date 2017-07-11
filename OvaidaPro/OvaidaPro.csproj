@@ -331,10 +331,6 @@
       <Project>{3198ee24-6745-413f-af29-65530adc8647}</Project>
       <Name>BO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repository\Repository.csproj">
-      <Project>{B14179E0-33FE-4B3B-9BC7-6B8FAA192574}</Project>
-      <Name>Repository</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\OvadiaApp\Admin\send-mail\send-mail.js" />
