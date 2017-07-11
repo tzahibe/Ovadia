@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HazonOvadiaModelStoreContainer" CdmEntityContainer="HazonOvadiaEntities">
+    <EntitySetMapping Name="db_Event">
+      <EntityTypeMapping TypeName="HazonOvadiaModel.db_Event">
+        <MappingFragment StoreEntitySet="db_Event">
+          <ScalarProperty Name="event_date" ColumnName="event_date" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="fixed" ColumnName="fixed" />
+          <ScalarProperty Name="event_status" ColumnName="event_status" />
+          <ScalarProperty Name="to_minutes" ColumnName="to_minutes" />
+          <ScalarProperty Name="to_hour" ColumnName="to_hour" />
+          <ScalarProperty Name="from_minutes" ColumnName="from_minutes" />
+          <ScalarProperty Name="from_hour" ColumnName="from_hour" />
+          <ScalarProperty Name="event_name" ColumnName="event_name" />
+          <ScalarProperty Name="full_date" ColumnName="full_date" />
+          <ScalarProperty Name="eventId" ColumnName="eventId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
