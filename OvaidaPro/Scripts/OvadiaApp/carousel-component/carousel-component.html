@@ -1,0 +1,38 @@
+﻿<link href="/Scripts/OvadiaApp/carousel-component/carousel-component.css" rel="stylesheet" />
+<div class="carusel col-xs-12 col-md-8">
+    <div class="col-xs-12 text_on_background">
+        <a href="{{imageUrl[0]}}"><p  ng-hide="!images[0]" >{{imageText[0]}}</p></a>
+        <a href="{{imageUrl[1]}}"><p  ng-hide="!images[1]">{{imageText[1]}}</p></a>
+        <a href="{{imageUrl[2]}}"><p  ng-hide="!images[2]">{{imageText[2]}}</p></a>
+        <a href="{{imageUrl[3]}}"><p  ng-hide="!images[3]">{{imageText[3]}}</p></a>
+    </div>
+    <div class="col-xs-12 text_on_image"></div>
+
+    <div class="circles">
+        <i ng-class="(images[0]==true)?'fa fa-circle-thin active':'fa fa-circle-thin'" ng-click="circleClicked(0)" aria-hidden="true"></i>
+        <i ng-class="(images[1]==true)?'fa fa-circle-thin active':'fa fa-circle-thin'" ng-click="circleClicked(1)" aria-hidden="true"></i>
+        <i ng-class="(images[2]==true)?'fa fa-circle-thin active':'fa fa-circle-thin'" ng-click="circleClicked(2)" aria-hidden="true"></i>
+        <i ng-class="(images[3]==true)?'fa fa-circle-thin active':'fa fa-circle-thin'" ng-click="circleClicked(3)" aria-hidden="true"></i>
+    </div>
+    <div class="carusel-images col-xs-12">
+        <i class="fa fa-arrow-circle-right fa-3x" ng-click="moveSlide('right')" aria-hidden="true"></i>
+        <i class="fa fa-arrow-circle-left fa-3x"  ng-click="moveSlide('left')"  aria-hidden="true"></i>
+        <div class="col-xs-12 image-gallery"  ng-hide="!images[0]">
+            <img class="img-responsive"
+                 src="http://xn--9dbbccj9a0cj.co.il/wp-content/uploads/2016/03/1d3ab7e0-c1e7-4e90-a711-fc40c9bc3466.jpg" />
+        </div>
+        <div class="col-xs-12 image-gallery" ng-hide="!images[1]">
+            <img class="img-responsive"
+                 src="http://www.jdn.co.il/wp-content/uploads/2015/08/הכנסת-ספר-תורה-לבית-המדרש-המרכזי-בשיכון-ה-בבב-36.jpg" />
+        </div>
+        <div class="col-xs-12 image-gallery"  ng-hide="!images[2]">
+            <img class="img-responsive"
+                 src="http://44ikr4q60tox9rj11t4y941aub.wpengine.netdna-cdn.com/wp-content/uploads/2015/04/resized_DSC_9414.jpg" />
+        </div>
+        <div class="col-xs-12 image-gallery"  ng-hide="!images[3]">
+            <img class="img-responsive"
+                 src="http://www.jdn.co.il/wp-content/uploads/2015/08/הכנסת-ספר-תורה-לבית-המדרש-המרכזי-בשיכון-ה-בבב-36.jpg" />
+        </div>
+    </div>
+
+</div>

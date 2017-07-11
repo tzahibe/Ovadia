@@ -1,0 +1,19 @@
+﻿<link href="/Scripts/OvadiaApp/mapa-component/mapa-component.css" rel="stylesheet" />
+
+<div class="col-xs-12 BlockHead">
+    <div class="body col-xs-12">
+        <h3 class="box-title">מפת הגעה</h3>
+        <p>
+            <h4>כולל חזון עובדיה - מושב בן זכאי</h4>
+            כתובת: ח' הרימון 165 ת.ד. 75
+        </p>
+
+        <iframe id="googmap" width="600" height="450" frameborder="0" style="border:0" ng-hide="loader"
+                src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJPayJCVm6AhURH8q6UGtSQZ0&key=AIzaSyBCJ4lfo_RP7zudaNuPlJI5PMfGNTc7L20" 
+                allowfullscreen>
+        </iframe>
+        <div class="modal-body center" ng-show="loader">
+            <img src="/Content/images/loader.gif" />
+        </div>
+    </div>
+</div>

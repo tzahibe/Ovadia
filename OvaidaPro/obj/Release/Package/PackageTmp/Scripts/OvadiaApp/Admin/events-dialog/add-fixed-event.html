@@ -1,0 +1,131 @@
+﻿      <!---Event Details Popup -->
+<form name="eventDetailsForm" novalidate>
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="ngdialog-close close" data-dismiss="modal" aria-label="Close" ng-click="closePopup()">
+                <span aria-hidden="true" class="x_icon">&times;</span>
+            </button>
+            <h4 class="modal-title">הוסף אירוע חוזר</h4>
+        </div>
+        <div class="modal-body" ng-hide="loader">
+            <div class="form-group">
+                <label for="exampleInputPassword1">יום בשבוע</label>
+                <select class="form-control day_time"
+                        required
+                        ng-model="daySelect"
+                        ng-options="day.value for day in days"
+                        ng-init="daySelect = currentFixedEvent.Date"
+                        ng-change="currentFixedEvent.Date = daySelect.value">
+                    <option value="">בחר יום</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">שם הרב/ההרצאה</label>
+                <input required type="text" #EventName="ngModel" name="Event_Name" ng-model="currentFixedEvent.Event_Name" value="{{event.Event_Name}}" class="form-control default_width" id="Event_Name" placeholder="">
+                <div ng-show="EventName.errors && (EventName.dirty || EventName.touched)"
+                     class="alert alert-danger">
+                    <div ng-hide="!EventName.errors.required" class="alert alert-danger">
+                        אנא מלא שדה זה
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="some_space" for="title">משעה</label>
+                <select class="form-control hour_time"
+                        required
+                        ng-model="FromMinSelect"
+                        ng-options="min.value for min in minutes"
+                        ng-init="FromMinSelect = minutes[currentFixedEvent.From_Minutes*1 - 1]"
+                        ng-change="currentFixedEvent.From_Minutes = FromMinSelect.value">
+                    <option value="">דקות</option>
+                </select> :
+                <select name="event.From_Hour" class="form-control hour_time"
+                        required
+                        ng-model="FromHourSelect"
+                        ng-init="FromHourSelect = hours[currentFixedEvent.From_Hour*1 - 1]"
+                        ng-change="currentFixedEvent.From_Hour = FromHourSelect.value"
+                        ng-options="hour.value for hour in hours">
+                    <option value="">שעה</option>
+                </select>
+                <div ng-show="currentFixedEvent.From_Hour == '' || currentFixedEvent.From_Minutes == ''"
+                     class="alert alert-danger">
+                    <div class="alert alert-danger" ng-show="currentFixedEvent.From_Hour == ''">
+                        אנא בחר שעת התחלה
+                    </div>
+                    <div class="alert alert-danger" ng-show="currentFixedEvent.From_Minutes == ''">
+                        אנא בחר 'דקות' בשעת התחלה
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title">עד שעה </label>
+                <select class="form-control hour_time"
+                        required
+                        ng-model="ToMinSelect"
+                        ng-options="min.value for min in minutes"
+                        ng-init="ToMinSelect = minutes[currentFixedEvent.To_Minutes*1 - 1]"
+                        ng-change="currentFixedEvent.To_Minutes = ToMinSelect.value+ ''">
+                    <option value="">דקות</option>
+                </select> :
+                <select name="event.From_Hour" class="form-control hour_time"
+                        required
+                        ng-model="ToHourSelect"
+                        ng-init="ToHourSelect = hours[currentFixedEvent.To_Hour*1 - 1]"
+                        ng-change="currentFixedEvent.To_Hour = ToHourSelect.value+ ''"
+                        ng-options="hour.value for hour in hours">
+                    <option value="">שעה</option>
+                </select>
+                <div ng-show="currentFixedEvent.To_Hour == '' || currentFixedEvent.To_Minutes == ''"
+                     class="alert alert-danger">
+                    <div class="alert alert-danger" ng-hide="currentFixedEvent.To_Hour != ''">
+                        אנא בחר שעת סיום
+                    </div>
+                    <div class="alert alert-danger" ng-hide="currentFixedEvent.To_Minutes != ''">
+                        אנא בחר 'דקות' בשעת הסיום
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">הקדשה</label>
+                <input type="text" ng-model="currentFixedEvent.Comment " value="{{currentFixedEvent.Comment}}" class="form-control default_width" id="Comment" placeholder="אופציונלי">
+                <div ng-show="EventName.errors && (EventName.dirty || EventName.touched)"
+                     class="alert alert-danger">
+                    <div ng-hide="!EventName.errors.required" class="alert alert-danger">
+                        אנא מלא שדה זה
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">סטטוס אירוע</label>
+                <select required #Status="ngModel"
+                        name="event.Status"
+                        type="text"
+                        class="form-control default_width"
+                        ng-options="s.text for s in status"
+                        ng-change="currentFixedEvent.Status = StatusSelect.value"
+                        ng-init="StatusSelect = status[currentFixedEvent.Status*1] "
+                        ng-model="StatusSelect">
+
+                    <option value="">בחר סטטוס</option>
+                </select>
+                <div ng-show="currentFixedEvent.Status == ''"
+                     class="alert alert-danger">
+                    <div class="alert alert-danger">
+                        אנא בחר שעת התחלה
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body center" ng-hide="!loader">
+            <img src="/Content/images/loader.gif" />
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="closePopup()" data-dismiss="modal">סגור חלון</button>
+            <button type="button" class="btn btn-success" ng-click="addFixedEvent()">הוסף אירוע</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+﻿<link href="/Scripts/OvadiaApp/tfila-time-container/tfila-time-container.css" rel="stylesheet" />
+<div class="col-xs-12 BlockHead">
+    <div class="body col-xs-12">
+        <h3 class="box-title">זמני תפילות</h3>
+        <div ng-show="ErrorMsg">
+            אירעה שגיאה במהלך טעינת הנתונים. <br />
+            אנא נסה שוב מאוחר יותר...
+        </div>
+
+        <table class="table table-info">
+            <tr class="bg-info">
+                <th>תפילה</th>
+                <th>שעה</th>
+                <th></th>
+            </tr>
+            <tr class="table-hover" ng-repeat="item in Tfilot.data  | orderBy : 'Order1' "
+                ng-hide="loader1">
+               
+                <td>
+                    {{item.Name}}
+                </td>
+                <td style="direction: ltr;">
+                    <span>{{item.Hour}}:</span>
+                    <span>{{item.Min}}</span>
+                </td>
+            </tr>
+        </table>
+        <div class="modal-body center" ng-show="loader1">
+            <img src="/Content/images/loader.gif" />
+        </div>
+
+    </div>
+</div>

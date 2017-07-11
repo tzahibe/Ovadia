@@ -1,0 +1,73 @@
+﻿
+
+header-component .logo_img {
+    padding-top: 39px;
+    padding-right: 93px;
+}
+
+header-component .navbar {
+    margin-bottom: 0;
+}
+
+header-component .navbar-nav {
+    float: right;
+    padding-right:0;
+}
+
+    header-component .navbar-nav > li {
+        float: right;
+    }
+
+        header-component .navbar-nav > li:hover {
+            background: #e1e1e1;
+        }
+
+header-component .navbar-default .navbar-nav li a.active {
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    background: #817378;
+    color: white;
+}
+
+header-component .navbar-default .navbar-nav > .active > a:hover {
+    background: #837f81;
+}
+
+header-component .amburger {
+    text-align: center;
+    padding-bottom: 14px;
+    padding-left:0%;
+}
+
+header-component .fa.fa-bars {
+    cursor: pointer;
+    color: #868585;
+}
+
+header-component .rabi-ovadia {
+    position: absolute;
+    right: 0;
+}
+
+@media screen and (max-width: 768px) {
+    header-component .navbar-nav > li {
+        width: 100%;
+    }
+    header-component .spcae-from-header {
+        margin-bottom: 140px;
+    }
+    header-component nav.navbar-default {
+        background-color: #f8f8f8;
+        border-color: #e7e7e7;
+        position: fixed;
+        z-index: 999;
+        top:0;
+        right: 0;
+        width: 100%;
+    }
+
+    header-component .logo_img {
+        padding-right: 0;
+        padding-top: 24px;
+    }
+}

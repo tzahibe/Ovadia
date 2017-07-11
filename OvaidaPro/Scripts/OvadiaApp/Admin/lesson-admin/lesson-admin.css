@@ -1,0 +1,124 @@
+﻿h4 {
+  color: #686868;
+  font-weight: bold;
+}
+/*.col-xs-12{
+  padding:0;
+  margin:0;
+  margin-bottom:12px;
+}*/
+.fc-day-grid-event .fc-content{
+  cursor:pointer;
+}
+.modal-dialog{
+  top:53px;
+}
+.alert {
+  padding: 6px;
+  padding-bottom: 4px;
+  margin-bottom: 11px;
+  border: 1px #000 solid transparent;
+  border-radius: 4px;
+}
+.modal-body h3 {
+    padding-bottom: 7px;
+    font-size: 22px;
+    margin: 0;
+    font-weight: bold;
+    padding-top: 11px;
+    padding-bottom: 15px;
+}
+.ngdialog-theme-default {
+    top: 19%;
+}table.table {
+    margin-top: 10px;
+}
+table.table tr td{
+  text-align:center;
+}
+#calendar{
+  margin-top:10px;
+}
+table.table tr th{
+  text-align:center;
+}
+
+option{
+  height:150px;
+  overflow:hidden;
+}
+.some_space{
+  padding-right:11px;
+}
+.table-hover:hover {
+  background: #123b5e;
+  color: #fff;
+}
+.modal-body.center{
+  text-align:center;
+}
+.fa-pencil-square-o {
+  display: block;
+  float: left;
+  cursor: pointer;
+}
+  .fa-edit:before, .fa-pencil-square-o:before {
+    content: "\f044";
+    font-size: 24px;
+  }
+
+.day_time{
+    width:108px;
+    display:inline-block;
+}
+.fc .fc-button-group > :first-child{
+    float:right;
+}
+.repeatClass{
+    background:#ffd800;
+    color:black;
+}
+.repeatClassFont {
+    color: #ffd800;
+    background: #ffd800;
+    border: 1px solid #000;
+    border-right:2px solid #000;
+}
+.fc-toolbar .fc-left{
+    float:right;
+}
+.fc-toolbar .fc-right{
+    float:left;
+}
+
+.fc .fc-toolbar > * > *{
+    margin-left:0;
+}
+.fc .fc-toolbar > * > :first-child {
+    float: right;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .btn-group label.btn-primary {
+        float: right;
+        border-radius: 1px;
+    }
+    .btn-group label.btn-primary.yoman{
+        width:100%;
+    }
+    .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle),
+    .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+        width: 50%;
+    } 
+    .btn-group.view_buttons{
+        width:100%;
+    }
+    .ngdialog-theme-default {
+        top: 0%;
+    }
+    .col-xs-12 {
+        padding: 0;
+    }
+}

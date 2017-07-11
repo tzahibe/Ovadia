@@ -1,0 +1,38 @@
+﻿      <!---Event Details Popup -->
+<form name="eventDetailsForm" novalidate>
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="ngdialog-close close" data-dismiss="modal" aria-label="Close" onclick="closePopup()">
+                <span aria-hidden="true" class="x_icon" ng-click="closePopup()">&times;</span>
+            </button>
+            <h4 class="modal-title">פרטי אירוע</h4>
+        </div>
+        <div class="modal-body" ng-hide="loader">
+            <h3>{{currentEvent.Full_Date}}</h3>
+            <div class="form-group">
+                    <label for="exampleInputPassword1">שם הרב/ההרצאה:</label>
+                    {{currentEvent.Event_Name}}
+
+            </div>
+
+            <div class="form-group">
+                    <label class="" for="title">משעה:</label>
+                    <span ng-bind="currentEvent.From_Hour"></span>:<span ng-bind="currentEvent.From_Minutes"></span>
+                    <label for="title">עד שעה: </label>
+                    <span ng-bind="currentEvent.To_Hour"></span>:<span ng-bind="currentEvent.To_Minutes"></span>
+            </div>
+
+            <!--<div class="form-group">
+                    <label for="exampleInputPassword1">סטטוס אירוע:</label>
+                    {{status[currentEvent.Status*1].text}}
+            </div>-->
+        </div>
+        <div class="modal-body center" ng-hide="!loader">
+            <img src="/Content/images/loader.gif" />
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="closePopup()" data-dismiss="modal">סגור חלון</button>
+        </div>
+    </div>
+</form>

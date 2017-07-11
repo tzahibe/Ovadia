@@ -1,0 +1,63 @@
+﻿.row-title {
+    font-weight: bold;
+    font-family: arial;
+    font-size: 17px;
+    color: #636362;
+}
+
+select.parentCat, select.subParentCat {
+    direction: rtl;
+    text-align: right;
+    width: 330px;
+    display: inline-block;
+}
+.ngdialog-close {
+    display: block;
+}
+
+select.subParentCat {
+    direction: rtl;
+    text-align: right;
+}
+
+.succCat {
+    background-color: #dff0d8;
+    direction: rtl;
+    margin-top: 6px;
+    padding: 9px;
+    border: 1px solid #72da96;
+    border-radius: 4px;
+}
+
+.inputClass {
+    width: 163px;
+    height: 34px;
+    position: relative;
+    display: inline-block;
+    top: 2px;
+    text-align: right;
+    direction: rtl;
+}
+
+.buttonsBlock {
+    position: relative;
+    top: 1px;
+}
+
+h4 {
+    color: #686868;
+    font-weight: bold;
+}
+@media screen and (max-width: 768px) {
+
+    select.parentCat, select.subParentCat {
+        width:100%;
+    }
+    .homeadminRoute.col-xs-12{
+        padding-right:0;
+    }
+
+    .col-xs-12 {
+        padding:0;
+    }
+}

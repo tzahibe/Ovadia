@@ -1,0 +1,76 @@
+﻿
+<link href="/Scripts/OvadiaApp/Admin/lesson-admin/lesson-admin.css" rel="stylesheet" />
+<div class="row list-group-item list-group-item-home">
+    <div class="col-xs-12">
+      <h4>שיעורים במערכת</h4>
+       <h5> שיעורים קבועים -
+           <i class="fa fa-stop repeatClassFont" aria-hidden="true"></i>
+        </h5>
+      <div class="btn-group view_buttons" data-toggle="buttons">
+        <label ng-class="radio == 2 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 2">
+          <input type="radio" name="options" ng-model="radio" value="2" id="option2" autocomplete="off">שיעורים לא קבועים
+        </label>
+        <label ng-class="radio == 3 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 3">
+          <input type="radio" name="options" ng-model="radio" value="3" id="option2" autocomplete="off">שיעורים קבועים
+        </label>
+          <label ng-class="radio == 1 ? 'active btn btn-primary yoman' : 'btn btn-primary yoman'" ng-click="radio = 1">
+              <input type="radio" name="options" ng-model="radio" value="2" id="option1" autocomplete="off">תצוגת יומן
+          </label>
+      </div>
+      <h4 ng-hide="!loader">טוען ארועים...</h4>
+      <!---- יומן אירועים-->
+      <div id='calendar' ng-hide="radio != 1"></div>
+    </div>
+
+    <div id="lessonList" ng-show="radio == 2">
+        <div ng-show="events.length > 0">
+            <table class="table table-info">
+                <tr class="bg-info">
+                    <th>שם ההרצאה</th>
+                    <th>תאריך</th>
+                    <th>שעה</th>
+                    <th>פעיל\מבוטל</th>
+                </tr>
+
+                <tr class="table-hover" ng-repeat="item in events">
+                    <td>{{item.Event_Name}}</td>
+                    <td>{{item.Full_Date}}</td>
+                    <td>{{item.To_Hour}}:{{item.To_Minutes}} - {{item.From_Hour}}:{{item.From_Minutes}}</td>
+                    <td>
+                        <span ng-show="item.Status == 1">פעיל</span>
+                        <span ng-show="item.Status == 0">מבוטל</span>
+                        <i class="fa fa-pencil-square-o" aria-hidden="true" ng-click="showEvent(item.ID)"></i>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="padding-right:16px;" ng-show="events == null || events.length == 0">
+            אין שיעורים לא קבועים במערכת.
+        </div>
+    </div>
+
+    <!--- שיעורים קבועים-->
+    <div id="fixedLesson" ng-show="radio == 3">
+        <table class="table table-info">
+            <tr class="bg-info">
+                <th>שם ההרצאה</th>
+                <th>יום</th>
+                <th>שעה</th>
+                <th>פעיל\מבוטל</th>
+            </tr>
+
+            <tr class="table-hover" ng-repeat="item in fixedEvents">
+                <td>{{item.Event_Name}}</td>
+                <td>{{item.Date}}</td>
+                <td>{{item.To_Hour}}:{{item.To_Minutes}} - {{item.From_Hour}}:{{item.From_Minutes}}</td>
+                <td>
+                    <span ng-show="item.Status == 1">פעיל</span>
+                    <span ng-show="item.Status == 0">מבוטל</span>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true" ng-click="showFixedEvent(item.ID)"></i>
+                </td>
+            </tr>
+        </table>
+        <button type="button" class="btn btn-success" ng-click="OpenNewFixedEvent()">הוסף אירוע קבוע</button>
+    </div>
+</div>

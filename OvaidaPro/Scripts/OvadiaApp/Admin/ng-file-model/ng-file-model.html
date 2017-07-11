@@ -1,0 +1,47 @@
+﻿
+<link href="/Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.css" rel="stylesheet" />
+<br />
+    <div class="BlockHead">
+        <div class="body ">
+            <div ng-hide="loader" class="list-group-item list-group-item-home">
+                <h4>העלאת קבצים</h4>
+                <form role="form" class="">
+                    <button class="btn btn-default" ngf-select="uploadFiles($files, $invalidFiles)" multiple
+                            accept="image/*" ngf-max-height="90000" ngf-max-size="10MB">
+                        בחר קבצים
+                    </button>
+                    <br><br>
+                    <h3 ng-show="results.length > 0" class="hebrew">קבצים:</h3>
+                    <div ng-show="file_loader">
+                        <img src="/Content/images/loader.gif" />
+                    </div>
+                    <h5 style="color:red">{{ErrorMsg}}</h5>
+                    <!--<ul>-->
+
+                    <div class="imgItems-li" ng-repeat="f in results" style="font:smaller">
+                        <div class="buttonsContainerArt">
+                            <img class="imgClass" ng-src="/Uploads/sm_{{f.Name}}" />
+                            <button class="btn btn-default coppy-button" clip-copy="CoppyImageUrl(f.Name)" clip-click="alret('hi')">
+                                העתק כתובת תמונה
+                            </button>
+                            <span class="progress" ng-show="f.progress >= 0">
+                                <span style="width:{{f.progress}}%"
+                                      ng-bind="f.progress + '%'"></span>
+                            </span>
+                            <button class="btn btn-danger removeButton" ng-click="DeleteFile(f.Name);">הסר</button>
+                        </div>
+                    </div>
+
+                    <!--<li ng-repeat="f in errFiles" style="font:smaller">
+                        {{f.name}} {{f.$error}} {{f.$errorParam}}
+                    </li>-->
+                    <!--</ul>-->
+                    {{errorMsg}}
+                </form>
+
+            </div>
+            <div ng-show="loader" class="loader1">
+                <img src="/Content/images/loader.gif" />
+            </div>
+        </div>
+    </div>

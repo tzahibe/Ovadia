@@ -1,0 +1,140 @@
+﻿<link href="/Scripts/OvadiaApp/all-lesson-component/all-lesson-component.css" rel="stylesheet" />
+<div class=" BlockHead">
+    <div class="body ">
+
+        <h3 class="box-title">זמני תפילות</h3>
+        <table class="table table-info">
+            <tr class="bg-info">
+                <th>תפילה</th>
+                <th>שעה</th>
+            </tr>
+            <tr class="" ng-repeat="item in Tfilot.data  | orderBy : 'Order1' "
+                ng-hide="loader1">
+
+                <td>
+                    {{item.Name}}
+                </td>
+                <td style="direction: ltr;">
+                    <span>{{item.Hour}}:</span>
+                    <span>{{item.Min}}</span>
+                </td>
+            </tr>
+        </table>
+        <div class="modal-body center" ng-show="loader1">
+            <img src="/Content/images/loader.gif" />
+        </div>
+
+        <h3 class="box-title">תכנים שבועיים</h3>
+        <div class="btn-group view_buttons" data-toggle="buttons">
+            <label ng-class="radio == 2 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 2">
+                <input type="radio" name="options" ng-model="radio" value="2" id="option1" autocomplete="off">תצוגת יומן
+            </label>
+            <label ng-class="radio == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 1">
+                <input type="radio" name="options" ng-model="radio" value="2" id="option2" autocomplete="off">תצוגת טבלה
+            </label>
+        </div>
+        <h4 ng-hide="!loader">טוען ארועים...</h4>
+        <!---- יומן אירועים-->
+        <h5 ng-show="radio  == 2">
+            שיעורים קבועים -
+            <i class="fa fa-stop repeatClassFont" aria-hidden="true"></i>
+        </h5>
+        <div id='calendar' ng-show="radio  == 2"></div>
+        <div id="lesson-list" ng-show="radio == 1" ng-hide="loader">
+        <!--- שיעורים לא קבועים-->
+            <br />
+            <div ng-show="events.length > 0">
+                <div class="box-sub-title">שיעורים לא קבועים</div>
+                <!--- Desktop -->
+                <table class="table table-info" ng-hide="$root.isMobile">
+                    <tr class="bg-info">
+                        <th>שם ההרצאה</th>
+                        <th>תאריך</th>
+                        <th>שעה</th>
+                        <th>הקדשות</th>
+                    </tr>
+                    <tr class="table-hover" ng-repeat="item in events">
+                        <td>{{item.Event_Name}}</td>
+                        <td>{{item.Full_Date}}</td>
+                        <td>{{item.To_Hour}}:{{item.To_Minutes}} - {{item.From_Hour}}:{{item.From_Minutes}}</td>
+                        <td>{{item.Comment}}</td>
+                    </tr>
+                </table>
+
+                <!--Mobile-->
+                <div ng-show="$root.isMobile">
+                    <div ng-repeat="item in events">
+                        <table class="table table-info mobile {{'x' + $index % 2}}">
+                            <tr>
+                                <th width="30%">שם ההרצאה</th>
+                                <td width="70%">{{item.Event_Name}}</td>
+                            </tr>
+                            <tr>
+                                <th>תאריך</th>
+                                <td>{{item.Date}}</td>
+                            </tr>
+                            <tr>
+                                <th>שעה</th>
+                                <td>{{item.To_Hour}}:{{item.To_Minutes}} - {{item.From_Hour}}:{{item.From_Minutes}}</td>
+                            </tr>
+                            <tr>
+                                <th>הקדשות</th>
+                                <td>{{item.Comment}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+         
+        <!--- שיעורים קבועים-->
+            <div ng-show="fixedEvents.length > 0">
+                <div class="box-sub-title" >שיעורים קבועים</div>
+                <!---Desktop-->
+                <table class="table table-info" ng-hide="$root.isMobile">
+                    <tr class="bg-info">
+                        <th>שם ההרצאה</th>
+                        <th>יום</th>
+                        <th>שעה</th>
+                        <th>הקדשות</th>
+                    </tr>
+
+                    <tr class="table-hover" ng-repeat="item in fixedEvents | orderBy: 'dayNum'">
+                        <td>{{item.Event_Name}}</td>
+                        <td>{{item.Date}}</td>
+                        <td>{{item.To_Hour}}:{{item.To_Minutes}} - {{item.From_Hour}}:{{item.From_Minutes}}</td>
+                        <td>{{item.Comment}}</td>
+                    </tr>
+                </table>
+
+                <!---Movile-->
+                <div  ng-show="$root.isMobile">
+                    <div ng-repeat="item in fixedEvents | orderBy: 'dayNum'">
+                        <table class="table table-info mobile {{'x' + $index % 2}}">
+                            <tr>
+                                <th width="30%">שם ההרצאה</th>
+                                <td width="70%">{{item.Event_Name}}</td>
+                            </tr>
+                            <tr>
+                                <th>יום</th>
+                                <td>{{item.Date}}</td>
+                            </tr>
+                            <tr>
+                                <th>שעה</th>
+                                <td>{{item.To_Hour}}:{{item.To_Minutes}} - {{item.From_Hour}}:{{item.From_Minutes}}</td>
+                            </tr>
+                            <tr ng-show="item.Comment != null && item.Comment != ''">
+                                <th>הקדשות</th>
+                                <td>{{item.Comment}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                </div>
+               
+            </div>
+        <div class="modal-body center" ng-show="loader">
+            <img src="/Content/images/loader.gif" />
+        </div>
+
+        </div>
+    </div>

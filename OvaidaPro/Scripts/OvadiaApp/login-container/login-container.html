@@ -1,0 +1,69 @@
+﻿<link href="/Scripts/OvadiaApp/login-container/login-container.css" rel="stylesheet" />
+<div class="col-xs-12 lessonBlocks">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <h4 class="box-title">התחברות מנהלים/עורכים</h4>
+
+        <!-- BEGIN # BOOTSNIP INFO -->
+      
+        <!-- END # BOOTSNIP INFO -->
+        <!-- BEGIN # MODAL LOGIN -->
+            <div class="">
+                <div class="modal-content">
+                    <div class="modal-header" align="center">
+                        <img class="img-responsive" id="img_logo" src="/Content/images/login.png">
+                    </div>
+
+                    <!-- Begin # DIV Form -->
+                    <div id="div-forms">
+
+                        <!-- Begin # Login Form -->
+                        <form id="login-form" ng-hide="loader">
+                            <div class="modal-body">
+                                <div id="div-login-msg">
+                                  
+                                </div>
+                                <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-login-msg">הכנס שם משתמש.</span>
+                                <input id="login_username" ng-model="UserName" class="form-control" type="text" 
+                                       placeholder="שם משתמש" required>
+                                <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-login-msg">הכנס סיסמא.</span>
+                                <input id="login_password" ng-model="Password" class="form-control" type="password" 
+                                       placeholder="סיסמא" required>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"><span class="remember-me">זכור אותי</span>
+                                    </label>
+                                </div>
+                                <div class="error-msg-nofloat" ng-show="faildLoginMsg">התחברות נכשלה! אנא הזן שם משתמש וסיסמא תקינים</div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <div>
+                                    <button type="submit" ng-click="login()" class="btn btn-primary btn-lg btn-block">התחבר</button>
+                                </div>
+                                <div>
+                                    <button id="login_lost_btn" type="button" class="btn btn-link">שכחתי סיסמא</button>
+                                    <!--<button id="login_register_btn" type="button" class="btn btn-link">הרשמה</button>-->
+                                </div>
+                            </div>
+                        </form>
+                        <div class="modal-body center" ng-show="loader">
+                            <img src="/Content/images/loader.gif" />
+                        </div>
+                        <!-- End # Login Form -->
+                        <!-- Begin | Lost Password Form -->
+                        <!-- End | Lost Password Form -->
+                        <!-- Begin | Register Form -->
+                        <!-- End | Register Form -->
+
+                    </div>
+                    <!-- End # DIV Form -->
+
+                </div>
+            </div>
+        <!-- END # MODAL LOGIN -->
+
+
+  </div>
+</div>

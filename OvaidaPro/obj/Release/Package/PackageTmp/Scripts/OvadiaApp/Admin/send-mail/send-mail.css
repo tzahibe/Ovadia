@@ -1,0 +1,58 @@
+﻿
+#mailsAdm .table-info{
+    text-align:right;
+}
+
+#mailsAdm .bg-info th{
+    text-align:center;
+}
+
+#mailsAdm .table-hover:hover {
+    background: #123b5e;
+    color: #fff;
+}
+.view_buttons {
+    text-align: center;
+}
+modal-body.are_yousure {
+    text-align:center;
+}
+.are_you_sureButton {
+    width: 96px;
+    height: 37px;
+}
+.table-hover td:first-child {
+    text-align: center;
+}
+.table-hover td:last-child{
+    text-align:center;
+}
+.ng-valid[required], .ng-valid.required {
+    border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442; /* red */
+}
+h4 {
+    color: #686868;
+    font-weight: bold;
+}
+.hugeSize {
+    height: 200px !important;
+}
+.fa.fa-times {
+    cursor: pointer;
+    font-size: 22px;
+    float:left;
+    color: #ff0000;
+}
+#mailsAdm .view_buttons{
+    margin-bottom:10px;
+}
+
+@media screen and (max-width: 768px) {
+    .col-xs-12 {
+        padding: 0;
+    }
+}

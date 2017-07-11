@@ -1,0 +1,55 @@
+﻿lesson-component .body {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    min-height: 146px;
+}
+lesson-component .body:first-child {
+    border-top-left-radius: 5px;
+}
+lesson-component .body:last-child {
+    border-top-right-radius: 5px;
+}
+lesson-component .all-lesson {
+    font-style: italic;
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+}
+
+lesson-component.lessonBlocks {
+    padding: 0;
+    margin: 0;
+}
+lesson-component li.lesson {
+    text-align: right;
+    direction: rtl;
+}
+lesson-component li.lesson.loader {
+    text-align: center;
+    direction: rtl;
+}
+lesson-component ul {
+    list-style-type: none;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+/*.body {
+    padding: 0;
+}*/
+
+lesson-component .body .box-title {
+    padding-right: 8px;
+    color: #686868;
+    font-family: kalisher,Arial;
+    font-weight: bold;
+}
+@media screen and (max-width: 768px) {
+    lesson-component .all-lesson {
+        padding-right: 10px;
+    }
+    lesson-component .body{
+        min-height:unset;
+    }
+
+}

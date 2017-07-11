@@ -1,0 +1,22 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="ngdialog-close close" data-dismiss="modal" aria-label="Close"
+                ng-click="closePopup()">
+            <span aria-hidden="true" class="x_icon">&times;</span>
+        </button>
+        <h4 class="modal-title">הודעת מערכת</h4>
+    </div>
+    <div class="modal-body are_yousure" ng-hide="loader">
+        האם אתה בטוח שברצונך למחוק את הדואר
+        </br>
+        {{email_to_delete}}
+        <i class="fa fa-question" aria-hidden="true"></i>
+
+        <br /><br />
+        <div class="view_buttons">
+            <button type="button" class="btn btn-success are_you_sureButton" ng-click="closePopup()" data-dismiss="modal">לא</button>
+            <button type="button" class="btn btn-danger are_you_sureButton" ng-click="removeEmail(email_id)"> כן</button>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+﻿
+ /*h1 {
+    font-size: 300%;
+    color: #34495e;
+}*/
+
+/*home-component .row {
+    margin: 0;
+}*/
+
+ .box-title {
+    padding-right: 8px;
+    color: #686868;
+    font-family: kalisher,Arial;
+    font-weight: bold;
+}
+
+.body-center {
+    /*background-color: #817378;*/
+    background: url('/Content/images/purple-wallpaper-background-25.jpg');
+    background-repeat: no-repeat;
+    border: 1px solid #f8f8f8;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    margin-top: 12px;
+}
+
+ .btn-success.mail {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    right: -74px;
+    padding-bottom: 6px;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+ .form-control.email {
+    height: 42px;
+    text-indent: 84px;
+}
+
+ .right-box {
+    height: 340px;
+}
+
+
+
+.send-mail p {
+    font-size: 16px;
+}
+
+ .send-mail {
+    color: #fff;
+}
+
+.center-block {
+    background: #f8f8f8;
+    border-radius: 10px;
+}
+
+ .box-title-white {
+    color: #fff;
+}
+
+ .remove-padding {
+    padding: 0;
+    margin: 0;
+}
+
+.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5,
+.col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    float: right;
+}
+.center-block ul {
+    list-style-type: none;
+    padding: 0;
+    padding-right: 11px;
+}
+.center-block {
+    min-height: 132px;
+}
+.lessonBlocks {
+padding:0;
+}
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+
+     .right-box {
+        height: auto;
+    }
+    .form-control.email {
+        text-indent: 84px;
+    }
+    .center-block{
+        min-height:unset;
+    }
+}

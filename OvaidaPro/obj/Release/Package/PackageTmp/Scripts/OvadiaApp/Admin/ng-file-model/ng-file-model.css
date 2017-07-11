@@ -1,0 +1,15 @@
+﻿.hebrewDialog  h2{
+    font-size: 20px;
+}
+h4 {
+    color: #686868;
+    font-weight: bold;
+}
+.imgItems-li {
+display:inline-block;
+}
+@media screen and (max-width: 768px) {
+    .col-xs-12{
+        padding:0;
+    }
+}
