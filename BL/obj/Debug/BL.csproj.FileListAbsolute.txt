@@ -23,3 +23,14 @@ C:\Users\47\Documents\my work\OvadiaProject\trunk\BL\bin\Debug\EntityFramework.d
 C:\Users\47\Documents\my work\OvadiaProject\trunk\BL\bin\Debug\BO.pdb
 C:\Users\47\Documents\my work\OvadiaProject\trunk\BL\bin\Debug\Repository.pdb
 C:\Users\47\Documents\my work\OvadiaProject\trunk\BL\bin\Debug\EntityFramework.xml
+C:\Users\47\Source\Repos\Ovadia\BL\bin\Debug\BL.dll
+C:\Users\47\Source\Repos\Ovadia\BL\bin\Debug\BL.pdb
+C:\Users\47\Source\Repos\Ovadia\BL\bin\Debug\BO.dll
+C:\Users\47\Source\Repos\Ovadia\BL\bin\Debug\Repository.dll
+C:\Users\47\Source\Repos\Ovadia\BL\bin\Debug\EntityFramework.dll
+C:\Users\47\Source\Repos\Ovadia\BL\bin\Debug\BO.pdb
+C:\Users\47\Source\Repos\Ovadia\BL\bin\Debug\Repository.pdb
+C:\Users\47\Source\Repos\Ovadia\BL\bin\Debug\EntityFramework.xml
+C:\Users\47\Source\Repos\Ovadia\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\47\Source\Repos\Ovadia\BL\obj\Debug\BL.dll
+C:\Users\47\Source\Repos\Ovadia\BL\obj\Debug\BL.pdb
