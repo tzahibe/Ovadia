@@ -1,0 +1,12 @@
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\bin\Release\BL.dll
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\bin\Release\BL.pdb
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\bin\Release\Bo.dll
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\bin\Release\EntityFramework.dll
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\bin\Release\Bo.pdb
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\bin\Release\Repository.pdb
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\bin\Release\EntityFramework.xml
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\obj\Release\BL.csprojResolveAssemblyReference.cache
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\obj\Release\BL.dll
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\obj\Release\BL.pdb
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\bin\Release\Repository.dll
+C:\Users\Tzahi\Source\Repos\Ovadia\BL\bin\Release\Repository.dll.config
