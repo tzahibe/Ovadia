@@ -37,3 +37,12 @@ C:\Users\47\Source\Repos\Ovadia\BL\obj\Debug\BL.pdb
 C:\GitubProject\Ovadia\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
 C:\GitubProject\Ovadia\BL\obj\Debug\BL.dll
 C:\GitubProject\Ovadia\BL\obj\Debug\BL.pdb
+C:\GitubProject\Ovadia\BL\bin\Debug\BL.dll
+C:\GitubProject\Ovadia\BL\bin\Debug\BL.pdb
+C:\GitubProject\Ovadia\BL\bin\Debug\BO.dll
+C:\GitubProject\Ovadia\BL\bin\Debug\Repository.dll
+C:\GitubProject\Ovadia\BL\bin\Debug\EntityFramework.dll
+C:\GitubProject\Ovadia\BL\bin\Debug\Repository.pdb
+C:\GitubProject\Ovadia\BL\bin\Debug\Repository.dll.config
+C:\GitubProject\Ovadia\BL\bin\Debug\BO.pdb
+C:\GitubProject\Ovadia\BL\bin\Debug\EntityFramework.xml
