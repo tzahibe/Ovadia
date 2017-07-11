@@ -25,6 +25,10 @@
                     //$cookies.put('UserRole', UserAccount.Role);
                     $state.go('admin.lesson');
                 }
+                else {
+                    $scope.loader = false;
+                    $scope.faildLoginMsg = true;
+                }
             })
         }
 

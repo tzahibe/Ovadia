@@ -48,6 +48,13 @@ namespace BL
             Repository.Users repo = (Repository.Users)result.Data;
             User user = new User();
 
+            if(repo == null)
+            {
+                result.ErrorCode = (int)ErrorEnumcs.DetailsNotMatch;
+                result.Data = user;
+                return result;
+            }
+
             if (repo.AccountCreate != null){
                 user.AccountCreate = (DateTime)repo.AccountCreate;
             }

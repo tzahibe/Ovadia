@@ -33,10 +33,10 @@ namespace OvaidaPro.Controllers
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
         //Admin
-        public ActionResult RenameCategoryName(int catId, string newName, bool isActive)
+        public ActionResult RenameCategoryName(int catId, string newName, bool isActive, string order)
         {
             isAllow();
-            Result resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive);
+            Result resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive, order);
 
             if (resultToClient.ErrorCode == 0)
             {
@@ -45,10 +45,10 @@ namespace OvaidaPro.Controllers
 
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult RenameSubCategoryName(int parentId, int catId, string newName, bool isActive)
+        public ActionResult RenameSubCategoryName(int parentId, int catId, string newName, bool isActive, string order)
         {
             isAllow();
-            Result resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive);
+            Result resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive,order);
 
             if (resultToClient.ErrorCode == 0)
             {

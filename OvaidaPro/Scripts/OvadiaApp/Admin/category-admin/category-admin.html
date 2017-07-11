@@ -4,86 +4,183 @@
     <div class="body ">
         <div ng-hide="loader">
             <div class="list-group-item list-group-item-home">
-                <h4>פאנל ניהול קטגוריות</h4>
-                <span ng-show="loader">
-                    ...טוען קטגוריות אנא המתן
-                </span>
-                <div ng-show="loader" class="loader1">
-                    <img src="/Content/images/loader.gif" />
+                <legend>פאנל ניהול קטגוריות</legend>
+                <div class="btn-group view_buttons" data-toggle="buttons">
+                    <label ng-class="radio == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 1" class="btn btn-primary">
+                        <input type="radio" name="options" ng-model="radio" value="1" id="option1" autocomplete="off">עריכה/יצירה ומחיקת קטגוריות
+                    </label>
+                    <label ng-class="radio == 2 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 2" class="btn btn-primary">
+                        <input type="radio" name="options" ng-model="radio" value="2" id="option2" autocomplete="off">מיון קטגוריות
+                    </label>
                 </div>
-                <div class="row-title">
-                    קטגוריות ראשיות
-                </div>
-                <div class="dropdown">
-                    <select name="parentCat"
-                            class="form-control parentCat"
-                            ng-options="item.Name for item in ParentCategories"
-                            ng-change="SelectedParentCat(parentCat)"
-                            ng-model="parentCat">
-                        <option value="">בחר</option>
-                    </select>
+                <div ng-if="radio == 1">
+                    <h4>עריכה/יצירה ומחיקת קטגוריות</h4>
+                    <span ng-show="loader">
+                        ...טוען קטגוריות אנא המתן
+                    </span>
+                    <div ng-show="loader" class="loader1">
+                        <img src="/Content/images/loader.gif" />
+                    </div>
+                    <div class="row-title">
+                        קטגוריות ראשיות
+                    </div>
+                    <div class="dropdown">
+                        <select name="parentCat"
+                                class="form-control parentCat"
+                                ng-options="item.Name for item in ParentCategories"
+                                ng-change="SelectedParentCat(parentCat)"
+                                ng-model="parentCat">
+                            <option value="">בחר</option>
+                        </select>
 
-                    <div class="buttonsBlock">
-                        <div>
-                            <input type="checkbox" name="ParentIsActive" ng-model="parentCat.isActive" ng-click="!parentCat.isActive" /> האם לפרסם
-                        </div>
-                        <input type="button" ng-click="AddCategory(parentCatInput,parentCat.isActive)" class="btn btn-success" value="הוסף" />
-                        <input type="button" class="btn btn-default" ng-show="parentCat.Id != null" ng-click="RenameCategory(parentCat.Id,parentCatInput,parentCat.isActive)" value="שנה" ng-show="false" />
-                        <input type="button" class="btn btn-danger" ng-show="parentCat.Id != null" ng-click="DeleteCategory(parentCat.Id)" value="מחק" ng-show="false" />
-                        <input type="text" ng-model="parentCatInput" class="inputClass form-control" />
-                    </div>
-                </div>
-                <p class="bg-success succCat" Id="ParentCatSucc" style="display:none">קטגוריה '{{ParentCatSuccTxt}} '{{ParentCatSuccKey}} בהצלחה !</p>
-                <br />
-                <div class="subCat" ng-show="parentCat.Id != null">
-                    <div class="row-title">
-                        קטגוריות משניות
-                    </div>
-                    <div class="dropdown">
-                        <select name="subParentCat"
-                                class="form-control subParentCat"
-                                ng-options="subCat.Name for subCat in parentCat.Children"
-                                ng-change="SelectedSubParentCat(subParentCat)"
-                                ng-model="subParentCat">
-                            <option value="">בחר</option>
-                        </select>
                         <div class="buttonsBlock">
                             <div>
-                                <input type="checkbox" name="subParentIsActive" value="1" ng-model="subParentCat.isActive" ng-click="!subParentCat.isActive" /> האם לפרסם
+                                <input type="checkbox" name="ParentIsActive" ng-model="parentCat.isActive" ng-click="!parentCat.isActive" /> האם לפרסם
                             </div>
-                            <input type="button" class="btn btn-success" ng-click="AddSubCategory(parentCat.Id,subParentCatInput,subParentCat.isActive)" value="הוסף" />
-                            <input type="button" class="btn btn-default" ng-click="RenameSubCategory(parentCat.Id,subParentCat.Id,subParentCatInput,subParentCat.isActive)" ng-show="subParentCat.Id != null" value="ערוך" />
-                            <input type="button" class="btn btn-danger" ng-click="DeleteSubCategory(parentCat.Id,subParentCat.Id,subParentCat.Name)" ng-show="subParentCat.Id != null" value="מחק" />
-                            <input type="text" ng-model="subParentCatInput" class="inputClass form-control" />
+                            <input type="button" ng-click="AddCategory(parentCatInput,parentCat.isActive)" class="btn btn-success" value="הוסף" />
+                            <input type="button" class="btn btn-default" ng-show="parentCat.Id != null" ng-click="RenameCategory(parentCat.Id,parentCatInput,parentCat.isActive)" value="שנה" ng-show="false" />
+                            <input type="button" class="btn btn-danger" ng-show="parentCat.Id != null" ng-click="DeleteCategory(parentCat.Id)" value="מחק" ng-show="false" />
+                            <input type="text" ng-model="parentCatInput" class="inputClass form-control" />
                         </div>
                     </div>
-                    <p class="bg-success succCat" id="SubCatSucc" style="display:none">קטגוריה '{{SubCatSuccTxt}}' {{SubCatSuccTxtKey}} בהצלחה !</p>
-                </div>
-                <br />
-                <div class="subCat" ng-show="subParentCat.Id != null">
-                    <div class="row-title">
-                        קטגוריות תת משניות
-                    </div>
-                    <div class="dropdown">
-                        <select name="subParentCat"
-                                class="form-control subParentCat"
-                                ng-options="subCat.Name for subCat in subParentCat.Children"
-                                ng-change="SelectedSub3ParentCat(sub3ParentCat)"
-                                ng-model="sub3ParentCat">
-                            <option value="">בחר</option>
-                        </select>
-                        <div class="buttonsBlock">
-                            <div>
-                                <input type="checkbox" name="subParentIsActive" value="1" ng-model="sub3ParentCat.isActive" ng-click="!sub3ParentCat.isActive" /> האם לפרסם
-                            </div>
-                            <input type="button" class="btn btn-success" ng-click="AddSub3Category(subParentCat.Id,sub3ParentCatInput,sub3ParentCat.isActive)" value="הוסף" />
-                            <input type="button" class="btn btn-default" ng-click="RenameSub3Category(subParentCat.Id,sub3ParentCat.Id,sub3ParentCatInput,sub3ParentCat.isActive)" ng-show="sub3ParentCat.Id != null" value="ערוך" />
-                            <input type="button" class="btn btn-danger" ng-click="DeleteSub3Category(subParentCat.Id,sub3ParentCat.Id,sub3ParentCat.Name)" ng-show="sub3ParentCat.Id != null" value="מחק" />
-                            <input type="text" ng-model="sub3ParentCatInput" class="inputClass form-control" />
+                    <p class="bg-success succCat" id="ParentCatSucc" style="display:none">קטגוריה '{{ParentCatSuccTxt}} '{{ParentCatSuccKey}} בהצלחה !</p>
+                    <br />
+                    <div class="subCat" ng-show="parentCat.Id != null">
+                        <div class="row-title">
+                            קטגוריות משניות
                         </div>
+                        <div class="dropdown">
+                            <select name="subParentCat"
+                                    class="form-control subParentCat"
+                                    ng-options="subCat.Name for subCat in parentCat.Children"
+                                    ng-change="SelectedSubParentCat(subParentCat)"
+                                    ng-model="subParentCat">
+                                <option value="">בחר</option>
+                            </select>
+                            <div class="buttonsBlock">
+                                <div>
+                                    <input type="checkbox" name="subParentIsActive" value="1" ng-model="subParentCat.isActive" ng-click="!subParentCat.isActive" /> האם לפרסם
+                                </div>
+                                <input type="button" class="btn btn-success" ng-click="AddSubCategory(parentCat.Id,subParentCatInput,subParentCat.isActive)" value="הוסף" />
+                                <input type="button" class="btn btn-default" ng-click="RenameSubCategory(parentCat.Id,subParentCat.Id,subParentCatInput,subParentCat.isActive)" ng-show="subParentCat.Id != null" value="ערוך" />
+                                <input type="button" class="btn btn-danger" ng-click="DeleteSubCategory(parentCat.Id,subParentCat.Id,subParentCat.Name)" ng-show="subParentCat.Id != null" value="מחק" />
+                                <input type="text" ng-model="subParentCatInput" class="inputClass form-control" />
+                            </div>
+                        </div>
+                        <p class="bg-success succCat" id="SubCatSucc" style="display:none">קטגוריה '{{SubCatSuccTxt}}' {{SubCatSuccTxtKey}} בהצלחה !</p>
                     </div>
-                    <p class="bg-success succCat" Id="Sub3CatSucc" style="display:none">קטגוריה '{{Sub3CatSuccTxt}}' {{Sub3CatSuccTxtKey}} בהצלחה !</p>
+                    <br />
+                    <div class="subCat" ng-show="subParentCat.Id != null">
+                        <div class="row-title">
+                            קטגוריות תת משניות
+                        </div>
+                        <div class="dropdown">
+                            <select name="subParentCat"
+                                    class="form-control subParentCat"
+                                    ng-options="subCat.Name for subCat in subParentCat.Children"
+                                    ng-change="SelectedSub3ParentCat(sub3ParentCat)"
+                                    ng-model="sub3ParentCat">
+                                <option value="">בחר</option>
+                            </select>
+                            <div class="buttonsBlock">
+                                <div>
+                                    <input type="checkbox" name="subParentIsActive" value="1" ng-model="sub3ParentCat.isActive" ng-click="!sub3ParentCat.isActive" /> האם לפרסם
+                                </div>
+                                <input type="button" class="btn btn-success" ng-click="AddSub3Category(subParentCat.Id,sub3ParentCatInput,sub3ParentCat.isActive)" value="הוסף" />
+                                <input type="button" class="btn btn-default" ng-click="RenameSub3Category(subParentCat.Id,sub3ParentCat.Id,sub3ParentCatInput,sub3ParentCat.isActive)" ng-show="sub3ParentCat.Id != null" value="ערוך" />
+                                <input type="button" class="btn btn-danger" ng-click="DeleteSub3Category(subParentCat.Id,sub3ParentCat.Id,sub3ParentCat.Name)" ng-show="sub3ParentCat.Id != null" value="מחק" />
+                                <input type="text" ng-model="sub3ParentCatInput" class="inputClass form-control" />
+                            </div>
+                        </div>
+                        <p class="bg-success succCat" Id="Sub3CatSucc" style="display:none">קטגוריה '{{Sub3CatSuccTxt}}' {{Sub3CatSuccTxtKey}} בהצלחה !</p>
+                    </div>
                 </div>
+
+                <div ng-if="radio == 2">
+                    <h4>מיון קטגוריות</h4>
+                    <table class="table table-info">
+                        <tr class="bg-info">
+                            <th></th>
+                            <th>שם קטגוריה</th>
+                            <th>סטטוס</th>
+                            <th>מיון</th>
+                            <th></th>
+                        </tr>
+                        <tbody ng-repeat="item in ParentCategories | orderBy : '-Cat_Order'">
+                            <tr class="table-hover">
+                                <td>
+                                    <i ng-hide="childrens[$index]" class="fa fa-plus-square-o" aria-hidden="true" ng-click="openChildren(item,$index,0)"></i>
+                                    <i ng-show="childrens[$index]" class="fa fa-minus-square-o" aria-hidden="true" ng-click="openChildren(item,$index,0)"></i>
+                                </td>
+                                <td>{{item.Name}}</td>
+                                <td>{{item.isActive}}</td>
+                                <td>{{item.Cat_Order}}</td>
+                                <td>
+                                    <i ng-click="Plus1(item,0)" class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    <i ng-click="Minus1(item,0)" class="fa fa-minus-circle" aria-hidden="true"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" ng-show="childrens[$index] && item.Children.length > 0">
+                                    <table class="table table-info-child">
+                                        <tr class="bg-info">
+                                            <th></th>
+                                            <th>שם קטגוריה</th>
+                                            <th>סטטוס</th>
+                                            <th>מיון</th>
+                                            <th></th>
+                                        </tr>
+                                        <tbody ng-repeat="child in item.Children | orderBy : '-Cat_Order'">
+                                            <tr class="table-hover">
+                                                <td>
+                                                    <i ng-hide="subchildrens[$index]" class="fa fa-plus-square-o" aria-hidden="true" ng-click="openChildren(child,$index,1)"></i>
+                                                    <i ng-show="subchildrens[$index]" class="fa fa-minus-square-o" aria-hidden="true" ng-click="openChildren(child,$index,1)"></i>
+
+                                                </td>
+                                                <td>{{child.Name}}</td>
+                                                <td>{{child.isActive}}</td>
+                                                <td>{{child.Cat_Order}}</td>
+                                                <td>
+                                                    <i ng-click="Plus1(child,1)" class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                    <i ng-click="Minus1(child,1)" class="fa fa-minus-circle" aria-hidden="true"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5" ng-show="subchildrens[$index] && child.Children.length > 0">
+                                                    <table class="table table-info-subchild">
+                                                        <tr class="bg-info">
+                                                            <th></th>
+                                                            <th>שם קטגוריה</th>
+                                                            <th>סטטוס</th>
+                                                            <th>מיון</th>
+                                                            <th></th>
+                                                        </tr>
+                                                        <tbody ng-repeat="subchild in child.Children | orderBy : '-Cat_Order'">
+                                                            <tr class="table-hover">
+                                                                <td>
+                                                                    <!--<i class="fa fa-plus-square-o" aria-hidden="true" ng-click="openChildren(subchild,$index, 2)"></i>-->
+                                                                </td>
+                                                                <td>{{subchild.Name}}</td>
+                                                                <td>{{subchild.isActive}}</td>
+                                                                <td>{{subchild.Cat_Order}}</td>
+                                                                <td>
+                                                                    <i ng-click="Plus1(subchild,1)" class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                                    <i ng-click="Minus1(subchild,1)" class="fa fa-minus-circle" aria-hidden="true"></i>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+</table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
 
             </div>
         </div>

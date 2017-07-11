@@ -48,16 +48,54 @@ h4 {
     color: #686868;
     font-weight: bold;
 }
-@media screen and (max-width: 768px) {
-
-    select.parentCat, select.subParentCat {
-        width:100%;
-    }
-    .homeadminRoute.col-xs-12{
-        padding-right:0;
-    }
-
-    .col-xs-12 {
-        padding:0;
-    }
+table.table tr th {
+    text-align: center;
 }
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th{
+    text-align:center;
+}
+.fa-plus-circle {
+    color: #008000;
+    font-size: 20px;
+    cursor: pointer;
+}
+.fa-plus-square-o, .fa-minus-square-o {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.fa-minus-circle {
+    color: #8b0000;
+    font-size: 20px;
+    cursor: pointer;
+}
+.table-info-child .bg-info {
+    background: #74909f;
+    color:#fff;
+}
+.table-info-subchild .bg-info {
+    background: #4e646f;
+    color: #fff;
+}
+
+    @media screen and (max-width: 768px) {
+        .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+            width: 100%;
+        }
+
+        .btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
+            width: 100%;
+        }
+
+        select.parentCat, select.subParentCat {
+            width: 100%;
+        }
+
+        .homeadminRoute.col-xs-12 {
+            padding-right: 0;
+        }
+
+        .col-xs-12 {
+            padding: 0;
+        }
+    }

@@ -10,9 +10,9 @@ namespace BL
 {
     public abstract class CategoriesLogic
     {
-        public static Result RenameCategoryName(int catId, string newName, bool isActive)
+        public static Result RenameCategoryName(int catId, string newName, bool isActive, string order)
         {
-           return CategoriesResult.RenameCategoryName(catId, newName, isActive);
+            return CategoriesResult.RenameCategoryName(catId, newName, isActive, order);
         }
         public static Result AddCategory(string catName, bool isActive)
         {

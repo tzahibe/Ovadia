@@ -138,8 +138,10 @@ padding:0;
     filter: alpha(opacity=20);
     opacity: .2;
     display:block;
-} 
-
+}
+legend {
+    font-weight:bold;
+}
 @media screen and (max-width: 768px) {
     .ngdialog-theme-default {
         position: fixed;
