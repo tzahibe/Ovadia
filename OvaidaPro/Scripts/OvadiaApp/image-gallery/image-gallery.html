@@ -1,7 +1,28 @@
-﻿<link href="/Scripts/OvadiaApp/lesson-component/lesson-component.css" rel="stylesheet" />
+﻿<link href="/Scripts/OvadiaApp/image-gallery/image-gallery.css" rel="stylesheet" />
+<link href="/Scripts/OvadiaApp/image-gallery/ng-image-gallery.min.css" rel="stylesheet" />
+
 <div class="col-xs-12 lessonBlocks">
-    <div class="body col-xs-12 col-sm-6 col-md-4">
+    <div class="body col-xs-12">
         <h4 class="box-title">גלריית תמונות</h4>
+
+        <ng-image-gallery ng-if="!isMobile" images="images" methods="methods" 
+                          conf="conf" thumbnails="thumbnails" 
+                          thumb-size="thumbSize" inline="inline" 
+                          bubbles="bubbles" bubble-size="bubbleSize" 
+                          img-bubbles="imgBubbles" bg-close="bgClose" 
+                          piracy="true" on-open="opened();" on-close="closed();" 
+                          on-delete="delete(img, cb)" bg-close="false"></ng-image-gallery>
+
+        <div  ng-if="isMobile">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 noPadding ts pic_wrap cat_id_2293 appear"
+                 ng-repeat="item in images track by $index">
+                <a href="webfiles/Gallery/2272/598/IMG2326.jpg" title="כולל חזון עובדיה"
+                   class="imgGalItem ts" onfocus="focusLink(this)" data-gallery="">
+                    <img src="{{item.url}}" class="img-responsive">
+                </a>
+            </div>
+        </div>
+
         בבנייה...
    </div>
 </div>

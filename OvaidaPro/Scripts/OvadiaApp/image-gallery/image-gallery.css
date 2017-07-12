@@ -1,2 +1,9 @@
-﻿body {
+﻿
+
+
+@media screen and (max-width: 768px) {
+
+    .col-xs-12 {
+        padding: 0;
+    }
 }

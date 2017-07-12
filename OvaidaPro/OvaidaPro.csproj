@@ -176,9 +176,20 @@
     <Content Include="Scripts\OvadiaApp\all-lesson-component\all-lesson-component.html" />
     <Content Include="Scripts\OvadiaApp\all-lesson-component\all-lesson-component.js" />
     <Content Include="Scripts\OvadiaApp\appServcies.js" />
+    <Content Include="Content\images\icons\close-inline.svg" />
+    <Content Include="Content\images\icons\close.svg" />
+    <Content Include="Content\images\icons\delete-inline.svg" />
+    <Content Include="Content\images\icons\delete.svg" />
+    <Content Include="Content\images\icons\external-link-inline.svg" />
+    <Content Include="Content\images\icons\external-link.svg" />
+    <Content Include="Content\images\icons\next-inline.svg" />
+    <Content Include="Content\images\icons\next.svg" />
+    <Content Include="Content\images\icons\prev-inline.svg" />
+    <Content Include="Content\images\icons\prev.svg" />
     <Content Include="Scripts\OvadiaApp\image-gallery\image-gallery.css" />
     <Content Include="Scripts\OvadiaApp\image-gallery\image-gallery.html" />
     <Content Include="Scripts\OvadiaApp\image-gallery\image-gallery.js" />
+    <Content Include="Scripts\OvadiaApp\image-gallery\ng-image-gallery.min.css" />
     <Content Include="Scripts\OvadiaApp\login-container\login-container.css" />
     <Content Include="Scripts\OvadiaApp\login-container\login-container.html" />
     <Content Include="Scripts\OvadiaApp\login-container\login-container.js" />
@@ -244,6 +255,7 @@
     <Content Include="Scripts\Plugins\moment.js" />
     <Content Include="Scripts\Plugins\ng-file-upload.min.js" />
     <Content Include="Scripts\Plugins\ng-image-gallery.min.css" />
+    <Content Include="Scripts\Plugins\ng-image-gallery.min.js" />
     <Content Include="Scripts\Plugins\ng-upload.js" />
     <Content Include="Scripts\Plugins\ngClip.js" />
     <Content Include="Scripts\Plugins\ngDialog.min.js" />
@@ -300,6 +312,7 @@
     <Content Include="Scripts\Global\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\Plugins\angular-route.min.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\Plugins\ng-image-gallery.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

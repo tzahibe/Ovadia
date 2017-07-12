@@ -6,8 +6,9 @@
         'ngFileUpload',
         'ngClipboard',
         'ngDialog',
-        'ngCookies'
-        //'ngAnimate'
+        'ngCookies',
+        'ngAnimate',
+        'thatisuday.ng-image-gallery'
     ]
 )
 
