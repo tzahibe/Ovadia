@@ -16651,7 +16651,7 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
     $scope.OrderSubFunc = function (item) {
         var isActive = item.isActive > 0 ? true : false;
         $scope.loader_parent = true;
-        $http.get("/CategorySer/RenameSubCategoryName?catId=" + item.Id + "&newName=" + item.Name + "&isActive=" + isActive + "&order=" + item.Cat_Order)
+        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + item.ParentId + "&catId=" + item.Id + "&newName=" + item.Name + "&isActive=" + isActive + "&order=" + item.Cat_Order)
             .then(function (response) {
                 var errorCode;
                 try {
