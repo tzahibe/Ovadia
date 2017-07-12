@@ -1,5 +1,0 @@
-C:\GitubProject\Ovadia\BO\bin\Release\BO.dll
-C:\GitubProject\Ovadia\BO\bin\Release\BO.pdb
-C:\GitubProject\Ovadia\BO\obj\Release\BO.csprojResolveAssemblyReference.cache
-C:\GitubProject\Ovadia\BO\obj\Release\BO.dll
-C:\GitubProject\Ovadia\BO\obj\Release\BO.pdb
