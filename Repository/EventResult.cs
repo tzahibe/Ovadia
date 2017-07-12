@@ -88,6 +88,7 @@ namespace Repository
             repo_event.to_minutes = eventObj.To_Minutes;
             repo_event.to_hour = eventObj.To_Hour;
             repo_event.full_date = eventObj.Full_Date;
+            repo_event.comment = eventObj.Comment;
 
             try
             {
