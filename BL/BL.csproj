@@ -51,13 +51,13 @@
     <Compile Include="UsersLogic.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Users\Tzahi\Source\Repos\Ovadia\Repository\Repository.csproj">
-      <Project>{b14179e0-33fe-4b3b-9bc7-6b8faa192574}</Project>
-      <Name>Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BO\BO.csproj">
       <Project>{3198ee24-6745-413f-af29-65530adc8647}</Project>
       <Name>BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{b14179e0-33fe-4b3b-9bc7-6b8faa192574}</Project>
+      <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

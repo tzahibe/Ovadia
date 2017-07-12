@@ -7,3 +7,8 @@ C:\GitubProject\Ovadia\BO\bin\Debug\BO.pdb
 C:\GitubProject\Ovadia\BO\obj\Debug\BO.dll
 C:\GitubProject\Ovadia\BO\obj\Debug\BO.pdb
 C:\GitubProject\Ovadia\BO\obj\Debug\BO.csprojResolveAssemblyReference.cache
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BO\bin\Debug\BO.dll
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BO\bin\Debug\BO.pdb
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BO\obj\Debug\BO.csprojResolveAssemblyReference.cache
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BO\obj\Debug\BO.dll
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BO\obj\Debug\BO.pdb
