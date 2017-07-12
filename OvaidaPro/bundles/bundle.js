@@ -18541,6 +18541,15 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                  access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
             }
         })
+        .state("movie-category", {
+            url: '/movie-category',
+            templateUrl: '/Scripts/OvadiaApp/movie-category/movie-category.html',
+            controller: 'movieCategoryCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
+            }
+        })
+
         .state("login", {
             url: '/login',
             templateUrl: '/Scripts/OvadiaApp/login-container/login-container.html',
@@ -18693,6 +18702,27 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
     })
 
 
+OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval',
+    function ($scope, appServices, ngDialog, $timeout, $interval) {
+        var self = this;
+        var promisse;
+
+        self.init = function () {
+           
+        }
+
+       
+        self.init();
+    }]);
+
+OvadiaApp.directive('movieCategory', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'movieCategoryCtrl',
+        templateUrl: '/Scripts/OvadiaApp/movie-category/movie-category'
+    }
+});
 OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices','UserAccount',
     function ($scope, appServices, UserAccount) {
         var self = this;

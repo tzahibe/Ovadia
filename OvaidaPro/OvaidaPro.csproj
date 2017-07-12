@@ -196,6 +196,9 @@
     <Content Include="Scripts\OvadiaApp\mapa-component\mapa-component.css" />
     <Content Include="Scripts\OvadiaApp\mapa-component\mapa-component.html" />
     <Content Include="Scripts\OvadiaApp\mapa-component\mapa-component.js" />
+    <Content Include="Scripts\OvadiaApp\movie-category\movie-category.css" />
+    <Content Include="Scripts\OvadiaApp\movie-category\movie-category.html" />
+    <Content Include="Scripts\OvadiaApp\movie-category\movie-category.js" />
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.css" />
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.html" />
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.js" />

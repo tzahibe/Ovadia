@@ -162,7 +162,7 @@
 
 .ng-image-gallery, .ng-image-gallery * {
     outline: 0;
-    float:right;
+    /*float:right;*/
 }
 
     .ng-image-gallery .ng-image-gallery-thumbnails:after {
