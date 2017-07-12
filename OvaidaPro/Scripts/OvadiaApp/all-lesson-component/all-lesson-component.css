@@ -10,7 +10,9 @@
 .fc-day-grid-event .fc-content {
     cursor: pointer;
 }
-
+.box-title{
+    text-align:center;
+}
 .modal-dialog {
     top: 53px;
 }
@@ -57,7 +59,7 @@ option {
 
 .table-hover:hover {
     background: #123b5e;
-    color: #fff;
+    /*color: #fff;*/
 }
 
 .modal-body.center {
@@ -117,13 +119,12 @@ option {
     padding-bottom: 10px;
 }
 .box-sub-title {
-    font-size: 18px;
-    padding-bottom: 5px;
+    color: #686868;
     font-weight: bold;
-    background: #1c1f2c;
-    padding-top: 5px;
-    text-align: center;
-    color: #fff;
+    margin-bottom: 10px;
+    margin-top:20px;
+    display: block;
+    font-size:24px;
 }
 
 .table.table-info.mobile {
@@ -141,7 +142,7 @@ table.table tr td {
     border: 1px solid #8f8b8b;
 }
 .table.table-info, .box-sub-title {
-    width: 550px;
+    text-align:center;
 }
 
 table.table tr th {
@@ -152,6 +153,15 @@ table.table tr th {
     border: 1px solid #8f8b8b;
 }
 @media screen and (max-width: 768px) {
+    .box-sub-title {
+        font-size: 18px;
+        padding-bottom: 5px;
+        font-weight: bold;
+        background: #1c1f2c;
+        padding-top: 5px;
+        text-align: center;
+        color: #fff;
+    }
     .col-xs-12{
         padding:0;
     }
