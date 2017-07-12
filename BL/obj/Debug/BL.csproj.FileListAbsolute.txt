@@ -46,3 +46,14 @@ C:\GitubProject\Ovadia\BL\bin\Debug\Repository.pdb
 C:\GitubProject\Ovadia\BL\bin\Debug\Repository.dll.config
 C:\GitubProject\Ovadia\BL\bin\Debug\BO.pdb
 C:\GitubProject\Ovadia\BL\bin\Debug\EntityFramework.xml
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BL\obj\Debug\BL.dll
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BL\obj\Debug\BL.pdb
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BL\bin\Debug\BL.dll
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BL\bin\Debug\BL.pdb
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BL\bin\Debug\BO.dll
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BL\bin\Debug\Repository.dll
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BL\bin\Debug\EntityFramework.dll
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BL\bin\Debug\BO.pdb
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BL\bin\Debug\Repository.pdb
+C:\Users\47\Documents\my work\OvadiaGitHub\Ovadia\BL\bin\Debug\EntityFramework.xml

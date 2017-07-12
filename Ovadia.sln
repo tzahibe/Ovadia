@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OvaidaPro", "OvaidaPro\OvaidaPro.csproj", "{3B5AB525-1B88-42BE-8AC4-16AD45B2BB1F}"
 EndProject
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{FE24
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BO", "BO\BO.csproj", "{3198EE24-6745-413F-AF29-65530ADC8647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "..\..\Users\Tzahi\Source\Repos\Ovadia\Repository\Repository.csproj", "{B14179E0-33FE-4B3B-9BC7-6B8FAA192574}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{B14179E0-33FE-4B3B-9BC7-6B8FAA192574}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
