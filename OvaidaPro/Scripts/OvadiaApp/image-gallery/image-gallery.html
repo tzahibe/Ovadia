@@ -15,14 +15,18 @@
 
         <div  ng-if="isMobile">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 noPadding ts pic_wrap cat_id_2293 appear"
-                 ng-repeat="item in images track by $index">
-                <a href="webfiles/Gallery/2272/598/IMG2326.jpg" title="כולל חזון עובדיה"
+                 ng-repeat="item in images |limitTo:limitImages">
+                <a title="כולל חזון עובדיה"
                    class="imgGalItem ts" onfocus="focusLink(this)" data-gallery="">
-                    <img src="{{item.url}}" class="img-responsive">
+                    <img src="{{item.url}}" class="img-responsive img-rounded">
                 </a>
+            </div>
+            <div ng-show="limitImages < images.length">
+                <button ng-click="loadMoreImages()" class="btn btn-info">
+                    טען עוד...
+                </button>
             </div>
         </div>
 
-        בבנייה...
    </div>
 </div>

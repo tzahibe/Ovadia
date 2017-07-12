@@ -5,6 +5,7 @@
         $scope.images = [];
         $scope.counter = 5;
         $scope.thumbSize = 150;
+        $scope.limitImages = 4;
         $scope.moreImages = [];
 
         var self = this;
@@ -37,6 +38,9 @@
             $scope.showFiles();
            
         }
+        $scope.loadMoreImages = function () {
+            $scope.limitImages += 4;
+        }
 
         $scope.showFiles = function () {
             $http.get("/Uploads/ShowFiles").then(function (response) {
@@ -59,7 +63,7 @@
                             thumbUrl: "http://" + window.location.host + "/Uploads/sm_" + value.Name,
                             bubbleUrl: "http://" + window.location.host + "/Uploads/sm_" + value.Name,
                             //extUrl: 'http://google.com',
-                            desc: 'תמונה מהכולל חזון עובדיה',
+                            desc: '',
                             deletable: true
                         }
                         $scope.images.push(item);
