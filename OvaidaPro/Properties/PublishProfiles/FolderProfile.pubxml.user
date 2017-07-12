@@ -11,31 +11,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
-      <publishTime>02/22/2013 07:43:40</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.pdb">
-      <publishTime>02/22/2013 07:43:40</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/BL.dll">
-      <publishTime>07/10/2017 13:45:40</publishTime>
+      <publishTime>07/12/2017 10:44:49</publishTime>
     </File>
     <File Include="bin/BL.pdb">
-      <publishTime>07/10/2017 13:45:40</publishTime>
+      <publishTime>07/12/2017 10:44:49</publishTime>
     </File>
     <File Include="bin/Bo.dll">
-      <publishTime>07/10/2017 13:45:39</publishTime>
+      <publishTime>07/12/2017 10:44:48</publishTime>
     </File>
     <File Include="bin/Bo.pdb">
-      <publishTime>07/10/2017 13:45:39</publishTime>
+      <publishTime>07/12/2017 10:44:48</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>03/02/2015 09:32:26</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>03/02/2015 09:32:26</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
-      <publishTime>04/25/2017 16:30:36</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/Microsoft.VisualStudio.Threading.dll">
       <publishTime>06/01/2017 11:04:15</publishTime>
@@ -47,22 +47,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/01/2017 11:04:15</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>01/05/2012 10:08:46</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>08/03/2014 20:33:56</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/OvaidaPro.dll">
-      <publishTime>07/10/2017 13:45:45</publishTime>
+      <publishTime>07/12/2017 10:44:53</publishTime>
     </File>
     <File Include="bin/OvaidaPro.pdb">
-      <publishTime>07/10/2017 13:45:45</publishTime>
+      <publishTime>07/12/2017 10:44:53</publishTime>
     </File>
     <File Include="bin/Repository.dll">
-      <publishTime>07/10/2017 13:45:40</publishTime>
+      <publishTime>07/12/2017 10:44:49</publishTime>
     </File>
     <File Include="bin/Repository.dll.config">
-      <publishTime>06/01/2017 15:56:49</publishTime>
+      <publishTime>07/12/2017 00:02:59</publishTime>
     </File>
     <File Include="bin/Repository.exe">
       <publishTime>01/06/2017 15:08:11</publishTime>
@@ -71,235 +71,235 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2017 15:56:49</publishTime>
     </File>
     <File Include="bin/Repository.pdb">
-      <publishTime>07/10/2017 13:45:40</publishTime>
+      <publishTime>07/12/2017 10:44:49</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
-      <publishTime>03/07/2017 10:56:08</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe.config">
-      <publishTime>03/07/2017 10:56:08</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/csc.rsp">
-      <publishTime>03/07/2017 10:56:08</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe.config">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/csi.rsp">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
-      <publishTime>03/07/2017 10:56:08</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
-      <publishTime>03/07/2017 10:56:08</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
-      <publishTime>03/07/2017 10:56:06</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
-      <publishTime>03/07/2017 10:56:08</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
-      <publishTime>03/07/2017 10:56:08</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
-      <publishTime>03/07/2017 10:56:08</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
-      <publishTime>03/07/2017 10:56:08</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.AppContext.dll">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Console.dll">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.Process.dll">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Compression.dll">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.DriveInfo.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Pipes.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.AccessControl.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Claims.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Principal.Windows.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Threading.Thread.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.ValueTuple.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
-      <publishTime>03/07/2017 10:56:12</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.dll">
-      <publishTime>03/07/2017 10:56:14</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
-      <publishTime>03/07/2017 10:56:14</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe.config">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.rsp">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
-      <publishTime>03/07/2017 10:56:10</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>01/28/2015 04:02:42</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/System.Web.Cors.dll">
-      <publishTime>01/28/2015 04:01:46</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>01/28/2015 03:04:30</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/System.Web.Http.Cors.dll">
-      <publishTime>01/28/2015 04:03:04</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>01/28/2015 04:02:54</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>01/28/2015 04:03:46</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>01/28/2015 03:02:18</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
-      <publishTime>05/15/2013 10:43:38</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>01/28/2015 03:02:32</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.Deployment.dll">
-      <publishTime>01/28/2015 03:04:30</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.dll">
-      <publishTime>01/28/2015 03:04:30</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.Razor.dll">
-      <publishTime>01/28/2015 03:04:30</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
-      <publishTime>09/10/2013 17:28:38</publishTime>
+      <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bundles/bundle.js">
-      <publishTime>07/10/2017 11:57:29</publishTime>
+      <publishTime>07/12/2017 10:39:54</publishTime>
     </File>
     <File Include="bundles/bundle.min.js">
-      <publishTime>07/07/2017 00:29:08</publishTime>
+      <publishTime>07/12/2017 00:06:28</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>05/21/2017 10:00:37</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>06/04/2017 10:26:38</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/fullcalendar.min.css">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/images/colel-ico.png">
-      <publishTime>07/09/2017 09:47:44</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/images/colel.jpg">
-      <publishTime>06/18/2017 09:21:49</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/images/loader.gif">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/images/login.png">
-      <publishTime>06/23/2017 11:16:31</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/images/logozakai.png">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/images/menuIcon.svg">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/images/purple-wallpaper-background-25.jpg">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/images/rabi-ovadia.png">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>05/21/2017 10:00:36</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/textAngular.css">
-      <publishTime>06/20/2017 10:40:33</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
       <publishTime>05/21/2017 10:00:37</publishTime>
@@ -314,7 +314,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/21/2017 10:00:37</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>05/21/2017 09:15:15</publishTime>
+      <publishTime>07/12/2017 00:08:31</publishTime>
     </File>
     <File Include="Handlers/UploadHandler.ashx">
       <publishTime>06/20/2017 12:48:54</publishTime>
@@ -323,7 +323,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/28/2017 17:44:19</publishTime>
     </File>
     <File Include="Iqndex.html">
-      <publishTime>06/28/2017 17:44:19</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="my-app/.angular-cli.json">
       <publishTime>05/24/2017 15:26:26</publishTime>
@@ -641,13 +641,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/21/2017 09:17:43</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>07/07/2017 00:28:49</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="pages/errorRemoveMail.html">
-      <publishTime>06/12/2017 23:32:20</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="pages/removeEmail.html">
-      <publishTime>06/12/2017 23:32:24</publishTime>
+      <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>05/21/2017 10:00:37</publishTime>
@@ -656,64 +656,64 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/21/2017 10:00:37</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap-grid.css">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap-grid.css.map">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap-grid.min.css">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap-grid.min.css.map">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap-reboot.css">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap-reboot.css.map">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap-reboot.min.css">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap-reboot.min.css.map">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap-theme.css">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap-theme.min.css">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap-theme.min.css.map">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap.css">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap.css.map">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap.min.css">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/css/bootstrap.min.css.map">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/fonts/glyphicons-halflings-regular.eot">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/fonts/glyphicons-halflings-regular.svg">
-      <publishTime>06/04/2017 08:54:09</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/fonts/glyphicons-halflings-regular.ttf">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/fonts/glyphicons-halflings-regular.woff">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Global/fonts/glyphicons-halflings-regular.woff2">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>05/21/2017 10:00:38</publishTime>
@@ -728,328 +728,328 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/21/2017 10:00:39</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/category-admin/category-admin.css">
-      <publishTime>07/10/2017 15:50:59</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/category-admin/category-admin.html">
-      <publishTime>07/10/2017 15:47:41</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/category-admin/category-admin.js">
-      <publishTime>07/10/2017 11:57:30</publishTime>
+      <publishTime>07/12/2017 10:40:06</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/add-event.html">
-      <publishTime>07/05/2017 13:26:19</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/add-fixed-event.html">
-      <publishTime>07/05/2017 13:26:29</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/add-message.html">
-      <publishTime>07/05/2017 13:31:53</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/add-tfila.html">
-      <publishTime>07/05/2017 13:31:53</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/are-you-sure.html">
-      <publishTime>07/05/2017 13:31:53</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/customer/show-event.html">
-      <publishTime>07/05/2017 13:43:53</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/customer/show-fixed-events.html">
-      <publishTime>07/05/2017 13:43:45</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/edit-event.html">
-      <publishTime>07/05/2017 13:31:53</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/edit-tfila.html">
-      <publishTime>07/05/2017 13:31:53</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/email-exist-error.html">
-      <publishTime>07/05/2017 13:31:53</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/fail-message.html">
-      <publishTime>07/05/2017 13:27:03</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/mails-send-succ.html">
-      <publishTime>07/05/2017 13:30:46</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/popup-screen.html">
-      <publishTime>06/20/2017 10:20:49</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/success-message.html">
-      <publishTime>07/05/2017 13:31:53</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/events-dialog/update-fixed-event.html">
-      <publishTime>07/05/2017 13:30:58</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/home-admin/home-admin.css">
-      <publishTime>06/15/2017 18:13:07</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/home-admin/home-admin.html">
-      <publishTime>06/28/2017 17:49:20</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/home-admin/home-admin.js">
-      <publishTime>07/10/2017 10:38:13</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/lesson-admin/lesson-admin.css">
-      <publishTime>07/05/2017 13:31:10</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/lesson-admin/lesson-admin.html">
-      <publishTime>07/10/2017 16:00:29</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/lesson-admin/lesson-admin.js">
-      <publishTime>06/18/2017 16:34:47</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.css">
-      <publishTime>07/10/2017 15:51:56</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.html">
-      <publishTime>07/10/2017 15:50:17</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.js">
-      <publishTime>06/20/2017 18:28:06</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/odot-admin/odot-admin.css">
-      <publishTime>06/21/2017 15:19:55</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/odot-admin/odot-admin.html">
-      <publishTime>06/20/2017 11:54:35</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/odot-admin/odot-admin.js">
-      <publishTime>06/20/2017 10:53:06</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/send-mail/send-mail.css">
-      <publishTime>06/21/2017 15:19:36</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/send-mail/send-mail.html">
-      <publishTime>06/14/2017 15:40:57</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/send-mail/send-mail.js">
-      <publishTime>06/13/2017 10:00:07</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/tfila-time/tfila-time.css">
-      <publishTime>06/21/2017 15:20:22</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/tfila-time/tfila-time.html">
-      <publishTime>06/15/2017 11:05:36</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/tfila-time/tfila-time.js">
-      <publishTime>06/15/2017 11:08:39</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/all-lesson-component/all-lesson-component.css">
-      <publishTime>07/04/2017 16:18:39</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/all-lesson-component/all-lesson-component.html">
-      <publishTime>07/09/2017 09:36:10</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/all-lesson-component/all-lesson-component.js">
-      <publishTime>07/09/2017 09:18:14</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/appServcies.js">
-      <publishTime>06/28/2017 17:51:23</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/carousel-component/carousel-component.css">
-      <publishTime>06/04/2017 14:13:23</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/carousel-component/carousel-component.html">
-      <publishTime>06/04/2017 10:16:21</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/carousel-component/carousel-component.js">
-      <publishTime>06/05/2017 11:15:28</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/header-component/header-component.css">
-      <publishTime>06/28/2017 16:49:18</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/header-component/header-component.html">
-      <publishTime>06/15/2017 17:55:05</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/header-component/header-component.js">
-      <publishTime>07/09/2017 09:08:23</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/header-component/header-component.scss">
       <publishTime>06/04/2017 09:51:08</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/home-component/home-component.css">
-      <publishTime>07/05/2017 14:54:55</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/home-component/home-component.html">
-      <publishTime>06/18/2017 16:20:52</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/home-component/home-component.js">
-      <publishTime>06/15/2017 11:32:13</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/image-gallery/image-gallery.css">
-      <publishTime>06/20/2017 15:09:01</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/image-gallery/image-gallery.html">
-      <publishTime>06/20/2017 16:35:00</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/image-gallery/image-gallery.js">
-      <publishTime>06/20/2017 16:36:24</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/lesson-component/lesson-component.css">
-      <publishTime>06/21/2017 15:25:33</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/lesson-component/lesson-component.html">
-      <publishTime>06/20/2017 12:00:04</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/lesson-component/lesson-component.js">
-      <publishTime>06/28/2017 16:52:36</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/login-container/login-container.css">
-      <publishTime>07/05/2017 14:04:58</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/login-container/login-container.html">
-      <publishTime>07/05/2017 16:26:16</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/login-container/login-container.js">
-      <publishTime>07/05/2017 14:54:24</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/mapa-component/mapa-component.css">
-      <publishTime>06/21/2017 15:17:46</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/mapa-component/mapa-component.html">
-      <publishTime>06/21/2017 15:13:33</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/mapa-component/mapa-component.js">
-      <publishTime>06/18/2017 16:16:13</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/my-app/my-app.css">
-      <publishTime>07/05/2017 16:07:04</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/my-app/my-app.html">
-      <publishTime>06/05/2017 10:33:45</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/my-app/my-app.js">
-      <publishTime>07/05/2017 21:24:51</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/OvadiaApp.js">
-      <publishTime>07/04/2017 14:29:32</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/OvadiaConfig.js">
-      <publishTime>07/10/2017 11:00:44</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/profile-component/profile-component.css">
-      <publishTime>07/05/2017 11:36:32</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/profile-component/profile-component.html">
-      <publishTime>06/20/2017 11:54:18</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/profile-component/profile-component.js">
-      <publishTime>06/20/2017 11:34:00</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/tfila-time-container/tfila-time-container.css">
-      <publishTime>06/21/2017 15:21:34</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/tfila-time-container/tfila-time-container.html">
-      <publishTime>06/21/2017 16:51:49</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/tfila-time-container/tfila-time-container.js">
-      <publishTime>07/09/2017 09:15:45</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/angular-animate.js">
       <publishTime>06/04/2017 09:11:16</publishTime>
     </File>
     <File Include="Scripts/Plugins/angular-animate.min.js">
-      <publishTime>06/21/2017 16:15:36</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/angular-cookies.min.js">
-      <publishTime>06/28/2017 17:43:05</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/angular-file-upload.min.js">
-      <publishTime>06/20/2017 12:27:24</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/angular-mocks.js">
-      <publishTime>06/04/2017 09:11:16</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/angular-route.min.js">
-      <publishTime>06/04/2017 14:50:39</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/angular-route.min.js.map">
-      <publishTime>06/04/2017 11:30:44</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/angular-ui-router.min.js">
-      <publishTime>06/04/2017 09:13:35</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/angular.min.js">
-      <publishTime>06/04/2017 08:55:24</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/bootstrap.min.js">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/fontawesome.js">
-      <publishTime>06/15/2017 15:05:12</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/fullcalendar.min.js">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/jquery-3.2.1.min.js">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/locale-all.js">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/moment.js">
-      <publishTime>06/04/2017 08:54:10</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/ng-file-upload.min.js">
-      <publishTime>06/20/2017 12:40:08</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/ng-image-gallery.min.css">
-      <publishTime>06/21/2017 16:05:41</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/ng-upload.js">
-      <publishTime>06/20/2017 12:39:19</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/ngClip.js">
-      <publishTime>06/20/2017 13:09:15</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/ngDialog.min.js">
-      <publishTime>06/04/2017 11:44:30</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/static.js">
-      <publishTime>06/15/2017 18:06:36</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/textAngular/angular-animate.js">
-      <publishTime>06/04/2017 09:11:16</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/textAngular/textAngular-rangy.min.js">
-      <publishTime>06/20/2017 09:40:34</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/textAngular/textAngular-sanitize.js">
-      <publishTime>06/20/2017 09:40:34</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/textAngular/textAngular-sanitize.min.js">
-      <publishTime>06/20/2017 09:40:34</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/textAngular/textAngular.js">
-      <publishTime>06/20/2017 09:40:34</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/textAngular/textAngular.min.js">
-      <publishTime>06/20/2017 09:40:34</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/textAngular/textAngular.umd.js">
-      <publishTime>06/20/2017 09:40:34</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/textAngular/textAngularSetup.js">
-      <publishTime>06/20/2017 09:40:34</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/ZeroClipboard.swf">
-      <publishTime>06/20/2017 13:31:12</publishTime>
+      <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/09/2017 09:02:26</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/09/2017 09:50:19</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Views/web.config">
-      <publishTime>05/21/2017 09:15:15</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>06/18/2017 09:11:44</publishTime>
+      <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/10/2017 13:45:45</publishTime>
+      <publishTime>07/12/2017 10:44:53</publishTime>
     </File>
   </ItemGroup>
 </Project>

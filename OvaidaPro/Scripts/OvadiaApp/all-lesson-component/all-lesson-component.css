@@ -116,38 +116,40 @@ option {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+.box-sub-title {
+    font-size: 18px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    background: #1c1f2c;
+    padding-top: 5px;
+    text-align: center;
+    color: #fff;
+}
 
+.table.table-info.mobile {
+    margin-bottom: 0;
+    margin-top: 0px;
+}
+
+    .table.table-info.mobile.x0 th {
+        background: #6a9cc7;
+    }
+
+table.table tr td {
+    background: #f8f8f8;
+    font-weight: bold;
+    border: 1px solid #8f8b8b;
+}
+
+table.table tr th {
+    background: #646a6e;
+    font-size: 15px;
+    /*font-weight: normal;*/
+    color: #fff;
+    border: 1px solid #8f8b8b;
+}
 @media screen and (max-width: 768px) {
-    .box-sub-title {
-        font-size: 18px;
-        padding-bottom: 5px;
-        font-weight: bold;
-        background: #1c1f2c;
-        padding-top: 5px;
-        text-align: center;
-        color: #fff;
-    }
-    .table.table-info.mobile {
-        margin-bottom: 0;
-        margin-top: 0px;
-    }
 
-        .table.table-info.mobile.x0 th {
-            background: #6a9cc7;
-        }
-        
-        table.table tr td {
-            background: #f8f8f8;
-            font-weight:bold;
-            border: 1px solid #8f8b8b;
-        }
-    table.table tr th {
-        background: #646a6e;
-        font-size: 15px;
-        /*font-weight: normal;*/
-        color: #fff;
-        border: 1px solid #8f8b8b;
-    }
     
     .btn-group label.btn-primary {
         float: right;

@@ -10,3 +10,15 @@ C:\Users\Tzahi\Source\Repos\Ovadia\BL\obj\Release\BL.dll
 C:\Users\Tzahi\Source\Repos\Ovadia\BL\obj\Release\BL.pdb
 C:\Users\Tzahi\Source\Repos\Ovadia\BL\bin\Release\Repository.dll
 C:\Users\Tzahi\Source\Repos\Ovadia\BL\bin\Release\Repository.dll.config
+C:\GitubProject\Ovadia\BL\bin\Release\BL.dll
+C:\GitubProject\Ovadia\BL\bin\Release\BL.pdb
+C:\GitubProject\Ovadia\BL\bin\Release\BO.dll
+C:\GitubProject\Ovadia\BL\bin\Release\Repository.dll
+C:\GitubProject\Ovadia\BL\bin\Release\EntityFramework.dll
+C:\GitubProject\Ovadia\BL\bin\Release\Repository.pdb
+C:\GitubProject\Ovadia\BL\bin\Release\Repository.dll.config
+C:\GitubProject\Ovadia\BL\bin\Release\BO.pdb
+C:\GitubProject\Ovadia\BL\bin\Release\EntityFramework.xml
+C:\GitubProject\Ovadia\BL\obj\Release\BL.csprojResolveAssemblyReference.cache
+C:\GitubProject\Ovadia\BL\obj\Release\BL.dll
+C:\GitubProject\Ovadia\BL\obj\Release\BL.pdb
