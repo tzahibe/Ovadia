@@ -21,7 +21,7 @@
                     <div class="imgItems-li" ng-repeat="f in results" style="font:smaller">
                         <div class="buttonsContainerArt">
                             <img class="imgClass" ng-src="/Uploads/sm_{{f.Name}}" />
-                            <button class="btn btn-default coppy-button" clip-copy="CoppyImageUrl(f.Name)" clip-click="alret('hi')">
+                            <button class="btn btn-default coppy-button" clip-copy="CoppyImageUrl(f.Name)">
                                 העתק כתובת תמונה
                             </button>
                             <span class="progress" ng-show="f.progress >= 0">

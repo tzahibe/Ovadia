@@ -18381,7 +18381,7 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
         }
 
         $scope.CoppyImageUrl = function (imgName) {
-            $scope.OpenPopup("http://" + window.location.host + "/Uploads/lg_" + imgName, "כתובת תמונה");
+           // $scope.OpenPopup("http://" + window.location.host + "/Uploads/lg_" + imgName, "כתובת תמונה");
             return "http://" + window.location.host + "/Uploads/lg_" + imgName;
         }
 
