@@ -38,7 +38,7 @@
                                 <input type="checkbox" name="ParentIsActive" ng-model="parentCat.isActive" ng-click="!parentCat.isActive" /> האם לפרסם
                             </div>
                             <input type="button" ng-click="AddCategory(parentCatInput,parentCat.isActive)" class="btn btn-success" value="הוסף" />
-                            <input type="button" class="btn btn-default" ng-show="parentCat.Id != null" ng-click="RenameCategory(parentCat.Id,parentCatInput,parentCat.isActive)" value="שמור" ng-show="false" />
+                            <input type="button" class="btn btn-default" ng-show="parentCat.Id != null" ng-click="RenameCategory(parentCat.Id,parentCatInput,parentCat.isActive,parentCat.Cat_Order)" value="שמור" ng-show="false" />
                             <input type="button" class="btn btn-danger" ng-show="parentCat.Id != null" ng-click="DeleteCategory(parentCat.Id)" value="מחק" ng-show="false" />
                             <input type="text" ng-model="parentCatInput" class="inputClass form-control" />
                         </div>
@@ -87,7 +87,7 @@
                                     <input type="checkbox" name="subParentIsActive" value="1" ng-model="sub3ParentCat.isActive" ng-click="!sub3ParentCat.isActive" /> האם לפרסם
                                 </div>
                                 <input type="button" class="btn btn-success" ng-click="AddSub3Category(subParentCat.Id,sub3ParentCatInput,sub3ParentCat.isActive)" value="הוסף" />
-                                <input type="button" class="btn btn-default" ng-click="RenameSub3Category(subParentCat.Id,sub3ParentCat.Id,sub3ParentCatInput,sub3ParentCat.isActive)" ng-show="sub3ParentCat.Id != null" value="שמור" />
+                                <input type="button" class="btn btn-default" ng-click="RenameSub3Category(subParentCat.Id,sub3ParentCat.Id,sub3ParentCatInput,sub3ParentCat.isActive,sub3ParentCat.Cat_Order)" ng-show="sub3ParentCat.Id != null" value="שמור" />
                                 <input type="button" class="btn btn-danger" ng-click="DeleteSub3Category(subParentCat.Id,sub3ParentCat.Id,sub3ParentCat.Name)" ng-show="sub3ParentCat.Id != null" value="מחק" />
                                 <input type="text" ng-model="sub3ParentCatInput" class="inputClass form-control" />
                             </div>
