@@ -62,7 +62,7 @@
                                     <input type="checkbox" name="subParentIsActive" value="1" ng-model="subParentCat.isActive" ng-click="!subParentCat.isActive" /> האם לפרסם
                                 </div>
                                 <input type="button" class="btn btn-success" ng-click="AddSubCategory(parentCat.Id,subParentCatInput,subParentCat.isActive)" value="הוסף" />
-                                <input type="button" class="btn btn-default" ng-click="RenameSubCategory(parentCat.Id,subParentCat.Id,subParentCatInput,subParentCat.isActive)" ng-show="subParentCat.Id != null" value="שמור" />
+                                <input type="button" class="btn btn-default" ng-click="RenameSubCategory(parentCat.Id,subParentCat.Id,subParentCatInput,subParentCat.isActive,subParentCat.Cat_Order)" ng-show="subParentCat.Id != null" value="שמור" />
                                 <input type="button" class="btn btn-danger" ng-click="DeleteSubCategory(parentCat.Id,subParentCat.Id,subParentCat.Name)" ng-show="subParentCat.Id != null" value="מחק" />
                                 <input type="text" ng-model="subParentCatInput" class="inputClass form-control" />
                             </div>
@@ -103,7 +103,7 @@
                             <th></th>
                             <th>שם קטגוריה</th>
                             <th>סטטוס</th>
-                            <th>מיון</th>
+                            <th>מיון</th> 
                             <th></th>
                         </tr>
                         <tbody ng-repeat="item in ParentCategories | orderBy : '-Cat_Order'">

@@ -191,6 +191,7 @@
     }
 
     $scope.RenameSubCategory = function (parentId, catId, newName, isActive, order) {
+        debugger;
         if (catId == null || newName == null || newName == "") return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
@@ -422,6 +423,7 @@
     $scope.OrderSubFunc = function (item) {
         var isActive = item.isActive > 0 ? true : false;
         $scope.loader_parent = true;
+
         $http.get("/CategorySer/RenameSubCategoryName?parentId=" + item.ParentId + "&catId=" + item.Id + "&newName=" + item.Name + "&isActive=" + isActive + "&order=" + item.Cat_Order)
             .then(function (response) {
                 var errorCode;
