@@ -160,7 +160,7 @@ namespace Repository
                 {
                     var repResult = (from r in context.Categories where r.ParentId == 0 select r);
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
-                    result.Data = categoryList;
+                    result.Data = categoryList.OrderBy(x => int.Parse(x.Cat_Order)).ToList();
                     result.ErrorCode = 0;
                     return result;
                 }
@@ -183,7 +183,7 @@ namespace Repository
                 {
                     var repResult = (from r in context.Categories where r.ParentId == catId select r);
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
-                    result.Data = categoryList;
+                    result.Data = categoryList.OrderBy(x => int.Parse(x.Cat_Order)).ToList();
                     result.ErrorCode = 0;
                     return result;
                 }
@@ -205,7 +205,7 @@ namespace Repository
                 {
                     var repResult = (from r in context.Categories select r);
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
-                    result.Data = categoryList;
+                    result.Data = categoryList.OrderBy(x => int.Parse(x.Cat_Order)).ToList();
                     result.ErrorCode = 0;
                     return result;
                 }
