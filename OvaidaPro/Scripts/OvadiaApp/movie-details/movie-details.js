@@ -1,4 +1,4 @@
-﻿OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval',
+﻿OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval',
     function ($scope, appServices, ngDialog, $timeout, $interval) {
         var self = this;
         var promisse;
@@ -11,11 +11,11 @@
         self.init();
     }]);
 
-OvadiaApp.directive('movieCategory', function () {
+OvadiaApp.directive('movieDetails', function () {
     return {
         restrict: 'E',
         bindToController: true,
-        controller: 'movieCategoryCtrl',
-        templateUrl: '/Scripts/OvadiaApp/movie-category/movie-category'
+        controller: 'movieDetailsCtrl',
+        templateUrl: '/Scripts/OvadiaApp/movie-details/movie-details'
     }
 });
