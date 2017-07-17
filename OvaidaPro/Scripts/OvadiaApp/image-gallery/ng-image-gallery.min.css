@@ -175,7 +175,7 @@
     }
 
     .ng-image-gallery .ng-image-gallery-thumbnails .thumb {
-        float: left;
+        float: right;
         overflow: hidden;
         background-size: cover;
         background-position: center center;
