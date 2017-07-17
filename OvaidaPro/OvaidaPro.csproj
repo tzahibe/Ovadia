@@ -199,6 +199,9 @@
     <Content Include="Scripts\OvadiaApp\movie-details\movie-details.css" />
     <Content Include="Scripts\OvadiaApp\movie-details\movie-details.html" />
     <Content Include="Scripts\OvadiaApp\movie-details\movie-details.js" />
+    <Content Include="Scripts\OvadiaApp\Movies\add-movie\add-movie.css" />
+    <Content Include="Scripts\OvadiaApp\Movies\add-movie\add-movie.html" />
+    <Content Include="Scripts\OvadiaApp\Movies\add-movie\add-movie.js" />
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.css" />
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.html" />
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.js" />

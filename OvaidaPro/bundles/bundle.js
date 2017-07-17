@@ -18544,12 +18544,19 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
         .state("movie-details", {
             url: '/movie-details',
             templateUrl: '/Scripts/OvadiaApp/movie-details/movie-details.html',
-            controller: 'movie-detailsCtrl',
+            controller: 'movieDetailsCtrl',
             data: {
                 access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
             }
         })
-
+        .state("add-movie", {
+            url: '/add-movie',
+            templateUrl: '/Scripts/OvadiaApp/Movies/add-movie/add-movie.html',
+            controller: 'addMovieCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
         .state("login", {
             url: '/login',
             templateUrl: '/Scripts/OvadiaApp/login-container/login-container.html',
