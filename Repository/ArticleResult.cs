@@ -29,6 +29,9 @@ namespace Repository
                         articleRep.CategoryName = article.CategoryName;
                         articleRep.Publish = article.Publish;
                         articleRep.Body = article.Body;
+                        articleRep.Video1 = article.Video1;
+                        articleRep.Video2 = article.Video2;
+                        articleRep.Video3 = article.Video3;
                         //articleRep.Category = (Category)(from r in context.Category where r.id == articleRep.CategoryId select r).FirstOrDefault();
                         articleRep.Last_edit = article.Last_edit;
                         articleRep.DatePublish = article.DatePublish;
@@ -74,6 +77,9 @@ namespace Repository
                         articleRep.CategoryName = article.CategoryName;
                         articleRep.Body = article.Body + " ";
                         articleRep.Last_edit = DateTime.Today;
+                        articleRep.Video1 = article.Video1;
+                        articleRep.Video2 = article.Video2;
+                        articleRep.Video3 = article.Video3;
                         //articleRep.DatePublish = article.DatePublish;
 
                         context.Article.Attach(articleRep);
@@ -82,6 +88,9 @@ namespace Repository
                         entry.Property(e => e.ProfilePic).IsModified = true;
                         entry.Property(e => e.CategoryId).IsModified = true;
                         entry.Property(e => e.Publish).IsModified = true;
+                        entry.Property(e => e.Video1).IsModified = true;
+                        entry.Property(e => e.Video2).IsModified = true;
+                        entry.Property(e => e.Video3).IsModified = true;
                         entry.Property(e => e.CategoryName).IsModified = true;
                         entry.Property(e => e.Body).IsModified = true;
                         entry.Property(e => e.Last_edit).IsModified = true;

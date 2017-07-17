@@ -15,5 +15,9 @@ namespace Bo
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public int Publish { get; set; }
+        public string Video1 { get; set; }
+        public string Video2 { get; set; }
+        public string Video3 { get; set; }
+
     }
 }
