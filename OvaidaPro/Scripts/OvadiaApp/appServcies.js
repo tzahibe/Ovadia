@@ -234,4 +234,18 @@
             return response.data;
         });
     }
+
+    this.GetArticlesByCategoryId = function (id) {
+        var param = {
+            categoryId: id
+        }
+        return $http({
+            url: url + '/ArticleSer/GetArticlesByCategoryId',
+            method: 'POST',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);

@@ -40,5 +40,11 @@ namespace BL
             result = ArticleResult.GetAllArticles();
             return result;
         }
+        public static Result GetArticlesByCategoryId(int categoryId)
+        {
+            Result result = new Result();
+            result = ArticleResult.GetArticlesByCategoryId(categoryId);
+            return result;
+        }
     }
 }

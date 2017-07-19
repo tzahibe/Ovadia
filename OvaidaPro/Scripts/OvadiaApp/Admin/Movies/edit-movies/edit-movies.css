@@ -2,3 +2,6 @@
 legend.panel1 {
     padding-top: 12px;
 }
+.ngdialog-close {
+    display: block;
+}

@@ -184,6 +184,48 @@ namespace Repository
                 return result;
             }
         }
+        public static Result GetArticlesByCategoryId(int categoryId)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+
+                    List<int> categoriesIds = (from r in context.Categories
+                                               where (int)r.ParentId == categoryId
+                                               select r.Id).ToList();
+                    categoriesIds.Add(categoryId); //add parent cat
+
+                    List<Article> repResult = (from r in context.Article
+                                               where categoriesIds.Contains((int)r.CategoryId)
+                                               && r.Publish == 1
+                                               select r).Distinct().ToList();
+
+                   
+                    if (repResult != null)
+                    {
+                        result.ErrorCode = 0;
+                        result.Data = repResult;
+                        return result;
+                    }
+                    else
+                    {
+                        result.ErrorCode = 2;
+                        result.Data = false;
+                        return result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorCode = 1;
+                result.ErrorMsg = "נפילה ב GetAllArticles";
+                Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+        }
         public static Result GetAllArticles()
         {
             Result result = new Result();

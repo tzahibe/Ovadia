@@ -18736,6 +18736,8 @@ OvadiaApp.directive('homeMovies', function () {
 OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout',
     function ($scope, appServices, ngDialog, $timeout) {
         var self = this;
+        $scope.Articles = [];
+        $scope.Article = {};
 
         self.init = function () {
             $scope.getAllActiveCategories();
@@ -18752,6 +18754,17 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
                 }
 
                 $scope.loader = false;
+            });
+        }
+
+        $scope.chooseCategory = function (item) {
+            appServices.GetArticlesByCategoryId(item.Id).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Articles = data.Data;
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
             });
         }
 
@@ -19505,6 +19518,20 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         }
         return $http({
             url: url + '/ArticleSer/GetArticleById',
+            method: 'POST',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetArticlesByCategoryId = function (id) {
+        var param = {
+            categoryId: id
+        }
+        return $http({
+            url: url + '/ArticleSer/GetArticlesByCategoryId',
             method: 'POST',
             data: param,
             headers: { 'Content-Type': 'application/json' }

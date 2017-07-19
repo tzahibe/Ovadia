@@ -11,10 +11,17 @@
                 <select name="categoryChoose"
                         class="form-control parentCat hebrew"
                         ng-options="cat.Name for cat in categoriesData"
-                        ng-change="SelectChange(ArticleCat)"
+                        ng-change="chooseCategory(ArticleCat)"
                         ng-model="ArticleCat">
                     <option value="">בחר</option>
                 </select>
+
+                <div ng-repeat="article in Articles  orderBy : 'Last_edit' ">
+                    <div class="article-box">
+                        name:<br /> {{article.Title}}
+                        profilePic: <br /><img ng-src="article.ProfilePic" />
+                    </div>
+                </div>
             </div>
 
 
