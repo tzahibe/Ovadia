@@ -1,0 +1,26 @@
+﻿<link href="/Scripts/OvadiaApp/Admin/Movies/edit-movies/edit-movies.css" rel="stylesheet" />
+<br />
+<div class="list-group-item list-group-item-home">
+    <div class="BlockHead">
+        <div class="body ">
+            <div ng-hide="loader">
+                <legend class="panel1">פאנל מאמרים\סרטים</legend>
+                <div ng-hide="readOnly">
+                    בחר קטגוריה
+                </div>
+                <select name="categoryChoose"
+                        class="form-control parentCat hebrew"
+                        ng-options="cat.Name for cat in categoriesData"
+                        ng-change="SelectChange(ArticleCat)"
+                        ng-model="ArticleCat">
+                    <option value="">בחר</option>
+                </select>
+            </div>
+
+
+            <div ng-show="loader" class="loader1">
+                <img src="/Content/images/loader.gif" />
+            </div>
+        </div>
+    </div>
+</div>

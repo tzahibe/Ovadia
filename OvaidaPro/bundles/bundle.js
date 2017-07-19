@@ -18549,14 +18549,6 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
             }
         })
-        .state("add-movie", {
-            url: '/add-movie',
-            templateUrl: '/Scripts/OvadiaApp/Movies/add-movie/add-movie.html',
-            controller: 'addMovieCtrl',
-            data: {
-                access: [UserRole.Admin, UserRole.Editor]
-            }
-        })
         .state("login", {
             url: '/login',
             templateUrl: '/Scripts/OvadiaApp/login-container/login-container.html',
@@ -18622,10 +18614,20 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
             }
         })
+
+        /* Admin */
         .state("admin.lesson", {
             url: '/lesson',
             templateUrl: '/Scripts/OvadiaApp/Admin/lesson-admin/lesson-admin.html',
             controller: 'lessonAdminCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
+        .state("admin.home-movies", {
+            url: '/home-movies',
+            templateUrl: '/Scripts/OvadiaApp/Admin/Movies/home-movies/home-movies.html',
+            controller: 'homeMoviesCtrl',
             data: {
                 access: [UserRole.Admin, UserRole.Editor]
             }
@@ -18709,6 +18711,62 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
     })
 
 
+OvadiaApp.controller('homeMoviesCtrl', ['$scope',
+    '$timeout', '$http', '$rootScope', 'ngDialog', 'appServices',
+    function ($scope, $timeout, $http, $rootScope, ngDialog, appServices) {
+        var self = this;
+        $scope.radio = 1;
+        self.init = function () {
+           
+        }
+
+        self.init();
+
+    }]);
+
+
+OvadiaApp.directive('homeMovies', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'homeMoviesCtrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/Movies/home-movies/home-movies.html'
+    }
+});
+OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout',
+    function ($scope, appServices, ngDialog, $timeout) {
+        var self = this;
+
+        self.init = function () {
+            $scope.getAllActiveCategories();
+        }
+
+        $scope.getAllActiveCategories = function () {
+            $scope.loader = true;
+            appServices.GetAllActiveCategories().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.categoriesData = data.Data;
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+
+                $scope.loader = false;
+            });
+        }
+
+        self.init();
+    }]);
+
+
+OvadiaApp.directive('editMovies', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'editMoviesCtrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/Movies/edit-movies/edit-movies.html'
+    }
+});
 OvadiaApp.controller('addMovieCtrl', ['$scope',
     '$timeout', '$http', '$rootScope', 'ngDialog','appServices',
     function ($scope, $timeout, $http, $rootScope, ngDialog, appServices) {
@@ -18729,46 +18787,52 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
 
         $scope.SelectChange = function (item) {
             $scope.Article.CategoryName = item.Name;
-            $scope.Article.CategoryId = item.id;
+            $scope.Article.CategoryId = item.Id;
         }
 
         $scope.AddArticle = function () {
             $scope.loader = true;
-            $http.post("/ArticleSer/AddArticle", $scope.Article)
-                .then(function (response) {
-                    var ErrorCode;
-                    try {
-                        ErrorCode = response.data.ErrorCode;
-                    }
-                    catch (e) {
-                        ErrorCode = 1;
-                    }
-                    if (ErrorCode == 0) {
-                        $scope.OpenPopup("מאמר נשמר בהצלחה!", "תוכל להמשיך לערוך את המאמר");
-                        $scope.Article = response.data.Data;
-                        $scope.isNewArticle = false;
-                    }
-                    $scope.loader = false;
-                });
+            appServices.AddArticle($scope.Article)
+                .then(function (data) {
+                var ErrorCode;
+                try {
+                    ErrorCode = data.ErrorCode;
+                }
+                catch (e) {
+                    ErrorCode = 1;
+                }
+                if (ErrorCode == 0) {
+                    $scope.OpenPopup("מאמר נשמר בהצלחה!", "תוכל להמשיך לערוך את המאמר");
+                    $scope.Article = data.Data;
+                    $scope.isNewArticle = false;
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+                $scope.loader = false;
+            });
         }
 
         $scope.GetArticle = function () {
             $scope.loader = true;
-            $http.get("/ArticleSer/GetArticleById?articleId=" + $scope.articleId)
-                .then(function (response) {
-                    var ErrorCode;
-                    try {
-                        ErrorCode = response.data.ErrorCode;
-                    }
-                    catch (e) {
-                        ErrorCode = 1;
-                    }
-                    if (ErrorCode == 0) {
-                        $scope.Article = response.data.Data;
-                        $scope.isNewArticle = false;
-                    }
-                    $scope.loader = false;
-                });
+            appServices.GetArticle($scope.articleId)
+                .then(function (data) {
+                var ErrorCode;
+                try {
+                    ErrorCode = data.ErrorCode;
+                }
+                catch (e) {
+                    ErrorCode = 1;
+                }
+                if (ErrorCode == 0) {
+                    $scope.Article = data.Data;
+                    $scope.isNewArticle = false;
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+                $scope.loader = false;
+            });
         }
 
         $scope.EditArticle = function () {
@@ -18852,7 +18916,7 @@ OvadiaApp.directive('addMovie', function () {
         restrict: 'E',
         bindToController: true,
         controller: 'addMovieCtrl',
-        templateUrl: '/Scripts/OvadiaApp/Movies/add-movie/add-movie.html'
+        templateUrl: '/Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.html'
     }
 });
 OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval',
@@ -19417,6 +19481,32 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         return $http({
             url: url + '/CategorySer/GetAllActiveCategories',
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+     /* Article Services -------------------> */
+    this.AddArticle = function (article) {
+        return $http({
+            url: url + '/ArticleSer/AddArticle',
+            method: 'POST',
+            data: JSON.stringify(article),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetArticle = function (id) {
+        var param = {
+            articleId: id
+        }
+        return $http({
+            url: url + '/ArticleSer/GetArticleById',
+            method: 'POST',
+            data: param,
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
             return response.data;
@@ -21536,7 +21626,7 @@ OvadiaApp.controller('homeAdminCtrl', ['$scope', '$rootScope', 'ngDialog', 'appS
             { name: 'תכנים שבועיים', state: 'admin.lesson', url: '/admin/lesson' },
             { name: 'גלריית תמונות', state: 'admin.upload', url: '/admin/upload' },
             { name: 'ניהול קטגוריות', state: 'admin.categories', url: '/admin/categories' },
-
+            { name: 'ניהול מאמרים\\סרטים', state: 'admin.home-movies', url: '/admin/home-movies' },
         ];
         $scope.plusIcon = true;
 

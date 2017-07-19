@@ -18,46 +18,52 @@
 
         $scope.SelectChange = function (item) {
             $scope.Article.CategoryName = item.Name;
-            $scope.Article.CategoryId = item.id;
+            $scope.Article.CategoryId = item.Id;
         }
 
         $scope.AddArticle = function () {
             $scope.loader = true;
-            $http.post("/ArticleSer/AddArticle", $scope.Article)
-                .then(function (response) {
-                    var ErrorCode;
-                    try {
-                        ErrorCode = response.data.ErrorCode;
-                    }
-                    catch (e) {
-                        ErrorCode = 1;
-                    }
-                    if (ErrorCode == 0) {
-                        $scope.OpenPopup("מאמר נשמר בהצלחה!", "תוכל להמשיך לערוך את המאמר");
-                        $scope.Article = response.data.Data;
-                        $scope.isNewArticle = false;
-                    }
-                    $scope.loader = false;
-                });
+            appServices.AddArticle($scope.Article)
+                .then(function (data) {
+                var ErrorCode;
+                try {
+                    ErrorCode = data.ErrorCode;
+                }
+                catch (e) {
+                    ErrorCode = 1;
+                }
+                if (ErrorCode == 0) {
+                    $scope.OpenPopup("מאמר נשמר בהצלחה!", "תוכל להמשיך לערוך את המאמר");
+                    $scope.Article = data.Data;
+                    $scope.isNewArticle = false;
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+                $scope.loader = false;
+            });
         }
 
         $scope.GetArticle = function () {
             $scope.loader = true;
-            $http.get("/ArticleSer/GetArticleById?articleId=" + $scope.articleId)
-                .then(function (response) {
-                    var ErrorCode;
-                    try {
-                        ErrorCode = response.data.ErrorCode;
-                    }
-                    catch (e) {
-                        ErrorCode = 1;
-                    }
-                    if (ErrorCode == 0) {
-                        $scope.Article = response.data.Data;
-                        $scope.isNewArticle = false;
-                    }
-                    $scope.loader = false;
-                });
+            appServices.GetArticle($scope.articleId)
+                .then(function (data) {
+                var ErrorCode;
+                try {
+                    ErrorCode = data.ErrorCode;
+                }
+                catch (e) {
+                    ErrorCode = 1;
+                }
+                if (ErrorCode == 0) {
+                    $scope.Article = data.Data;
+                    $scope.isNewArticle = false;
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+                $scope.loader = false;
+            });
         }
 
         $scope.EditArticle = function () {
@@ -141,6 +147,6 @@ OvadiaApp.directive('addMovie', function () {
         restrict: 'E',
         bindToController: true,
         controller: 'addMovieCtrl',
-        templateUrl: '/Scripts/OvadiaApp/Movies/add-movie/add-movie.html'
+        templateUrl: '/Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.html'
     }
 });

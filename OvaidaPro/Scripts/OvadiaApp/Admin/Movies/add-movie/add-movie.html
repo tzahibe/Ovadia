@@ -1,6 +1,5 @@
 ﻿<link href="/Scripts/OvadiaApp/Movies/add-movie/add-movie.css" rel="stylesheet" />
 
-<h1>Add Movie</h1>
 
 <div class="list-group-item list-group-item-home">
     <form role="form" ng-submit="save()">
@@ -45,6 +44,14 @@
                 <option value="">אל תפרסם</option>
                 <option value="1">פרסם</option>
             </select>
+            <div>
+                קוד לסרט 1
+                <input type="text" class="form-control" ng-model="Article.Video1" />
+                קוד לסרט 2
+                <input type="text" class="form-control" ng-model="Article.Video2" />
+                קוד לסרט 3
+                <input type="text" class="form-control" ng-model="Article.Video3" />
+            </div>
             <br />
             <button ng-show="isNewArticle" class="btn btn-primary btn-block" ng-click="AddArticle()">
                 צור מאמר

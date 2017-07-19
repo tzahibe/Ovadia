@@ -150,26 +150,40 @@ padding:0;
     }legend {
         font-weight: bold;
     }
-@media screen and (max-width: 768px) {
-    .ngdialog-theme-default {
-        position: fixed;
-        top: 16%;
-        width: 100%;
-        left: auto;
-        z-index: 9999;
+
+
+@media screen and (min-width: 768px) {
+    .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9{
+        float:right;
     }
-    .active.btn.btn-primary {
-        background-color: #173a59;
-        border-color: #245580;
-    }
-    /*.col-xs-12 {
+}
+
+
+    @media screen and (max-width: 768px) {
+        .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+            float: right;
+        }
+
+        .ngdialog-theme-default {
+            position: fixed;
+            top: 16%;
+            width: 100%;
+            left: auto;
+            z-index: 9999;
+        }
+
+        .active.btn.btn-primary {
+            background-color: #173a59;
+            border-color: #245580;
+        }
+        /*.col-xs-12 {
         padding: 0;
     }*/
-    header-component .navbar-nav > li{
-        text-align:center;
-    }
-    /*.ngdialog-content {
+        header-component .navbar-nav > li {
+            text-align: center;
+        }
+        /*.ngdialog-content {
         position: relative;
         top: -150px;
     }*/
-}
+    }

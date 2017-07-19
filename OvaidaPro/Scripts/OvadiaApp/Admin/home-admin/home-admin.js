@@ -9,7 +9,7 @@
             { name: 'תכנים שבועיים', state: 'admin.lesson', url: '/admin/lesson' },
             { name: 'גלריית תמונות', state: 'admin.upload', url: '/admin/upload' },
             { name: 'ניהול קטגוריות', state: 'admin.categories', url: '/admin/categories' },
-
+            { name: 'ניהול מאמרים\\סרטים', state: 'admin.home-movies', url: '/admin/home-movies' },
         ];
         $scope.plusIcon = true;
 

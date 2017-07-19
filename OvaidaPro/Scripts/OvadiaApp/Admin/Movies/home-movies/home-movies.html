@@ -1,0 +1,19 @@
+﻿<link href="/Scripts/OvadiaApp/Admin/Movies/home-movies/home-movies.css" rel="stylesheet" />
+<div class="row list-group-item list-group-item-home">
+    <div class="col-xs-12">
+        <h4>ניהול מאמרים/סרטים</h4>
+       
+        <div class="btn-group view_buttons" data-toggle="buttons">
+            <label ng-class="radio == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 1">
+                <input type="radio" name="options" ng-model="radio" value="2" id="option2" autocomplete="off">
+              יצירת מאמר\סרט
+            </label>
+            <label ng-class="radio == 2 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 2">
+                <input type="radio" name="options" ng-model="radio" value="3" id="option2" autocomplete="off">
+               עריכת מאמר\סרט
+            </label>
+        </div>
+
+        <add-movie ng-show="radio == 1"></add-movie>
+        <edit-movies ng-show="radio == 2"></edit-movies>
+</div>

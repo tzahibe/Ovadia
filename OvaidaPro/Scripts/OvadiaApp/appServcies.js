@@ -208,4 +208,30 @@
             return response.data;
         });
     }
+
+     /* Article Services -------------------> */
+    this.AddArticle = function (article) {
+        return $http({
+            url: url + '/ArticleSer/AddArticle',
+            method: 'POST',
+            data: JSON.stringify(article),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetArticle = function (id) {
+        var param = {
+            articleId: id
+        }
+        return $http({
+            url: url + '/ArticleSer/GetArticleById',
+            method: 'POST',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);

@@ -161,6 +161,12 @@
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\popup-screen.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\success-message.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\update-fixed-event.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\Movies\edit-movies\edit-movies.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\Movies\edit-movies\edit-movies.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\Movies\edit-movies\edit-movies.js" />
+    <Content Include="Scripts\OvadiaApp\Admin\Movies\home-movies\home-movies.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\Movies\home-movies\home-movies.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\Movies\home-movies\home-movies.js" />
     <Content Include="Scripts\OvadiaApp\Admin\ng-file-model\ng-file-model.html" />
     <Content Include="Scripts\OvadiaApp\Admin\ng-file-model\ng-file-model.js" />
     <Content Include="Scripts\OvadiaApp\Admin\ng-file-model\ng-file-model.css" />
@@ -199,9 +205,9 @@
     <Content Include="Scripts\OvadiaApp\movie-details\movie-details.css" />
     <Content Include="Scripts\OvadiaApp\movie-details\movie-details.html" />
     <Content Include="Scripts\OvadiaApp\movie-details\movie-details.js" />
-    <Content Include="Scripts\OvadiaApp\Movies\add-movie\add-movie.css" />
-    <Content Include="Scripts\OvadiaApp\Movies\add-movie\add-movie.html" />
-    <Content Include="Scripts\OvadiaApp\Movies\add-movie\add-movie.js" />
+    <Content Include="Scripts\OvadiaApp\Admin\Movies\add-movie\add-movie.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\Movies\add-movie\add-movie.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\Movies\add-movie\add-movie.js" />
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.css" />
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.html" />
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.js" />

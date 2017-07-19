@@ -16,14 +16,6 @@
                 access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
             }
         })
-        .state("add-movie", {
-            url: '/add-movie',
-            templateUrl: '/Scripts/OvadiaApp/Movies/add-movie/add-movie.html',
-            controller: 'addMovieCtrl',
-            data: {
-                access: [UserRole.Admin, UserRole.Editor]
-            }
-        })
         .state("login", {
             url: '/login',
             templateUrl: '/Scripts/OvadiaApp/login-container/login-container.html',
@@ -89,10 +81,20 @@
                 access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
             }
         })
+
+        /* Admin */
         .state("admin.lesson", {
             url: '/lesson',
             templateUrl: '/Scripts/OvadiaApp/Admin/lesson-admin/lesson-admin.html',
             controller: 'lessonAdminCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
+        .state("admin.home-movies", {
+            url: '/home-movies',
+            templateUrl: '/Scripts/OvadiaApp/Admin/Movies/home-movies/home-movies.html',
+            controller: 'homeMoviesCtrl',
             data: {
                 access: [UserRole.Admin, UserRole.Editor]
             }

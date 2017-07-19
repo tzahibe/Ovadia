@@ -33,8 +33,8 @@ namespace Repository
                         articleRep.Video2 = article.Video2;
                         articleRep.Video3 = article.Video3;
                         //articleRep.Category = (Category)(from r in context.Category where r.id == articleRep.CategoryId select r).FirstOrDefault();
-                        articleRep.Last_edit = article.Last_edit;
-                        articleRep.DatePublish = article.DatePublish;
+                        articleRep.Last_edit = DateTime.Now;
+                        articleRep.DatePublish = DateTime.Now;
 
                         context.Article.Add(articleRep);
                         context.SaveChanges();
