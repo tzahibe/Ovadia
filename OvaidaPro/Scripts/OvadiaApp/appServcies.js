@@ -196,4 +196,16 @@
             headers: { 'Content-Type': 'application/json' }
         });
     }
+
+     /* Category Services -------------------> */
+
+    this.GetAllActiveCategories = function () {
+        return $http({
+            url: url + '/CategorySer/GetAllActiveCategories',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);

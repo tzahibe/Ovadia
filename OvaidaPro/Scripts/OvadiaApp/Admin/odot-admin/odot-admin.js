@@ -56,6 +56,9 @@
                         $scope.Article = response.data.Data;
                         $scope.isNewArticle = false;
                     }
+                    else {
+                        $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                    }
                     $scope.loader = false;
                 });
         }

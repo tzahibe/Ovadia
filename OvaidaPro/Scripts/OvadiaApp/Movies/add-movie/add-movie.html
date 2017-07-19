@@ -19,42 +19,42 @@
                     <div ng-show="readOnly">
                         <div class="Article_Body" ng-bind-html="Article.Body"></div>
                     </div>
-                    <!--<label ng-hide="readOnly">כתובת תמונת פרופיל</label>
-                    <input ng-hide="readOnly" type="text" ng-model="Article.ProfilePic" class="form-control" placeholder="כתובת תמונת פרופיל">-->
+                    <label ng-hide="readOnly">כתובת תמונת פרופיל</label>
+                    <input ng-hide="readOnly" type="text" ng-model="Article.ProfilePic" class="form-control" placeholder="כתובת תמונת פרופיל">
                 </div>
             </fieldset>
-            <!--<a ng-show="readOnly" href="/index.html/CategoryArticles?categoryId={{Article.CategoryId}}">חזרה ל {{Article.CategoryName}} >></a>-->
-            <!--<div ng-hide="readOnly">
+            <a ng-show="readOnly" href="/index.html/CategoryArticles?categoryId={{Article.CategoryId}}">חזרה ל {{Article.CategoryName}} >></a>
+            <div ng-hide="readOnly">
                 בחר קטגוריה
             </div>
-            <select name="categoryChoose"
+            <select name="categoryChoose" 
                     class="form-control parentCat hebrew"
                     ng-options="cat.Name for cat in categoriesData"
                     ng-change="SelectChange(ArticleCat)"
                     ng-model="ArticleCat"
                     ng-hide="readOnly">
                 <option value="">בחר</option>
-            </select>-->
-            <!--<div ng-hide="readOnly">
+            </select>
+            <div ng-hide="readOnly">
                 האם לפרסם?
-            </div>-->
-            <!--<select name="categoryChoose"
+            </div>
+            <select name="categoryChoose"
                     class="form-control parentCat hebrew"
                     ng-model="Article.Publish"
                     ng-hide="readOnly">
                 <option value="">אל תפרסם</option>
                 <option value="1">פרסם</option>
-            </select>-->
+            </select>
             <br />
-            <!--<button ng-if="isNewArticle && !readOnly" class="btn btn-primary btn-block" ng-click="AddArticle()">
+            <button ng-show="isNewArticle" class="btn btn-primary btn-block" ng-click="AddArticle()">
                 צור מאמר
-            </button>-->
-            <button ng-if="!isNewArticle && !readOnly" class="btn btn-primary btn-block" ng-click="EditArticle()">
+            </button>
+            <button ng-hide="isNewArticle" class="btn btn-primary btn-block" ng-click="EditArticle()">
                 שמור שינויים
             </button>
-            <!--<button ng-if="!readOnly && Article.ArticleId" class="btn btn-danger btn-block" ng-click="RemoveArticleById()">
+            <button ng-hide="isNewArticle" class="btn btn-danger btn-block" ng-click="RemoveArticleById()">
                 הסר מאמר
-            </button>-->
+            </button>
         </div>
         <div ng-show="loader" class="loader1">
             <img src="/Content/images/loader.gif" />

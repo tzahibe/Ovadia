@@ -217,6 +217,28 @@ namespace Repository
                 return result;
             }
         }
+        public static Result GetAllActiveCategories()
+        {
+            Result result = new Result();
+
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    var repResult = (from r in context.Categories where r.isActive.HasValue && r.isActive == 1 select r );
+                    List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
+                    result.Data = categoryList.OrderBy(x => int.Parse(x.Cat_Order)).ToList().Reverse<Repository.Categories>();
+                    result.ErrorCode = 0;
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                result.ErrorCode = 1;
+                result.ErrorMsg = "נפילה ב GetAllCategories";
+                return result;
+            }
+        }
         public static Result isCategoryExist(string catName)
         {
             Result result = new Result();

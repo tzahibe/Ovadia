@@ -139,9 +139,17 @@ padding:0;
     opacity: .2;
     display:block;
 }
-legend {
-    font-weight:bold;
+.ngdialog.ngdialog-theme-default .ngdialog-close {
+    border: 0;
+    background: #f0f0f0;
+    cursor: pointer;
 }
+    .ngdialog.ngdialog-theme-default .ngdialog-close:before {
+        color: #000;
+        
+    }legend {
+        font-weight: bold;
+    }
 @media screen and (max-width: 768px) {
     .ngdialog-theme-default {
         position: fixed;

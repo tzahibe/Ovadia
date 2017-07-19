@@ -1,2 +1,5 @@
-﻿body {
+﻿.ngdialog-close
+{
+    display:block;
 }
+

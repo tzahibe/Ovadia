@@ -44,5 +44,11 @@ namespace BL
         {
             return CategoriesResult.AddSubCategory(catName, parentId, isActive);
         }
+
+        public static Result GetAllActiveCategories()
+        {
+            return CategoriesResult.GetAllActiveCategories();
+        }
+
     }
 }
