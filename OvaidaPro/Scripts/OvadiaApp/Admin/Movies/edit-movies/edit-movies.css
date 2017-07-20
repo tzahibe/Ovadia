@@ -5,3 +5,20 @@ legend.panel1 {
 .ngdialog-close {
     display: block;
 }
+.article-box {
+    padding: 0;
+    background-size: 100% 150px;
+    height: 150px;
+}
+.articles-list{
+    margin-top:20px;
+}
+.article-title {
+    font-family: "Open Sans", "Open Sans Hebrew", Arial, serif;
+    color: #000;
+    font-size:20px;
+    font-weight:bold;
+    padding:3px;
+    background:#fff;
+    opacity:0.7;
+}

@@ -18531,7 +18531,7 @@ OvadiaApp.directive('ngFileModel', ['$parse', function ($parse) {
     }]);
 })(window, window.angular);
 
-OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, UserRole) {
+OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, UserRole, $sceDelegateProvider) {
     $stateProvider
         .state("home", {
             url: '/',
@@ -18676,6 +18676,10 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
     ngClipProvider.setPath("/Scripts/plugins/ZeroClipboard.swf");
     $locationProvider.hashPrefix('');
     $locationProvider.html5Mode(true);
+    $sceDelegateProvider.resourceUrlWhitelist([
+        'self',
+        'https://www.youtube.com/**'
+    ]);
 })
 
     .constant('AUTH_EVENTS', {
@@ -18757,10 +18761,27 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
             });
         }
 
+        $scope.getIframeSrc = function (link) {
+            return link;
+        }
+
+        $scope.myStyle = function (article) {
+            var style = {
+                "background-image": "url(" + article.ProfilePic + ")",
+            }
+
+            return style;
+        }
+
         $scope.chooseCategory = function (item) {
             appServices.GetArticlesByCategoryId(item.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.Articles = data.Data;
+                    angular.forEach($scope.Articles, function (value, key) {
+                        value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
+                        value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
+                        value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
+                    });
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");

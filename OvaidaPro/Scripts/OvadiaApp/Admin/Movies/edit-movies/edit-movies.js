@@ -22,10 +22,27 @@
             });
         }
 
+        $scope.getIframeSrc = function (link) {
+            return link;
+        }
+
+        $scope.myStyle = function (article) {
+            var style = {
+                "background-image": "url(" + article.ProfilePic + ")",
+            }
+
+            return style;
+        }
+
         $scope.chooseCategory = function (item) {
             appServices.GetArticlesByCategoryId(item.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.Articles = data.Data;
+                    angular.forEach($scope.Articles, function (value, key) {
+                        value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
+                        value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
+                        value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
+                    });
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");

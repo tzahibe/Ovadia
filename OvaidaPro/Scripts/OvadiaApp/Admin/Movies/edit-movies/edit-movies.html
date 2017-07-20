@@ -16,10 +16,15 @@
                     <option value="">בחר</option>
                 </select>
 
-                <div ng-repeat="article in Articles  orderBy : 'Last_edit' ">
-                    <div class="article-box">
-                        name:<br /> {{article.Title}}
-                        profilePic: <br /><img ng-src="article.ProfilePic" />
+                <div class="col-xs-12 articles-list" ng-repeat="article in Articles ">
+                    <div class="article-box col-md-4 col-xs-12" 
+                        ng-style="myStyle(article)">
+                        <div class="article-title">
+                            {{article.Title}}
+                            </div>
+                        <!--<iframe width="200" height="200" 
+                                ng-src="{{getIframeSrc(article.YoutubeLink1)}}"
+                                frameborder="0" allowfullscreen></iframe>-->
                     </div>
                 </div>
             </div>

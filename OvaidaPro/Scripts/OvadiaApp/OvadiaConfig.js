@@ -1,4 +1,4 @@
-﻿OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, UserRole) {
+﻿OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, UserRole, $sceDelegateProvider) {
     $stateProvider
         .state("home", {
             url: '/',
@@ -143,6 +143,10 @@
     ngClipProvider.setPath("/Scripts/plugins/ZeroClipboard.swf");
     $locationProvider.hashPrefix('');
     $locationProvider.html5Mode(true);
+    $sceDelegateProvider.resourceUrlWhitelist([
+        'self',
+        'https://www.youtube.com/**'
+    ]);
 })
 
     .constant('AUTH_EVENTS', {
