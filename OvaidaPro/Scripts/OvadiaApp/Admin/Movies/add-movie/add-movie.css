@@ -1,5 +1,7 @@
-﻿.ngdialog-close
-{
-    display:block;
+﻿.ngdialog-close {
+    display: block;
 }
-
+.example-p {
+    color: #808080;
+    margin-top: 20px;
+}

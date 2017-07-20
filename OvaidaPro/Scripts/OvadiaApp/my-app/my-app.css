@@ -2,11 +2,15 @@
     margin: 0;
     /*line-height: 0.5;*/
 }
+.has-feedback .form-control {
+    padding-right:6px;
+}
+
 .ngdialog-theme-default {
     position: fixed;
     top: 27%;
     z-index: 9999;
-    width:440px;
+    width: 440px;
     left: 19%;
 }
 .x_icon {

@@ -9,6 +9,7 @@ legend.panel1 {
     padding: 0;
     background-size: 100% 150px;
     height: 150px;
+    cursor:pointer;
 }
 .articles-list{
     margin-top:20px;
