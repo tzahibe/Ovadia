@@ -4,6 +4,7 @@
 <div class="list-group-item list-group-item-home">
     <form role="form" ng-submit="save()">
         <div ng-hide="loader">
+            <a  ng-click="backToCategory()" ng-show="showBackButton">< חזרה לקטגוריה </a>   
             <fieldset>
                 <legend ng-if="!isNewArticle && !readOnly">עריכת מאמר</legend>
                 <legend ng-if="isNewArticle && !readOnly">יצירת מאמר</legend>

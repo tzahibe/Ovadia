@@ -18656,7 +18656,19 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Editor],
             },
             params: {
-                articleId: null
+                articleId: null,
+                category: null
+            }
+        })
+        .state("admin.edit-movies", {
+            url: '/add-movies',
+            templateUrl: '/Scripts/OvadiaApp/Admin/Movies/edit-movies/edit-movies.html',
+            controller: 'editMoviesCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor],
+            },
+            params: {
+                category: null
             }
         })
         .state("admin.sendmail", {
@@ -18748,14 +18760,25 @@ OvadiaApp.directive('homeMovies', function () {
         templateUrl: '/Scripts/OvadiaApp/Admin/Movies/home-movies/home-movies.html'
     }
 });
-OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout','$state',
-    function ($scope, appServices, ngDialog, $timeout, $state) {
+OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$state', '$stateParams',
+    '$state',
+    function ($scope, appServices, ngDialog, $timeout, $state, $stateParams, $state) {
         var self = this;
         $scope.Articles = [];
         $scope.Article = {};
+        $scope.ArticleCat = null;
 
         self.init = function () {
             $scope.getAllActiveCategories();
+
+            if ($stateParams.category!= null) {
+                $scope.categorySelected = $stateParams.category;
+                var item = {
+                    Id: $scope.categorySelected.Id
+                }
+               
+                $scope.chooseCategory(item); 
+            }
         }
 
         $scope.getAllActiveCategories = function () {
@@ -18777,7 +18800,7 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
         }
 
         $scope.goToArticle = function (Id) {
-            $state.go("admin.add-movie", { articleId: Id});
+            $state.go("admin.add-movie", { articleId: Id, category: $scope.categorySelected });
         }
 
         $scope.myStyle = function (article) {
@@ -18789,6 +18812,7 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
         }
 
         $scope.chooseCategory = function (item) {
+            $scope.categorySelected = item;
             appServices.GetArticlesByCategoryId(item.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.Articles = data.Data;
@@ -18817,13 +18841,18 @@ OvadiaApp.directive('editMovies', function () {
     }
 });
 OvadiaApp.controller('addMovieCtrl', ['$scope',
-    '$timeout', '$http', '$rootScope', 'ngDialog','appServices','$stateParams',
-    function ($scope, $timeout, $http, $rootScope, ngDialog, appServices, $stateParams) {
+    '$timeout', '$http', '$rootScope', 'ngDialog', 'appServices', '$stateParams','$state',
+    function ($scope, $timeout, $http, $rootScope, ngDialog, appServices, $stateParams, $state) {
         var self = this;
         $scope.isNewArticle = true;
 
         self.init = function () {
             $scope.getAllActiveCategories();
+
+            if ($stateParams.category != null) {
+                $scope.showBackButton = true;
+                $scope.category = $stateParams.category;
+            }
 
             if ($stateParams.articleId != null) {
                 $scope.articleId = $stateParams.articleId;
@@ -18837,6 +18866,10 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             //else {
             //   $scope.Categories = "";
             // }
+        }
+
+        $scope.backToCategory = function () {
+            $state.go("admin.edit-movies", { category: $scope.category});
         }
 
         $scope.SelectChange = function (item) {

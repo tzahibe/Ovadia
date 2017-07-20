@@ -1,11 +1,16 @@
 ﻿OvadiaApp.controller('addMovieCtrl', ['$scope',
-    '$timeout', '$http', '$rootScope', 'ngDialog','appServices','$stateParams',
-    function ($scope, $timeout, $http, $rootScope, ngDialog, appServices, $stateParams) {
+    '$timeout', '$http', '$rootScope', 'ngDialog', 'appServices', '$stateParams','$state',
+    function ($scope, $timeout, $http, $rootScope, ngDialog, appServices, $stateParams, $state) {
         var self = this;
         $scope.isNewArticle = true;
 
         self.init = function () {
             $scope.getAllActiveCategories();
+
+            if ($stateParams.category != null) {
+                $scope.showBackButton = true;
+                $scope.category = $stateParams.category;
+            }
 
             if ($stateParams.articleId != null) {
                 $scope.articleId = $stateParams.articleId;
@@ -19,6 +24,10 @@
             //else {
             //   $scope.Categories = "";
             // }
+        }
+
+        $scope.backToCategory = function () {
+            $state.go("admin.edit-movies", { category: $scope.category});
         }
 
         $scope.SelectChange = function (item) {

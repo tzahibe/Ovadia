@@ -9,6 +9,7 @@
                     בחר קטגוריה
                 </div>
                 <select name="categoryChoose"
+                        id="categoryIdElem"
                         class="form-control parentCat hebrew"
                         ng-options="cat.Name for cat in categoriesData"
                         ng-change="chooseCategory(ArticleCat)"

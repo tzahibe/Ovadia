@@ -1,11 +1,22 @@
-﻿OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout','$state',
-    function ($scope, appServices, ngDialog, $timeout, $state) {
+﻿OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$state', '$stateParams',
+    '$state',
+    function ($scope, appServices, ngDialog, $timeout, $state, $stateParams, $state) {
         var self = this;
         $scope.Articles = [];
         $scope.Article = {};
+        $scope.ArticleCat = null;
 
         self.init = function () {
             $scope.getAllActiveCategories();
+
+            if ($stateParams.category!= null) {
+                $scope.categorySelected = $stateParams.category;
+                var item = {
+                    Id: $scope.categorySelected.Id
+                }
+               
+                $scope.chooseCategory(item); 
+            }
         }
 
         $scope.getAllActiveCategories = function () {
@@ -27,7 +38,7 @@
         }
 
         $scope.goToArticle = function (Id) {
-            $state.go("admin.add-movie", { articleId: Id});
+            $state.go("admin.add-movie", { articleId: Id, category: $scope.categorySelected });
         }
 
         $scope.myStyle = function (article) {
@@ -39,6 +50,7 @@
         }
 
         $scope.chooseCategory = function (item) {
+            $scope.categorySelected = item;
             appServices.GetArticlesByCategoryId(item.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.Articles = data.Data;

@@ -123,7 +123,19 @@
                 access: [UserRole.Admin, UserRole.Editor],
             },
             params: {
-                articleId: null
+                articleId: null,
+                category: null
+            }
+        })
+        .state("admin.edit-movies", {
+            url: '/add-movies',
+            templateUrl: '/Scripts/OvadiaApp/Admin/Movies/edit-movies/edit-movies.html',
+            controller: 'editMoviesCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor],
+            },
+            params: {
+                category: null
             }
         })
         .state("admin.sendmail", {
