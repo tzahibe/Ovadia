@@ -1,12 +1,17 @@
 ﻿OvadiaApp.controller('addMovieCtrl', ['$scope',
-    '$timeout', '$http', '$rootScope', 'ngDialog','appServices',
-    function ($scope, $timeout, $http, $rootScope, ngDialog, appServices) {
+    '$timeout', '$http', '$rootScope', 'ngDialog','appServices','$stateParams',
+    function ($scope, $timeout, $http, $rootScope, ngDialog, appServices, $stateParams) {
         var self = this;
         $scope.isNewArticle = true;
 
         self.init = function () {
             $scope.getAllActiveCategories();
-            if (window.location.href.indexOf("id") > 0) {
+
+            if ($stateParams.articleId != null) {
+                $scope.articleId = $stateParams.articleId;
+                $scope.GetArticle();
+            }
+            else if (window.location.href.indexOf("id") > 0) {
                 $scope.articleId = window.location.href.substr(35, 4);
                 $scope.GetArticle();
             }

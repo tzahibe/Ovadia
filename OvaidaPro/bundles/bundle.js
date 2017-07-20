@@ -18648,6 +18648,17 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Editor]
             }
         })
+        .state("admin.add-movie", {
+            url: '/add-movie',
+            templateUrl: '/Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.html',
+            controller: 'addMovieCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor],
+            },
+            params: {
+                articleId: null
+            }
+        })
         .state("admin.sendmail", {
             url: '/sendmail',
             templateUrl: '/Scripts/OvadiaApp/Admin/send-mail/send-mail.html',
@@ -18737,8 +18748,8 @@ OvadiaApp.directive('homeMovies', function () {
         templateUrl: '/Scripts/OvadiaApp/Admin/Movies/home-movies/home-movies.html'
     }
 });
-OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout',
-    function ($scope, appServices, ngDialog, $timeout) {
+OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout','$state',
+    function ($scope, appServices, ngDialog, $timeout, $state) {
         var self = this;
         $scope.Articles = [];
         $scope.Article = {};
@@ -18763,6 +18774,10 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
 
         $scope.getIframeSrc = function (link) {
             return link;
+        }
+
+        $scope.goToArticle = function (Id) {
+            $state.go("admin.add-movie", { articleId: Id});
         }
 
         $scope.myStyle = function (article) {
@@ -18802,14 +18817,19 @@ OvadiaApp.directive('editMovies', function () {
     }
 });
 OvadiaApp.controller('addMovieCtrl', ['$scope',
-    '$timeout', '$http', '$rootScope', 'ngDialog','appServices',
-    function ($scope, $timeout, $http, $rootScope, ngDialog, appServices) {
+    '$timeout', '$http', '$rootScope', 'ngDialog','appServices','$stateParams',
+    function ($scope, $timeout, $http, $rootScope, ngDialog, appServices, $stateParams) {
         var self = this;
         $scope.isNewArticle = true;
 
         self.init = function () {
             $scope.getAllActiveCategories();
-            if (window.location.href.indexOf("id") > 0) {
+
+            if ($stateParams.articleId != null) {
+                $scope.articleId = $stateParams.articleId;
+                $scope.GetArticle();
+            }
+            else if (window.location.href.indexOf("id") > 0) {
                 $scope.articleId = window.location.href.substr(35, 4);
                 $scope.GetArticle();
             }

@@ -1,6 +1,6 @@
 ﻿<link href="/Scripts/OvadiaApp/Admin/Movies/edit-movies/edit-movies.css" rel="stylesheet" />
 <br />
-<div class="list-group-item list-group-item-home">
+<div class="">
     <div class="BlockHead">
         <div class="body ">
             <div ng-hide="loader">
@@ -17,7 +17,7 @@
                 </select>
 
                 <div class="col-xs-12 articles-list" ng-repeat="article in Articles ">
-                    <div class="article-box col-md-4 col-xs-12" 
+                    <div class="article-box col-md-4 col-xs-12" ng-click="goToArticle(article.ArticleId)"
                         ng-style="myStyle(article)">
                         <div class="article-title">
                             {{article.Title}}

@@ -115,6 +115,17 @@
                 access: [UserRole.Admin, UserRole.Editor]
             }
         })
+        .state("admin.add-movie", {
+            url: '/add-movie',
+            templateUrl: '/Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.html',
+            controller: 'addMovieCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor],
+            },
+            params: {
+                articleId: null
+            }
+        })
         .state("admin.sendmail", {
             url: '/sendmail',
             templateUrl: '/Scripts/OvadiaApp/Admin/send-mail/send-mail.html',

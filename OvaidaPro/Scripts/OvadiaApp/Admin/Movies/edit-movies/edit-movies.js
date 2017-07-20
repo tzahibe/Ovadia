@@ -1,5 +1,5 @@
-﻿OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout',
-    function ($scope, appServices, ngDialog, $timeout) {
+﻿OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout','$state',
+    function ($scope, appServices, ngDialog, $timeout, $state) {
         var self = this;
         $scope.Articles = [];
         $scope.Article = {};
@@ -24,6 +24,10 @@
 
         $scope.getIframeSrc = function (link) {
             return link;
+        }
+
+        $scope.goToArticle = function (Id) {
+            $state.go("admin.add-movie", { articleId: Id});
         }
 
         $scope.myStyle = function (article) {
