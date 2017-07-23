@@ -41,6 +41,10 @@
         }
 
         $scope.AddArticle = function () {
+            if (!movieForm.checkValidity()) {
+                $scope.OpenPopup("שדות חובה לא מולאו!", "אנא מלא את השדות המסומנות באדום בערכים מתאימים");
+                return;
+            }
             $scope.loader = true;
             appServices.AddArticle($scope.Article)
                 .then(function (data) {
@@ -104,6 +108,10 @@
         }
 
         $scope.EditArticle = function () {
+            if (!movieForm.checkValidity()) {
+                $scope.OpenPopup("שדות חובה לא מולאו!", "אנא מלא את השדות המסומנות באדום בערכים מתאימים");
+                return;
+            }
             $scope.loader = true;
             $http({
                 method: 'POST',
@@ -129,6 +137,10 @@
         }
 
         $scope.RemoveArticleById = function () {
+            if (!movieForm.checkValidity()) {
+                $scope.OpenPopup("שדות חובה לא מולאו!", "אנא מלא את השדות המסומנות באדום בערכים מתאימים");
+                return;
+            }
             $scope.loader = true;
             $http.get("/ArticleSer/RemoveArticleById?articleId=" + $scope.Article.ArticleId)
                 .then(function (response) {

@@ -2,15 +2,15 @@
 
 
 <div class="list-group-item list-group-item-home">
-    <form role="form" ng-submit="save()">
+    <form name="movieForm" role="form" novalidate>
         <div ng-hide="loader">
             <a  ng-click="backToCategory()" ng-show="showBackButton">< חזרה לקטגוריה </a>   
             <fieldset>
                 <legend ng-if="!isNewArticle && !readOnly">עריכת מאמר</legend>
                 <legend ng-if="isNewArticle && !readOnly">יצירת מאמר</legend>
-                <div class="form-group has-success has-feedback" ng-hide="readOnly">
+                <div class="form-group has-feedback" ng-hide="readOnly">
                     <label>כותרת מאמר</label>
-                    <input type="text" ng-model="Article.Title" class="form-control" placeholder="שם מאמר">
+                    <input type="text" required ng-model="Article.Title" class="form-control" placeholder="שם מאמר">
                 </div>
                 <legend ng-show="readOnly"><h1>{{Article.Title}}</h1></legend>
                 <div class="form-group">
@@ -32,6 +32,7 @@
                     ng-options="cat.Name for cat in $root.categoriesData"
                     ng-change="SelectChange(ArticleCat)"
                     ng-model="ArticleCat"
+                    required
                     ng-hide="readOnly">
                 <option value="">בחר</option>
             </select>
@@ -41,6 +42,7 @@
             <select name="categoryChoose"
                     class="form-control parentCat hebrew"
                     ng-model="Article.Publish"
+                    required
                     ng-hide="readOnly">
                 <option value="0" ng-selected="Article.Publish == 0">אל תפרסם</option>
                 <option value="1" ng-selected="Article.Publish == 1">פרסם</option>

@@ -13,7 +13,7 @@
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
           <Property Name="DatePublish" Type="datetime" />
           <Property Name="Last_edit" Type="datetime" />
-          <Property Name="ProfilePic" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProfilePic" Type="nvarchar(max)" />
           <Property Name="Body" Type="nvarchar(max)" />
           <Property Name="CategoryId" Type="int" />
           <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
@@ -190,7 +190,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DatePublish" Type="DateTime" Precision="3" />
           <Property Name="Last_edit" Type="DateTime" Precision="3" />
-          <Property Name="ProfilePic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CategoryId" Type="Int32" />
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
