@@ -5,7 +5,7 @@
         $scope.isNewArticle = true;
 
         self.init = function () {
-            $scope.getAllActiveCategories();
+            $scope.getAllCategories();
 
             if ($stateParams.category != null) {
                 $scope.showBackButton = true;
@@ -35,6 +35,10 @@
             $scope.Article.CategoryId = item.Id;
         }
 
+        $scope.getIframeSrc = function (link) {
+            return link;
+        }
+
         $scope.AddArticle = function () {
             $scope.loader = true;
             appServices.AddArticle($scope.Article)
@@ -58,6 +62,16 @@
             });
         }
 
+        $scope.getIndexFromValue = function (obj) {
+            if ($rootScope.categoriesData == null)
+                return;
+
+            for (var i = 0; i < $rootScope.categoriesData.length; i++) {
+                if ($rootScope.categoriesData[i].Id == obj.Id)
+                    return i;
+            }
+        }
+
         $scope.GetArticle = function () {
             $scope.loader = true;
             appServices.GetArticle($scope.articleId)
@@ -71,6 +85,14 @@
                 }
                 if (ErrorCode == 0) {
                     $scope.Article = data.Data;
+                    $scope.Article.YoutubeLink1 = $scope.Article.Video1 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video1 : null;
+                    $scope.Article.YoutubeLink2 = $scope.Article.Video2 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
+                    $scope.Article.YoutubeLink3 = $scope.Article.Video3 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
+                    var index = $scope.getIndexFromValue($scope.Article.CategoryId);
+                    debugger;
+                    if (index != null) {
+                        $scope.ArticleCat = $rootScope.categoriesData[index];
+                    }
                     $scope.isNewArticle = false;
                 }
                 else {
@@ -138,9 +160,9 @@
             });
         }
 
-        $scope.getAllActiveCategories = function () {
+        $scope.getAllCategories = function () {
             $scope.loader = true;
-            appServices.GetAllActiveCategories().then(function (data) {
+            appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.categoriesData = data.Data;
                 }

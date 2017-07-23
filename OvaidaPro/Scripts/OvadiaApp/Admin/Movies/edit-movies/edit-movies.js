@@ -1,6 +1,6 @@
 ﻿OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$state', '$stateParams',
-    '$state',
-    function ($scope, appServices, ngDialog, $timeout, $state, $stateParams, $state) {
+    '$state','$rootScope',
+    function ($scope, appServices, ngDialog, $timeout, $state, $stateParams, $state, $rootScope) {
         var self = this;
         $scope.Articles = [];
         $scope.catNames = [];
@@ -8,29 +8,28 @@
         $scope.ArticleCat = null;
 
         self.init = function () {
-            $scope.getAllActiveCategories();
-
+            $scope.getAllCategories();
             if ($stateParams.category!= null) {
                 $scope.categorySelected = $stateParams.category;
                 $scope.chooseCategory($scope.categorySelected); 
             }
         }
 
-        $scope.getIndexFromValue = function (catName) {
-            for (var i = 0; i < $scope.catNames; i++) {
-                if (scope.catNames[i] === catName)
+        $scope.getIndexFromValue = function (obj) {
+            if ($rootScope.categoriesData == null)
+                return;
+
+            for (var i = 0; i < $rootScope.categoriesData.length; i++) {
+                if ($rootScope.categoriesData[i].Id == obj.Id)
                     return i;
             }
         }
 
-        $scope.getAllActiveCategories = function () {
+        $scope.getAllCategories = function () {
             $scope.loader = true;
-            appServices.GetAllActiveCategories().then(function (data) {
+            appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
-                    $scope.categoriesData = data.Data;
-                    angular.forEach($scope.categoriesData, function (value, key) {
-                        $scope.catNames.push(value.Name);
-                    });
+                    $rootScope.categoriesData = data.Data;
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
@@ -52,23 +51,16 @@
             var style = {
                 "background-image": "url(" + article.ProfilePic + ")",
             }
-
             return style;
         }
 
-        $scope.chooseCategory = function (categoryName) {
-            var category = categoryName;
-            if ($scope.categoriesData != null) {
-                  category = $.grep($scope.categoriesData, function (e) { return e.Name == categoryName; });
-                if (category == null)
-                    return;
-                else {
-                    category = category[0];
-                }
-            }
-            
+        $scope.chooseCategory = function (category) {
             appServices.GetArticlesByCategoryId(category.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
+                    var index = $scope.getIndexFromValue(category)
+                    if (index != null) {
+                        $scope.ArticleCat = $rootScope.categoriesData[index];
+                    }
                     $scope.Articles = data.Data;
                     angular.forEach($scope.Articles, function (value, key) {
                         value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;

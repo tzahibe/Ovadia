@@ -209,6 +209,15 @@
         });
     }
 
+    this.GetAllCategories = function () {
+        return $http({
+            url: url + '/CategorySer/GetAllCategories',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
      /* Article Services -------------------> */
     this.AddArticle = function (article) {
         return $http({

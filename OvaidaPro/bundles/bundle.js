@@ -18761,8 +18761,8 @@ OvadiaApp.directive('homeMovies', function () {
     }
 });
 OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$state', '$stateParams',
-    '$state',
-    function ($scope, appServices, ngDialog, $timeout, $state, $stateParams, $state) {
+    '$state','$rootScope',
+    function ($scope, appServices, ngDialog, $timeout, $state, $stateParams, $state, $rootScope) {
         var self = this;
         $scope.Articles = [];
         $scope.catNames = [];
@@ -18771,16 +18771,18 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
 
         self.init = function () {
             $scope.getAllActiveCategories();
-
             if ($stateParams.category!= null) {
                 $scope.categorySelected = $stateParams.category;
                 $scope.chooseCategory($scope.categorySelected); 
             }
         }
 
-        $scope.getIndexFromValue = function (catName) {
-            for (var i = 0; i < $scope.catNames; i++) {
-                if (scope.catNames[i] === catName)
+        $scope.getIndexFromValue = function (obj) {
+            if ($rootScope.categoriesData == null)
+                return;
+
+            for (var i = 0; i < $rootScope.categoriesData.length; i++) {
+                if ($rootScope.categoriesData[i].Id == obj.Id)
                     return i;
             }
         }
@@ -18789,10 +18791,7 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
             $scope.loader = true;
             appServices.GetAllActiveCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
-                    $scope.categoriesData = data.Data;
-                    angular.forEach($scope.categoriesData, function (value, key) {
-                        $scope.catNames.push(value.Name);
-                    });
+                    $rootScope.categoriesData = data.Data;
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
@@ -18814,23 +18813,16 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
             var style = {
                 "background-image": "url(" + article.ProfilePic + ")",
             }
-
             return style;
         }
 
-        $scope.chooseCategory = function (categoryName) {
-            var category = categoryName;
-            if ($scope.categoriesData != null) {
-                  category = $.grep($scope.categoriesData, function (e) { return e.Name == categoryName; });
-                if (category == null)
-                    return;
-                else {
-                    category = category[0];
-                }
-            }
-            
+        $scope.chooseCategory = function (category) {
             appServices.GetArticlesByCategoryId(category.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
+                    var index = $scope.getIndexFromValue(category)
+                    if (index != null) {
+                        $scope.ArticleCat = $rootScope.categoriesData[index];
+                    }
                     $scope.Articles = data.Data;
                     angular.forEach($scope.Articles, function (value, key) {
                         value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
@@ -18865,7 +18857,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
         $scope.isNewArticle = true;
 
         self.init = function () {
-            $scope.getAllActiveCategories();
+            $scope.getAllCategories();
 
             if ($stateParams.category != null) {
                 $scope.showBackButton = true;
@@ -18895,6 +18887,10 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             $scope.Article.CategoryId = item.Id;
         }
 
+        $scope.getIframeSrc = function (link) {
+            return link;
+        }
+
         $scope.AddArticle = function () {
             $scope.loader = true;
             appServices.AddArticle($scope.Article)
@@ -18918,6 +18914,16 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             });
         }
 
+        $scope.getIndexFromValue = function (obj) {
+            if ($rootScope.categoriesData == null)
+                return;
+
+            for (var i = 0; i < $rootScope.categoriesData.length; i++) {
+                if ($rootScope.categoriesData[i].Id == obj.Id)
+                    return i;
+            }
+        }
+
         $scope.GetArticle = function () {
             $scope.loader = true;
             appServices.GetArticle($scope.articleId)
@@ -18931,6 +18937,14 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                 }
                 if (ErrorCode == 0) {
                     $scope.Article = data.Data;
+                    $scope.Article.YoutubeLink1 = $scope.Article.Video1 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video1 : null;
+                    $scope.Article.YoutubeLink2 = $scope.Article.Video2 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
+                    $scope.Article.YoutubeLink3 = $scope.Article.Video3 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
+                    var index = $scope.getIndexFromValue($scope.Article.CategoryId);
+                    debugger;
+                    if (index != null) {
+                        $scope.ArticleCat = $rootScope.categoriesData[index];
+                    }
                     $scope.isNewArticle = false;
                 }
                 else {
@@ -18998,9 +19012,9 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             });
         }
 
-        $scope.getAllActiveCategories = function () {
+        $scope.getAllCategories = function () {
             $scope.loader = true;
-            appServices.GetAllActiveCategories().then(function (data) {
+            appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.categoriesData = data.Data;
                 }
@@ -19051,6 +19065,7 @@ OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices','UserAccount',
         var currentDialog = null;
         $scope.currentEvent = null;
         $scope.isMobile = false;
+        $scope.categoriesData = [];
 
         self.init = function () {
             $scope.isMobileDevice();
@@ -19592,6 +19607,15 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         });
     }
 
+    this.GetAllCategories = function () {
+        return $http({
+            url: url + '/CategorySer/GetAllCategories',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
      /* Article Services -------------------> */
     this.AddArticle = function (article) {
         return $http({

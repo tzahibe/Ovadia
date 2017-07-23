@@ -91,14 +91,12 @@ namespace OvaidaPro.Controllers
             }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult GetAllActiveCategories()
         {
             Result resultToClient = CategoriesLogic.GetAllActiveCategories();
 
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
-        
         public ActionResult RemoveSubCategoryById(int parentId, int catId)
         {
             isAllow();

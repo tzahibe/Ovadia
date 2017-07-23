@@ -4,6 +4,7 @@
         var currentDialog = null;
         $scope.currentEvent = null;
         $scope.isMobile = false;
+        $scope.categoriesData = [];
 
         self.init = function () {
             $scope.isMobileDevice();

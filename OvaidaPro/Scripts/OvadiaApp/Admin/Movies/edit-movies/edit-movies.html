@@ -21,8 +21,7 @@
                         id="categoryIdElem"
                         class="form-control parentCat hebrew"
                         ng-change="chooseCategory(ArticleCat)"
-                        ng-options="cat for cat in catNames"
-                        ng-init="ArticleCat = catNames[getIndexFromValue('פסח')];"
+                        ng-options="cat.Name for cat in $root.categoriesData"
                         ng-model="ArticleCat">
                     <!--<option ng-repeat="cat in categoriesData" value="{{cat.Id}}"
                             ng-selected="{{ArticleCat == cat.Id}}">
@@ -38,9 +37,6 @@
                         <div class="article-title">
                             {{article.Title}}
                             </div>
-                        <!--<iframe width="200" height="200" 
-                                ng-src="{{getIframeSrc(article.YoutubeLink1)}}"
-                                frameborder="0" allowfullscreen></iframe>-->
                     </div>
                 </div>
             </div>

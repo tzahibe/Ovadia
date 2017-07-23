@@ -31,7 +31,6 @@
                     class="form-control parentCat hebrew"
                     ng-options="cat.Name for cat in categoriesData"
                     ng-change="SelectChange(ArticleCat)"
-                    ng-init="ArticleCat = Article.CategoryName"
                     ng-model="ArticleCat"
                     ng-hide="readOnly">
                 <option value="">בחר</option>
@@ -55,10 +54,26 @@
                 </p>
                 קוד לסרט 1 
                 <input type="text" class="form-control" ng-model="Article.Video1" />
+                <div ng-show="!isNewArticle  && Article.YoutubeLink1 != null">
+                    <iframe width="200" height="200"
+                    ng-src="{{getIframeSrc(Article.YoutubeLink1)}}"
+                    frameborder="0" allowfullscreen></iframe>
+                </div>
+
                 קוד לסרט 2
                 <input type="text" class="form-control" ng-model="Article.Video2" />
+                <div ng-show="!isNewArticle  && Article.YoutubeLink2 != null">
+                    <iframe width="200" height="200"
+                            ng-src="{{getIframeSrc(Article.YoutubeLink2)}}"
+                            frameborder="0" allowfullscreen></iframe>
+                </div>
                 קוד לסרט 3
                 <input type="text" class="form-control" ng-model="Article.Video3" />
+                <div ng-show="!isNewArticle && Article.YoutubeLink3 != null">
+                    <iframe width="200" height="200"
+                            ng-src="{{getIframeSrc(Article.YoutubeLink3)}}"
+                            frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
             <br />
             <button ng-show="isNewArticle" class="btn btn-primary btn-block" ng-click="AddArticle()">
