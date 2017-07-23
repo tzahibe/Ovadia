@@ -2,7 +2,7 @@
     '$timeout', '$http', '$rootScope', 'ngDialog', 'appServices',
     function ($scope, $timeout, $http, $rootScope, ngDialog, appServices) {
         var self = this;
-        $scope.radio = 1;
+        $scope.radio = 2;
         self.init = function () {
            
         }

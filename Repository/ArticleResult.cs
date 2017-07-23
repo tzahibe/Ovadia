@@ -199,7 +199,6 @@ namespace Repository
 
                     List<Article> repResult = (from r in context.Article
                                                where categoriesIds.Contains((int)r.CategoryId)
-                                               && r.Publish == 1
                                                select r).Distinct().ToList();
 
                    

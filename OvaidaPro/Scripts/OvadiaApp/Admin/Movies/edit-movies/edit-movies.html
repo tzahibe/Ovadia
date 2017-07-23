@@ -8,16 +8,31 @@
                 <div ng-hide="readOnly">
                     בחר קטגוריה
                 </div>
-                <select name="categoryChoose"
+                <!--<select name="categoryChoose"
                         id="categoryIdElem"
                         class="form-control parentCat hebrew"
                         ng-options="cat.Name for cat in categoriesData"
                         ng-change="chooseCategory(ArticleCat)"
                         ng-model="ArticleCat">
                     <option value="">בחר</option>
+                </select>-->
+
+                <select name="categoryChoose"
+                        id="categoryIdElem"
+                        class="form-control parentCat hebrew"
+                        ng-change="chooseCategory(ArticleCat)"
+                        ng-options="cat for cat in catNames"
+                        ng-init="ArticleCat = catNames[getIndexFromValue('פסח')];"
+                        ng-model="ArticleCat">
+                    <!--<option ng-repeat="cat in categoriesData" value="{{cat.Id}}"
+                            ng-selected="{{ArticleCat == cat.Id}}">
+                        {{cat.Name}}
+                    </option>-->
+                    <option value="">בחר</option>
                 </select>
 
-                <div class="col-xs-12 articles-list" ng-repeat="article in Articles ">
+                
+                <div class="articles-list" ng-repeat="article in Articles ">
                     <div class="article-box col-md-4 col-xs-12" ng-click="goToArticle(article.ArticleId)"
                         ng-style="myStyle(article)">
                         <div class="article-title">

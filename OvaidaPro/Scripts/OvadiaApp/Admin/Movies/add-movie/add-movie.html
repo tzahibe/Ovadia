@@ -31,6 +31,7 @@
                     class="form-control parentCat hebrew"
                     ng-options="cat.Name for cat in categoriesData"
                     ng-change="SelectChange(ArticleCat)"
+                    ng-init="ArticleCat = Article.CategoryName"
                     ng-model="ArticleCat"
                     ng-hide="readOnly">
                 <option value="">בחר</option>
@@ -42,8 +43,8 @@
                     class="form-control parentCat hebrew"
                     ng-model="Article.Publish"
                     ng-hide="readOnly">
-                <option value="">אל תפרסם</option>
-                <option value="1">פרסם</option>
+                <option value="0" ng-selected="Article.Publish == 0">אל תפרסם</option>
+                <option value="1" ng-selected="Article.Publish == 1">פרסם</option>
             </select>
             <div>
                 <p class="example-p">

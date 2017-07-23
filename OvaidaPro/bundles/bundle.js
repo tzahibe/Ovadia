@@ -18742,7 +18742,7 @@ OvadiaApp.controller('homeMoviesCtrl', ['$scope',
     '$timeout', '$http', '$rootScope', 'ngDialog', 'appServices',
     function ($scope, $timeout, $http, $rootScope, ngDialog, appServices) {
         var self = this;
-        $scope.radio = 1;
+        $scope.radio = 2;
         self.init = function () {
            
         }
@@ -18765,6 +18765,7 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
     function ($scope, appServices, ngDialog, $timeout, $state, $stateParams, $state) {
         var self = this;
         $scope.Articles = [];
+        $scope.catNames = [];
         $scope.Article = {};
         $scope.ArticleCat = null;
 
@@ -18773,11 +18774,14 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
 
             if ($stateParams.category!= null) {
                 $scope.categorySelected = $stateParams.category;
-                var item = {
-                    Id: $scope.categorySelected.Id
-                }
-               
-                $scope.chooseCategory(item); 
+                $scope.chooseCategory($scope.categorySelected); 
+            }
+        }
+
+        $scope.getIndexFromValue = function (catName) {
+            for (var i = 0; i < $scope.catNames; i++) {
+                if (scope.catNames[i] === catName)
+                    return i;
             }
         }
 
@@ -18786,6 +18790,9 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
             appServices.GetAllActiveCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.categoriesData = data.Data;
+                    angular.forEach($scope.categoriesData, function (value, key) {
+                        $scope.catNames.push(value.Name);
+                    });
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
@@ -18811,9 +18818,18 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
             return style;
         }
 
-        $scope.chooseCategory = function (item) {
-            $scope.categorySelected = item;
-            appServices.GetArticlesByCategoryId(item.Id).then(function (data) {
+        $scope.chooseCategory = function (categoryName) {
+            var category = categoryName;
+            if ($scope.categoriesData != null) {
+                  category = $.grep($scope.categoriesData, function (e) { return e.Name == categoryName; });
+                if (category == null)
+                    return;
+                else {
+                    category = category[0];
+                }
+            }
+            
+            appServices.GetArticlesByCategoryId(category.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.Articles = data.Data;
                     angular.forEach($scope.Articles, function (value, key) {
@@ -18825,6 +18841,8 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                 }
+            
+                $scope.categorySelected = category;
             });
         }
 

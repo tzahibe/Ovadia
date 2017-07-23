@@ -3,6 +3,7 @@
     function ($scope, appServices, ngDialog, $timeout, $state, $stateParams, $state) {
         var self = this;
         $scope.Articles = [];
+        $scope.catNames = [];
         $scope.Article = {};
         $scope.ArticleCat = null;
 
@@ -11,11 +12,14 @@
 
             if ($stateParams.category!= null) {
                 $scope.categorySelected = $stateParams.category;
-                var item = {
-                    Id: $scope.categorySelected.Id
-                }
-               
-                $scope.chooseCategory(item); 
+                $scope.chooseCategory($scope.categorySelected); 
+            }
+        }
+
+        $scope.getIndexFromValue = function (catName) {
+            for (var i = 0; i < $scope.catNames; i++) {
+                if (scope.catNames[i] === catName)
+                    return i;
             }
         }
 
@@ -24,6 +28,9 @@
             appServices.GetAllActiveCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.categoriesData = data.Data;
+                    angular.forEach($scope.categoriesData, function (value, key) {
+                        $scope.catNames.push(value.Name);
+                    });
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
@@ -49,9 +56,18 @@
             return style;
         }
 
-        $scope.chooseCategory = function (item) {
-            $scope.categorySelected = item;
-            appServices.GetArticlesByCategoryId(item.Id).then(function (data) {
+        $scope.chooseCategory = function (categoryName) {
+            var category = categoryName;
+            if ($scope.categoriesData != null) {
+                  category = $.grep($scope.categoriesData, function (e) { return e.Name == categoryName; });
+                if (category == null)
+                    return;
+                else {
+                    category = category[0];
+                }
+            }
+            
+            appServices.GetArticlesByCategoryId(category.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.Articles = data.Data;
                     angular.forEach($scope.Articles, function (value, key) {
@@ -63,6 +79,8 @@
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                 }
+            
+                $scope.categorySelected = category;
             });
         }
 

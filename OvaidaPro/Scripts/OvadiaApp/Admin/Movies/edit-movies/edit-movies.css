@@ -10,6 +10,7 @@ legend.panel1 {
     background-size: 100% 150px;
     height: 150px;
     cursor:pointer;
+    margin-left:5px;
 }
 .articles-list{
     margin-top:20px;
@@ -28,6 +29,8 @@ legend.panel1 {
 @media screen and (max-width: 768px) {
     .article-box {
         height: 300px;
+         margin-left:0;
+         margin-bottom:12px;
         background-size: 100% 300px;
     }
     .article-title{
