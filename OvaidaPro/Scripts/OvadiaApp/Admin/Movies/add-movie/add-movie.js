@@ -3,6 +3,7 @@
     function ($scope, $timeout, $http, $rootScope, ngDialog, appServices, $stateParams, $state) {
         var self = this;
         $scope.isNewArticle = true;
+        $scope.ArticleCat = null;
 
         self.init = function () {
             $scope.getAllCategories();
@@ -67,7 +68,7 @@
                 return;
 
             for (var i = 0; i < $rootScope.categoriesData.length; i++) {
-                if ($rootScope.categoriesData[i].Id == obj.Id)
+                if ($rootScope.categoriesData[i].Id == obj.CategoryId)
                     return i;
             }
         }
@@ -88,8 +89,8 @@
                     $scope.Article.YoutubeLink1 = $scope.Article.Video1 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video1 : null;
                     $scope.Article.YoutubeLink2 = $scope.Article.Video2 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
                     $scope.Article.YoutubeLink3 = $scope.Article.Video3 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
-                    var index = $scope.getIndexFromValue($scope.Article.CategoryId);
-                    debugger;
+                    var index = $scope.getIndexFromValue($scope.Article);
+
                     if (index != null) {
                         $scope.ArticleCat = $rootScope.categoriesData[index];
                     }
@@ -162,9 +163,12 @@
 
         $scope.getAllCategories = function () {
             $scope.loader = true;
+            if ($rootScope.categoriesData != null && $rootScope.categoriesData.length > 0 )
+                return;
+
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
-                    $scope.categoriesData = data.Data;
+                    $rootScope.categoriesData = data.Data;
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");

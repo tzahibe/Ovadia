@@ -18770,7 +18770,7 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
         $scope.ArticleCat = null;
 
         self.init = function () {
-            $scope.getAllActiveCategories();
+            $scope.getAllCategories();
             if ($stateParams.category!= null) {
                 $scope.categorySelected = $stateParams.category;
                 $scope.chooseCategory($scope.categorySelected); 
@@ -18787,9 +18787,9 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
             }
         }
 
-        $scope.getAllActiveCategories = function () {
+        $scope.getAllCategories = function () {
             $scope.loader = true;
-            appServices.GetAllActiveCategories().then(function (data) {
+            appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesData = data.Data;
                 }
@@ -18855,6 +18855,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
     function ($scope, $timeout, $http, $rootScope, ngDialog, appServices, $stateParams, $state) {
         var self = this;
         $scope.isNewArticle = true;
+        $scope.ArticleCat = null;
 
         self.init = function () {
             $scope.getAllCategories();
@@ -18919,7 +18920,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                 return;
 
             for (var i = 0; i < $rootScope.categoriesData.length; i++) {
-                if ($rootScope.categoriesData[i].Id == obj.Id)
+                if ($rootScope.categoriesData[i].Id == obj.CategoryId)
                     return i;
             }
         }
@@ -18940,8 +18941,8 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                     $scope.Article.YoutubeLink1 = $scope.Article.Video1 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video1 : null;
                     $scope.Article.YoutubeLink2 = $scope.Article.Video2 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
                     $scope.Article.YoutubeLink3 = $scope.Article.Video3 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
-                    var index = $scope.getIndexFromValue($scope.Article.CategoryId);
-                    debugger;
+                    var index = $scope.getIndexFromValue($scope.Article);
+
                     if (index != null) {
                         $scope.ArticleCat = $rootScope.categoriesData[index];
                     }
@@ -19014,9 +19015,12 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
 
         $scope.getAllCategories = function () {
             $scope.loader = true;
+            if ($rootScope.categoriesData != null && $rootScope.categoriesData.length > 0 )
+                return;
+
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
-                    $scope.categoriesData = data.Data;
+                    $rootScope.categoriesData = data.Data;
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");

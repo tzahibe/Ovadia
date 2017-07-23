@@ -29,7 +29,7 @@
             </div>
             <select name="categoryChoose" 
                     class="form-control parentCat hebrew"
-                    ng-options="cat.Name for cat in categoriesData"
+                    ng-options="cat.Name for cat in $root.categoriesData"
                     ng-change="SelectChange(ArticleCat)"
                     ng-model="ArticleCat"
                     ng-hide="readOnly">
