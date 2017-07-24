@@ -2,6 +2,7 @@
     function ($scope, $timeout, $interval, $http) {
         var currentDialog = null;
         $scope.currentEvent = null;
+        $scope.ver = Math.random() * 100000;
         $scope.images = [];
         $scope.counter = 5;
         $scope.thumbSize = 150;
@@ -59,9 +60,9 @@
                             id: 546 + key,
                             title: 'תמונה מהכולל',
                             alt: 'תמונה מהכולל',
-                            url: "http://" + window.location.host + "/Uploads/lg_" + value.Name,
-                            thumbUrl: "http://" + window.location.host + "/Uploads/sm_" + value.Name,
-                            bubbleUrl: "http://" + window.location.host + "/Uploads/sm_" + value.Name,
+                            url: "http://" + window.location.host + "/Uploads/lg_" + value.Name + "?ver" + $scope.ver,
+                            thumbUrl: "http://" + window.location.host + "/Uploads/sm_" + value.Name + "?ver" + $scope.ver,
+                            bubbleUrl: "http://" + window.location.host + "/Uploads/sm_" + value.Name + "?ver" + $scope.ver,
                             //extUrl: 'http://google.com',
                             desc: '',
                             deletable: true

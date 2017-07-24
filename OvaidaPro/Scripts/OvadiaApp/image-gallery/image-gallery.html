@@ -19,7 +19,7 @@
                      ng-repeat="item in images |limitTo:limitImages">
                     <a title="כולל חזון עובדיה"
                        class="imgGalItem ts" onfocus="focusLink(this)" data-gallery="">
-                        <img src="{{item.url}}" class="img-responsive img-rounded">
+                        <img src="{{item.url}}?ver={{ver}}" class="img-responsive img-rounded">
                     </a>
                 </div>
             </div>
