@@ -2,7 +2,7 @@
     function ($scope, $http, $timeout, Upload, ngDialog) {
         var self = this;
         $scope.results = [];
-
+        $scope.ver = 1001001;
         self.init = function () {
             $scope.ShowFiles();
         }
@@ -41,6 +41,7 @@
         }
 
         $scope.Rotate90 = function (fname) {
+            $scope.ver++;
             $scope.loader = true;
             $http.get("/Uploads/Rotate90?fname=" + fname).then(function (response) {
                 if (response.ErrorCode == 0) {

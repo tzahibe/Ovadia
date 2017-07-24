@@ -18301,7 +18301,7 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
     function ($scope, $http, $timeout, Upload, ngDialog) {
         var self = this;
         $scope.results = [];
-
+        $scope.ver = 1001001;
         self.init = function () {
             $scope.ShowFiles();
         }
@@ -18340,6 +18340,7 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
         }
 
         $scope.Rotate90 = function (fname) {
+            $scope.ver++;
             $scope.loader = true;
             $http.get("/Uploads/Rotate90?fname=" + fname).then(function (response) {
                 if (response.ErrorCode == 0) {
