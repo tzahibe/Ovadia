@@ -1,12 +1,15 @@
 ﻿my-app .row {
     margin: 0;
     /*line-height: 0.5;*/
+}.navbar-default .navbar-nav > li > a {
+     text-align:center;
 }
 .has-feedback .form-control {
-    padding-right:6px;
+    padding-right: 6px;
 }
-
-.ngdialog-theme-default {
+.navbar-default .navbar-nav > li > a {
+    color: #2c4e72;
+}.ngdialog-theme-default {
     position: fixed;
     top: 27%;
     z-index: 9999;

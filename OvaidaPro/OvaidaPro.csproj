@@ -137,6 +137,7 @@
     <Content Include="Content\images\colel-ico.png" />
     <Content Include="Content\images\colel.jpg" />
     <Content Include="Content\images\login.png" />
+    <Content Include="Content\images\logoNew.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\textAngular.css" />
     <Content Include="Global.asax" />

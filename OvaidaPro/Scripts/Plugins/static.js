@@ -25,13 +25,13 @@ function navClicked() {
 function openCloseAdminMenu(param) {
     debugger;
     if (param == 'adminArrow') {
-        $('.sidebar-right').removeClass('col-sm-4').addClass('marginbottom10');
+        $('.sidebar-right').removeClass('col-sm-4'); //.addClass('marginbottom10')
         $('.homeadminRoute').removeClass('col-sm-8');
         $('#adminArrow').hide();
         $('#adminArrow2').show();
     }
     else {
-        $('.sidebar-right').addClass('col-sm-4').removeClass('marginbottom10');
+        $('.sidebar-right').addClass('col-sm-4'); //.removeClass('marginbottom10')
         $('.homeadminRoute').addClass('col-sm-8');
         $('#adminArrow').show();
         $('#adminArrow2').hide();

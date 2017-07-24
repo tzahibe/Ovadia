@@ -3,8 +3,11 @@
     border: 1px solid #e7e7e7;
     min-height: 146px;
 }
+    lesson-component .body {
+        padding:0;
+    }
 lesson-component .body:first-child {
-    border-top-left-radius: 5px;
+        border-top-left-radius: 5px;
 }
 lesson-component .body:last-child {
     border-top-right-radius: 5px;
@@ -39,10 +42,20 @@ lesson-component ul {
 }*/
 
 lesson-component .body .box-title {
-    padding-right: 8px;
+    /*padding-right: 8px;
     color: #686868;
     font-family: kalisher,Arial;
+    font-weight: bold;*/
+    padding-right: 8px;
+    color: #fff;
+    font-family: kalisher,Arial;
     font-weight: bold;
+    padding: 0;
+    margin: 0;
+    height: 36px;
+    padding: 10px;
+    text-align: right;
+    background: #294d77;
 }
 @media screen and (max-width: 768px) {
     lesson-component .all-lesson {
