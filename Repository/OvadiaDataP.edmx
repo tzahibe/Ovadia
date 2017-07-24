@@ -10,7 +10,7 @@
             <PropertyRef Name="ArticleId" />
           </Key>
           <Property Name="ArticleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="DatePublish" Type="datetime" />
           <Property Name="Last_edit" Type="datetime" />
           <Property Name="ProfilePic" Type="nvarchar(max)" />
@@ -187,7 +187,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
             <PropertyRef Name="ArticleId" />
           </Key>
           <Property Name="ArticleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DatePublish" Type="DateTime" Precision="3" />
           <Property Name="Last_edit" Type="DateTime" Precision="3" />
           <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
