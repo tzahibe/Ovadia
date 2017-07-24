@@ -136,6 +136,13 @@
             });
         }
 
+        $scope.NewArticle = function () {
+            $scope.isNewArticle = true;
+            $scope.articleId = null;
+            $scope.Article = {};
+            $scope.ArticleCat = "";
+        }
+
         $scope.RemoveArticleById = function () {
             if (!movieForm.checkValidity()) {
                 $scope.OpenPopup("שדות חובה לא מולאו!", "אנא מלא את השדות המסומנות באדום בערכים מתאימים");

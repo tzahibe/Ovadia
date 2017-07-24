@@ -165,12 +165,73 @@ namespace OvaidaPro.Controllers
             var serializedResult = serializer.Serialize(resultToClient);
             context.Response.Write(serializedResult);
         }
+
+        public void Rotate90(string fname)
+        {
+            isAllow();
+
+            HttpContext context = System.Web.HttpContext.Current;
+            Result resultToClient = new Result();
+            string output = string.Empty;
+
+            DirectoryInfo dirInfo = new DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\\Uploads");
+            FileInfo[] info = dirInfo.GetFiles("*.*");
+
+            try
+            {
+                foreach (FileInfo f in info)
+                {
+
+                    if (fname.Equals(f.Name) || ("sm_" + fname).Equals(f.Name) || ("lg_" + fname).Equals(f.Name))
+                    {
+                        //string item = "/Uploads/" + f.Name;
+                        string saveName = f.FullName;
+
+                        using (Image img = Image.FromFile(f.FullName))
+                        {
+                            //rotate the picture by 90 degrees and re-save the picture as a Jpeg
+                            img.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                            img.Save(saveName, ImageFormat.Jpeg);
+                        }
+
+                    }
+
+                }
+                resultToClient.ErrorCode = 0;
+                resultToClient.Data = true;
+            }
+            catch(Exception ex)
+            {
+                resultToClient.ErrorCode = 1;
+                resultToClient.Data = false;
+            }
+          
+
+            responseJsonFromServer(context);
+            var serializer = new JavaScriptSerializer();
+            var serializedResult = serializer.Serialize(resultToClient);
+            context.Response.Write(serializedResult);
+        }
+
+      
         public void responseJsonFromServer(HttpContext context)
         {
             context.Response.ContentType = "application/json";
             context.Response.AppendHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             context.Response.AppendHeader("Pragma", "no-cache");
             context.Response.AppendHeader("Expires", "0");
+        }
+
+
+        private Bitmap rotateImage90(Bitmap b)
+        {
+            Bitmap returnBitmap = new Bitmap(b.Height, b.Width);
+            Graphics g = Graphics.FromImage(returnBitmap);
+            g.TranslateTransform((float)b.Width / 2, (float)b.Height / 2);
+            g.RotateTransform(90);
+            g.TranslateTransform(-(float)b.Width / 2, -(float)b.Height / 2);
+            g.DrawImage(b, new Point(0, 0));
+            return returnBitmap;
         }
 
         private Bitmap ResizeBitmap(Bitmap b, int nWidth, int nHeight)
@@ -180,6 +241,8 @@ namespace OvaidaPro.Controllers
                 g.DrawImage(b, 0, 0, nWidth, nHeight);
             return result;
         }
+
+
 
         [Serializable]
         public class FileNames

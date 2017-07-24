@@ -63,6 +63,17 @@ div, p, h1, h2, h3, h4, h5, h6, span {
     top: -163px;
     right: 4px;
 }
+.rotateIcon {
+    position: relative;
+    top: -163px;
+    right: 19px;
+    font-size: 23px;
+    color: #fff;
+    padding: 6px;
+    border-radius: 20px;
+    background: #009200;
+    cursor:pointer;
+}
 .scrollable-content .imgItems-li {
     display:inline-block;
 }

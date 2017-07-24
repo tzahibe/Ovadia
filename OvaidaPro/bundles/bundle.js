@@ -18339,6 +18339,19 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
             });
         }
 
+        $scope.Rotate90 = function (fname) {
+            $scope.loader = true;
+            $http.get("/Uploads/Rotate90?fname=" + fname).then(function (response) {
+                if (response.ErrorCode == 0) {
+                    //
+                }
+                else {
+                    //
+                }
+                $scope.loader = false;
+            });
+        }
+
         $scope.uploadFiles = function (files, errFiles) {
             $scope.files = files;
             $scope.errFiles = errFiles;
@@ -18986,6 +18999,13 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                 }
                 $scope.loader = false;
             });
+        }
+
+        $scope.NewArticle = function () {
+            $scope.isNewArticle = true;
+            $scope.articleId = null;
+            $scope.Article = {};
+            $scope.ArticleCat = "";
         }
 
         $scope.RemoveArticleById = function () {

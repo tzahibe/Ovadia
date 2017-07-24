@@ -4,7 +4,7 @@
 <div class="list-group-item list-group-item-home">
     <form name="movieForm" role="form" novalidate>
         <div ng-hide="loader">
-            <a  ng-click="backToCategory()" ng-show="showBackButton">< חזרה לקטגוריה </a>   
+            <a href="" ng-click="backToCategory()" ng-show="showBackButton">< חזרה לקטגוריה </a>   
             <fieldset>
                 <legend ng-if="!isNewArticle && !readOnly">עריכת מאמר</legend>
                 <legend ng-if="isNewArticle && !readOnly">יצירת מאמר</legend>
@@ -86,6 +86,9 @@
             </button>
             <button ng-hide="isNewArticle" class="btn btn-danger btn-block" ng-click="RemoveArticleById()">
                 הסר מאמר
+            </button>
+            <button ng-hide="isNewArticle" class="btn btn-success btn-block" ng-click="NewArticle()">
+                התחל מאמר חדש
             </button>
         </div>
         <div ng-show="loader" class="loader1">
