@@ -230,6 +230,16 @@
         });
     }
 
+    this.GetNewActiveArticles = function () {
+        return $http({
+            url: url + '/ArticleSer/GetNewActiveArticles',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+    
     this.GetArticle = function (id) {
         var param = {
             articleId: id

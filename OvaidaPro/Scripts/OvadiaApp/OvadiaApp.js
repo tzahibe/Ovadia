@@ -8,7 +8,8 @@
         'ngDialog',
         'ngCookies',
         'ngAnimate',
-        'thatisuday.ng-image-gallery'
+        'thatisuday.ng-image-gallery',
+        'ui.bootstrap.carousel'
     ]
 )
 

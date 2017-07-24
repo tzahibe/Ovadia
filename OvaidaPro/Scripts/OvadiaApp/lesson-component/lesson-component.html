@@ -1,7 +1,10 @@
 ﻿<link href="/Scripts/OvadiaApp/lesson-component/lesson-component.css" rel="stylesheet" />
 <div class="col-xs-12 lessonBlocks">
     <div class="body col-xs-12 col-sm-6 col-md-4">
-        <h4 class="box-title">השיעורים היום</h4>
+        <img src="/Content/images/microphone.png" class="mic-icon" />
+        <h4 class="box-title">
+        השיעורים היום
+        </h4>
         <ul>
             <li class="lesson" ng-repeat="item in weekEvents.Day_1" ng-hide="loader">
                 <strong>{{item.To_Hour}}:{{item.To_Minutes}} - {{item.From_Hour}}:{{item.From_Minutes}}</strong>
@@ -20,7 +23,10 @@
     </div>
 
     <div class="body col-xs-12  col-sm-6 col-md-4">
-        <h4 class="box-title">השיעורים מחר</h4>
+        <img src="/Content/images/microphone.png" class="mic-icon" />
+        <h4 class="box-title">
+        השיעורים מחר
+        </h4>
         <ul>
             <li class="lesson" ng-repeat="item in weekEvents.Day_2" ng-hide="loader">
                 <strong>{{item.To_Hour}}:{{item.To_Minutes}} - {{item.From_Hour}}:{{item.From_Minutes}}</strong>
@@ -39,7 +45,10 @@
     </div>
 
     <div class="body col-xs-12 col-md-4 hidden-xs">
-        <h4 class="box-title">השיעורים מחרתיים</h4>
+        <img src="/Content/images/microphone.png" class="mic-icon" />
+        <h4 class="box-title">
+            השיעורים מחרתיים
+        </h4>
         <ul>
             <li class="lesson" ng-repeat="item in weekEvents.Day_3" ng-hide="loader">
                 <strong>{{item.To_Hour}}:{{item.To_Minutes}} - {{item.From_Hour}}:{{item.From_Minutes}}</strong>

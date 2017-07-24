@@ -225,6 +225,45 @@ namespace Repository
                 return result;
             }
         }
+
+        public static Result GetNewActiveArticles()
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+
+                    List<Article> repResult = (from r in context.Article
+                                               select r).OrderBy(r => r.Last_edit).ToList();
+
+                    if (repResult != null)
+                    {
+                        result.ErrorCode = 0;
+                        if(repResult.Count > 4)
+                            result.Data = repResult.Take(5);
+                        else
+                            result.Data = repResult;
+
+                        return result;
+                    }
+                    else
+                    {
+                        result.ErrorCode = 2;
+                        result.Data = false;
+                        return result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorCode = 1;
+                result.ErrorMsg = "נפילה ב GetNewActiveArticles";
+                Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+        }
         public static Result GetAllArticles()
         {
             Result result = new Result();

@@ -12,6 +12,11 @@ lesson-component .body:first-child {
 lesson-component .body:last-child {
     border-top-right-radius: 5px;
 }
+.mic-icon {
+    position: absolute;
+    top: 2px;
+    right:2px;
+}
 lesson-component .all-lesson {
     font-style: italic;
     font-size: 14px;
@@ -35,7 +40,7 @@ lesson-component li.lesson.loader {
 lesson-component ul {
     list-style-type: none;
     padding-right: 10px;
-    padding-bottom: 5px;
+    margin-top:10px;
 }
 /*.body {
     padding: 0;
@@ -50,10 +55,10 @@ lesson-component .body .box-title {
     color: #fff;
     font-family: kalisher,Arial;
     font-weight: bold;
-    padding: 0;
     margin: 0;
-    height: 36px;
+    height: 40px;
     padding: 10px;
+    padding-right: 35px;
     text-align: right;
     background: #294d77;
 }

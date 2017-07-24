@@ -45,6 +45,14 @@ namespace OvaidaPro.Controllers
             Result result = ArticleLogic.GetArticlesByCategoryId(categoryId);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetNewActiveArticles()
+        {
+            Result result = ArticleLogic.GetNewActiveArticles();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         
+
     }
 }

@@ -46,5 +46,12 @@ namespace BL
             result = ArticleResult.GetArticlesByCategoryId(categoryId);
             return result;
         }
+
+        public static Result GetNewActiveArticles()
+        {
+            Result result = new Result();
+            result = ArticleResult.GetNewActiveArticles();
+            return result;
+        }
     }
 }

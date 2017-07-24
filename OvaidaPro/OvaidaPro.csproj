@@ -134,12 +134,17 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\backgtoundnreto.png" />
     <Content Include="Content\images\colel-ico.png" />
     <Content Include="Content\images\colel.jpg" />
     <Content Include="Content\images\login.png" />
     <Content Include="Content\images\logoNew.png" />
+    <Content Include="Content\images\magenDavid.png" />
+    <Content Include="Content\images\microphone.png" />
+    <Content Include="Content\images\zmani-icon.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\textAngular.css" />
+    <Content Include="Content\images\tfila-background.png" />
     <Content Include="Global.asax" />
     <Content Include="Iqndex.html" />
     <Content Include="pages\errorRemoveMail.html" />
@@ -193,6 +198,7 @@
     <Content Include="Content\images\icons\next.svg" />
     <Content Include="Content\images\icons\prev-inline.svg" />
     <Content Include="Content\images\icons\prev.svg" />
+    <Content Include="Scripts\OvadiaApp\carousel-component\bootstrap.min.js" />
     <Content Include="Scripts\OvadiaApp\image-gallery\image-gallery.css" />
     <Content Include="Scripts\OvadiaApp\image-gallery\image-gallery.html" />
     <Content Include="Scripts\OvadiaApp\image-gallery\image-gallery.js" />
@@ -216,6 +222,7 @@
     <Content Include="Scripts\OvadiaApp\tfila-time-container\tfila-time-container.html" />
     <Content Include="Scripts\OvadiaApp\tfila-time-container\tfila-time-container.js" />
     <Content Include="Scripts\Plugins\angular-animate.min.js" />
+    <Content Include="Scripts\Plugins\angular-carousel.min.js" />
     <Content Include="Scripts\Plugins\angular-file-upload.min.js" />
     <Content Include="Scripts\Plugins\angular-route.min.js" />
     <Content Include="Scripts\OvadiaApp\Admin\home-admin\home-admin.js" />
@@ -243,6 +250,7 @@
     <Content Include="Scripts\OvadiaApp\my-app\my-app.js" />
     <Content Include="Scripts\OvadiaApp\OvadiaApp.js" />
     <Content Include="Scripts\OvadiaApp\OvadiaConfig.js" />
+    <Content Include="Scripts\Plugins\angular-touch.min.js" />
     <Content Include="Scripts\Plugins\angular-ui-router.min.js" />
     <Content Include="Scripts\Global\css\bootstrap-grid.css" />
     <Content Include="Scripts\Global\css\bootstrap-grid.min.css" />
@@ -261,6 +269,7 @@
     <Content Include="Content\images\rabi-ovadia.png" />
     <Content Include="Scripts\Plugins\bootstrap.min.js" />
     <Content Include="Scripts\Plugins\angular-cookies.min.js" />
+    <Content Include="Scripts\Plugins\carousel.js" />
     <Content Include="Scripts\Plugins\fontawesome.js" />
     <Content Include="Scripts\Plugins\fullcalendar.min.js" />
     <Content Include="Scripts\Plugins\jquery-3.2.1.min.js" />
