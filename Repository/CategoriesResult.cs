@@ -38,8 +38,10 @@ namespace Repository
                         enrty.Property(e => e.Cat_Order).IsModified = true;
                         enrty.Property(e => e.isActive).IsModified = true;
                         context.SaveChanges();
-                        result.ErrorCode = 0;
-                        result.Data = true;
+                        //result.ErrorCode = 0;
+                        //result.Data = true;
+
+                        result = UpadateArticles_Category(newName, catId);
                         return result;
                     }
                     else
@@ -314,5 +316,36 @@ namespace Repository
                 return result;
             }
         }
+
+        public static Result UpadateArticles_Category(string newcat, int id)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+
+                    List<Article> articleRep = (from r in context.Article where r.CategoryId == id select r).ToList();
+                    if (articleRep != null)
+                    {
+                        for (int i = 0; i < articleRep.Count; i++)
+                        {
+                            articleRep[i].CategoryName = newcat;
+                        }
+                        context.SaveChanges();
+                        result.ErrorCode = 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                return result;
+            }
+
+            return result;
+
+        }
+
     }
 }
