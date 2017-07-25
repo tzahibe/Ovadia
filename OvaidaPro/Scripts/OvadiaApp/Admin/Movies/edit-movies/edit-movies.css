@@ -28,8 +28,9 @@ legend.panel1 {
     background:#fff;
     opacity:0.7;
 }
-.col-md-4_5{
-    width:30%;
+.col-md-4_5 {
+    width: 30%;
+    float: right;
 }
 @media screen and (max-width: 768px) {
     .article-box {

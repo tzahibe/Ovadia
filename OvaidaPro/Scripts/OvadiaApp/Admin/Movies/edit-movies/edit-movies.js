@@ -45,10 +45,15 @@
         }
 
         $scope.goToArticle = function (article) {
-            if ($scope.categorySelected.Name == "הכל") 
-                $state.go("admin.add-movie", { articleId: article.ArticleId, category: $scope.Article.CategoryId });
+            if ($scope.categorySelected.Name == "הכל") {
+                var cat = {
+                    Name: article.CategoryName,
+                    Id: article.CategoryId
+                }
+                $state.go("admin.add-movie", { articleId: article.ArticleId, category: cat });
+            }
             else
-                $state.go("admin.add-movie", { articleId: Id, category: $scope.categorySelected });
+                $state.go("admin.add-movie", { articleId: article.ArticleId, category: $scope.categorySelected });
         }
 
         $scope.myStyle = function (article) {
