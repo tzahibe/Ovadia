@@ -11,7 +11,7 @@ legend.panel1 {
     height: 150px;
     cursor: pointer;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin:5px;
 }
 .articles-list{
     margin-top:20px;
@@ -28,7 +28,9 @@ legend.panel1 {
     background:#fff;
     opacity:0.7;
 }
-
+.col-md-4_5{
+    width:30%;
+}
 @media screen and (max-width: 768px) {
     .article-box {
         height: 300px;

@@ -16,7 +16,7 @@
           <Property Name="ProfilePic" Type="nvarchar(max)" />
           <Property Name="Body" Type="nvarchar(max)" />
           <Property Name="CategoryId" Type="int" />
-          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryName" Type="nvarchar(max)" />
           <Property Name="Publish" Type="int" />
           <Property Name="Video1" Type="nvarchar(max)" />
           <Property Name="Video2" Type="nvarchar(max)" />
@@ -193,7 +193,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CategoryId" Type="Int32" />
-          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Publish" Type="Int32" />
           <Property Name="Video1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Video2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />

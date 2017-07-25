@@ -19156,6 +19156,7 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesData = data.Data;
+                    $rootScope.categoriesData.unshift({Name:"הכל"});
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
@@ -19169,18 +19170,47 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
             return link;
         }
 
-        $scope.goToArticle = function (Id) {
-            $state.go("admin.add-movie", { articleId: Id, category: $scope.categorySelected });
+        $scope.goToArticle = function (article) {
+            if ($scope.categorySelected.Name == "הכל") 
+                $state.go("admin.add-movie", { articleId: article.ArticleId, category: $scope.Article.CategoryId });
+            else
+                $state.go("admin.add-movie", { articleId: Id, category: $scope.categorySelected });
         }
 
         $scope.myStyle = function (article) {
+            if (article.ProfilePic == null || article.ProfilePic == '')
+                return "";
+
+            var urlNoSpace = article.ProfilePic.split(' ').join('%20');
             var style = {
-                "background-image": "url(" + article.ProfilePic + ")",
+                "background-image": "url(" + urlNoSpace + ")",
             }
             return style;
         }
 
         $scope.chooseCategory = function (category) {
+            if (category.Name == "הכל") {
+                appServices.GetAllArticles().then(function (data) {
+                    if (data.ErrorCode == 0) {
+                        var index = $scope.getIndexFromValue(category)
+                        if (index != null) {
+                            $scope.ArticleCat = $rootScope.categoriesData[index];
+                        }
+                        $scope.Articles = data.Data;
+                        angular.forEach($scope.Articles, function (value, key) {
+                            value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
+                            value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
+                            value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
+                        });
+                    }
+                    else {
+                        $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                    }
+                    $scope.categorySelected = category;
+                });
+                return;
+            }
+
             appServices.GetArticlesByCategoryId(category.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     var index = $scope.getIndexFromValue(category)
@@ -19404,6 +19434,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesData = data.Data;
+                    $.grep($rootScope.categoriesData, function (el, idx) { return el.field == "הכל" }, true)
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
@@ -20048,6 +20079,16 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
             url: url + '/ArticleSer/GetArticlesByCategoryId',
             method: 'POST',
             data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllArticles = function () {
+        return $http({
+            url: url + '/ArticleSer/GetAllArticles',
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
             return response.data;

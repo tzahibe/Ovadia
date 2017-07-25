@@ -17,10 +17,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/BL.dll">
-      <publishTime>07/24/2017 10:38:20</publishTime>
+      <publishTime>07/24/2017 18:58:59</publishTime>
     </File>
     <File Include="bin/BL.pdb">
-      <publishTime>07/24/2017 10:38:20</publishTime>
+      <publishTime>07/24/2017 18:58:59</publishTime>
     </File>
     <File Include="bin/Bo.dll">
       <publishTime>07/20/2017 11:05:33</publishTime>
@@ -53,13 +53,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/OvaidaPro.dll">
-      <publishTime>07/24/2017 10:38:25</publishTime>
+      <publishTime>07/24/2017 18:59:07</publishTime>
     </File>
     <File Include="bin/OvaidaPro.pdb">
-      <publishTime>07/24/2017 10:38:25</publishTime>
+      <publishTime>07/24/2017 18:59:07</publishTime>
     </File>
     <File Include="bin/Repository.dll">
-      <publishTime>07/24/2017 10:38:20</publishTime>
+      <publishTime>07/24/2017 18:58:58</publishTime>
     </File>
     <File Include="bin/Repository.dll.config">
       <publishTime>07/12/2017 11:36:54</publishTime>
@@ -71,7 +71,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2017 15:56:49</publishTime>
     </File>
     <File Include="bin/Repository.pdb">
-      <publishTime>07/24/2017 10:38:20</publishTime>
+      <publishTime>07/24/2017 18:58:58</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>07/11/2017 23:51:54</publishTime>
@@ -257,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bundles/bundle.js">
-      <publishTime>07/24/2017 11:02:59</publishTime>
+      <publishTime>07/24/2017 17:16:04</publishTime>
     </File>
     <File Include="bundles/bundle.min.js">
       <publishTime>07/12/2017 00:06:28</publishTime>
@@ -270,6 +270,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/fullcalendar.min.css">
       <publishTime>07/11/2017 23:51:52</publishTime>
+    </File>
+    <File Include="Content/images/backgtoundnreto.png">
+      <publishTime>07/24/2017 13:10:01</publishTime>
     </File>
     <File Include="Content/images/colel-ico.png">
       <publishTime>07/11/2017 23:51:52</publishTime>
@@ -319,14 +322,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/images/logozakai.png">
       <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
+    <File Include="Content/images/magenDavid.png">
+      <publishTime>07/24/2017 13:09:29</publishTime>
+    </File>
     <File Include="Content/images/menuIcon.svg">
       <publishTime>07/11/2017 23:51:52</publishTime>
+    </File>
+    <File Include="Content/images/microphone.png">
+      <publishTime>07/24/2017 13:09:29</publishTime>
     </File>
     <File Include="Content/images/purple-wallpaper-background-25.jpg">
       <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
     <File Include="Content/images/rabi-ovadia.png">
       <publishTime>07/11/2017 23:51:52</publishTime>
+    </File>
+    <File Include="Content/images/tfila-background.png">
+      <publishTime>07/24/2017 12:54:15</publishTime>
+    </File>
+    <File Include="Content/images/zmani-icon.png">
+      <publishTime>07/24/2017 13:26:00</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>07/11/2017 23:51:52</publishTime>
@@ -905,16 +920,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/appServcies.js">
-      <publishTime>07/23/2017 10:57:57</publishTime>
+      <publishTime>07/24/2017 13:44:35</publishTime>
+    </File>
+    <File Include="Scripts/OvadiaApp/carousel-component/bootstrap.min.js">
+      <publishTime>07/24/2017 16:37:42</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/carousel-component/carousel-component.css">
       <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/carousel-component/carousel-component.html">
-      <publishTime>07/12/2017 00:04:52</publishTime>
+      <publishTime>07/24/2017 17:16:04</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/carousel-component/carousel-component.js">
-      <publishTime>07/12/2017 00:04:52</publishTime>
+      <publishTime>07/24/2017 17:16:08</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/header-component/header-component.css">
       <publishTime>07/23/2017 15:18:26</publishTime>
@@ -929,10 +947,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/04/2017 09:51:08</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/home-component/home-component.css">
-      <publishTime>07/23/2017 17:00:58</publishTime>
+      <publishTime>07/24/2017 13:08:25</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/home-component/home-component.html">
-      <publishTime>07/12/2017 00:04:52</publishTime>
+      <publishTime>07/24/2017 13:08:25</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/home-component/home-component.js">
       <publishTime>07/12/2017 00:04:52</publishTime>
@@ -941,19 +959,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2017 23:45:25</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/image-gallery/image-gallery.html">
-      <publishTime>07/13/2017 14:16:25</publishTime>
+      <publishTime>07/24/2017 12:50:58</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/image-gallery/image-gallery.js">
-      <publishTime>07/12/2017 21:54:00</publishTime>
+      <publishTime>07/24/2017 12:54:20</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/image-gallery/ng-image-gallery.min.css">
       <publishTime>07/17/2017 09:22:51</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/lesson-component/lesson-component.css">
-      <publishTime>07/23/2017 15:16:08</publishTime>
+      <publishTime>07/24/2017 13:27:22</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/lesson-component/lesson-component.html">
-      <publishTime>07/12/2017 00:04:52</publishTime>
+      <publishTime>07/24/2017 13:22:51</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/lesson-component/lesson-component.js">
       <publishTime>07/12/2017 00:04:52</publishTime>
@@ -1004,7 +1022,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2017 15:22:13</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/OvadiaApp.js">
-      <publishTime>07/12/2017 17:01:16</publishTime>
+      <publishTime>07/24/2017 17:05:35</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/OvadiaConfig.js">
       <publishTime>07/20/2017 14:39:53</publishTime>
@@ -1033,6 +1051,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/Plugins/angular-animate.min.js">
       <publishTime>07/12/2017 17:00:41</publishTime>
     </File>
+    <File Include="Scripts/Plugins/angular-carousel.min.js">
+      <publishTime>07/24/2017 13:30:11</publishTime>
+    </File>
     <File Include="Scripts/Plugins/angular-cookies.min.js">
       <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
@@ -1048,6 +1069,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/Plugins/angular-route.min.js.map">
       <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
+    <File Include="Scripts/Plugins/angular-touch.min.js">
+      <publishTime>07/24/2017 14:35:18</publishTime>
+    </File>
     <File Include="Scripts/Plugins/angular-ui-router.min.js">
       <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
@@ -1055,7 +1079,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/Plugins/bootstrap.min.js">
-      <publishTime>07/12/2017 00:04:52</publishTime>
+      <publishTime>07/24/2017 16:38:32</publishTime>
+    </File>
+    <File Include="Scripts/Plugins/carousel.js">
+      <publishTime>07/24/2017 17:01:57</publishTime>
     </File>
     <File Include="Scripts/Plugins/fontawesome.js">
       <publishTime>07/12/2017 00:04:52</publishTime>

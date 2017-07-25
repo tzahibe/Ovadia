@@ -267,4 +267,14 @@
             return response.data;
         });
     }
+
+    this.GetAllArticles = function () {
+        return $http({
+            url: url + '/ArticleSer/GetAllArticles',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);

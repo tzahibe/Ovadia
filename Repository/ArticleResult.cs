@@ -225,7 +225,6 @@ namespace Repository
                 return result;
             }
         }
-
         public static Result GetNewActiveArticles()
         {
             Result result = new Result();
@@ -271,7 +270,9 @@ namespace Repository
             {
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
-                    List<Article> repResult = (from r in context.Article select r).ToList();
+                    List<Article> repResult = (from r in context.Article
+                                               where r.ArticleId != 1
+                                               select r).ToList();
                     if (repResult != null)
                     {
                         result.ErrorCode = 0;
