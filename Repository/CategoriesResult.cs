@@ -205,9 +205,12 @@ namespace Repository
             {
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
-                    var repResult = (from r in context.Categories select r);
+                    var repResult = (from r in context.Categories
+                                     orderby r.Cat_Order descending
+                                     select r);
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
-                    result.Data = categoryList.OrderBy(x => int.Parse(x.Cat_Order)).ToList().Reverse<Repository.Categories>();
+                    //result.Data = categoryList.OrderBy(x => x.Cat_Order).ToList().Reverse<Repository.Categories>();
+                    result.Data = categoryList;
                     result.ErrorCode = 0;
                     return result;
                 }

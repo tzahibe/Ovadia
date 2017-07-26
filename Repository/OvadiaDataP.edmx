@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DB_A25801_OvadiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Art_Cat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ArticleId" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="Article">
           <Key>
             <PropertyRef Name="ArticleId" />
@@ -99,6 +107,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="DB_A25801_OvadiaModelStoreContainer">
+          <EntitySet Name="Art_Cat" EntityType="Self.Art_Cat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="db_Event" EntityType="Self.db_Event" Schema="dbo" store:Type="Tables" />
@@ -148,6 +157,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySet Name="Article" EntityType="DB_A25801_OvadiaModel.Article" />
           <EntitySet Name="Users" EntityType="DB_A25801_OvadiaModel.Users" />
           <EntitySet Name="Categories" EntityType="DB_A25801_OvadiaModel.Categories" />
+          <EntitySet Name="Art_Cat" EntityType="DB_A25801_OvadiaModel.Art_Cat" />
         </EntityContainer>
         <EntityType Name="Emails">
           <Key>
@@ -222,6 +232,14 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="isActive" Type="Int32" />
           <Property Name="Cat_Order" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Art_Cat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ArticleId" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -324,6 +342,15 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Art_Cat">
+            <EntityTypeMapping TypeName="DB_A25801_OvadiaModel.Art_Cat">
+              <MappingFragment StoreEntitySet="Art_Cat">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -32,5 +32,6 @@ namespace Repository
         public virtual DbSet<Article> Article { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Art_Cat> Art_Cat { get; set; }
     }
 }
