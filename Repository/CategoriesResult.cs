@@ -219,6 +219,38 @@ namespace Repository
                 return result;
             }
         }
+        public static Result GetCategoriesByName(string name)
+        {
+            Result result = new Result();
+            List<TagsResult> catResult = new List<TagsResult>();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    var repResult = (from r in context.Categories
+                                     where r.Name.StartsWith(name)
+                                     select r);
+                    List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
+
+                    for(int i=0; i<categoryList.Count; i++)
+                    {
+                        TagsResult cat = new TagsResult();
+                        cat.text = categoryList[i].Name;
+                        cat.Id = categoryList[i].Id;
+                        catResult.Add(cat);
+                    }
+                    result.ErrorCode = 0;
+                    result.Data = catResult;
+                    return result;
+                }
+            }
+            catch (Exception e)
+            {
+                result.ErrorCode = 1;
+                result.ErrorMsg = "נפילה ב GetCategoriesByName";
+                return result;
+            }
+        }
         public static Result GetAllActiveCategories()
         {
             Result result = new Result();
@@ -316,7 +348,6 @@ namespace Repository
                 return result;
             }
         }
-
         public static Result UpadateArticles_Category(string newcat, int id)
         {
             Result result = new Result();

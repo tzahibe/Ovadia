@@ -142,6 +142,8 @@
     <Content Include="Content\images\magenDavid.png" />
     <Content Include="Content\images\microphone.png" />
     <Content Include="Content\images\zmani-icon.png" />
+    <Content Include="Content\ng-tags-input.bootstrap.css" />
+    <Content Include="Content\ng-tags-input.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\textAngular.css" />
     <Content Include="Content\images\tfila-background.png" />
@@ -278,6 +280,7 @@
     <Content Include="Scripts\Plugins\ng-file-upload.min.js" />
     <Content Include="Scripts\Plugins\ng-image-gallery.min.css" />
     <Content Include="Scripts\Plugins\ng-image-gallery.min.js" />
+    <Content Include="Scripts\Plugins\ng-tags-input.js" />
     <Content Include="Scripts\Plugins\ng-upload.js" />
     <Content Include="Scripts\Plugins\ngClip.js" />
     <Content Include="Scripts\Plugins\ngDialog.min.js" />

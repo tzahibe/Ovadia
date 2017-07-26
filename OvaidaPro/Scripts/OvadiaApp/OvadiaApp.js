@@ -9,7 +9,8 @@
         'ngCookies',
         'ngAnimate',
         'thatisuday.ng-image-gallery',
-        'ui.bootstrap.carousel'
+        'ui.bootstrap.carousel',
+        'ngTagsInput'
     ]
 )
 

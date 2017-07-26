@@ -36,6 +36,12 @@
                     ng-hide="readOnly">
                 <option value="">בחר</option>
             </select>
+            <tags-input ng-model="tags" minTags="1" add-from-autocomplete-only="true" placeholder="הוסף תגית">
+                <auto-complete source="loadTags($query)"></auto-complete>
+            </tags-input>
+
+            <button ng-click="checkthis()">לחץ</button>
+
             <div ng-hide="readOnly">
                 האם לפרסם?
             </div>

@@ -108,5 +108,11 @@ namespace OvaidaPro.Controllers
             }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetCategoriesByName(string name)
+        {
+            Result resultToClient = CategoriesLogic.GetCategoriesByName(name);
+            return Json(resultToClient.Data, JsonRequestBehavior.AllowGet);
+        }
     }
 }

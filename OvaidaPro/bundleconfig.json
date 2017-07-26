@@ -21,6 +21,7 @@
       "Scripts/OvadiaApp/OvadiaApp.js",
       "Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.js",
       "Scripts/plugins/carousel.js",
+      "Scripts/plugins/ng-tags-input.js",
       "Scripts/Plugins/ngClip.js",
       "Scripts/OvadiaApp/OvadiaConfig.js",
       "Scripts/ovadiaapp/Admin/movies/home-movies/home-movies.js",

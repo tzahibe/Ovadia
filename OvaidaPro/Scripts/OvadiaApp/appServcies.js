@@ -268,6 +268,16 @@
         });
     }
 
+    this.GetCategoriesByName = function (name) {
+        return $http({
+            url: url + '/ArticleSer/GetAllArticles?name=' + name,
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data.Data;
+        });
+    }
+
     this.GetAllArticles = function () {
         return $http({
             url: url + '/ArticleSer/GetAllArticles',

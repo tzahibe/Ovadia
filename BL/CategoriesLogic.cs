@@ -40,6 +40,12 @@ namespace BL
             return CategoriesResult.isCategoryExist(catName);
 
         }
+
+        public static Result GetCategoriesByName(string name)
+        {
+            return CategoriesResult.GetCategoriesByName(name);
+
+        }
         public static Result AddSubCategory(string catName, int parentId, bool isActive)
         {
             return CategoriesResult.AddSubCategory(catName, parentId, isActive);

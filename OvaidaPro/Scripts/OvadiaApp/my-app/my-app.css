@@ -1,4 +1,8 @@
-﻿my-app .row {
+﻿tags-input .tags .input, tags-input .tags .tag-item {
+    float: right;
+}
+
+my-app .row {
     margin: 0;
     /*line-height: 0.5;*/
 }.navbar-default .navbar-nav > li > a {

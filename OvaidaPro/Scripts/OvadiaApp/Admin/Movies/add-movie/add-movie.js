@@ -4,6 +4,7 @@
         var self = this;
         $scope.isNewArticle = true;
         $scope.ArticleCat = null;
+        $scope.tags = null;
 
         self.init = function () {
             $scope.getAllCategories();
@@ -36,12 +37,14 @@
             $scope.Article.CategoryId = item.Id;
         }
 
+        
         $scope.getIframeSrc = function (link) {
             return link;
         }
 
         $scope.AddArticle = function () {
-            if (!movieForm.checkValidity()) {
+            
+            if (!movieForm.checkValidity() || $scope.tags == null) {
                 $scope.OpenPopup("שדות חובה לא מולאו!", "אנא מלא את השדות המסומנות באדום בערכים מתאימים");
                 return;
             }
@@ -108,7 +111,7 @@
         }
 
         $scope.EditArticle = function () {
-            if (!movieForm.checkValidity()) {
+            if (!movieForm.checkValidity() || $scope.tags == null) {
                 $scope.OpenPopup("שדות חובה לא מולאו!", "אנא מלא את השדות המסומנות באדום בערכים מתאימים");
                 return;
             }
@@ -144,10 +147,10 @@
         }
 
         $scope.RemoveArticleById = function () {
-            if (!movieForm.checkValidity()) {
-                $scope.OpenPopup("שדות חובה לא מולאו!", "אנא מלא את השדות המסומנות באדום בערכים מתאימים");
-                return;
-            }
+            //if (!movieForm.checkValidity() || $scope.tags == null) {
+            //    $scope.OpenPopup("שדות חובה לא מולאו!", "אנא מלא את השדות המסומנות באדום בערכים מתאימים");
+            //    return;
+            //}
             $scope.loader = true;
             $http.get("/ArticleSer/RemoveArticleById?articleId=" + $scope.Article.ArticleId)
                 .then(function (response) {
@@ -180,6 +183,13 @@
             });
         }
 
+        $scope.loadTags = function (query) {
+            return $http.get('/CategorySer/GetCategoriesByName?name=' + query);
+        }
+
+        $scope.checkthis = function () {
+            debugger;
+        }
         $scope.getAllCategories = function () {
             $scope.loader = true;
             if ($rootScope.categoriesData != null && $rootScope.categoriesData.length > 0 )
