@@ -27,7 +27,7 @@
             <div ng-hide="readOnly">
                 בחר קטגוריה
             </div>
-            <select name="categoryChoose" 
+            <!--<select name="categoryChoose" 
                     class="form-control parentCat hebrew"
                     ng-options="cat.Name for cat in $root.categoriesData"
                     ng-change="SelectChange(ArticleCat)"
@@ -35,12 +35,11 @@
                     required
                     ng-hide="readOnly">
                 <option value="">בחר</option>
-            </select>
+            </select>-->
+
             <tags-input ng-model="tags" minTags="1" add-from-autocomplete-only="true" placeholder="הוסף תגית">
                 <auto-complete source="loadTags($query)"></auto-complete>
             </tags-input>
-
-            <button ng-click="checkthis()">לחץ</button>
 
             <div ng-hide="readOnly">
                 האם לפרסם?
