@@ -301,15 +301,18 @@ namespace Repository
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
                     context.Art_Cat.RemoveRange(context.Art_Cat.Where(x => x.ArticleId == articleId));
-
-                    foreach(Bo.Art_Cat item in categoryList)
+                    if(categoryList != null)
                     {
-                        Art_Cat artcat = new Art_Cat();
-                        artcat.ArticleId = articleId;
-                        artcat.Text = item.text;
-                        artcat.CategoryId = item.CategoryId;
-                        context.Art_Cat.Add(artcat);
+                        foreach (Bo.Art_Cat item in categoryList)
+                        {
+                            Art_Cat artcat = new Art_Cat();
+                            artcat.ArticleId = articleId;
+                            artcat.Text = item.text;
+                            artcat.CategoryId = item.CategoryId;
+                            context.Art_Cat.Add(artcat);
+                        }
                     }
+
                     context.SaveChanges();
                     result.ErrorCode = 0; 
                 }

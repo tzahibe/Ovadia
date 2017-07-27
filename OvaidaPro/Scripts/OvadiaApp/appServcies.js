@@ -268,9 +268,9 @@
         });
     }
 
-    this.GetCategoriesByName = function (name) {
+    this.AutoCompleteGetCategoriesByName = function (name) {
         return $http({
-            url: url + '/ArticleSer/GetAllArticles?name=' + name,
+            url: url + '/ArticleSer/AutoCompleteGetCategoriesByName?name=' + name,
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {

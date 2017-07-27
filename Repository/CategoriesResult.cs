@@ -223,7 +223,7 @@ namespace Repository
             }
         }
         
-        public static Result GetCategoriesByName(string name)
+        public static Result AutoCompleteGetCategoriesByName(string name)
         {
             Result result = new Result();
             List<Bo.Art_Cat> catResult = new List<Bo.Art_Cat>();
@@ -251,7 +251,7 @@ namespace Repository
             catch (Exception e)
             {
                 result.ErrorCode = 1;
-                result.ErrorMsg = "נפילה ב GetCategoriesByName";
+                result.ErrorMsg = "נפילה ב AutoCompleteGetCategoriesByName";
                 return result;
             }
         } //for autocomplete

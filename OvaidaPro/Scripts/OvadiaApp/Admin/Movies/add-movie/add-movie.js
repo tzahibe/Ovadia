@@ -205,7 +205,7 @@
         }
 
         $scope.loadTags = function (query) {
-            return $http.get('/CategorySer/GetCategoriesByName?name=' + query);
+            return $http.get('/CategorySer/AutoCompleteGetCategoriesByName?name=' + query);
         }
 
         $scope.checkthis = function () {

@@ -109,9 +109,9 @@ namespace OvaidaPro.Controllers
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetCategoriesByName(string name)
+        public ActionResult AutoCompleteGetCategoriesByName(string name)
         {
-            Result resultToClient = CategoriesLogic.GetCategoriesByName(name);
+            Result resultToClient = CategoriesLogic.AutoCompleteGetCategoriesByName(name);
             return Json(resultToClient.Data, JsonRequestBehavior.AllowGet);
         }
     }

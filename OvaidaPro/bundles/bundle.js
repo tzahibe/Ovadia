@@ -20672,7 +20672,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
         }
 
         $scope.loadTags = function (query) {
-            return $http.get('/CategorySer/GetCategoriesByName?name=' + query);
+            return $http.get('/CategorySer/AutoCompleteGetCategoriesByName?name=' + query);
         }
 
         $scope.checkthis = function () {
@@ -21337,9 +21337,9 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         });
     }
 
-    this.GetCategoriesByName = function (name) {
+    this.AutoCompleteGetCategoriesByName = function (name) {
         return $http({
-            url: url + '/ArticleSer/GetAllArticles?name=' + name,
+            url: url + '/ArticleSer/AutoCompleteGetCategoriesByName?name=' + name,
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
