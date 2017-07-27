@@ -53,5 +53,12 @@ namespace BL
             result = ArticleResult.GetNewActiveArticles();
             return result;
         }
+
+        public static Result GetArtCat(int articleId)
+        {
+            Result result = new Result();
+            result = ArticleResult.GetArtCat(articleId);
+            return result;
+        }
     }
 }

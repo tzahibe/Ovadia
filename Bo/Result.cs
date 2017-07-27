@@ -12,9 +12,19 @@ namespace Bo
         public object Data { get; set; }
     }
 
-    public class TagsResult
+    public class Art_Cat
     {
-        public int Id { get; set; }
+        public int ArticleId { get; set; }
+        public int CategoryId { get; set; }
         public string text { get; set; }
+        public int Id { get; set; }
     }
+
+    //public class TagsResult
+    //{
+    //    public int Id { get; set; }
+    //    public string text { get; set; }
+    //}
+
+
 }

@@ -17,5 +17,6 @@ namespace Repository
         public Nullable<int> ArticleId { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public int Id { get; set; }
+        public string Text { get; set; }
     }
 }

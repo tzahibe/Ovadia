@@ -52,7 +52,12 @@ namespace OvaidaPro.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        
+        //public static Result GetArtCat(int articleId)
+        //{
+        //    Result result = ArticleLogic.GetArtCat(articleId);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
+
 
     }
 }

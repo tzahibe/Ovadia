@@ -222,10 +222,11 @@ namespace Repository
                 return result;
             }
         }
+        
         public static Result GetCategoriesByName(string name)
         {
             Result result = new Result();
-            List<TagsResult> catResult = new List<TagsResult>();
+            List<Bo.Art_Cat> catResult = new List<Bo.Art_Cat>();
             try
             {
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
@@ -237,9 +238,9 @@ namespace Repository
 
                     for(int i=0; i<categoryList.Count; i++)
                     {
-                        TagsResult cat = new TagsResult();
+                        Bo.Art_Cat cat = new Bo.Art_Cat();
                         cat.text = categoryList[i].Name;
-                        cat.Id = categoryList[i].Id;
+                        cat.CategoryId = categoryList[i].Id;
                         catResult.Add(cat);
                     }
                     result.ErrorCode = 0;
@@ -253,7 +254,7 @@ namespace Repository
                 result.ErrorMsg = "נפילה ב GetCategoriesByName";
                 return result;
             }
-        }
+        } //for autocomplete
         public static Result GetAllActiveCategories()
         {
             Result result = new Result();

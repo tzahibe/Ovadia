@@ -12,6 +12,7 @@
           <Property Name="ArticleId" Type="int" />
           <Property Name="CategoryId" Type="int" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Article">
           <Key>
@@ -240,6 +241,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="ArticleId" Type="Int32" />
           <Property Name="CategoryId" Type="Int32" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -348,6 +350,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySetMapping Name="Art_Cat">
             <EntityTypeMapping TypeName="DB_A25801_OvadiaModel.Art_Cat">
               <MappingFragment StoreEntitySet="Art_Cat">
+                <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />

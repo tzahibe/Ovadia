@@ -35,10 +35,9 @@ namespace Repository
                         //articleRep.Category = (Category)(from r in context.Category where r.id == articleRep.CategoryId select r).FirstOrDefault();
                         articleRep.Last_edit = DateTime.Now;
                         articleRep.DatePublish = DateTime.Now;
-
                         context.Article.Add(articleRep);
                         context.SaveChanges();
-                        result.ErrorCode = 0;
+                        result = UpdateArtCat(articleRep.ArticleId, article.CategoriesList);
                         result.Data = articleRep;
                         return result;
                     }
@@ -96,7 +95,7 @@ namespace Repository
                         entry.Property(e => e.Last_edit).IsModified = true;
                         //entry.Property(e => e.DatePublish).IsModified = true;
                         context.SaveChanges();
-                        result.ErrorCode = 0;
+                        result = UpdateArtCat(articleRep.ArticleId, article.CategoriesList);
                         result.Data = articleRep;
                         return result;
                     }
@@ -128,9 +127,11 @@ namespace Repository
                     if (repResult != null)
                     {
                         context.Article.Remove(repResult);
-                        context.SaveChanges();
-                        result.ErrorCode = 0;
-                        result.Data = true;
+                        result = RemoveArtCat(articleId);
+
+                        if (result.ErrorCode == 0)
+                            context.SaveChanges();
+                        
                         return result;
                     }
                     else
@@ -159,11 +160,6 @@ namespace Repository
                     Article repResult = (from r in context.Article where r.ArticleId == articleId select r).FirstOrDefault();
                     if (repResult != null)
                     {
-                        //if (repResult.Category != null)
-                        //{
-                        //    repResult.CategoryName = repResult.Category.Name;
-                        //    repResult.CategoryId = repResult.Category.id;
-                        //}
                         result.ErrorCode = 0;
                         result.Data = repResult;
                         return result;
@@ -195,13 +191,14 @@ namespace Repository
                     List<int> categoriesIds = (from r in context.Categories
                                                where (int)r.ParentId == categoryId
                                                select r.Id).ToList();
+
                     categoriesIds.Add(categoryId); //add parent cat
 
                     List<Article> repResult = (from r in context.Article
-                                               where categoriesIds.Contains((int)r.CategoryId)
+                                               join p in context.Art_Cat on r.ArticleId equals p.ArticleId
+                                               where categoriesIds.Contains((int)p.CategoryId)
                                                select r).Distinct().ToList();
 
-                   
                     if (repResult != null)
                     {
                         result.ErrorCode = 0;
@@ -292,6 +289,90 @@ namespace Repository
                 result.Data = false;
                 result.ErrorMsg = Consts.CODE_1_MSG;
                 Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+        }
+        //ArtCat
+        public static Result UpdateArtCat(int articleId, List<Bo.Art_Cat> categoryList)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    context.Art_Cat.RemoveRange(context.Art_Cat.Where(x => x.ArticleId == articleId));
+
+                    foreach(Bo.Art_Cat item in categoryList)
+                    {
+                        Art_Cat artcat = new Art_Cat();
+                        artcat.ArticleId = articleId;
+                        artcat.Text = item.text;
+                        artcat.CategoryId = item.CategoryId;
+                        context.Art_Cat.Add(artcat);
+                    }
+                    context.SaveChanges();
+                    result.ErrorCode = 0; 
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+
+            return result;
+        }
+        public static Result RemoveArtCat(int articleId)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    context.Art_Cat.RemoveRange(context.Art_Cat.Where(x => x.ArticleId == articleId));
+                    context.SaveChanges();
+                    result.ErrorCode = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+
+            return result;
+        }
+        public static Result GetArtCat(int articleId)
+        {
+            Result result = new Result();
+
+            using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+            {
+                List<Art_Cat> list = new List<Art_Cat>();
+                try
+                {
+                    list = (from r in context.Art_Cat
+                            where r.ArticleId == articleId
+                            select r).ToList<Art_Cat>();
+
+                    result.ErrorCode = 0;
+                    result.Data = list;
+               
+                }
+                catch(Exception ex)
+                {
+                    result.Data = false;
+                    result.ErrorMsg = Consts.CODE_1_MSG;
+                    Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                    return result;
+                }
+
                 return result;
             }
         }
