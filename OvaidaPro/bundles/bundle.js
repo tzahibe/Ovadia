@@ -20372,6 +20372,7 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesData = data.Data;
+                    console.log(data.Data);
                     $rootScope.categoriesData.unshift({Name:"הכל"});
                 }
                 else {
@@ -20387,6 +20388,7 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
         }
 
         $scope.goToArticle = function (article) {
+            debugger;
             if ($scope.categorySelected.Name == "הכל") {
                 var cat = {
                     Name: article.CategoryName,
@@ -20412,6 +20414,7 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
         $scope.chooseCategory = function (category) {
             if (category.Name == "הכל") {
                 appServices.GetAllArticles().then(function (data) {
+                    console.log(data);
                     if (data.ErrorCode == 0) {
                         var index = $scope.getIndexFromValue(category)
                         if (index != null) {
@@ -20569,6 +20572,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                 }
                 if (ErrorCode == 0) {
                     $scope.Article = data.Data;
+                    $scope.tags = $scope.Article.CategoriesList;
                     $scope.Article.YoutubeLink1 = $scope.Article.Video1 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video1 : null;
                     $scope.Article.YoutubeLink2 = $scope.Article.Video2 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
                     $scope.Article.YoutubeLink3 = $scope.Article.Video3 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
@@ -20596,6 +20600,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             }
 
             angular.forEach($scope.tags, function (value, key) {
+                debugger;
                 $scope.Article.CategoriesList.push({
                     ArticleId: $scope.Article.ArticleId,
                     CategoryId: value.CategoryId,

@@ -32,6 +32,18 @@ namespace BL
         {
             Result result = new Result();
             result = ArticleResult.GetArticleById(articleId);
+
+            if (result.ErrorCode == 0 && result.Data != null)
+            {
+                Bo.Article article = (Bo.Article)result.Data;
+                result = GetArtCat(articleId);
+                if (result.ErrorCode == 0 && result.Data != null)
+                {
+                    article.CategoriesList = (List<Bo.Art_Cat>)result.Data;
+                }
+                result.Data = article;
+            }
+
             return result;
         }
         public static Result GetAllArticles()
@@ -46,19 +58,18 @@ namespace BL
             result = ArticleResult.GetArticlesByCategoryId(categoryId);
             return result;
         }
-
         public static Result GetNewActiveArticles()
         {
             Result result = new Result();
             result = ArticleResult.GetNewActiveArticles();
             return result;
         }
-
         public static Result GetArtCat(int articleId)
         {
             Result result = new Result();
             result = ArticleResult.GetArtCat(articleId);
             return result;
         }
+
     }
 }

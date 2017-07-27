@@ -30,6 +30,7 @@
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesData = data.Data;
+                    console.log(data.Data);
                     $rootScope.categoriesData.unshift({Name:"הכל"});
                 }
                 else {
@@ -45,6 +46,7 @@
         }
 
         $scope.goToArticle = function (article) {
+            debugger;
             if ($scope.categorySelected.Name == "הכל") {
                 var cat = {
                     Name: article.CategoryName,
@@ -70,6 +72,7 @@
         $scope.chooseCategory = function (category) {
             if (category.Name == "הכל") {
                 appServices.GetAllArticles().then(function (data) {
+                    console.log(data);
                     if (data.ErrorCode == 0) {
                         var index = $scope.getIndexFromValue(category)
                         if (index != null) {

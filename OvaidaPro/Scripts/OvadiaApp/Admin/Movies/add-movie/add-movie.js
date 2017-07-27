@@ -102,6 +102,7 @@
                 }
                 if (ErrorCode == 0) {
                     $scope.Article = data.Data;
+                    $scope.tags = $scope.Article.CategoriesList;
                     $scope.Article.YoutubeLink1 = $scope.Article.Video1 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video1 : null;
                     $scope.Article.YoutubeLink2 = $scope.Article.Video2 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
                     $scope.Article.YoutubeLink3 = $scope.Article.Video3 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
@@ -129,6 +130,7 @@
             }
 
             angular.forEach($scope.tags, function (value, key) {
+                debugger;
                 $scope.Article.CategoriesList.push({
                     ArticleId: $scope.Article.ArticleId,
                     CategoryId: value.CategoryId,

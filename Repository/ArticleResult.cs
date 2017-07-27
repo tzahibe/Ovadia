@@ -157,11 +157,27 @@ namespace Repository
             {
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
-                    Article repResult = (from r in context.Article where r.ArticleId == articleId select r).FirstOrDefault();
+                    Article repResult = (from r in context.Article
+                                         where r.ArticleId == articleId select r).FirstOrDefault();
                     if (repResult != null)
                     {
+                        
+                        Bo.Article boArt = new Bo.Article();
+                        boArt.Title = repResult.Title;
+                        boArt.ArticleId = repResult.ArticleId;
+                        boArt.ProfilePic = repResult.ProfilePic;
+                        boArt.CategoryId = repResult.CategoryId == null ? 0 : (int)repResult.CategoryId;
+                        boArt.CategoryName = repResult.CategoryName;
+                        boArt.Publish = repResult.Publish == null ? 0 : (int)repResult.Publish;
+                        boArt.Body = repResult.Body;
+                        boArt.Video1 = repResult.Video1;
+                        boArt.Video2 = repResult.Video2;
+                        boArt.Video3 = repResult.Video3;
+                        boArt.Last_edit = repResult.Last_edit == null ? DateTime.Now : (DateTime)repResult.Last_edit;
+                        boArt.DatePublish = repResult.DatePublish == null ? DateTime.Now : (DateTime)repResult.DatePublish;
+                        boArt.CategoriesList = null;
                         result.ErrorCode = 0;
-                        result.Data = repResult;
+                        result.Data = boArt;
                         return result;
                     }
                     else
@@ -187,7 +203,7 @@ namespace Repository
             {
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
-
+                    List<Bo.Article> articlesListBo = new List<Bo.Article>();
                     List<int> categoriesIds = (from r in context.Categories
                                                where (int)r.ParentId == categoryId
                                                select r.Id).ToList();
@@ -199,10 +215,29 @@ namespace Repository
                                                where categoriesIds.Contains((int)p.CategoryId)
                                                select r).Distinct().ToList();
 
+
                     if (repResult != null)
                     {
+                        foreach(Article articleRep in repResult)
+                        {
+                            Bo.Article boArt = new Bo.Article();
+                            boArt.Title = articleRep.Title;
+                            boArt.ArticleId = articleRep.ArticleId;
+                            boArt.ProfilePic = articleRep.ProfilePic;
+                            boArt.CategoryId = articleRep.CategoryId == null ? 0 :(int)articleRep.CategoryId;
+                            boArt.CategoryName = articleRep.CategoryName;
+                            boArt.Publish = articleRep.Publish == null? 0 : (int)articleRep.Publish;
+                            boArt.Body = articleRep.Body;
+                            boArt.Video1 = articleRep.Video1;
+                            boArt.Video2 = articleRep.Video2;
+                            boArt.Video3 = articleRep.Video3;
+                            boArt.Last_edit = articleRep.Last_edit == null? DateTime.Now : (DateTime)articleRep.Last_edit;
+                            boArt.DatePublish = articleRep.DatePublish == null ? DateTime.Now : (DateTime)articleRep.DatePublish;
+                            boArt.CategoriesList = null;
+                            articlesListBo.Add(boArt);
+                        }
                         result.ErrorCode = 0;
-                        result.Data = repResult;
+                        result.Data = articlesListBo;
                         return result;
                     }
                     else
@@ -301,7 +336,8 @@ namespace Repository
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
                     context.Art_Cat.RemoveRange(context.Art_Cat.Where(x => x.ArticleId == articleId));
-                    if(categoryList != null)
+
+                    if (categoryList != null)
                     {
                         foreach (Bo.Art_Cat item in categoryList)
                         {
@@ -309,11 +345,18 @@ namespace Repository
                             artcat.ArticleId = articleId;
                             artcat.Text = item.text;
                             artcat.CategoryId = item.CategoryId;
-                            context.Art_Cat.Add(artcat);
+                            List<Art_Cat> isExist = (from r in context.Art_Cat
+                                                     where r.ArticleId == artcat.ArticleId
+                                                     && r.CategoryId == artcat.CategoryId
+                                                     select r).ToList<Art_Cat>();
+                            if (isExist != null && isExist.Count == 0)
+                            {
+                                context.Art_Cat.Add(artcat);
+                                context.SaveChanges();
+                            }
                         }
                     }
 
-                    context.SaveChanges();
                     result.ErrorCode = 0; 
                 }
             }
@@ -365,7 +408,23 @@ namespace Repository
                             select r).ToList<Art_Cat>();
 
                     result.ErrorCode = 0;
-                    result.Data = list;
+                    if(list.Count == 0)
+                    {
+                        result.Data = null;
+                    }
+                    else
+                    {
+                        List<Bo.Art_Cat> boList = new List<Bo.Art_Cat>();
+                        foreach(Art_Cat artcat in list)
+                        {
+                            Bo.Art_Cat catBo = new Bo.Art_Cat();
+                            catBo.ArticleId = artcat.ArticleId == null? 0 : (int)artcat.ArticleId;
+                            catBo.CategoryId = artcat.CategoryId == null ? 0 : (int)artcat.CategoryId;
+                            catBo.text = artcat.Text;
+                            boList.Add(catBo);
+                        }
+                        result.Data = boList;
+                    }
                
                 }
                 catch(Exception ex)

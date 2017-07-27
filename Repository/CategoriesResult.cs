@@ -232,7 +232,7 @@ namespace Repository
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
                     var repResult = (from r in context.Categories
-                                     where r.Name.StartsWith(name)
+                                     where r.Name.Contains(name)
                                      select r);
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
 
