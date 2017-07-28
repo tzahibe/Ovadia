@@ -130,7 +130,6 @@
             }
 
             angular.forEach($scope.tags, function (value, key) {
-                debugger;
                 $scope.Article.CategoriesList.push({
                     ArticleId: $scope.Article.ArticleId,
                     CategoryId: value.CategoryId,
@@ -164,6 +163,7 @@
 
         $scope.NewArticle = function () {
             $scope.isNewArticle = true;
+            $scope.tags = null;
             $scope.articleId = null;
             $scope.Article = {};
             $scope.ArticleCat = "";

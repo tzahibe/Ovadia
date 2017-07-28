@@ -40,17 +40,25 @@
             });
         }
 
-        $scope.Rotate90 = function (fname) {
+        $scope.Rotate90 = function (f) {
             $scope.ver++;
-            $scope.loader = true;
-            $http.get("/Uploads/Rotate90?fname=" + fname).then(function (response) {
-                if (response.ErrorCode == 0) {
-                    //
+            //$scope.loader = true;
+            $http.get("/Uploads/Rotate90?fname=" + f.Name).then(function (response) {
+                if (response.data.ErrorCode == 0) {
+                    if (f.degree == null) {
+                        f.degree = 0;
+                    }
+                    f.degree += 90;
+                    if (f.degree == 360) {
+                        f.degree == 0;
+                    }
+                    f.style = '-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);';
+                    //$('#' + f.Name).attr("style",'-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);');
                 }
                 else {
                     //
                 }
-                $scope.loader = false;
+                //$scope.loader = false;
             });
         }
 

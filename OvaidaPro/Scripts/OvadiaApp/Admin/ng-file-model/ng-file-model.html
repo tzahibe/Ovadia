@@ -20,7 +20,7 @@
 
                     <div class="imgItems-li" ng-repeat="f in results" style="font:smaller">
                         <div class="buttonsContainerArt">
-                            <img class="imgClass" ng-src="/Uploads/sm_{{f.Name}}?ver={{ver}}" />
+                            <img id="{{f.Name}}" class="imgClass" ng-src="/Uploads/sm_{{f.Name}}" ng-style="{{f.style}}" /> <!--?ver=ver-->
                             <button class="btn btn-default coppy-button" clip-copy="CoppyImageUrl(f.Name)">
                                 העתק כתובת תמונה
                             </button>
@@ -28,8 +28,8 @@
                                 <span style="width:{{f.progress}}%"
                                       ng-bind="f.progress + '%'"></span>
                             </span>
-                            <button class="btn btn-danger removeButton" ng-click="DeleteFile(f.Name);">הסר</button>
-                            <i class="fa fa-repeat rotateIcon" aria-hidden="true" ng-click="Rotate90(f.Name);"></i>
+                            <button type="button" class="btn btn-danger removeButton" ng-click="DeleteFile(f.Name);">הסר</button>
+                            <i class="fa fa-repeat rotateIcon" aria-hidden="true"  ng-click="Rotate90(f);"></i>
                         </div>
                     </div>
 

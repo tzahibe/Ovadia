@@ -18292,6 +18292,23 @@ var OvadiaApp = angular.module('OvadiaApp',
     }]);
 
 
+OvadiaApp.directive('rotate', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            scope.$watch(attrs.degrees, function (rotateDegrees) {
+                console.log(rotateDegrees);
+                var r = 'rotate(' + rotateDegrees + 'deg)';
+                element.css({
+                    '-moz-transform': r,
+                    '-webkit-transform': r,
+                    '-o-transform': r,
+                    '-ms-transform': r
+                });
+            });
+        }
+    }
+});
 OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ngDialog',
     function ($scope, $http, $timeout, Upload, ngDialog) {
         var self = this;
@@ -18334,17 +18351,25 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
             });
         }
 
-        $scope.Rotate90 = function (fname) {
+        $scope.Rotate90 = function (f) {
             $scope.ver++;
-            $scope.loader = true;
-            $http.get("/Uploads/Rotate90?fname=" + fname).then(function (response) {
-                if (response.ErrorCode == 0) {
-                    //
+            //$scope.loader = true;
+            $http.get("/Uploads/Rotate90?fname=" + f.Name).then(function (response) {
+                if (response.data.ErrorCode == 0) {
+                    if (f.degree == null) {
+                        f.degree = 0;
+                    }
+                    f.degree += 90;
+                    if (f.degree == 360) {
+                        f.degree == 0;
+                    }
+                    f.style = '-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);';
+                    //$('#' + f.Name).attr("style",'-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);');
                 }
                 else {
                     //
                 }
-                $scope.loader = false;
+                //$scope.loader = false;
             });
         }
 
@@ -20600,7 +20625,6 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             }
 
             angular.forEach($scope.tags, function (value, key) {
-                debugger;
                 $scope.Article.CategoriesList.push({
                     ArticleId: $scope.Article.ArticleId,
                     CategoryId: value.CategoryId,
@@ -20634,6 +20658,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
 
         $scope.NewArticle = function () {
             $scope.isNewArticle = true;
+            $scope.tags = null;
             $scope.articleId = null;
             $scope.Article = {};
             $scope.ArticleCat = "";

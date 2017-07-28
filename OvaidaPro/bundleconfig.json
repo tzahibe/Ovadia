@@ -19,6 +19,7 @@
       "Scripts/Plugins/angular-ui-router.min.js",
       "Scripts/Plugins/ngDialog.min.js",
       "Scripts/OvadiaApp/OvadiaApp.js",
+      "Scripts/directives/rotate-degree/rotate-degree.js",
       "Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.js",
       "Scripts/plugins/carousel.js",
       "Scripts/plugins/ng-tags-input.js",
