@@ -7,12 +7,17 @@
         $scope.Article = {};
         $scope.ArticleCat = null;
 
+        $scope.select2Options = {
+            allowClear: true
+        };
+
         self.init = function () {
             $scope.getAllCategories();
-            if ($stateParams.category!= null) {
+            if ($stateParams.category != null) {
                 $scope.categorySelected = $stateParams.category;
                 $scope.chooseCategory($scope.categorySelected); 
             }
+
         }
 
         $scope.getIndexFromValue = function (obj) {
@@ -38,11 +43,16 @@
                 }
 
                 $scope.loader = false;
+
             });
         }
 
         $scope.getIframeSrc = function (link) {
             return link;
+        }
+
+        $scope.loadTags = function (query) {
+            return $http.get('/CategorySer/AutoCompleteGetCategoriesByName?name=' + query);
         }
 
         $scope.goToArticle = function (article) {
@@ -71,6 +81,7 @@
         }
 
         $scope.chooseCategory = function (category) {
+            
             if (category.Name == "הכל") {
                 appServices.GetAllArticles().then(function (data) {
                     console.log(data);
@@ -91,6 +102,8 @@
                     }
                     $scope.categorySelected = category;
                 });
+
+
                 return;
             }
 

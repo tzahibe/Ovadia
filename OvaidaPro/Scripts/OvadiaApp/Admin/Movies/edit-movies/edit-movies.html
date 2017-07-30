@@ -1,4 +1,5 @@
 ﻿<link href="/Scripts/OvadiaApp/Admin/Movies/edit-movies/edit-movies.css" rel="stylesheet" />
+<link href="/Content/select2.min.css" rel="stylesheet" />
 <br />
 <div class="">
     <div class="BlockHead">
@@ -8,6 +9,7 @@
                 <div ng-hide="readOnly">
                     בחר קטגוריה
                 </div>
+               
                 <!--<select name="categoryChoose"
                         id="categoryIdElem"
                         class="form-control parentCat hebrew"
@@ -17,7 +19,8 @@
                     <option value="">בחר</option>
                 </select>-->
 
-                <select name="categoryChoose"
+          <!--
+                    <select name="categoryChoose"
                         id="categoryIdElem"
                         class="form-control parentCat hebrew"
                         ng-change="chooseCategory(ArticleCat)"
@@ -26,11 +29,21 @@
                     <!--<option ng-repeat="cat in categoriesData" value="{{cat.Id}}"
                             ng-selected="{{ArticleCat == cat.Id}}">
                         {{cat.Name}}
-                    </option>-->
+                    </option>
                     <option value="">בחר</option>
-                </select>
-
+                </select>-->
+                <div class="col-xs-12 select2con">
+                    <select id="myselect" class="form-control"
+                             ng-change="chooseCategory(select2)"
+                            ui-select2 ng-model="select2" data-placeholder="בחר קטגוריה" style="width:100% !important">
+                        <option value=""></option>
+                        <option ng-repeat="cat in $root.categoriesData" ng-value="{{cat}}">{{cat.Name}}</option>
+                    </select>
+                </div>
+                <h3 ng-bind="categorySelected.Name" style="font-weight:bold; color:#294d77;
+                 padding-top:15px; padding-bottom:5px"></h3>
                 
+
                 <div class="articles-list" ng-repeat="article in Articles ">
                     <div class="article-box col-md-4_5 col-xs-12" ng-click="goToArticle(article)"
                         ng-style="{{myStyle(article)}}">

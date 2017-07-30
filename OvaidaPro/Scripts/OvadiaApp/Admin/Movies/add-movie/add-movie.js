@@ -205,11 +205,7 @@
                 scope: $scope
             });
         }
-
-        $scope.loadTags = function (query) {
-            return $http.get('/CategorySer/AutoCompleteGetCategoriesByName?name=' + query);
-        }
-
+      
         $scope.checkthis = function () {
             debugger;
         }

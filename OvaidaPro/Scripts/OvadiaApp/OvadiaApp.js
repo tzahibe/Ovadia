@@ -10,7 +10,8 @@
         'ngAnimate',
         'thatisuday.ng-image-gallery',
         'ui.bootstrap.carousel',
-        'ngTagsInput'
+        'ngTagsInput',
+        'ui.select2'
     ]
 )
 

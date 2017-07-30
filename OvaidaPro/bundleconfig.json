@@ -9,6 +9,8 @@
       "Scripts/Plugins/textAngular/textAngular-sanitize.min.js",
       "Scripts/Plugins/angular-animate.min.js",
       "Scripts/plugins/ng-image-gallery.min.js",
+      "Scripts/plugins/select2.min.js",
+      "Scripts/plugins/select2.js",
       "Scripts/Plugins/textAngular/textAngular.min.js",
       "Scripts/Plugins/textAngular/textAngular.umd.js",
       "Scripts/Plugins/angular-cookies.min.js",
