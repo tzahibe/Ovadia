@@ -20394,7 +20394,6 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
         }
 
         $scope.getAllCategories = function () {
-            debugger;
             $scope.loader = true;
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
@@ -20415,7 +20414,6 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
         }
 
         $scope.goToArticle = function (article) {
-            debugger;
             if ($scope.ArticleCat.Name == "הכל") {
                 var cat = {
                     Name: $scope.ArticleCat.Name,

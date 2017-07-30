@@ -26,7 +26,6 @@
         }
 
         $scope.getAllCategories = function () {
-            debugger;
             $scope.loader = true;
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
@@ -47,7 +46,6 @@
         }
 
         $scope.goToArticle = function (article) {
-            debugger;
             if ($scope.ArticleCat.Name == "הכל") {
                 var cat = {
                     Name: $scope.ArticleCat.Name,
