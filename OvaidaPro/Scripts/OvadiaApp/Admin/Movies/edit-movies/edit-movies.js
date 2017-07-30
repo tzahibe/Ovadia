@@ -56,9 +56,9 @@
         }
 
         $scope.goToArticle = function (article) {
-            if ($scope.ArticleCat.Name == "הכל") {
+            if ($scope.select2.Name == "הכל") {
                 var cat = {
-                    Name: $scope.ArticleCat.Name,
+                    Name: $scope.select2.Name,
                     Id: null
                 }
                 $state.go("admin.add-movie", { articleId: article.ArticleId, category: cat });
@@ -101,6 +101,8 @@
                         $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                     }
                     $scope.categorySelected = category;
+                    $scope.select2 = category;
+
                 });
 
 

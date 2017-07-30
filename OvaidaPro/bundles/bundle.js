@@ -20667,9 +20667,9 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
         }
 
         $scope.goToArticle = function (article) {
-            if ($scope.ArticleCat.Name == "הכל") {
+            if ($scope.select2.Name == "הכל") {
                 var cat = {
-                    Name: $scope.ArticleCat.Name,
+                    Name: $scope.select2.Name,
                     Id: null
                 }
                 $state.go("admin.add-movie", { articleId: article.ArticleId, category: cat });
@@ -20712,6 +20712,8 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
                         $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                     }
                     $scope.categorySelected = category;
+                    $scope.select2 = category;
+
                 });
 
 
@@ -20862,7 +20864,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                     var index = $scope.getIndexFromValue($scope.Article);
 
                     if (index != null) {
-                        $scope.ArticleCat = $rootScope.categoriesData[index];
+                        $scope.select2 = $rootScope.categoriesData[index];
                     }
                     $scope.isNewArticle = false;
                 }
@@ -20920,6 +20922,10 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             $scope.articleId = null;
             $scope.Article = {};
             $scope.ArticleCat = "";
+        }
+
+        $scope.loadTags = function (query) {
+            return $http.get('/CategorySer/AutoCompleteGetCategoriesByName?name=' + query);
         }
 
         $scope.RemoveArticleById = function () {

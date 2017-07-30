@@ -109,7 +109,7 @@
                     var index = $scope.getIndexFromValue($scope.Article);
 
                     if (index != null) {
-                        $scope.ArticleCat = $rootScope.categoriesData[index];
+                        $scope.select2 = $rootScope.categoriesData[index];
                     }
                     $scope.isNewArticle = false;
                 }
@@ -167,6 +167,10 @@
             $scope.articleId = null;
             $scope.Article = {};
             $scope.ArticleCat = "";
+        }
+
+        $scope.loadTags = function (query) {
+            return $http.get('/CategorySer/AutoCompleteGetCategoriesByName?name=' + query);
         }
 
         $scope.RemoveArticleById = function () {
