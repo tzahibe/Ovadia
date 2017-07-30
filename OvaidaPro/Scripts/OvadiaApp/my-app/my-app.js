@@ -62,11 +62,11 @@
             }
 
             if (window.scrollY > 10) {
-                $('.logo_img').hide(200);
+                $('.logo1').hide(200); //.attr("style", "padding-top: 10px;")
                 $('header-component .amburger');//.attr("style","padding-top:14px")
             }
             else {
-                $('.logo_img').show(200).attr("padding-top", "0");
+                $('.logo1').show(200).attr("padding-top", "0");
                 $('header-component .amburger');//.attr("style", "padding-top:0")
             }
             

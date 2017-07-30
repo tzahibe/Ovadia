@@ -48,6 +48,8 @@ header-component .navbar-default .navbar-nav li a.active {
     }
 
 header-component .amburger {
+    padding-top:10px;
+    padding-bottom:10px;
     text-align: center;
     /*padding-bottom: 14px;*/
     padding-left:0%;

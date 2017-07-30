@@ -86,11 +86,13 @@ div, p, h1, h2, h3, h4, h5, h6, span {
     width: 148px;
     height: 175px;
 }
-
-    .buttonsContainerArt button {
-        margin-top: 1px;
-        margin-left: 16px;
-    }
+.scrollable {
+    padding-top: 35px;
+} 
+buttonsContainerArt button {
+    margin-top: 1px;
+    margin-left: 16px;
+}
 .box-title {
     color: #686868;
     font-weight: bold;
@@ -176,8 +178,11 @@ padding:0;
 
 
 @media screen and (min-width: 768px) {
-    .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9{
-        float:right;
+    .scrollable{
+        padding:0;
+    }
+    .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+        float: right;
     }
 }
 

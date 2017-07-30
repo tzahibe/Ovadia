@@ -29,7 +29,7 @@
         }
 
         $scope.backToCategory = function () {
-            $state.go("admin.edit-movies", { category: $scope.category});
+            $state.go("admin.edit-movies", { category: $scope.category });
         }
 
         $scope.SelectChange = function (item) {

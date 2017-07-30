@@ -18314,6 +18314,7 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
         var self = this;
         $scope.results = [];
         $scope.ver = 1001001;
+
         self.init = function () {
             $scope.ShowFiles();
         }
@@ -20393,6 +20394,7 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
         }
 
         $scope.getAllCategories = function () {
+            debugger;
             $scope.loader = true;
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
@@ -20414,15 +20416,17 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
 
         $scope.goToArticle = function (article) {
             debugger;
-            if ($scope.categorySelected.Name == "הכל") {
+            if ($scope.ArticleCat.Name == "הכל") {
                 var cat = {
-                    Name: article.CategoryName,
-                    Id: article.CategoryId
+                    Name: $scope.ArticleCat.Name,
+                    Id: null
                 }
                 $state.go("admin.add-movie", { articleId: article.ArticleId, category: cat });
             }
-            else
+            else  {
                 $state.go("admin.add-movie", { articleId: article.ArticleId, category: $scope.categorySelected });
+
+            }
         }
 
         $scope.myStyle = function (article) {
@@ -20524,7 +20528,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
         }
 
         $scope.backToCategory = function () {
-            $state.go("admin.edit-movies", { category: $scope.category});
+            $state.go("admin.edit-movies", { category: $scope.category });
         }
 
         $scope.SelectChange = function (item) {
@@ -20823,11 +20827,11 @@ OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices','UserAccount',
             }
 
             if (window.scrollY > 10) {
-                $('.logo_img').hide(200);
+                $('.logo1').hide(200); //.attr("style", "padding-top: 10px;")
                 $('header-component .amburger');//.attr("style","padding-top:14px")
             }
             else {
-                $('.logo_img').show(200).attr("padding-top", "0");
+                $('.logo1').show(200).attr("padding-top", "0");
                 $('header-component .amburger');//.attr("style", "padding-top:0")
             }
             

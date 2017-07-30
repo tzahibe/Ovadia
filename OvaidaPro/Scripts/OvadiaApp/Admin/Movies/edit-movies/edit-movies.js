@@ -26,6 +26,7 @@
         }
 
         $scope.getAllCategories = function () {
+            debugger;
             $scope.loader = true;
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
@@ -47,15 +48,17 @@
 
         $scope.goToArticle = function (article) {
             debugger;
-            if ($scope.categorySelected.Name == "הכל") {
+            if ($scope.ArticleCat.Name == "הכל") {
                 var cat = {
-                    Name: article.CategoryName,
-                    Id: article.CategoryId
+                    Name: $scope.ArticleCat.Name,
+                    Id: null
                 }
                 $state.go("admin.add-movie", { articleId: article.ArticleId, category: cat });
             }
-            else
+            else  {
                 $state.go("admin.add-movie", { articleId: article.ArticleId, category: $scope.categorySelected });
+
+            }
         }
 
         $scope.myStyle = function (article) {
