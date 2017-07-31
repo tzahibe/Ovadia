@@ -18556,7 +18556,7 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
     function ($scope, $http, $timeout, Upload, ngDialog) {
         var self = this;
         $scope.results = [];
-        $scope.ver = 1001001;
+        $scope.ver = Math.random() * 99999;
 
         self.init = function () {
             $scope.ShowFiles();
@@ -18593,6 +18593,11 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
                 }
                 $scope.loader = false;
             });
+        }
+
+        $scope.getImageUrl = function (file) {
+            file.imageUrl = "/Uploads/sm_" + file.Name + "?ver=" + $scope.ver;
+            return file.imageUrl;
         }
 
         $scope.Rotate90 = function (f) {
@@ -18686,7 +18691,7 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
                 }
             });
         }
-
+       
         self.init();
 
     }]);
