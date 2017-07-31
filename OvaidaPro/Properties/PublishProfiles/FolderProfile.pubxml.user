@@ -257,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bundles/bundle.js">
-      <publishTime>07/30/2017 15:14:16</publishTime>
+      <publishTime>07/31/2017 10:52:51</publishTime>
     </File>
     <File Include="bundles/bundle.min.js">
       <publishTime>07/12/2017 00:06:28</publishTime>
@@ -890,10 +890,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/24/2017 10:03:11</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.html">
-      <publishTime>07/29/2017 21:53:54</publishTime>
+      <publishTime>07/31/2017 10:50:37</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.js">
-      <publishTime>07/30/2017 11:37:09</publishTime>
+      <publishTime>07/31/2017 10:53:30</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/odot-admin/odot-admin.css">
       <publishTime>07/12/2017 00:04:52</publishTime>

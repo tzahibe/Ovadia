@@ -18,7 +18,7 @@ namespace Repository
                     Repository.ErrorLog errorLog = new ErrorLog();
                     errorLog.Class = className;
                     errorLog.ErrorMsg = stack;
-                    //errorLog.IP = error.IP;
+                    errorLog.IP = Common.LocalIPAddress().ToString();
                     //errorLog.Site = error.Site;
                     errorLog.Source = source;
                     errorLog.Time = time;
@@ -36,6 +36,7 @@ namespace Repository
             return false;
 
         }
+
 
     }
 }

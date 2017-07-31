@@ -68,6 +68,7 @@
       <DependentUpon>OvadiaDataP.tt</DependentUpon>
     </Compile>
     <Compile Include="CategoriesResult.cs" />
+    <Compile Include="Common.cs" />
     <Compile Include="db_Event.cs">
       <DependentUpon>OvadiaDataP.tt</DependentUpon>
     </Compile>

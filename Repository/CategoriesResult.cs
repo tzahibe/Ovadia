@@ -52,11 +52,12 @@ namespace Repository
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                result.Data = false;
+                result.Exception = ex.ToString();
                 result.ErrorCode = 1;
-                result.ErrorMsg = "נפילה ב RenameCategoryName";
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
         }
@@ -96,11 +97,12 @@ namespace Repository
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                result.Data = false;
+                result.Exception = ex.ToString();
                 result.ErrorCode = 1;
-                result.ErrorMsg = "נפילה ב AddCategory";
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
         }
@@ -144,11 +146,12 @@ namespace Repository
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                result.Data = false;
-                result.ErrorCode = 1;
-                result.ErrorMsg = "נפילה ב RemoveCategoryByName";
+                result.Exception = ex.ToString();
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
         }
@@ -167,10 +170,12 @@ namespace Repository
                     return result;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                result.ErrorCode = 1;
-                result.ErrorMsg = "נפילה ב GetAllCategories";
+                result.Exception = ex.ToString();
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
 
@@ -190,10 +195,12 @@ namespace Repository
                     return result;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                result.ErrorCode = 1;
-                result.ErrorMsg = "נפילה ב GetAllCategories";
+                result.Exception = ex.ToString();
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
         }
@@ -215,14 +222,15 @@ namespace Repository
                     return result;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                result.ErrorCode = 1;
-                result.ErrorMsg = "נפילה ב GetAllCategories";
+                result.Exception = ex.ToString();
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
         }
-        
         public static Result AutoCompleteGetCategoriesByName(string name)
         {
             Result result = new Result();
@@ -248,10 +256,12 @@ namespace Repository
                     return result;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                result.ErrorCode = 1;
-                result.ErrorMsg = "נפילה ב AutoCompleteGetCategoriesByName";
+                result.Exception = ex.ToString();
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
         } //for autocomplete
@@ -270,10 +280,12 @@ namespace Repository
                     return result;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                result.ErrorCode = 1;
-                result.ErrorMsg = "נפילה ב GetAllCategories";
+                result.Exception = ex.ToString();
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
         }
@@ -299,10 +311,12 @@ namespace Repository
                     return result;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                result.ErrorMsg = "Expetion on isCategoryExist function";
-                result.ErrorCode = 1;
+                result.Exception = ex.ToString();
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
 
@@ -344,11 +358,12 @@ namespace Repository
                     return result;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                result.ErrorCode = 1;
-                result.ErrorMsg = "נפילה ב AddSubCategory Repository";
-                result.Data = false;
+                result.Exception = ex.ToString();
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
         }
@@ -374,7 +389,10 @@ namespace Repository
             }
             catch (Exception ex)
             {
+                result.Exception = ex.ToString();
                 result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
 
