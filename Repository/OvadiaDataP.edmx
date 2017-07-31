@@ -72,7 +72,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ErrorMsg" Type="nvarchar(max)" />
-          <Property Name="Time" Type="date" />
+          <Property Name="Time" Type="datetime" />
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Site" Type="nvarchar" MaxLength="150" />
           <Property Name="Source" Type="nvarchar(max)" />
@@ -174,7 +174,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ErrorMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Time" Type="DateTime" Precision="0" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Site" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
