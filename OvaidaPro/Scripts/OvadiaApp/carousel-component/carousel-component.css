@@ -42,7 +42,7 @@ carousel-component .text_on_background {
     height: 67px;
     font-size: 24px;
     font-weight: bold;
-    font-family: Rosenberg,sans-serif;
+    /*font-family: Rosenberg,sans-serif;*/
     overflow: hidden;
 }
     carousel-component .text_on_background a {

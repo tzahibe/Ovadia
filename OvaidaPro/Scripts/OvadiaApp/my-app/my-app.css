@@ -1,4 +1,23 @@
-﻿tags-input .tags .input, tags-input .tags .tag-item {
+﻿@font-face {
+    font-family: 'OpenSansHebrew-Bold';
+    src: url('../../../Content/Fonts/OpenSansHebrew-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'OpenSansHebrew-ExtraBold';
+    src: url('../../../Content/Fonts/OpenSansHebrew-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'OpenSansHebrew-Light';
+    src: url('../../../Content/Fonts/OpenSansHebrew-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'OpenSansHebrew-Regular';
+    src: url('../../../Content/Fonts/OpenSansHebrew-Regular.ttf') format('truetype');
+}
+body {
+    font-family: OpenSansHebrew-Regular;
+}
+tags-input .tags .input, tags-input .tags .tag-item {
     float: right;
 }
 
