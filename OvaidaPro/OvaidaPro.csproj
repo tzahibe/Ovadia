@@ -168,6 +168,7 @@
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\fail-message.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\add-message.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\mails-send-succ.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\events-dialog\Movies\Movie-change.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\popup-screen.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\success-message.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\update-fixed-event.html" />
@@ -239,11 +240,15 @@
     <Content Include="Scripts\OvadiaApp\carousel-component\carousel-component.html" />
     <Content Include="Scripts\OvadiaApp\home-component\home-component.css" />
     <Content Include="Scripts\OvadiaApp\home-component\home-component.html" />
+    <None Include=".dockerignore">
+      <DependentUpon>Dockerfile</DependentUpon>
+    </None>
     <None Include="bundleconfig.json" />
     <Content Include="Content\Fonts\OpenSansHebrew-Bold.ttf" />
     <Content Include="Content\Fonts\OpenSansHebrew-ExtraBold.ttf" />
     <Content Include="Content\Fonts\OpenSansHebrew-Light.ttf" />
     <Content Include="Content\Fonts\OpenSansHebrew-Regular.ttf" />
+    <None Include="Dockerfile" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\OvadiaApp\carousel-component\carousel-component.js" />
     <Content Include="Scripts\OvadiaApp\header-component\header-component.css" />

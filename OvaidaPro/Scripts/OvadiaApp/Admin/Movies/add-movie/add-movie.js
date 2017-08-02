@@ -27,6 +27,7 @@
             //   $scope.Categories = "";
             // }
         }
+       
 
         $scope.backToCategory = function () {
             $state.go("admin.edit-movies", { category: $scope.category });
@@ -204,8 +205,8 @@
             $scope.Title = title;
             $scope.Msg = msg;
             ngDialog.open({
-                template: '/Scripts/OvadiaApp/Admin/events-dialog/popup-screen.html',
-                className: 'ngdialog-theme-default',
+                template: '/Scripts/OvadiaApp/Admin/events-dialog/Movies/Movie-change.html',
+                //className: 'ngdialog-theme-default',
                 scope: $scope
             });
         }

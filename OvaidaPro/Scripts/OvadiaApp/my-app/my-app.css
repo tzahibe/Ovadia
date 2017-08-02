@@ -20,8 +20,9 @@ body {
 tags-input .tags .input, tags-input .tags .tag-item {
     float: right;
 }
-
-my-app .row {
+.form-control{
+    height:auto;
+}my-app .row {
     margin: 0;
     /*line-height: 0.5;*/
 }.navbar-default .navbar-nav > li > a {
@@ -44,8 +45,13 @@ my-app .row {
     position: absolute;
     top: 7px;
 }
+.ngdialog-closing {
+    display:none;
+}
+
 .modal-title {
-    padding-right:35px;
+    padding-right: 35px;
+    font-weight: bold;
 }
 .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: right;
@@ -162,9 +168,9 @@ buttonsContainerArt button {
 .ngdialog.ngdialog-theme-default {
 padding:0;
 }
-.ngdialog-close {
+/*.ngdialog-close {
     display: none;
-}
+}*/
 .error-msg {
     color: red;
     float: right;
@@ -173,20 +179,15 @@ padding:0;
     color:red;
 }
 .ngdialog-close.close {
-    float: right;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    filter: alpha(opacity=20);
-    opacity: .2;
-    display:block;
+    color: #6d6a6a;
+}
+.close {
+    opacity:1;
 }
 .ngdialog.ngdialog-theme-default .ngdialog-close {
-    border: 0;
+    /*border: 0;
     background: #f0f0f0;
-    cursor: pointer;
+    cursor: pointer;*/
 }
     .ngdialog.ngdialog-theme-default .ngdialog-close:before {
         color: #000;

@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  ovaidapro:
+    image: ovaidapro
+    build:
+      context: .\OvaidaPro
+      dockerfile: Dockerfile
