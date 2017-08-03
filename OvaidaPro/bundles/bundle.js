@@ -20615,8 +20615,8 @@ OvadiaApp.directive('homeMovies', function () {
     }
 });
 OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$state', '$stateParams',
-    '$state','$rootScope',
-    function ($scope, appServices, ngDialog, $timeout, $state, $stateParams, $state, $rootScope) {
+    '$state', '$rootScope','$http',
+    function ($scope, appServices, ngDialog, $timeout, $state, $stateParams, $state, $rootScope, $http) {
         var self = this;
         $scope.Articles = [];
         $scope.catNames = [];
@@ -20684,20 +20684,33 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
 
             }
         }
+        //$scope.tryGetpImage = function(url){
+        //    $http.get(url).then(function (response) {
+        //        if (response.status == 200)
+        //            return url;
+        //        else {
+        //            return "/Content/images/default.png";
+        //        }
+        //    });
+        //}
 
         $scope.myStyle = function (article) {
-            if (article.ProfilePic == null || article.ProfilePic == '')
-                return "";
 
-            var urlNoSpace = article.ProfilePic.split(' ').join('%20');
-            var style = {
-                "background-image": "url(" + urlNoSpace + ")",
+            if (article.profImage == null || article.profImage == '') {
+                var style = {
+                    "background-image": "url(/Content/images/default.png)"
+                }
+                return style; 
             }
-            return style;
+           
+            var urlNoSpace = article.profImage.split(' ').join('%20');
+                var style = {
+                    "background-image": "url(" + urlNoSpace + ")",
+                }
+                return style;
         }
 
         $scope.chooseCategory = function (category) {
-            
             if (category.Name == "הכל") {
                 appServices.GetAllArticles().then(function (data) {
                     console.log(data);
@@ -20708,10 +20721,21 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
                         }
                         $scope.Articles = data.Data;
                         angular.forEach($scope.Articles, function (value, key) {
+                            var profImage;
+
                             value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
                             value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
                             value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
+
+                            if (value.ProfilePic == null || value.ProfilePic == '') {
+                                value.profImage = "/Content/images/default.png";
+                            }
+                            else {
+                                value.profImage = value.ProfilePic.split(' ').join('%20');;
+                            }
+                            
                         });
+                   
                     }
                     else {
                         $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
