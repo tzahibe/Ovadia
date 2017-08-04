@@ -20672,7 +20672,7 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
         }
 
         $scope.goToArticle = function (article) {
-            if ($scope.select2.Name == "הכל") {
+            if ($scope.select2 != null && $scope.select2.Name == "הכל") {
                 var cat = {
                     Name: $scope.select2.Name,
                     Id: null
@@ -20695,7 +20695,6 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
         //}
 
         $scope.myStyle = function (article) {
-
             if (article.profImage == null || article.profImage == '') {
                 var style = {
                     "background-image": "url(/Content/images/default.png)"

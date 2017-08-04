@@ -24,12 +24,14 @@ legend.panel1 {
     font-weight: bold;
     padding: 3px;
     max-height: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background: #fff;
     opacity: 0.7;
-    bottom: -88px;
-    min-height: 62px;
+    height: 64px;
+    bottom: -86px;
     position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .select2con.col-xs-12{
     padding:0;
@@ -51,5 +53,9 @@ legend.panel1 {
     }
     .col-md-4_5{
         width:100%;
+    }
+    .article-title {
+        bottom: -58%;
+        height: 126px;
     }
 }
