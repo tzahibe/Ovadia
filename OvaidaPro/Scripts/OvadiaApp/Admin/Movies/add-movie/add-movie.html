@@ -21,6 +21,9 @@
                     </div>
                     <label ng-hide="readOnly">כתובת תמונת פרופיל</label>
                     <input ng-hide="readOnly" type="text" ng-model="Article.ProfilePic" class="form-control" placeholder="כתובת תמונת פרופיל">
+                    <div class="col-xs-12 img" ng-show="Article.ProfilePic != null && Article.ProfilePic != ''">
+                        <img ng-src="{{Article.ProfilePic}}" style="width:200px; height:200px"/>
+                    </div>
                 </div>
             </fieldset>
             <a ng-show="readOnly" href="/index.html/CategoryArticles?categoryId={{Article.CategoryId}}">חזרה ל {{Article.CategoryName}} >></a>
