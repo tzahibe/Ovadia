@@ -80,17 +80,19 @@
 
         $scope.myStyle = function (article) {
             if (article.profImage == null || article.profImage == '') {
-                var style = {
-                    "background-image": "url(/Content/images/default.png)"
-                }
-                return style; 
+                //var style = {
+                //    "background-image": "url(/Content/images/default.png)"
+                //}
+                //return style; 
+                return "background-image:url(/Content/images/default.png)";
             }
            
             var urlNoSpace = article.profImage.split(' ').join('%20');
-                var style = {
-                    "background-image": "url(" + urlNoSpace + ")",
-                }
-                return style;
+                //var style = {
+                //    "background-image": "url(" + urlNoSpace + ")",
+                //}
+               // return style;
+            return "background-image: url(" + urlNoSpace + ")";
         }
 
         $scope.chooseCategory = function (category) {
@@ -105,7 +107,6 @@
                         $scope.Articles = data.Data;
                         angular.forEach($scope.Articles, function (value, key) {
                             var profImage;
-
                             value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
                             value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
                             value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
@@ -140,9 +141,17 @@
                     }
                     $scope.Articles = data.Data;
                     angular.forEach($scope.Articles, function (value, key) {
+                        var profImage;
                         value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
                         value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
                         value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
+
+                        if (value.ProfilePic == null || value.ProfilePic == '') {
+                            value.profImage = "/Content/images/default.png";
+                        }
+                        else {
+                            value.profImage = value.ProfilePic.split(' ').join('%20');;
+                        }
                     });
                 }
                 else {

@@ -155,7 +155,7 @@
                 }
                 if (ErrorCode == 0) {
                     $scope.OpenPopup("מאמר עודכן בהצלחה!", "תוכל להמשיך לערוך את המאמר");
-                    $scope.Article = response.data.Data;
+                    //$scope.Article = response.data.Data;
                     $scope.isNewArticle = false;
                 }
                 $scope.loader = false;
