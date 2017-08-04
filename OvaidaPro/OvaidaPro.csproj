@@ -284,6 +284,7 @@
     <Content Include="Scripts\Plugins\bootstrap.min.js" />
     <Content Include="Scripts\Plugins\angular-cookies.min.js" />
     <Content Include="Scripts\Plugins\carousel.js" />
+    <Content Include="Scripts\Plugins\dirPagination.js" />
     <Content Include="Scripts\Plugins\fontawesome.js" />
     <Content Include="Scripts\Plugins\fullcalendar.min.js" />
     <Content Include="Scripts\Plugins\jquery-3.2.1.min.js" />
@@ -352,6 +353,7 @@
     <Content Include="Scripts\Plugins\angular-route.min.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\Plugins\ng-image-gallery.min.js.map" />
+    <Content Include="Scripts\Plugins\dirPagination.tpl.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

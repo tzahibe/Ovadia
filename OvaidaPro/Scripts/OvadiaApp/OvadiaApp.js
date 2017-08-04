@@ -11,7 +11,8 @@
         'thatisuday.ng-image-gallery',
         'ui.bootstrap.carousel',
         'ngTagsInput',
-        'ui.select2'
+        'ui.select2',
+        'angularUtils.directives.dirPagination'
     ]
 )
 

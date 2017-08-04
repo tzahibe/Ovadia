@@ -6,7 +6,6 @@
         $scope.catNames = [];
         $scope.Article = {};
         $scope.ArticleCat = null;
-
         $scope.select2Options = {
             allowClear: true
         };
