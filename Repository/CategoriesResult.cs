@@ -231,7 +231,7 @@ namespace Repository
                 return result;
             }
         }
-        public static Result AutoCompleteGetCategoriesByName(string name)
+        public static Result AutoCompleteGetCategoriesByName(string name, int id)
         {
             Result result = new Result();
             List<Bo.Art_Cat> catResult = new List<Bo.Art_Cat>();
@@ -249,6 +249,7 @@ namespace Repository
                         Bo.Art_Cat cat = new Bo.Art_Cat();
                         cat.text = categoryList[i].Name;
                         cat.CategoryId = categoryList[i].Id;
+                        cat.ArticleId = id;
                         catResult.Add(cat);
                     }
                     result.ErrorCode = 0;

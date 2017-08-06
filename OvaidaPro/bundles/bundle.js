@@ -21454,7 +21454,21 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             //   $scope.Categories = "";
             // }
         }
-       
+
+        $scope.removeDuplicate = function (arr) {
+            var newArr = [];
+
+            for (i = 0; i < arr.length; i++) {
+                var isExist = newArr.filter(function (obj) {
+                    return obj.CategoryId == arr[i].CategoryId;
+                });
+
+                if (isExist.length == 0) {
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+        }
 
         $scope.backToCategory = function () {
             $state.go("admin.edit-movies", { category: $scope.category });
@@ -21465,7 +21479,6 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             $scope.Article.CategoryId = item.Id;
         }
 
-        
         $scope.getIframeSrc = function (link) {
             return link;
         }
@@ -21518,6 +21531,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
         }
 
         $scope.GetArticle = function () {
+            debugger;
             $scope.loader = true;
             appServices.GetArticle($scope.articleId)
                 .then(function (data) {
@@ -21553,9 +21567,9 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                 $scope.OpenPopup("שדות חובה לא מולאו!", "אנא מלא את השדות המסומנות באדום בערכים מתאימים");
                 return;
             }
-            if ($scope.Article.CategoriesList == null) {
-                $scope.Article.CategoriesList = [];
-            }
+           
+            $scope.Article.CategoriesList = [];
+            $scope.tags = $scope.removeDuplicate($scope.tags);
 
             angular.forEach($scope.tags, function (value, key) {
                 $scope.Article.CategoriesList.push({
@@ -21598,7 +21612,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
         }
 
         $scope.loadTags = function (query) {
-            return $http.get('/CategorySer/AutoCompleteGetCategoriesByName?name=' + query);
+            return $http.get('/CategorySer/AutoCompleteGetCategoriesByName?name=' + query + "&id=" + $scope.Article.ArticleId);
         }
 
         $scope.RemoveArticleById = function () {
@@ -21628,6 +21642,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                 });
         }
 
+
         $scope.OpenPopup = function (title, msg) {
             $scope.Title = title;
             $scope.Msg = msg;
@@ -21641,6 +21656,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
         $scope.checkthis = function () {
             debugger;
         }
+
         $scope.getAllCategories = function () {
             $scope.loader = true;
             if ($rootScope.categoriesData != null && $rootScope.categoriesData.length > 0 )

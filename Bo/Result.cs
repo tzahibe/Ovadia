@@ -17,7 +17,7 @@ namespace Bo
         public int ArticleId { get; set; }
         public int CategoryId { get; set; }
         public string text { get; set; }
-        public int Id { get; set; }
+        //public int Id { get; set; }
     }
 
     //public class TagsResult

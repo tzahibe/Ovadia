@@ -421,6 +421,7 @@ namespace Repository
                             catBo.ArticleId = artcat.ArticleId == null? 0 : (int)artcat.ArticleId;
                             catBo.CategoryId = artcat.CategoryId == null ? 0 : (int)artcat.CategoryId;
                             catBo.text = artcat.Text;
+                            //catBo.Id = artcat.Id;
                             boList.Add(catBo);
                         }
                         result.Data = boList;

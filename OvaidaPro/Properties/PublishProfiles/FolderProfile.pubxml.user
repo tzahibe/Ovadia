@@ -878,10 +878,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.css">
-      <publishTime>07/20/2017 11:01:57</publishTime>
+      <publishTime>08/04/2017 17:35:03</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.html">
-      <publishTime>07/30/2017 11:37:09</publishTime>
+      <publishTime>08/04/2017 17:35:17</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.js">
       <publishTime>08/04/2017 11:08:43</publishTime>

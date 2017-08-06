@@ -41,9 +41,9 @@ namespace BL
 
         }
 
-        public static Result AutoCompleteGetCategoriesByName(string name)
+        public static Result AutoCompleteGetCategoriesByName(string name, int id)
         {
-            return CategoriesResult.AutoCompleteGetCategoriesByName(name);
+            return CategoriesResult.AutoCompleteGetCategoriesByName(name, id);
 
         }
         public static Result AddSubCategory(string catName, int parentId, bool isActive)
