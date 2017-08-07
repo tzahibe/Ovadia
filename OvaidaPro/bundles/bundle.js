@@ -21504,7 +21504,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                     $scope.isNewArticle = false;
                 }
                 else if (ErrorCode == 2) {
-                    $scope.OpenPopup("שגיאה!","מאמר עם כותרת זהה כבר קיים במערכת. אנא שנה את כותרת המאמר");
+                    $scope.OpenPopup("שגיאה!","מאמר עם כותרת זהה כבר קיים במערכת.");
 
                 }
                 else {
