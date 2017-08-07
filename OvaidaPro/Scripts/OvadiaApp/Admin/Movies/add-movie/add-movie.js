@@ -215,7 +215,6 @@
                 });
         }
 
-
         $scope.OpenPopup = function (title, msg) {
             $scope.Title = title;
             $scope.Msg = msg;
@@ -238,6 +237,7 @@
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesData = data.Data;
+                    $rootScope.categoriesData.unshift({ Name: "הכל" });
                     $.grep($rootScope.categoriesData, function (el, idx) { return el.field == "הכל" }, true)
                 }
                 else {

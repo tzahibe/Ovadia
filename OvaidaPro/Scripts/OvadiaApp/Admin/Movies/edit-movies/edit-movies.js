@@ -34,7 +34,6 @@
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesData = data.Data;
-                    console.log(data.Data);
                     $rootScope.categoriesData.unshift({Name:"הכל"});
                 }
                 else {
@@ -67,15 +66,6 @@
 
             }
         }
-        //$scope.tryGetpImage = function(url){
-        //    $http.get(url).then(function (response) {
-        //        if (response.status == 200)
-        //            return url;
-        //        else {
-        //            return "/Content/images/default.png";
-        //        }
-        //    });
-        //}
 
         $scope.myStyle = function (article) {
             if (article.profImage == null || article.profImage == '') {

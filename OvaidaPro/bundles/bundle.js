@@ -21286,7 +21286,6 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesData = data.Data;
-                    console.log(data.Data);
                     $rootScope.categoriesData.unshift({Name:"הכל"});
                 }
                 else {
@@ -21319,15 +21318,6 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
 
             }
         }
-        //$scope.tryGetpImage = function(url){
-        //    $http.get(url).then(function (response) {
-        //        if (response.status == 200)
-        //            return url;
-        //        else {
-        //            return "/Content/images/default.png";
-        //        }
-        //    });
-        //}
 
         $scope.myStyle = function (article) {
             if (article.profImage == null || article.profImage == '') {
@@ -21642,7 +21632,6 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                 });
         }
 
-
         $scope.OpenPopup = function (title, msg) {
             $scope.Title = title;
             $scope.Msg = msg;
@@ -21665,6 +21654,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             appServices.GetAllCategories().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesData = data.Data;
+                    $rootScope.categoriesData.unshift({ Name: "הכל" });
                     $.grep($rootScope.categoriesData, function (el, idx) { return el.field == "הכל" }, true)
                 }
                 else {
