@@ -50,7 +50,7 @@
         }
 
         $scope.loadTags = function (query) {
-            return $http.get('/CategorySer/AutoCompleteGetCategoriesByName?name=' + query);
+            return $http.get('/CategorySer/AutoCompleteGetCategoriesByName?name=' + query + "&id=" + $scope.Article.ArticleId);
         }
 
         $scope.goToArticle = function (article) {
