@@ -21482,7 +21482,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
 
             angular.forEach($scope.tags, function (value, key) {
                 $scope.Article.CategoriesList.push({
-                    ArticleId: $scope.Article.ArticleId,
+                    ArticleId: 0,
                     CategoryId: value.CategoryId,
                     text: value.text
                 });
