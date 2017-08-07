@@ -231,7 +231,7 @@ namespace Repository
                 return result;
             }
         }
-        public static Result AutoCompleteGetCategoriesByName(string name, int id)
+        public static Result AutoCompleteGetCategoriesByName(string name, int id = 0)
         {
             Result result = new Result();
             List<Bo.Art_Cat> catResult = new List<Bo.Art_Cat>();
