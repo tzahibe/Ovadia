@@ -86,6 +86,10 @@
                     $scope.Article = data.Data;
                     $scope.isNewArticle = false;
                 }
+                else if (ErrorCode == 2) {
+                    $scope.OpenPopup("שגיאה!","מאמר עם כותרת זהה כבר קיים במערכת. אנא שנה את כותרת המאמר");
+
+                }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                 }
