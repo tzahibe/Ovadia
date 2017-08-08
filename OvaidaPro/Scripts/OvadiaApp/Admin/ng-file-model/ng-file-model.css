@@ -5,9 +5,14 @@ h4 {
     color: #686868;
     font-weight: bold;
 }
-
+.title-input {
+    width: 88%;
+    background: #f2f1f1;
+    direction:ltr;
+    text-align:left;
+}
 .imgItems-li {
-display:inline-block;
+    display: inline-block;
 }
 @media screen and (max-width: 768px) {
     .col-xs-12{
