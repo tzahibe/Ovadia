@@ -16,6 +16,14 @@
                 access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
             }
         })
+        .state("movie-category", {
+            url: '/movie-category',
+            templateUrl: '/Scripts/OvadiaApp/movie-category/movie-category.html',
+            controller: 'movieCategoryCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
+            }
+        })
         .state("login", {
             url: '/login',
             templateUrl: '/Scripts/OvadiaApp/login-container/login-container.html',

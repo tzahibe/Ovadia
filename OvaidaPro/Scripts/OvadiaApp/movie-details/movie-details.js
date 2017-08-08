@@ -16,6 +16,6 @@ OvadiaApp.directive('movieDetails', function () {
         restrict: 'E',
         bindToController: true,
         controller: 'movieDetailsCtrl',
-        templateUrl: '/Scripts/OvadiaApp/movie-details/movie-details'
+        templateUrl: '/Scripts/OvadiaApp/movie-details/movie-details.html'
     }
 });

@@ -1,7 +1,7 @@
 ﻿lesson-component .body {
     background-color: #f8f8f8;
     border: 1px solid #e7e7e7;
-    min-height: 146px;
+    min-height: 175px;
 }
     lesson-component .body {
         padding:0;
@@ -12,10 +12,32 @@ lesson-component .body:first-child {
 lesson-component .body:last-child {
     border-top-right-radius: 5px;
 }
+.yellow-bold {
+    color: #ffbc66;
+    font-family: OpenSansHebrew-ExtraBold;
+    font-weight:bold;
+}
 .mic-icon {
     position: absolute;
     top: 2px;
     right:2px;
+}
+lesson-component .body.tfila {
+    background: url('/Content/images/tfila-background.png');
+    background-size: 100%;
+}
+
+.block-tfila {
+    background: #284b75;
+    color: #fff;
+    width: 52%;
+    padding: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
+}
+lesson-component .body .box-title.padding-right40 {
+    padding-right: 40px;
 }
 lesson-component .all-lesson {
     font-style: italic;

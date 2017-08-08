@@ -21039,6 +21039,14 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
             }
         })
+        .state("movie-category", {
+            url: '/movie-category',
+            templateUrl: '/Scripts/OvadiaApp/movie-category/movie-category.html',
+            controller: 'movieCategoryCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
+            }
+        })
         .state("login", {
             url: '/login',
             templateUrl: '/Scripts/OvadiaApp/login-container/login-container.html',
@@ -21699,7 +21707,28 @@ OvadiaApp.directive('movieDetails', function () {
         restrict: 'E',
         bindToController: true,
         controller: 'movieDetailsCtrl',
-        templateUrl: '/Scripts/OvadiaApp/movie-details/movie-details'
+        templateUrl: '/Scripts/OvadiaApp/movie-details/movie-details.html'
+    }
+});
+OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval',
+    function ($scope, appServices, ngDialog, $timeout, $interval) {
+        var self = this;
+        var promisse;
+
+        self.init = function () {
+
+        }
+
+
+        self.init();
+    }]);
+
+OvadiaApp.directive('movieCategory', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'movieCategoryCtrl',
+        templateUrl: '/Scripts/OvadiaApp/movie-category/movie-category.html'
     }
 });
 OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices','UserAccount',
@@ -23990,6 +24019,7 @@ OvadiaApp.controller('lessonComponentCtrl', ['$scope','appServices',
     function ($scope, appServices) {
         var self = this;
         $scope.weekEvents = [];
+        $scope.Tfilot = [];
 
         self.compare = function compare(a, b) {
             if ((a.From_Hour + a.From_Minutes) * 1 < (b.From_Hour + b.From_Minutes))
@@ -24001,6 +24031,18 @@ OvadiaApp.controller('lessonComponentCtrl', ['$scope','appServices',
 
         self.init = function () {
             $scope.loader = true;
+            $scope.tfilot_loader = true;
+            appServices.getAllTfilot().then(function (response) {
+                if (response.data.ErrorCode == 0) {
+                    $scope.tfilot_loader = false;
+                    $scope.Tfilot = response.data.Data;
+                }
+                else {
+                    $scope.tfilot_loader = false;
+                    $scope.errorTfilot = true;
+                }
+            });
+
             appServices.GetWeekEvents().then(function (response) {
                 try {
                     $scope.weekEvents = response.data.Data;

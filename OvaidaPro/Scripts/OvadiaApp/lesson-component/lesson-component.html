@@ -1,5 +1,31 @@
 ﻿<link href="/Scripts/OvadiaApp/lesson-component/lesson-component.css" rel="stylesheet" />
 <div class="col-xs-12 lessonBlocks">
+
+    <div class="body col-xs-12 col-sm-6 col-md-4 tfila">
+        <img src="/Content/images/magenDavid.png" class="mic-icon" />
+        <h4 class="box-title padding-right40">
+           זמני תפילות
+        </h4>
+        <div class="block-tfila">
+            <ul ng-hide="tfilot_loader">
+                <li class="lesson" ng-repeat="item in Tfilot  | orderBy : 'Order1'" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        | {{item.Hour}}:{{item.Min}} 
+                    </div>
+                    <strong>{{item.Name}}</strong>
+                </li>
+                <li class="lesson" ng-show="errorTfilot">
+                    {{errorTfilot}}
+                </li>
+            </ul>
+            <ul ng-show="tfilot_loader">
+                <li class="modal-body center">
+                    <img src="/Content/images/loader.gif" />
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <div class="body col-xs-12 col-sm-6 col-md-4">
         <img src="/Content/images/microphone.png" class="mic-icon" />
         <h4 class="box-title">
@@ -44,7 +70,7 @@
         </div>
     </div>
 
-    <div class="body col-xs-12 col-md-4 hidden-xs">
+    <!--<div class="body col-xs-12 col-md-4 hidden-xs">
         <img src="/Content/images/microphone.png" class="mic-icon" />
         <h4 class="box-title">
             השיעורים מחרתיים
@@ -64,5 +90,5 @@
         <div class="all-lesson">
             לכל השיעורים <a ui-sref="all-lesson">לחץ כאן </a>
         </div>
-    </div>
+    </div>-->
 </div>

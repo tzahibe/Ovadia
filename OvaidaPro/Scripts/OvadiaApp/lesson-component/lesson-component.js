@@ -2,6 +2,7 @@ OvadiaApp.controller('lessonComponentCtrl', ['$scope','appServices',
     function ($scope, appServices) {
         var self = this;
         $scope.weekEvents = [];
+        $scope.Tfilot = [];
 
         self.compare = function compare(a, b) {
             if ((a.From_Hour + a.From_Minutes) * 1 < (b.From_Hour + b.From_Minutes))
@@ -13,6 +14,18 @@ OvadiaApp.controller('lessonComponentCtrl', ['$scope','appServices',
 
         self.init = function () {
             $scope.loader = true;
+            $scope.tfilot_loader = true;
+            appServices.getAllTfilot().then(function (response) {
+                if (response.data.ErrorCode == 0) {
+                    $scope.tfilot_loader = false;
+                    $scope.Tfilot = response.data.Data;
+                }
+                else {
+                    $scope.tfilot_loader = false;
+                    $scope.errorTfilot = true;
+                }
+            });
+
             appServices.GetWeekEvents().then(function (response) {
                 try {
                     $scope.weekEvents = response.data.Data;
