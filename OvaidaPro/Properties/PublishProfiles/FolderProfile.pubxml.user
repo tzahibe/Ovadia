@@ -53,10 +53,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/OvaidaPro.dll">
-      <publishTime>08/07/2017 16:46:03</publishTime>
+      <publishTime>08/08/2017 14:10:28</publishTime>
     </File>
     <File Include="bin/OvaidaPro.pdb">
-      <publishTime>08/07/2017 16:46:03</publishTime>
+      <publishTime>08/08/2017 14:10:28</publishTime>
     </File>
     <File Include="bin/Repository.dll">
       <publishTime>08/07/2017 16:45:58</publishTime>
@@ -257,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bundles/bundle.js">
-      <publishTime>08/07/2017 16:46:27</publishTime>
+      <publishTime>08/08/2017 13:57:29</publishTime>
     </File>
     <File Include="bundles/bundle.min.js">
       <publishTime>07/12/2017 00:06:28</publishTime>
@@ -1001,13 +1001,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/02/2017 20:06:19</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/lesson-component/lesson-component.css">
-      <publishTime>08/01/2017 17:46:27</publishTime>
+      <publishTime>08/08/2017 14:06:04</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/lesson-component/lesson-component.html">
-      <publishTime>07/24/2017 13:22:51</publishTime>
+      <publishTime>08/08/2017 14:04:16</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/lesson-component/lesson-component.js">
-      <publishTime>07/12/2017 00:04:52</publishTime>
+      <publishTime>08/08/2017 13:57:33</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/login-container/login-container.css">
       <publishTime>07/12/2017 00:04:52</publishTime>
@@ -1028,13 +1028,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-category/movie-category.css">
-      <publishTime>07/12/2017 23:44:56</publishTime>
+      <publishTime>08/08/2017 13:38:12</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-category/movie-category.html">
-      <publishTime>07/12/2017 23:43:29</publishTime>
+      <publishTime>08/08/2017 13:40:25</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-category/movie-category.js">
-      <publishTime>07/12/2017 23:29:14</publishTime>
+      <publishTime>08/08/2017 13:40:38</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-details/movie-details.css">
       <publishTime>07/12/2017 23:44:56</publishTime>
@@ -1043,7 +1043,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/17/2017 10:22:19</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-details/movie-details.js">
-      <publishTime>07/17/2017 10:22:45</publishTime>
+      <publishTime>08/08/2017 13:40:51</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/my-app/my-app.css">
       <publishTime>08/08/2017 10:32:19</publishTime>
@@ -1058,7 +1058,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/04/2017 11:44:24</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/OvadiaConfig.js">
-      <publishTime>07/20/2017 14:39:53</publishTime>
+      <publishTime>08/08/2017 13:42:37</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/profile-component/profile-component.css">
       <publishTime>07/12/2017 00:04:52</publishTime>

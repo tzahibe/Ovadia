@@ -23444,20 +23444,20 @@ OvadiaApp.directive('tfila-time', function () {
 OvadiaApp.controller('homeComponentCtrl', ['$scope', 'appServices','ngDialog','$timeout',
     function ($scope, appServices, ngDialog, $timeout) {
         var self = this;
-        $scope.Tfilot = [];
+        //$scope.Tfilot = [];
 
         self.init = function () {
-            $scope.tfilot_loader = true;
-            appServices.getAllTfilot().then(function (response) {
-                if (response.data.ErrorCode == 0) {
-                    $scope.tfilot_loader = false;
-                    $scope.Tfilot = response.data.Data;
-                }
-                else {
-                    $scope.tfilot_loader = false;
-                    $scope.errorTfilot = true;
-                }
-            });
+            //$scope.tfilot_loader = true;
+            //appServices.getAllTfilot().then(function (response) {
+            //    if (response.data.ErrorCode == 0) {
+            //        $scope.tfilot_loader = false;
+            //        $scope.Tfilot = response.data.Data;
+            //    }
+            //    else {
+            //        $scope.tfilot_loader = false;
+            //        $scope.errorTfilot = true;
+            //    }
+            //});
         }
 
         $scope.successMail = false;
