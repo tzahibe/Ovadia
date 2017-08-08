@@ -218,6 +218,33 @@
             return response.data;
         });
     }
+    this.GetAllActiveCategoriesAcceptId = function (id) {
+        var param = {
+            Id: id
+        }
+        return $http({
+            url: url + '/CategorySer/GetAllActiveCategoriesAcceptId',
+            method: 'POST',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllChildrensCategoriesById = function (id) {
+        var param = {
+            catId: id
+        }
+        return $http({
+            url: url + '/CategorySer/GetAllChildrensCategoriesById',
+            method: 'POST',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
      /* Article Services -------------------> */
     this.AddArticle = function (article) {
         return $http({

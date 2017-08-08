@@ -12,6 +12,13 @@ namespace OvaidaPro.Controllers
     public class CategorySerController : ControllerHelper
     {
         // GET: Categories
+
+        public ActionResult GetAllActiveCategoriesAcceptId(int Id)
+        {
+            Result resultToClient = CategoriesLogic.GetAllActiveCategoriesAcceptId(Id);
+            return Json(resultToClient, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult GetAllParentCategories()
         {
             Result resultToClient = CategoriesLogic.GetAllParentCategories();

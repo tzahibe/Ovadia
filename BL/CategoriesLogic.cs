@@ -56,5 +56,27 @@ namespace BL
             return CategoriesResult.GetAllActiveCategories();
         }
 
+        public static Result GetAllActiveCategoriesAcceptId(int id)
+        {
+            Result result = new Result();
+            result =  CategoriesResult.GetAllActiveCategories();
+
+            if(result.ErrorCode == 0)
+            {
+                List<CategoryBo> list = (List<CategoryBo>)result.Data;
+                list = list.Where(i => i.isActive == true && i.id != id).ToList<CategoryBo>();
+                result.Data = list;
+            }
+            else
+            {
+                LoggerLogic.Write("CategoriesLogic.cs", "bad result GetAllActiveCategoriesAcceptId(int id)",
+                 "", DateTime.Now);
+                result.ErrorCode = 1;
+            }
+
+            return result;
+        }
+
+
     }
 }

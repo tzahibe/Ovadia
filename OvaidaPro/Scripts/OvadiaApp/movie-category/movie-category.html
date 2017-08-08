@@ -1,5 +1,27 @@
 ﻿<link href="/Scripts/OvadiaApp/movie-category/movie-category.css" rel="stylesheet" />
+<link href="/Content/select2.min.css" rel="stylesheet" />
 
-<div class="col-xs-12">
-    <h1> movie Category !</h1>
+<div class="col-xs-12 removePaddingMargin">
+    <!----בחר קטגוריה-->
+    <div class="containerX">
+        <div id="chooseCategoryId">
+            <img src="/Content/images/dropdown-icon.png" class="dropdown-icon" />
+            <select id="chooseCategorySelectId" class="form-control"
+                    ui-select2 ng-model="select2" data-placeholder="בחר קטגוריה" style="width:100% !important">
+                <option value=""></option>
+                <option ng-repeat="cat in $root.categoriesData" ng-value="{{cat}}">{{cat.Name}}</option>
+            </select>
+        </div>
+        <!----בחר רב-->
+        <div id="chooseCategoryId">
+            <img src="/Content/images/dropdown-icon.png" class="dropdown-icon" />
+            <select id="chooseCategorySelectId" class="form-control"
+                    ui-select2 ng-model="select3" data-placeholder="בחר רב" style="width:100% !important">
+                <option value=""></option>
+                <option ng-repeat="cat in $root.categoriesRabiData" ng-value="{{cat}}">{{cat.Name}}</option>
+            </select>
+        </div>
+    </div>
+     
+   
 </div>

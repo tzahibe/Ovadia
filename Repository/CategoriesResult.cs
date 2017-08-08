@@ -278,6 +278,23 @@ namespace Repository
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
                     result.Data = categoryList.OrderBy(x => int.Parse(x.Cat_Order)).ToList().Reverse<Repository.Categories>();
                     result.ErrorCode = 0;
+
+                    if(categoryList.Count > 0)
+                    {
+                        List<CategoryBo> listBo = new List<CategoryBo>();
+                        foreach(Categories cat in categoryList)
+                        {
+                            CategoryBo catBo = new CategoryBo();
+                            catBo.id = cat.Id;
+                            catBo.isActive = cat.isActive == 1 ? true : false;
+                            catBo.Name = cat.Name;
+                            catBo.ParentId = cat.ParentId == null ? 0 : (int)cat.ParentId;
+                            catBo.Cat_Order = cat.Cat_Order;
+                            listBo.Add(catBo);
+                        }
+
+                        result.Data = listBo;
+                    }
                     return result;
                 }
             }
