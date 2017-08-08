@@ -911,7 +911,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/08/2017 09:51:39</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.html">
-      <publishTime>08/08/2017 09:52:10</publishTime>
+      <publishTime>08/08/2017 10:20:19</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.js">
       <publishTime>07/31/2017 10:53:30</publishTime>
