@@ -16,13 +16,23 @@
     width: 179px;
     display: inline-block;
 }
-.containerX {
-    width: 1170px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+#searchBox {
+    padding-top: 20px;
+    display: inline-block;
 }
+    #searchBox input {
+        height: 39px;
+        position: relative;
+        top: 2px;
+    }
+    
+.containerX {
+        width: 1170px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
 .dropdown-icon {
     position: absolute;
     z-index: 999;
