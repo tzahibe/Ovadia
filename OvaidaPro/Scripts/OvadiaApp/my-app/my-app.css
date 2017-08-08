@@ -117,30 +117,6 @@ div, p, h1, h2, h3, h4, h5, h6, span {
 .imgClass {
     float: right;
 }
-.removeButton {
-    position: relative;
-    top: -186px;
-    right: 4px;
-}
-.rotateIcon {
-    position: relative;
-    top: -186px;
-    right: 19px;
-    font-size: 23px;
-    color: #fff;
-    padding: 6px;
-    border-radius: 20px;
-    background: #009200;
-    cursor:pointer;
-}
-.scrollable-content .imgItems-li {
-    display:inline-block;
-}
-.buttonsContainerArt {
-    display: inline-block;
-    width: 148px;
-    height: 175px;
-}
 .scrollable {
     padding-top: 35px;
 } 
