@@ -908,10 +908,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2017 09:41:06</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.css">
-      <publishTime>07/24/2017 10:03:11</publishTime>
+      <publishTime>08/08/2017 09:51:39</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.html">
-      <publishTime>07/31/2017 10:50:37</publishTime>
+      <publishTime>08/08/2017 09:52:10</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.js">
       <publishTime>07/31/2017 10:53:30</publishTime>
@@ -1046,7 +1046,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/17/2017 10:22:45</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/my-app/my-app.css">
-      <publishTime>08/04/2017 11:47:11</publishTime>
+      <publishTime>08/08/2017 09:34:53</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/my-app/my-app.html">
       <publishTime>07/23/2017 14:54:09</publishTime>

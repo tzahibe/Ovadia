@@ -20,15 +20,16 @@
 
                     <div class="form-group" ng-show="results != null">
                         <div>
-                          חפש תמונה על פי שם
+                          חפש תמונה לפי שם
                         </div>
                         <input type="text" placeholder="חפש" ng-model="search" class="form-control" />
                     </div>
 
                     <div class="imgItems-li" ng-repeat="f in results | filter: search" style="font:smaller">
+                        <p class="title-img" alt="{{f.Name}}">{{f.Name}}</p>
                         <div class="buttonsContainerArt">
                             <img id="{{f.Name}}" class="imgClass"
-                                 src="{{getImageUrl(f)}}" 
+                                 src="{{getImageUrl(f)}}"  alt="{{f.Name}}"
                                  ng-style="{{f.style}}" /> <!--?ver=ver-->
                             <input class="title-input" type="text" value="{{CoppyImageUrl(f.Name)}}" />
                             <button type="button" class="btn btn-default coppy-button" 

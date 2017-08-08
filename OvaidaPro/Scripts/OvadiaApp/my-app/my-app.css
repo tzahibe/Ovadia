@@ -119,12 +119,12 @@ div, p, h1, h2, h3, h4, h5, h6, span {
 }
 .removeButton {
     position: relative;
-    top: -163px;
+    top: -186px;
     right: 4px;
 }
 .rotateIcon {
     position: relative;
-    top: -163px;
+    top: -186px;
     right: 19px;
     font-size: 23px;
     color: #fff;

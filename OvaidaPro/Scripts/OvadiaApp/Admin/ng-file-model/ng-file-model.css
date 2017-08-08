@@ -5,6 +5,15 @@ h4 {
     color: #686868;
     font-weight: bold;
 }
+.title-img {
+    width: 130px;
+    height: 24px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: #cdcdcd;
+}
 .title-input {
     width: 88%;
     background: #f2f1f1;
