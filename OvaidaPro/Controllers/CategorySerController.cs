@@ -18,7 +18,6 @@ namespace OvaidaPro.Controllers
             Result resultToClient = CategoriesLogic.GetAllActiveCategoriesAcceptId(Id);
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult GetAllParentCategories()
         {
             Result resultToClient = CategoriesLogic.GetAllParentCategories();
@@ -38,6 +37,11 @@ namespace OvaidaPro.Controllers
         {
             Result resultToClient = CategoriesLogic.GetAllCategories();
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult AutoCompleteGetCategoriesByName(string name, int id = 0)
+        {
+            Result resultToClient = CategoriesLogic.AutoCompleteGetCategoriesByName(name, id);
+            return Json(resultToClient.Data, JsonRequestBehavior.AllowGet);
         }
         //Admin
         public ActionResult RenameCategoryName(int catId, string newName, bool isActive, string order)
@@ -116,10 +120,6 @@ namespace OvaidaPro.Controllers
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult AutoCompleteGetCategoriesByName(string name, int id = 0)
-        {
-            Result resultToClient = CategoriesLogic.AutoCompleteGetCategoriesByName(name, id);
-            return Json(resultToClient.Data, JsonRequestBehavior.AllowGet);
-        }
+  
     }
 }

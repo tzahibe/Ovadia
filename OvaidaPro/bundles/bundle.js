@@ -21714,6 +21714,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
     '$rootScope',
     function ($scope, appServices, ngDialog, $timeout, $interval, $rootScope) {
         var self = this;
+        $scope.showSubSub = false, $scope.showSub = false;
         var promisse;
 
         self.init = function () {
@@ -21726,7 +21727,6 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
             appServices.GetAllActiveCategoriesAcceptId(15).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesData = data.Data;
-                    $rootScope.categoriesData.unshift({ Name: "הכל" });
                 }
                 else {
 
@@ -21742,6 +21742,48 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
             appServices.GetAllChildrensCategoriesById(15).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesRabiData = data.Data;
+                }
+                else {
+                }
+
+                $scope.loader = false;
+
+            });
+        }
+
+        $scope.ChangeCategory = function (item) {
+            $scope.loader = true;
+            appServices.GetAllChildrensCategoriesById(item.id).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $rootScope.categoriesSubData = data.Data;
+                    if ($rootScope.categoriesSubData.length > 0) {
+                        $scope.showSub = true;
+                    }
+                    else {
+                        $scope.showSub = false;
+                    }
+                }
+                else {
+                }
+
+                $scope.loader = false;
+
+            });
+        }
+
+        $scope.ChangeSubCategory = function (item) {
+            debugger;
+            $scope.loader = true;
+            appServices.GetAllChildrensCategoriesById(item.Id).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $rootScope.categoriesSubSubData = data.Data
+
+                    if ($rootScope.categoriesSubSubData.length > 0) {
+                        $scope.showSubSub = true;
+                    }
+                    else {
+                        $scope.showSubSub = false;
+                    }
                 }
                 else {
                 }
@@ -22347,6 +22389,7 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
             return response.data;
         });
     }
+
      /* Article Services -------------------> */
     this.AddArticle = function (article) {
         return $http({

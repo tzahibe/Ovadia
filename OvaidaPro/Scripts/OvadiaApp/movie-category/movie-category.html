@@ -2,14 +2,35 @@
 <link href="/Content/select2.min.css" rel="stylesheet" />
 
 <div class="col-xs-12 removePaddingMargin">
-    <!----בחר קטגוריה-->
     <div class="containerX">
+        <!----בחר קטגוריה-->
         <div id="chooseCategoryId">
             <img src="/Content/images/dropdown-icon.png" class="dropdown-icon" />
             <select id="chooseCategorySelectId" class="form-control"
-                    ui-select2 ng-model="select2" data-placeholder="בחר קטגוריה" style="width:100% !important">
+                    ng-change="ChangeCategory(select2)"
+                    ui-select2 ng-model="select2" data-placeholder="בחר נושא" style="width:100% !important">
                 <option value=""></option>
                 <option ng-repeat="cat in $root.categoriesData" ng-value="{{cat}}">{{cat.Name}}</option>
+            </select>
+        </div>
+        <!----בחר תת קטגוריה-->
+        <div id="chooseSubCategoryId" ng-show="showSub">
+            <img src="/Content/images/dropdown-icon.png" class="dropdown-icon" />
+            <select id="chooseCategorySelectId2" class="form-control"
+                    ng-model="select2_1"
+                    ng-change="ChangeSubCategory(select2_1)"
+                    ui-select2  data-placeholder="בחר תת קטגוריה" style="width:100% !important">
+                <option value=""></option>
+                <option ng-repeat="cat in $root.categoriesSubData" ng-value="{{cat}}">{{cat.Name}}</option>
+            </select>
+        </div>
+        <!----בחר תת תת קטגוריה-->
+        <div id="chooseSubSubCategoryId" ng-show="showSubSub">
+            <img src="/Content/images/dropdown-icon.png" class="dropdown-icon" />
+            <select id="chooseCategorySelectId3" class="form-control"
+                    ui-select2 ng-model="select2_1_1" data-placeholder="בחר תת קטגוריה" style="width:100% !important">
+                <option value=""></option>
+                <option ng-repeat="cat in $root.categoriesSubSubData" ng-value="{{cat}}">{{cat.Name}}</option>
             </select>
         </div>
         <!----בחר רב-->
@@ -23,8 +44,12 @@
         </div>
 
         <div id="searchBox">
+            <img src="/Content/images/icons/search_icon.png" class="search-icon" />
             <input type="text" value="חפש" class="form-control" />
         </div>
+        <div id="submitButton">
+            <input id="submitButton2" type="button" value="סנן" class="form-control" />
+        </div>  
     </div>
      
    

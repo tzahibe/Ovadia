@@ -245,6 +245,7 @@
             return response.data;
         });
     }
+
      /* Article Services -------------------> */
     this.AddArticle = function (article) {
         return $http({

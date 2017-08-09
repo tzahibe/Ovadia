@@ -64,7 +64,9 @@ namespace BL
             if(result.ErrorCode == 0)
             {
                 List<CategoryBo> list = (List<CategoryBo>)result.Data;
-                list = list.Where(i => i.isActive == true && i.ParentId != id).ToList<CategoryBo>();
+                list = list.Where(i => i.isActive == true && i.ParentId == 0
+                && i.id != id
+                ).ToList<CategoryBo>();
                 result.Data = list;
             }
             else
