@@ -52,6 +52,12 @@ namespace BL
             result = ArticleResult.GetAllArticles();
             return result;
         }
+        public static Result GetAllActiveArticles()
+        {
+            Result result = new Result();
+            result = ArticleResult.GetAllActiveArticles();
+            return result;
+        }
         public static Result GetArticlesByCategoryId(int categoryId)
         {
             Result result = new Result();
@@ -62,6 +68,7 @@ namespace BL
         {
             Result result = new Result();
             result = ArticleResult.GetNewActiveArticles();
+
             return result;
         }
         public static Result GetArtCat(int articleId)

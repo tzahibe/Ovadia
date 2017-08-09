@@ -315,4 +315,16 @@
             return response.data;
         });
     }
+
+    this.GetAllActiveArticles = function () {
+        return $http({
+            url: url + '/ArticleSer/GetAllActiveArticles',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    
 }]);

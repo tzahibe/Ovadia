@@ -327,6 +327,60 @@ namespace Repository
                 return result;
             }
         }
+        public static Result GetAllActiveArticles()
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    List<Bo.Article> repResult = (from r in context.Article
+                                                  where r.ArticleId != 1
+                                                  && r.Publish == 1
+                                                  select new Bo.Article
+                                                  {
+                                                      ArticleId = r.ArticleId,
+                                                      Body = r.Body,
+                                                      CategoryId = 0,
+                                                      DatePublish = r.DatePublish == null ? DateTime.Now : (DateTime)r.DatePublish,
+                                                      Last_edit = r.Last_edit == null ? DateTime.Now : (DateTime)r.Last_edit,
+                                                      ProfilePic = r.ProfilePic,
+                                                      Video1 = r.Video1,
+                                                      Video2 = r.Video2,
+                                                      Video3 = r.Video3,
+                                                      Title = r.Title,
+                                                      Publish = r.Publish == null ? 0 : (int)r.Publish,
+                                                      CategoryName = "",
+                                                      CategoriesList = (from q in context.Art_Cat
+                                                                        where q.ArticleId == r.ArticleId
+                                                                        select new Bo.Art_Cat
+                                                                        {
+                                                                            ArticleId = r.ArticleId,
+                                                                            CategoryId = q.CategoryId == null ? 0 : (int)q.CategoryId
+                                                                        }).ToList()
+                                                  }).ToList();
+                    if (repResult != null)
+                    {
+                        result.ErrorCode = 0;
+                        result.Data = repResult;
+                        return result;
+                    }
+                    else
+                    {
+                        result.ErrorCode = 2;
+                        result.Data = false;
+                        return result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+        }
         //ArtCat
         public static Result UpdateArtCat(int articleId, List<Bo.Art_Cat> categoryList)
         {

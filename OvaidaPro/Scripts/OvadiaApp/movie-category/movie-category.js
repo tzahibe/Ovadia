@@ -2,12 +2,59 @@
     '$rootScope',
     function ($scope, appServices, ngDialog, $timeout, $interval, $rootScope) {
         var self = this;
+        $scope.Articles = [];
         $scope.showSubSub = false, $scope.showSub = false;
         var promisse;
 
         self.init = function () {
+            $scope.getAllArticles();
             $scope.getAllCategories();
             $scope.GetAllCategoires_rabi();
+        }
+
+
+        $scope.getAllArticles = function () {
+            appServices.GetAllActiveArticles().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Articles = data.Data;
+                    console.log($scope.Articles);
+
+                    angular.forEach($scope.Articles, function (value, key) {
+                        var profImage;
+                        value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
+                        value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
+                        value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
+
+                        if (value.ProfilePic == null || value.ProfilePic == '') {
+                            value.profImage = "/Content/images/default.png";
+                        }
+                        else {
+                            value.profImage = value.ProfilePic.split(' ').join('%20');;
+                        }
+                    });
+
+                }
+                else {
+                }
+
+            });
+        }
+
+        $scope.myStyle = function (article) {
+            if (article.profImage == null || article.profImage == '') {
+                //var style = {
+                //    "background-image": "url(/Content/images/default.png)"
+                //}
+                //return style; 
+                return "background-image:url(/Content/images/default.png)";
+            }
+
+            var urlNoSpace = article.profImage.split(' ').join('%20');
+            //var style = {
+            //    "background-image": "url(" + urlNoSpace + ")",
+            //}
+            // return style;
+            return "background-image: url(" + urlNoSpace + ")";
         }
 
         $scope.getAllCategories = function () {
