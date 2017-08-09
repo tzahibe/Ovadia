@@ -62,6 +62,7 @@
             appServices.GetAllActiveCategoriesAcceptId(15).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesData = data.Data;
+                    $rootScope.categoriesData.unshift({ Name: "הכל" });
                 }
                 else {
 
@@ -77,6 +78,7 @@
             appServices.GetAllChildrensCategoriesById(15).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesRabiData = data.Data;
+                    $rootScope.categoriesRabiData.unshift({ Name: "הכל" });
                 }
                 else {
                 }
@@ -88,6 +90,8 @@
 
         $scope.ChangeCategory = function (item) {
             $scope.loader = true;
+            $scope.select2_1 = null;
+            $scope.select2_1_1 = null;
             appServices.GetAllChildrensCategoriesById(item.id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesSubData = data.Data;
@@ -95,6 +99,7 @@
                         $scope.showSub = true;
                     }
                     else {
+                        $scope.showSubSub = false;
                         $scope.showSub = false;
                     }
                 }
@@ -107,12 +112,12 @@
         }
 
         $scope.ChangeSubCategory = function (item) {
-            debugger;
             $scope.loader = true;
+            $scope.select2_1_1 = null;
             appServices.GetAllChildrensCategoriesById(item.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesSubSubData = data.Data
-
+                    debugger;
                     if ($rootScope.categoriesSubSubData.length > 0) {
                         $scope.showSubSub = true;
                     }
@@ -126,6 +131,76 @@
                 $scope.loader = false;
 
             });
+        }
+
+        $scope.parentCategoryFilter = function (item) {
+            if ($scope.select2 == null || $scope.select2.Name == "הכל") {
+                return true;
+            }
+            if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
+                item.CategoriesList.length == 0 | $scope.select2 == null | $scope.select2 == "")
+                return false;
+            for (var i = 0; i < item.CategoriesList.length; i++) {
+                if (item.CategoriesList[i].CategoryId == $scope.select2.id) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        $scope.subCategoryFilter = function (item) {
+            if ($scope.select2_1 == null) {
+                return true;
+            }
+
+            if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
+                item.CategoriesList.length == 0 | $scope.select2_1 == null | $scope.select2_1 == "")
+                return false;
+
+            for (var i = 0; i < item.CategoriesList.length; i++) {
+                if (item.CategoriesList[i].CategoryId == $scope.select2_1.id) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        $scope.subSubCategoryFilter = function (item) {
+            if ($scope.select2_1_1 == null) {
+                return true;
+            }
+
+            if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
+                item.CategoriesList.length == 0 | $scope.select2_1_1 == null | $scope.select2_1_1 == "")
+                return false;
+
+            for (var i = 0; i < item.CategoriesList.length; i++) {
+                if (item.CategoriesList[i].CategoryId == $scope.select2_1_1.id) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        $scope.rabiFilter = function (item) {
+            if ($scope.select3 == null || $scope.select3.Name == "הכל") {
+                return true;
+            }
+
+            if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
+                item.CategoriesList.length == 0 | $scope.select3 == null | $scope.select3 == "")
+                return false;
+
+            for (var i = 0; i < item.CategoriesList.length; i++) {
+                if (item.CategoriesList[i].CategoryId == $scope.select3.Id) {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         self.init();

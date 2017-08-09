@@ -53,7 +53,9 @@
             </div>  
         </div>
         <div class="all_articles">
-            <div class="articles-list" dir-paginate="article in Articles | itemsPerPage: 12 | filter: search">
+            <div class="articles-list" ng-repeat="article in Articles | filter: search
+                | filter: parentCategoryFilter | filter: subCategoryFilter
+                | filter: subSubCategoryFilter | filter: rabiFilter">
                 <div class="article-box col-md-4_5 col-xs-12" ng-click="goToArticle(article)"
                      style="{{myStyle(article)}}">
                     <div class="article-title">
@@ -65,7 +67,7 @@
                 אין מאמרים תחת קטגוריה זו
             </div>
 
-            <dir-pagination-controls class="col-xs-12" ng-hide="Articles == [] || search != null"></dir-pagination-controls>
+            <!--<dir-pagination-controls class="col-xs-12" ng-hide="Articles == [] || search != null"></dir-pagination-controls>-->
 
         </div>
     </div>

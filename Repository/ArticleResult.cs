@@ -399,15 +399,8 @@ namespace Repository
                             artcat.ArticleId = articleId;
                             artcat.Text = item.text;
                             artcat.CategoryId = item.CategoryId;
-                            List<Art_Cat> isExist = (from r in context.Art_Cat
-                                                     where r.ArticleId == artcat.ArticleId
-                                                     && r.CategoryId == artcat.CategoryId
-                                                     select r).ToList<Art_Cat>();
-                            if (isExist != null && isExist.Count == 0)
-                            {
-                                context.Art_Cat.Add(artcat);
-                                context.SaveChanges();
-                            }
+                            context.Art_Cat.Add(artcat);
+                            context.SaveChanges();
                         }
                     }
 
