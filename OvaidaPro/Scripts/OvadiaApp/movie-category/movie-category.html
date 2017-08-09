@@ -52,6 +52,12 @@
                 <input id="submitButton2" ng-model="search" type="button" value="סנן" class="form-control" />
             </div>  
         </div>
+        
+    </div>
+</div>
+<div class="col-xs-12 removePaddingMargin blueLine">
+    <div class="containerX">
+        <div class="blueLine-title">מיין לפי</div>
         <div class="all_articles">
             <div class="articles-list" ng-repeat="article in Articles | filter: search
                 | filter: parentCategoryFilter | filter: subCategoryFilter
@@ -71,6 +77,5 @@
 
         </div>
     </div>
-     
-   
 </div>
+

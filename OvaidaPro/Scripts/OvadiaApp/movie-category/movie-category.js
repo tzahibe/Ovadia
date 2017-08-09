@@ -89,13 +89,17 @@
         }
 
         $scope.ChangeCategory = function (item) {
-            $scope.loader = true;
             $scope.select2_1 = null;
             $scope.select2_1_1 = null;
+            if (item.Name == "הכל") {
+                return;
+            }
+            $scope.loader = true;
             appServices.GetAllChildrensCategoriesById(item.id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesSubData = data.Data;
                     if ($rootScope.categoriesSubData.length > 0) {
+                        $rootScope.categoriesSubData.unshift({ Name: "הכל" });
                         $scope.showSub = true;
                     }
                     else {
@@ -112,13 +116,17 @@
         }
 
         $scope.ChangeSubCategory = function (item) {
-            $scope.loader = true;
             $scope.select2_1_1 = null;
+            if (item.Name == "הכל") {
+                return;
+            }
+            $scope.loader = true;
             appServices.GetAllChildrensCategoriesById(item.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesSubSubData = data.Data
-                    debugger;
+                   
                     if ($rootScope.categoriesSubSubData.length > 0) {
+                        $rootScope.categoriesSubSubData.unshift({ Name: "הכל" });
                         $scope.showSubSub = true;
                     }
                     else {
@@ -150,7 +158,7 @@
         }
 
         $scope.subCategoryFilter = function (item) {
-            if ($scope.select2_1 == null) {
+            if ($scope.select2_1 == null || $scope.select2_1.Name == "הכל") {
                 return true;
             }
 
@@ -159,7 +167,7 @@
                 return false;
 
             for (var i = 0; i < item.CategoriesList.length; i++) {
-                if (item.CategoriesList[i].CategoryId == $scope.select2_1.id) {
+                if (item.CategoriesList[i].CategoryId == $scope.select2_1.Id) {
                     return true;
                 }
             }
@@ -168,7 +176,7 @@
         }
 
         $scope.subSubCategoryFilter = function (item) {
-            if ($scope.select2_1_1 == null) {
+            if ($scope.select2_1_1 == null || $scope.select2_1_1.Name == "הכל") {
                 return true;
             }
 
@@ -177,7 +185,7 @@
                 return false;
 
             for (var i = 0; i < item.CategoriesList.length; i++) {
-                if (item.CategoriesList[i].CategoryId == $scope.select2_1_1.id) {
+                if (item.CategoriesList[i].CategoryId == $scope.select2_1_1.Id) {
                     return true;
                 }
             }

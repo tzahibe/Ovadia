@@ -356,6 +356,7 @@ namespace Repository
                                                                         select new Bo.Art_Cat
                                                                         {
                                                                             ArticleId = r.ArticleId,
+                                                                            text = q.Text,
                                                                             CategoryId = q.CategoryId == null ? 0 : (int)q.CategoryId
                                                                         }).ToList()
                                                   }).ToList();
