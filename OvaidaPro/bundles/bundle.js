@@ -21802,7 +21802,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
                 //    "background-image": "url(/Content/images/default.png)"
                 //}
                 //return style; 
-                return "background-image:url(/Content/images/default.png); left:5px;background-size: 100%;";
+                return "background-image:url(/Content/images/default.png); left:5px;background-size: 100% 300px;";
             }
 
             var urlNoSpace = article.profImage.split(' ').join('%20');
@@ -21810,7 +21810,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
             //    "background-image": "url(" + urlNoSpace + ")",
             //}
             // return style;
-            return "background-image: url(" + urlNoSpace + "); left:5px;background-size: 100%;";
+            return "background-image: url(" + urlNoSpace + "); left:5px;background-size: 100% 300px";
         }
 
         $scope.getAllCategories = function () {
