@@ -1,9 +1,11 @@
 ﻿<link href="/Scripts/OvadiaApp/movie-category/movie-category.css" rel="stylesheet" />
 <link href="/Content/select2.min.css" rel="stylesheet" />
 
-<div class="col-xs-12 removePaddingMargin">
+<!--desktop-->
+
+<div class="col-xs-12 removePaddingMargin" ng-hide="isMobile">
     <div class="containerX">
-        <div class="Search_header">
+        <div class="Search_header" >
             <!----בחר קטגוריה-->
             <div id="chooseCategoryId">
                 <img src="/Content/images/dropdown-icon.png" class="dropdown-icon" />
@@ -55,9 +57,10 @@
         
     </div>
 </div>
-<div class="col-xs-12 removePaddingMargin blueLine">
+
+<div class="col-xs-12 removePaddingMargin blueLine" ng-hide="isMobile">
     <div class="containerX">
-        <div class="blueLine-title">מיין לפי</div>
+        <div class="blueLine-title" >מיין לפי</div>
         <div class="all_articles">
             <div class="articles-list" ng-repeat="article in Articles | filter: search
                 | filter: parentCategoryFilter | filter: subCategoryFilter
@@ -79,3 +82,27 @@
     </div>
 </div>
 
+<!--mobile-->
+
+<div class="col-xs-12 removePaddingMargin-Mobile" ng-show="isMobile">
+    <div class="containerX">
+        <div class="all_articles">
+            <div class="articles-list" ng-repeat="article in Articles | filter: search
+                | filter: parentCategoryFilter | filter: subCategoryFilter
+                | filter: subSubCategoryFilter | filter: rabiFilter">
+                <div class="article-box col-md-4_5 col-xs-12" ng-click="goToArticle(article)"
+                     style="{{myStyle(article)}}">
+                    <div class="article-title">
+                        {{article.Title}}
+                    </div>
+                </div>
+            </div>
+            <div ng-show="Articles == null || Articles.length == 0 && categorySelected != null">
+                אין מאמרים תחת קטגוריה זו
+            </div>
+
+            <!--<dir-pagination-controls class="col-xs-12" ng-hide="Articles == [] || search != null"></dir-pagination-controls>-->
+
+        </div>
+    </div>
+</div>

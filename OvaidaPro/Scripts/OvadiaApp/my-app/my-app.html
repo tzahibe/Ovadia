@@ -3,6 +3,14 @@
     <!--- תפריט -->
     <div class="row">
         <header-component></header-component>
+        <div class="col-xs-12 odaot-for-zibur">
+            <div class="container">
+                <strong> הודעות לציבור: </strong>
+                <marquee class="slide-script" width="80%" Loop="infinite" direction="right" scrollamount="5" scrolldelay="2">
+                    {{Comment.Text}}
+                </marquee>
+            </div>
+        </div>
         <div class="visible-xs spcae-from-header"></div>
         <br />
     </div>

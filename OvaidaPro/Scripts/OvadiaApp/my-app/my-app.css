@@ -44,6 +44,27 @@
     font-family: 'OpenSansHebrew-Regular';
     src: url('../../../Content/Fonts/OpenSansHebrew-Regular.ttf') format('truetype');
 }
+.slide-script {
+    position: relative;
+    top: 6px;
+}
+.col-xs-12.odaot-for-zibur {
+    background: #eeeae6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #888785;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+    .col-xs-12.odaot-for-zibur .container {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 5px;
+        width: 1170px;
+    }
+    
 body {
     font-family: OpenSansHebrew-Regular;
 }
@@ -240,4 +261,10 @@ padding:0;
         position: relative;
         top: -150px;
     }*/
+        .col-xs-12.odaot-for-zibur .container{
+            width:100%;
+        }
+        .slide-script{
+            width:100%;
+        }
     }

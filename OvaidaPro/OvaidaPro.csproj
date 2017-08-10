@@ -160,6 +160,9 @@
     <Content Include="Scripts\OvadiaApp\Admin\category-admin\category-admin.css" />
     <Content Include="Scripts\OvadiaApp\Admin\category-admin\category-admin.html" />
     <Content Include="Scripts\OvadiaApp\Admin\category-admin\category-admin.js" />
+    <Content Include="Scripts\OvadiaApp\Admin\comment-info\comment-info.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\comment-info\comment-info.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\comment-info\comment-info.js" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\add-event.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\add-fixed-event.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\add-tfila.html" />
@@ -326,6 +329,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ArticleSerController.cs" />
     <Compile Include="Controllers\CategorySerController.cs" />
+    <Compile Include="Controllers\CommentSerController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -374,6 +378,7 @@
     <Folder Include="Views\Api\" />
     <Folder Include="Views\ArticleSer\" />
     <Folder Include="Views\CategorySer\" />
+    <Folder Include="Views\CommentSer\" />
     <Folder Include="Views\Message\" />
     <Folder Include="Views\Tfila\" />
     <Folder Include="Views\UsersDetails\" />

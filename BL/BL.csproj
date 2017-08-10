@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ArticleLogic.cs" />
     <Compile Include="CategoriesLogic.cs" />
+    <Compile Include="CommentLogic.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Event_Logic.cs" />
     <Compile Include="LoggerLogic.cs" />

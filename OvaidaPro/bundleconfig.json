@@ -33,6 +33,7 @@
       "Scripts/ovadiaapp/Admin/movies/add-movie/add-movie.js",
       "Scripts/ovadiaapp/movie-details/movie-details.js",
       "Scripts/ovadiaapp/movie-category/movie-category.js",
+      "Scripts/ovadiaapp/admin/comment-info/comment-info.js",
       "Scripts/OvadiaApp/my-app/my-app.js",
       "Scripts/ovadiaapp/image-gallery/image-gallery.js",
       "Scripts/OvadiaApp/appServcies.js",

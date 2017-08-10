@@ -4,12 +4,13 @@
         $rootScope.admin_menu = 'תכנים שבועיים';
         $scope.admin_menuItems = [
             { name: 'זמני תפילות', state: 'admin.tfila', url: '/admin/tfila' },
-            { name: 'עריכת אודות', state: 'admin.odot', url: '/odot-admin' },
+            { name: 'עריכת אודות', state: 'admin.odot', url: '/admin/odot-admin' },
             { name: 'הפצת הודעות במייל', state: 'admin.sendmail', url: '/admin/sendmail' },
             { name: 'תכנים שבועיים', state: 'admin.lesson', url: '/admin/lesson' },
             { name: 'גלריית תמונות', state: 'admin.upload', url: '/admin/upload' },
             { name: 'ניהול קטגוריות', state: 'admin.categories', url: '/admin/categories' },
             { name: 'ניהול מאמרים\\סרטים', state: 'admin.home-movies', url: '/admin/home-movies' },
+            { name: 'הודעות לציבור', state: 'admin.comment-info', url: '/admin/comment-info' },
         ];
         $scope.plusIcon = true;
 

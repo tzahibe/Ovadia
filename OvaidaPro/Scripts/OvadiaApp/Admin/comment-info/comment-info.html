@@ -1,0 +1,17 @@
+﻿<link href="/Scripts/OvadiaApp/Admin/comment-info/comment-info.css" rel="stylesheet" />
+<form name="sendMessForm" novalidate="" class="ng-pristine ng-invalid ng-invalid-required">
+    <div ng-hide="loaderSend" class="">
+        <div class="form-group">
+            <label for="exampleInputPassword1">גוף ההודעה</label>
+            <textarea required="" type="t" #subject="ngModel" name="Subject" ng-trim="false"
+                      rows="5" cols="40" ng-model="Comment.Text"
+                      class="form-control hugeSize" id="Event_Name">
+            </textarea>
+        </div>
+        <button type="button" class="btn btn-success" ng-click="saveComment()">עדכן</button>
+    </div>
+    <div class="modal-body center ng-hide" ng-show="loaderSend">
+        <img src="/Content/images/loader.gif">
+    </div>
+    <br><br><br><br><br><br><br><br>
+</form>

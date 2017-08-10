@@ -41,6 +41,15 @@
           <Property Name="isActive" Type="int" />
           <Property Name="Cat_Order" Type="char" MaxLength="10" />
         </EntityType>
+        <EntityType Name="db_Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PublishDate" Type="datetime" />
+          <Property Name="Show" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="db_Event">
           <Key>
             <PropertyRef Name="ID" />
@@ -111,6 +120,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySet Name="Art_Cat" EntityType="Self.Art_Cat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_Comment" EntityType="Self.db_Comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="db_Event" EntityType="Self.db_Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Emails" EntityType="Self.Emails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
@@ -159,6 +169,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySet Name="Users" EntityType="DB_A25801_OvadiaModel.Users" />
           <EntitySet Name="Categories" EntityType="DB_A25801_OvadiaModel.Categories" />
           <EntitySet Name="Art_Cat" EntityType="DB_A25801_OvadiaModel.Art_Cat" />
+          <EntitySet Name="db_Comment" EntityType="DB_A25801_OvadiaModel.db_Comment" />
         </EntityContainer>
         <EntityType Name="Emails">
           <Key>
@@ -242,6 +253,15 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="CategoryId" Type="Int32" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="db_Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PublishDate" Type="DateTime" Precision="3" />
+          <Property Name="Show" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -354,6 +374,16 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_Comment">
+            <EntityTypeMapping TypeName="DB_A25801_OvadiaModel.db_Comment">
+              <MappingFragment StoreEntitySet="db_Comment">
+                <ScalarProperty Name="Show" ColumnName="Show" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -169,7 +169,15 @@
             data: {
                 access: [UserRole.Admin, UserRole.Editor]
             }
-        });
+        })
+       .state("admin.comment-info", {
+          url: '/comment-info',
+          templateUrl: '/Scripts/OvadiaApp/Admin/comment-info/comment-info.html',
+          controller: 'commentInfoCtrl',
+        data: {
+            access: [UserRole.Admin, UserRole.Editor]
+        }
+    });
 
     ngClipProvider.setPath("/Scripts/plugins/ZeroClipboard.swf");
     $locationProvider.hashPrefix('');

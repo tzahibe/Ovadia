@@ -1,13 +1,27 @@
-﻿OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices','UserAccount',
-    function ($scope, appServices, UserAccount) {
+﻿OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices', 'UserAccount','$rootScope',
+    function ($scope, appServices, UserAccount, $rootScope) {
         var self = this;
         var currentDialog = null;
         $scope.currentEvent = null;
         $scope.isMobile = false;
+        $scope.Comment = {};
         $scope.categoriesData = [];
 
         self.init = function () {
             $scope.isMobileDevice();
+            $rootScope.GetComment();
+        }
+
+        $rootScope.GetComment = function () {
+            appServices.GetComment().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Comment = data.Data;
+                }
+                else {
+                    alert("error");
+                }
+                $scope.loaderSend = false;
+            })
         }
 
         $scope.isMobileDevice = function () {
@@ -55,7 +69,6 @@
             }
         }
 
-
         $(window).scroll(function () {
             if (!$scope.isMobile) {
                 return;
@@ -72,10 +85,8 @@
             
         });
 
-
         self.init();
      
-
     }]);
 
 OvadiaApp.directive('myApp', function () {

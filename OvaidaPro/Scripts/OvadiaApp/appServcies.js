@@ -326,5 +326,26 @@
         });
     }
 
+   /* Comment Services -------------------> */
+    this.CommentSave = function (comment) {
+        return $http({
+            url: url + '/CommentSer/Save',
+            method: 'POST',
+            data: comment,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetComment = function () {
+        return $http({
+            url: url + '/CommentSer/GetComment',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
     
 }]);

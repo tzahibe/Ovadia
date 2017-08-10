@@ -44,6 +44,7 @@
     <Compile Include="Bo_Tfila.cs" />
     <Compile Include="CategoryBo.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Comment.cs" />
     <Compile Include="Consts.cs" />
     <Compile Include="ErrorEnumcs.cs" />
     <Compile Include="ErrorLogger.cs" />

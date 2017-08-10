@@ -21207,7 +21207,15 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
             data: {
                 access: [UserRole.Admin, UserRole.Editor]
             }
-        });
+        })
+       .state("admin.comment-info", {
+          url: '/comment-info',
+          templateUrl: '/Scripts/OvadiaApp/Admin/comment-info/comment-info.html',
+          controller: 'commentInfoCtrl',
+        data: {
+            access: [UserRole.Admin, UserRole.Editor]
+        }
+    });
 
     ngClipProvider.setPath("/Scripts/plugins/ZeroClipboard.swf");
     $locationProvider.hashPrefix('');
@@ -21794,7 +21802,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
                 //    "background-image": "url(/Content/images/default.png)"
                 //}
                 //return style; 
-                return "background-image:url(/Content/images/default.png)";
+                return "background-image:url(/Content/images/default.png); left:5px;";
             }
 
             var urlNoSpace = article.profImage.split(' ').join('%20');
@@ -21802,7 +21810,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
             //    "background-image": "url(" + urlNoSpace + ")",
             //}
             // return style;
-            return "background-image: url(" + urlNoSpace + ")";
+            return "background-image: url(" + urlNoSpace + "); left:5px;";
         }
 
         $scope.getAllCategories = function () {
@@ -21970,16 +21978,76 @@ OvadiaApp.directive('movieCategory', function () {
         templateUrl: '/Scripts/OvadiaApp/movie-category/movie-category.html'
     }
 });
-OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices','UserAccount',
-    function ($scope, appServices, UserAccount) {
+OvadiaApp.controller('commentInfoCtrl', ['$scope', '$rootScope', 'ngDialog', 'appServices', 'UserAccount',
+    '$state', '$cookies',
+    function ($scope, $rootScope, ngDialog, appServices, UserAccount, $state, $cookies) {
+        $scope.Comment = {};
+        var self = this;
+
+        self.init = function () {
+            $rootScope.GetComment();
+        }
+
+        $scope.saveComment = function () {
+            $scope.loaderSend = true;
+            appServices.CommentSave($scope.Comment).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Comment = data.Data;
+                }
+                else {
+                    alert("error");
+                }
+                $scope.loaderSend = false;
+            });
+        }
+
+        $rootScope.GetComment = function () {
+            appServices.GetComment().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Comment = data.Data;
+                }
+                else {
+                    alert("error");
+                }
+                $scope.loaderSend = false;
+            })
+        }
+
+        self.init();
+    }]);
+
+OvadiaApp.directive('commentInfo', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'commentInfoCtrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/comment-info/comment-info.html'
+    }
+});
+OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices', 'UserAccount','$rootScope',
+    function ($scope, appServices, UserAccount, $rootScope) {
         var self = this;
         var currentDialog = null;
         $scope.currentEvent = null;
         $scope.isMobile = false;
+        $scope.Comment = {};
         $scope.categoriesData = [];
 
         self.init = function () {
             $scope.isMobileDevice();
+            $rootScope.GetComment();
+        }
+
+        $rootScope.GetComment = function () {
+            appServices.GetComment().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Comment = data.Data;
+                }
+                else {
+                    alert("error");
+                }
+                $scope.loaderSend = false;
+            })
         }
 
         $scope.isMobileDevice = function () {
@@ -22027,7 +22095,6 @@ OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices','UserAccount',
             }
         }
 
-
         $(window).scroll(function () {
             if (!$scope.isMobile) {
                 return;
@@ -22044,10 +22111,8 @@ OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices','UserAccount',
             
         });
 
-
         self.init();
      
-
     }]);
 
 OvadiaApp.directive('myApp', function () {
@@ -22636,6 +22701,27 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         });
     }
 
+   /* Comment Services -------------------> */
+    this.CommentSave = function (comment) {
+        return $http({
+            url: url + '/CommentSer/Save',
+            method: 'POST',
+            data: comment,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetComment = function () {
+        return $http({
+            url: url + '/CommentSer/GetComment',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
     
 }]);
 OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDialog','$rootScope',
@@ -24821,12 +24907,13 @@ OvadiaApp.controller('homeAdminCtrl', ['$scope', '$rootScope', 'ngDialog', 'appS
         $rootScope.admin_menu = 'תכנים שבועיים';
         $scope.admin_menuItems = [
             { name: 'זמני תפילות', state: 'admin.tfila', url: '/admin/tfila' },
-            { name: 'עריכת אודות', state: 'admin.odot', url: '/odot-admin' },
+            { name: 'עריכת אודות', state: 'admin.odot', url: '/admin/odot-admin' },
             { name: 'הפצת הודעות במייל', state: 'admin.sendmail', url: '/admin/sendmail' },
             { name: 'תכנים שבועיים', state: 'admin.lesson', url: '/admin/lesson' },
             { name: 'גלריית תמונות', state: 'admin.upload', url: '/admin/upload' },
             { name: 'ניהול קטגוריות', state: 'admin.categories', url: '/admin/categories' },
             { name: 'ניהול מאמרים\\סרטים', state: 'admin.home-movies', url: '/admin/home-movies' },
+            { name: 'הודעות לציבור', state: 'admin.comment-info', url: '/admin/comment-info' },
         ];
         $scope.plusIcon = true;
 
