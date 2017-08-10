@@ -64,6 +64,14 @@ header-component .rabi-ovadia {
     position: absolute;
     right: 0;
 }
+header-component .col-xs-12.odaot-for-zibur {
+    background: #eeeae6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #888785;
+    font-size: 15px;
+    margin-bottom:5px;
+}
 
 @media screen and (max-width: 768px) {
     .img-responsive.logo1{
@@ -74,7 +82,7 @@ header-component .rabi-ovadia {
         width: 100%;
     }
     header-component .spcae-from-header {
-        margin-bottom: 140px;
+        margin-bottom: 104px;
     }
     header-component nav.navbar-default {
         background-color: #f8f8f8;
