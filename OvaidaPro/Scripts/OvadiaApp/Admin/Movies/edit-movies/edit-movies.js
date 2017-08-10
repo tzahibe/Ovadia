@@ -36,6 +36,9 @@
                     $rootScope.categoriesData = data.Data;
                     $rootScope.categoriesData.unshift({Name:"הכל"});
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                 }
@@ -142,6 +145,9 @@
                             value.profImage = value.ProfilePic.split(' ').join('%20');;
                         }
                     });
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");

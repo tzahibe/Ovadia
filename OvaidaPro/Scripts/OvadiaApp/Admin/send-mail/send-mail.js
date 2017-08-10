@@ -1,5 +1,5 @@
-﻿OvadiaApp.controller('sendMailCtrl', ['$scope','appServices','ngDialog','$timeout',
-    function ($scope, appServices, ngDialog, $timeout) {
+﻿OvadiaApp.controller('sendMailCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout','$rootScope',
+    function ($scope, appServices, ngDialog, $timeout, $rootScope) {
         var self = this;
         $scope.radio = 2;
         $scope.Mail = {};
@@ -13,12 +13,16 @@
             appServices.getAllMembers().then(function (response) {
                 if (response.data.ErrorCode == 0) {
                     $scope.Messages.data = response.data.Data;
-                    $scope.loader = false;
+                }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
-                    $scope.loader = false;
+                    $scopeloader = false;
                     $scope.OpenErrorPopup();
                 }
+                $scope.loader = false;
+
             });
         }
 
@@ -109,6 +113,9 @@
                     $scope.closePopup();
                     $scope.OpenEmailExistErrorPopup();
                 }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.closePopup();
                     $scope.OpenErrorPopup();
@@ -129,6 +136,9 @@
                     $scope.Messages.data.splice(index, 1);
                     $scope.OpenSuccessSendMailPopup();
                 }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.OpenErrorPopup();
                 }
@@ -146,6 +156,9 @@
                 if (response.data.ErrorCode == 0) {
                     $scope.loaderSend = false;
                     $scope.OpenSuccessSendMailPopup();
+                }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.loaderSend = false;

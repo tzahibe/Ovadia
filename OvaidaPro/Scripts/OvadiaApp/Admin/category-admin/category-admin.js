@@ -1,5 +1,5 @@
-﻿OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDialog',
-    function ($scope, $http, $timeout, ngDialog ) {
+﻿OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDialog','$rootScope',
+    function ($scope, $http, $timeout, ngDialog, $rootScope) {
     var self = this;
     $scope.lastChosenCat = null;
     $scope.ParentCategories = [];
@@ -44,7 +44,9 @@
                 }, 1000);
 
             }
-        
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
             else {
                 $scope.OpenPopup("אירעה שגיאה כללית", "אנא נסה שוב, מאוחר יותר.");
             }
@@ -94,6 +96,9 @@
                     $('#ParentCatSucc').slideToggle(1200);
                 }, 1000);
             }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
             else {
                 $scope.OpenPopup("אירעה שגיאה במחיקת הקטגוריה", "אנא בדוק שאין שום מאמר שמשתמש בקטגוריה זו (או בתת קטגוריה שלה) ואם יש עליך לשנות את הקטגוריה במאמר, או להסיר את המאמר.");
             }
@@ -123,6 +128,12 @@
                 $timeout(function () {
                     $('#ParentCatSucc').slideToggle(1200);
                 }, 1000);
+            }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
+            else {
+                $scope.OpenPopup("אירעה שגיאה במחיקת הקטגוריה", "אנא בדוק שאין שום מאמר שמשתמש בקטגוריה זו (או בתת קטגוריה שלה) ואם יש עליך לשנות את הקטגוריה במאמר, או להסיר את המאמר.");
             }
             $scope.loader = false;
         });
@@ -186,6 +197,12 @@
                     $('#SubCatSucc').slideToggle(1200);
                 }, 1000);
             }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
+            else {
+                $scope.OpenPopup("אירעה שגיאה במחיקת הקטגוריה", "אירעה שגיאה במחיקת המאמר אנא בדוק שמתקבל מידע מהמסד הנתונים בשאר המקומות באתר");
+            }
             $scope.loader = false;
         });
     }
@@ -214,6 +231,12 @@
                 $timeout(function () {
                     $('#ParentCatSucc').slideToggle(1200);
                 }, 1000);
+            }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
+            else {
+                $scope.OpenPopup("אירעה שגיאה", "אירעה שגיאה בעריכת הקטגוריה אנא בדוק שמתקבל מידע מהמסד הנתונים בשאר המקומות באתר");
             }
             $scope.loader = false;
         });
@@ -249,8 +272,11 @@
                         $('#SubCatSucc').slideToggle(1200);
                     }, 1000);
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
-                    $scope.OpenPopup("אירעה שגיאה במחיקת הקטגוריה", "אנא בדוק שאין שום מאמר שמשתמש בקטגוריה זו (או בתת קטגוריה שלה) ואם יש עליך לשנות את הקטגוריה במאמר, או להסיר את המאמר.");
+                    $scope.OpenPopup("אירעה שגיאה ", "ארעה שגיאה במחיקת הקטגוריה, אנא בדוק שמתקבל מידע בשאר הרכיבים באתר. אם התקלה נמשכת פנה למנהל האתר");
                 }
                 $scope.loader = false;
             });
@@ -272,6 +298,7 @@
                 $scope.subParentCat = item;
                 $scope.subParentCat.Children = response.data.Data;
             }
+
         });
         if (item == null) {
             $scope.subParentCatInput = "";
@@ -314,6 +341,12 @@
                     $('#Sub3CatSucc').slideToggle(1200);
                 }, 1000);
             }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
+            else {
+                $scope.OpenPopup("אירעה שגיאה ", "ארעה שגיאה בהוספת הקטגוריה, אנא בדוק שמתקבל מידע בשאר הרכיבים באתר. אם התקלה נמשכת פנה למנהל האתר");
+            }
             $scope.loader = false;
         });
     }
@@ -322,7 +355,8 @@
         if (catId == null || newName == null || newName == "") return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order).then(function (response) {
+        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order)
+            .then(function (response) {
             var errorCode;
             try {
                 errorCode = response.data.ErrorCode;
@@ -340,6 +374,12 @@
                 $timeout(function () {
                     $('#Sub3CatSucc').slideToggle(1200);
                 }, 1000);
+            }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
+            else {
+                $scope.OpenPopup("אירעה שגיאה ", "ארעה שגיאה בעריכת הקטגוריה, אנא בדוק שמתקבל מידע בשאר הרכיבים באתר. אם התקלה נמשכת פנה למנהל האתר");
             }
             $scope.loader = false;
         });
@@ -374,6 +414,9 @@
                     $timeout(function () {
                         $('#Sub3CatSucc').slideToggle(1200);
                     }, 1000);
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.OpenPopup("אירעה שגיאה במחיקת הקטגוריה", "אנא בדוק שאין שום מאמר שמשתמש בקטגוריה זו (או בתת קטגוריה שלה) ואם יש עליך לשנות את הקטגוריה במאמר, או להסיר את המאמר.");

@@ -90,6 +90,9 @@
                     $scope.OpenPopup("שגיאה!","מאמר עם כותרת זהה כבר קיים במערכת.");
 
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                 }
@@ -176,6 +179,12 @@
                     //$scope.Article = response.data.Data;
                     $scope.isNewArticle = false;
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
                 $scope.loader = false;
             });
         }
@@ -212,6 +221,9 @@
                         $scope.Article = response.data.Data;
                         $scope.isNewArticle = false;
                     }
+                    else if (data.ErrorCode == 5) {
+                        $rootScope.LogOut();
+                    }
                     else {
                         $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                     }
@@ -243,6 +255,9 @@
                     $rootScope.categoriesData = data.Data;
                     $rootScope.categoriesData.unshift({ Name: "הכל" });
                     $.grep($rootScope.categoriesData, function (el, idx) { return el.field == "הכל" }, true)
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");

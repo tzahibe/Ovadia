@@ -25,7 +25,7 @@
             });
         }
 
-        $scope.LogOut = function () {
+        $rootScope.LogOut = function () {
             appServices.Logout().then(function (response) {
                 if (response.data.ErrorCode == 0) {
                     UserAccount.Role = 'Guest';

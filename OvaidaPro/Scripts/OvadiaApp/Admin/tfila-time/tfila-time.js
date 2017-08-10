@@ -1,5 +1,5 @@
-﻿OvadiaApp.controller('tfilaTimeCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout',
-    function ($scope, appServices, ngDialog, $timeout) {
+﻿OvadiaApp.controller('tfilaTimeCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout','$rootScope',
+    function ($scope, appServices, ngDialog, $timeout, $rootScope) {
         var self = this;
         $scope.Tfilot = {};
         $scope.minutes = $.map($(Array(60)), function (val, i) {
@@ -27,6 +27,9 @@
                     console.log(response);
                     $scope.Tfilot.data = response.data.Data;
                     $scope.loader1 = false;
+                }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.loader1 = false;
@@ -117,6 +120,9 @@
                     $scope.Tfilot.data.splice(index, 1);
                     $scope.OpenSuccessPopup();
                 }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.loader = false;
                     $scope.closePopup();
@@ -138,6 +144,9 @@
                     $scope.Tfilot.data.push($scope.currentTfila);
                     $scope.closePopup();
                     $scope.OpenSuccessPopup();
+                }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.loader = false;
@@ -174,6 +183,9 @@
                     $scope.Tfilot.data.push($scope.currentTfila);
                     $scope.closePopup();
                     $scope.OpenSuccessPopup();
+                }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.loader = false;

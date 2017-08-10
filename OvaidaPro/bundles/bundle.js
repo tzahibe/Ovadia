@@ -19188,8 +19188,8 @@ OvadiaApp.directive('rotate', function () {
         }
     }
 });
-OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ngDialog',
-    function ($scope, $http, $timeout, Upload, ngDialog) {
+OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload', 'ngDialog','$rootScope',
+    function ($scope, $http, $timeout, Upload, ngDialog, $rootScope) {
         var self = this;
         $scope.results = [];
         $scope.ver = Math.random() * 99999;
@@ -19216,6 +19216,7 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
                 }
                 else if (ErrorCode == 5) {
                     $scope.isAllow = false;
+                    $rootScope.LogOut();
                 }
                 $scope.loader = false;
             });
@@ -19224,8 +19225,16 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
         $scope.DeleteFile = function (fname) {
             $scope.loader = true;
             $http.get("/Uploads/DeleteFile?fname=" + fname).then(function (response) {
-                if (response.data.Data.length > 0) {
-                    self.RemoveFromArray(fname);
+                if (response.data.ErrorCode == 0) {
+                    if (response.data.Data.length > 0) {
+                        self.RemoveFromArray(fname);
+                    }
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    alert("ארעה שגיאה בלתי צפויה");
                 }
                 $scope.loader = false;
             });
@@ -19251,6 +19260,9 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
                     f.style = '-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);';
                     //$('#' + f.Name).attr("style",'-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);');
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     //
                 }
@@ -19274,6 +19286,9 @@ OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ng
                         $scope.file_loader = false;
                         $scope.ErrorMsg = response.data.ErrorMsg;
                         return;
+                    }
+                    else if (response.data.ErrorCode == 5){
+                        $rootScope.LogOut();
                     }
                     $timeout(function () {
                         var addFlag = true;
@@ -21296,6 +21311,9 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
                     $rootScope.categoriesData = data.Data;
                     $rootScope.categoriesData.unshift({Name:"הכל"});
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                 }
@@ -21402,6 +21420,9 @@ OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$t
                             value.profImage = value.ProfilePic.split(' ').join('%20');;
                         }
                     });
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
@@ -21515,6 +21536,9 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                     $scope.OpenPopup("שגיאה!","מאמר עם כותרת זהה כבר קיים במערכת.");
 
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                 }
@@ -21601,6 +21625,12 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                     //$scope.Article = response.data.Data;
                     $scope.isNewArticle = false;
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
                 $scope.loader = false;
             });
         }
@@ -21637,6 +21667,9 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                         $scope.Article = response.data.Data;
                         $scope.isNewArticle = false;
                     }
+                    else if (data.ErrorCode == 5) {
+                        $rootScope.LogOut();
+                    }
                     else {
                         $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                     }
@@ -21668,6 +21701,9 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                     $rootScope.categoriesData = data.Data;
                     $rootScope.categoriesData.unshift({ Name: "הכל" });
                     $.grep($rootScope.categoriesData, function (el, idx) { return el.field == "הכל" }, true)
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
@@ -22602,8 +22638,8 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
 
     
 }]);
-OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDialog',
-    function ($scope, $http, $timeout, ngDialog ) {
+OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDialog','$rootScope',
+    function ($scope, $http, $timeout, ngDialog, $rootScope) {
     var self = this;
     $scope.lastChosenCat = null;
     $scope.ParentCategories = [];
@@ -22648,7 +22684,9 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
                 }, 1000);
 
             }
-        
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
             else {
                 $scope.OpenPopup("אירעה שגיאה כללית", "אנא נסה שוב, מאוחר יותר.");
             }
@@ -22698,6 +22736,9 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
                     $('#ParentCatSucc').slideToggle(1200);
                 }, 1000);
             }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
             else {
                 $scope.OpenPopup("אירעה שגיאה במחיקת הקטגוריה", "אנא בדוק שאין שום מאמר שמשתמש בקטגוריה זו (או בתת קטגוריה שלה) ואם יש עליך לשנות את הקטגוריה במאמר, או להסיר את המאמר.");
             }
@@ -22727,6 +22768,12 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
                 $timeout(function () {
                     $('#ParentCatSucc').slideToggle(1200);
                 }, 1000);
+            }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
+            else {
+                $scope.OpenPopup("אירעה שגיאה במחיקת הקטגוריה", "אנא בדוק שאין שום מאמר שמשתמש בקטגוריה זו (או בתת קטגוריה שלה) ואם יש עליך לשנות את הקטגוריה במאמר, או להסיר את המאמר.");
             }
             $scope.loader = false;
         });
@@ -22790,6 +22837,12 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
                     $('#SubCatSucc').slideToggle(1200);
                 }, 1000);
             }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
+            else {
+                $scope.OpenPopup("אירעה שגיאה במחיקת הקטגוריה", "אירעה שגיאה במחיקת המאמר אנא בדוק שמתקבל מידע מהמסד הנתונים בשאר המקומות באתר");
+            }
             $scope.loader = false;
         });
     }
@@ -22818,6 +22871,12 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
                 $timeout(function () {
                     $('#ParentCatSucc').slideToggle(1200);
                 }, 1000);
+            }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
+            else {
+                $scope.OpenPopup("אירעה שגיאה", "אירעה שגיאה בעריכת הקטגוריה אנא בדוק שמתקבל מידע מהמסד הנתונים בשאר המקומות באתר");
             }
             $scope.loader = false;
         });
@@ -22853,8 +22912,11 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
                         $('#SubCatSucc').slideToggle(1200);
                     }, 1000);
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
-                    $scope.OpenPopup("אירעה שגיאה במחיקת הקטגוריה", "אנא בדוק שאין שום מאמר שמשתמש בקטגוריה זו (או בתת קטגוריה שלה) ואם יש עליך לשנות את הקטגוריה במאמר, או להסיר את המאמר.");
+                    $scope.OpenPopup("אירעה שגיאה ", "ארעה שגיאה במחיקת הקטגוריה, אנא בדוק שמתקבל מידע בשאר הרכיבים באתר. אם התקלה נמשכת פנה למנהל האתר");
                 }
                 $scope.loader = false;
             });
@@ -22876,6 +22938,7 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
                 $scope.subParentCat = item;
                 $scope.subParentCat.Children = response.data.Data;
             }
+
         });
         if (item == null) {
             $scope.subParentCatInput = "";
@@ -22918,6 +22981,12 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
                     $('#Sub3CatSucc').slideToggle(1200);
                 }, 1000);
             }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
+            else {
+                $scope.OpenPopup("אירעה שגיאה ", "ארעה שגיאה בהוספת הקטגוריה, אנא בדוק שמתקבל מידע בשאר הרכיבים באתר. אם התקלה נמשכת פנה למנהל האתר");
+            }
             $scope.loader = false;
         });
     }
@@ -22926,7 +22995,8 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
         if (catId == null || newName == null || newName == "") return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order).then(function (response) {
+        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order)
+            .then(function (response) {
             var errorCode;
             try {
                 errorCode = response.data.ErrorCode;
@@ -22944,6 +23014,12 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
                 $timeout(function () {
                     $('#Sub3CatSucc').slideToggle(1200);
                 }, 1000);
+            }
+            else if (data.ErrorCode == 5) {
+                $rootScope.LogOut();
+            }
+            else {
+                $scope.OpenPopup("אירעה שגיאה ", "ארעה שגיאה בעריכת הקטגוריה, אנא בדוק שמתקבל מידע בשאר הרכיבים באתר. אם התקלה נמשכת פנה למנהל האתר");
             }
             $scope.loader = false;
         });
@@ -22978,6 +23054,9 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
                     $timeout(function () {
                         $('#Sub3CatSucc').slideToggle(1200);
                     }, 1000);
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.OpenPopup("אירעה שגיאה במחיקת הקטגוריה", "אנא בדוק שאין שום מאמר שמשתמש בקטגוריה זו (או בתת קטגוריה שלה) ואם יש עליך לשנות את הקטגוריה במאמר, או להסיר את המאמר.");
@@ -23099,8 +23178,8 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
 //        templateUrl: '/Scripts/OvadiaApp/Admin/category-admin/category-admin.html'
 //    }
 //});
-OvadiaApp.controller('sendMailCtrl', ['$scope','appServices','ngDialog','$timeout',
-    function ($scope, appServices, ngDialog, $timeout) {
+OvadiaApp.controller('sendMailCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout','$rootScope',
+    function ($scope, appServices, ngDialog, $timeout, $rootScope) {
         var self = this;
         $scope.radio = 2;
         $scope.Mail = {};
@@ -23114,12 +23193,16 @@ OvadiaApp.controller('sendMailCtrl', ['$scope','appServices','ngDialog','$timeou
             appServices.getAllMembers().then(function (response) {
                 if (response.data.ErrorCode == 0) {
                     $scope.Messages.data = response.data.Data;
-                    $scope.loader = false;
+                }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
-                    $scope.loader = false;
+                    $scopeloader = false;
                     $scope.OpenErrorPopup();
                 }
+                $scope.loader = false;
+
             });
         }
 
@@ -23210,6 +23293,9 @@ OvadiaApp.controller('sendMailCtrl', ['$scope','appServices','ngDialog','$timeou
                     $scope.closePopup();
                     $scope.OpenEmailExistErrorPopup();
                 }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.closePopup();
                     $scope.OpenErrorPopup();
@@ -23230,6 +23316,9 @@ OvadiaApp.controller('sendMailCtrl', ['$scope','appServices','ngDialog','$timeou
                     $scope.Messages.data.splice(index, 1);
                     $scope.OpenSuccessSendMailPopup();
                 }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.OpenErrorPopup();
                 }
@@ -23247,6 +23336,9 @@ OvadiaApp.controller('sendMailCtrl', ['$scope','appServices','ngDialog','$timeou
                 if (response.data.ErrorCode == 0) {
                     $scope.loaderSend = false;
                     $scope.OpenSuccessSendMailPopup();
+                }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.loaderSend = false;
@@ -23487,8 +23579,8 @@ OvadiaApp.directive('odotAdmin', function () {
         templateUrl: '/Scripts/OvadiaApp/odot-admin/odot-admin.html'
     }
 });
-OvadiaApp.controller('tfilaTimeCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout',
-    function ($scope, appServices, ngDialog, $timeout) {
+OvadiaApp.controller('tfilaTimeCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout','$rootScope',
+    function ($scope, appServices, ngDialog, $timeout, $rootScope) {
         var self = this;
         $scope.Tfilot = {};
         $scope.minutes = $.map($(Array(60)), function (val, i) {
@@ -23516,6 +23608,9 @@ OvadiaApp.controller('tfilaTimeCtrl', ['$scope', 'appServices', 'ngDialog', '$ti
                     console.log(response);
                     $scope.Tfilot.data = response.data.Data;
                     $scope.loader1 = false;
+                }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.loader1 = false;
@@ -23606,6 +23701,9 @@ OvadiaApp.controller('tfilaTimeCtrl', ['$scope', 'appServices', 'ngDialog', '$ti
                     $scope.Tfilot.data.splice(index, 1);
                     $scope.OpenSuccessPopup();
                 }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.loader = false;
                     $scope.closePopup();
@@ -23627,6 +23725,9 @@ OvadiaApp.controller('tfilaTimeCtrl', ['$scope', 'appServices', 'ngDialog', '$ti
                     $scope.Tfilot.data.push($scope.currentTfila);
                     $scope.closePopup();
                     $scope.OpenSuccessPopup();
+                }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.loader = false;
@@ -23663,6 +23764,9 @@ OvadiaApp.controller('tfilaTimeCtrl', ['$scope', 'appServices', 'ngDialog', '$ti
                     $scope.Tfilot.data.push($scope.currentTfila);
                     $scope.closePopup();
                     $scope.OpenSuccessPopup();
+                }
+                else if (response.data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.loader = false;
@@ -24313,8 +24417,8 @@ OvadiaApp.directive('lessonComponent', function () {
         templateUrl: '/Scripts/OvadiaApp/lesson-component/lesson-component.html'
     }
 });
-OvadiaApp.controller('lessonAdminCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout',
-    function ($scope, appServices, ngDialog, $timeout) {
+OvadiaApp.controller('lessonAdminCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout','$rootScope',
+    function ($scope, appServices, ngDialog, $timeout, $rootScope) {
         $scope.events = []; $scope.fixedEvents = [], $scope.fixedEventsCal = [];
         $scope.currentFixedEvent = {};
         $scope.eventDetailsForm;
@@ -24570,6 +24674,9 @@ OvadiaApp.controller('lessonAdminCtrl', ['$scope', 'appServices', 'ngDialog', '$
                     $scope.closePopup();
                     $scope.OpenSuccessPopup();
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.closePopup();
                     $scope.loader = false;
@@ -24621,6 +24728,9 @@ OvadiaApp.controller('lessonAdminCtrl', ['$scope', 'appServices', 'ngDialog', '$
                         $scope.fixedEvents.push($scope.currentFixedEvent);
                         self.addFixedEventCalendar();
                     }
+                    else if (data.ErrorCode == 5) {
+                        $rootScope.LogOut();
+                    }
                     else {
                         $scope.currentEvent = response.data.Data;
                         self.addEventCalendar();
@@ -24665,6 +24775,9 @@ OvadiaApp.controller('lessonAdminCtrl', ['$scope', 'appServices', 'ngDialog', '$
                     $scope.fixedEvents.push($scope.currentFixedEvent);
                     $scope.closePopup();
                     $scope.OpenSuccessPopup();
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.closePopup();
@@ -24744,7 +24857,7 @@ OvadiaApp.controller('homeAdminCtrl', ['$scope', '$rootScope', 'ngDialog', 'appS
             });
         }
 
-        $scope.LogOut = function () {
+        $rootScope.LogOut = function () {
             appServices.Logout().then(function (response) {
                 if (response.data.ErrorCode == 0) {
                     UserAccount.Role = 'Guest';

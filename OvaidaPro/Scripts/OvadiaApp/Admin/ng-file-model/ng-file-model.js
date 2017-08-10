@@ -1,5 +1,5 @@
-﻿OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload','ngDialog',
-    function ($scope, $http, $timeout, Upload, ngDialog) {
+﻿OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload', 'ngDialog','$rootScope',
+    function ($scope, $http, $timeout, Upload, ngDialog, $rootScope) {
         var self = this;
         $scope.results = [];
         $scope.ver = Math.random() * 99999;
@@ -26,6 +26,7 @@
                 }
                 else if (ErrorCode == 5) {
                     $scope.isAllow = false;
+                    $rootScope.LogOut();
                 }
                 $scope.loader = false;
             });
@@ -34,8 +35,16 @@
         $scope.DeleteFile = function (fname) {
             $scope.loader = true;
             $http.get("/Uploads/DeleteFile?fname=" + fname).then(function (response) {
-                if (response.data.Data.length > 0) {
-                    self.RemoveFromArray(fname);
+                if (response.data.ErrorCode == 0) {
+                    if (response.data.Data.length > 0) {
+                        self.RemoveFromArray(fname);
+                    }
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    alert("ארעה שגיאה בלתי צפויה");
                 }
                 $scope.loader = false;
             });
@@ -61,6 +70,9 @@
                     f.style = '-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);';
                     //$('#' + f.Name).attr("style",'-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);');
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     //
                 }
@@ -84,6 +96,9 @@
                         $scope.file_loader = false;
                         $scope.ErrorMsg = response.data.ErrorMsg;
                         return;
+                    }
+                    else if (response.data.ErrorCode == 5){
+                        $rootScope.LogOut();
                     }
                     $timeout(function () {
                         var addFlag = true;

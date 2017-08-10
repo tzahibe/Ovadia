@@ -1,5 +1,5 @@
-﻿OvadiaApp.controller('lessonAdminCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout',
-    function ($scope, appServices, ngDialog, $timeout) {
+﻿OvadiaApp.controller('lessonAdminCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout','$rootScope',
+    function ($scope, appServices, ngDialog, $timeout, $rootScope) {
         $scope.events = []; $scope.fixedEvents = [], $scope.fixedEventsCal = [];
         $scope.currentFixedEvent = {};
         $scope.eventDetailsForm;
@@ -255,6 +255,9 @@
                     $scope.closePopup();
                     $scope.OpenSuccessPopup();
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.closePopup();
                     $scope.loader = false;
@@ -306,6 +309,9 @@
                         $scope.fixedEvents.push($scope.currentFixedEvent);
                         self.addFixedEventCalendar();
                     }
+                    else if (data.ErrorCode == 5) {
+                        $rootScope.LogOut();
+                    }
                     else {
                         $scope.currentEvent = response.data.Data;
                         self.addEventCalendar();
@@ -350,6 +356,9 @@
                     $scope.fixedEvents.push($scope.currentFixedEvent);
                     $scope.closePopup();
                     $scope.OpenSuccessPopup();
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                     $scope.closePopup();
