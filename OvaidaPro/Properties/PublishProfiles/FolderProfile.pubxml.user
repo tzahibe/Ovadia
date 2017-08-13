@@ -53,10 +53,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/OvaidaPro.dll">
-      <publishTime>08/10/2017 13:44:09</publishTime>
+      <publishTime>08/13/2017 16:13:43</publishTime>
     </File>
     <File Include="bin/OvaidaPro.pdb">
-      <publishTime>08/10/2017 13:44:09</publishTime>
+      <publishTime>08/13/2017 16:13:43</publishTime>
     </File>
     <File Include="bin/Repository.dll">
       <publishTime>08/10/2017 13:44:05</publishTime>
@@ -282,6 +282,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/fullcalendar.min.css">
       <publishTime>07/11/2017 23:51:52</publishTime>
+    </File>
+    <File Include="Content/images/63ecff_cc4f7c1c9e324e54854af1333240abc6-mv2.png">
+      <publishTime>08/13/2017 15:57:29</publishTime>
     </File>
     <File Include="Content/images/backgtoundnreto.png">
       <publishTime>07/24/2017 13:10:01</publishTime>
@@ -995,10 +998,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/04/2017 09:51:08</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/home-component/home-component.css">
-      <publishTime>08/08/2017 14:21:07</publishTime>
+      <publishTime>08/13/2017 16:11:30</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/home-component/home-component.html">
-      <publishTime>08/08/2017 14:22:33</publishTime>
+      <publishTime>08/13/2017 16:13:33</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/home-component/home-component.js">
       <publishTime>08/08/2017 14:18:38</publishTime>
@@ -1067,7 +1070,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/10/2017 13:05:38</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/my-app/my-app.js">
-      <publishTime>08/10/2017 11:32:14</publishTime>
+      <publishTime>08/13/2017 13:44:39</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/OvadiaApp.js">
       <publishTime>08/04/2017 11:44:24</publishTime>
