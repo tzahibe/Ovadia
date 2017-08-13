@@ -132,6 +132,7 @@
     <Content Include="bundles\bundle.min.js">
       <DependentUpon>bundle.js</DependentUpon>
     </Content>
+    <Content Include="Content\images\63ecff_cc4f7c1c9e324e54854af1333240abc6-mv2.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\dropdown-icon.png" />

@@ -23,37 +23,19 @@
 <!---הודעה לציבור-->
 <div class="row">
     <div class="body-center col-xs-12">
-        <div class="center-block col-xs-12 col-md-3"><br />
-           <strong> הישאר מעודכן!</strong> <br />
-            זמני תפילות, שיעורים, חברותות והודעות על כל מה שקורה בכולל.
-            <!--<h4 class="box-title">זמני תפילות</h4>
-            <ul ng-hide="tfilot_loader">
-                <li class="lesson" ng-repeat="item in Tfilot  | orderBy : 'Order1'" style="direction:rtl">
-                    <div style="direction:ltr;display:inline-block">
-                      - {{item.Hour}}:{{item.Min}}
-                    </div>
-                    <strong>{{item.Name}}</strong>
-                </li>
-                <li class="lesson" ng-show="errorTfilot">
-                    {{errorTfilot}}
-                </li>
-            </ul>
-            <ul ng-show="tfilot_loader">
-                <li class="modal-body center">
-                    <img src="/Content/images/loader.gif" />
-                </li>
-            </ul>-->
-        </div>
-        <div class="col-xs-12 col-md-9 send-mail">
-            <h3 class="box-title-white">
-                <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                עדכונים במייל
-            </h3>
-            <p>
-                הכנס את הדואר האלקטרוני שלך על מנת להתעדכן בשיעורים ובזמני תפילות בכולל.
-            </p>
-
-            <form name="sendMail" novalidate>
+       
+        <div class="col-xs-12 container">
+            <div class="col-xs-6">
+                <img class="email-icon" src="/Content/images/63ecff_cc4f7c1c9e324e54854af1333240abc6-mv2.png" />
+                <h3 class="box-title-white">
+                    קבל עדכונים חשובים במייל!
+                </h3>
+                <p class="text-col">
+                    הכנס את הדואר האלקטרוני שלך על מנת להתעדכן בשיעורים, בזמני תפילות, חברותות והודעות על כל מה שקורה בכולל.
+                </p>
+            </div>
+           
+            <form class="col-xs-6" name="sendMail" novalidate style="margin-top: 37px;">
                 <div ng-hide="successMail">
                     <div class="col-xs-10 remove-padding">
                         <input type="text" ng-model="email_input"

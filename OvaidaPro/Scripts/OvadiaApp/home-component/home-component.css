@@ -8,7 +8,7 @@
     margin: 0;
 }*/
 
- .box-title {
+.box-title {
     padding-right: 8px;
     color: #686868;
     /*font-family: kalisher,Arial;*/
@@ -16,8 +16,8 @@
 }
 
 .body-center {
-    background-color: #405261;
-    background-size:100%;
+    background-color: #bdc9d9;
+    background-size: 100%;
     /*background: url('/Content/images/purple-wallpaper-background-25.jpg');
     background-repeat: no-repeat;*/
     border: 1px solid #f8f8f8;
@@ -66,11 +66,24 @@
     border-radius: 10px;
 }
 
- .box-title-white {
-    color: #fff;
+.box-title-white {
+    font-size: 16px;
+    font-family: OpenSansHebrew-Bold;
+    color: #284B75;
 }
-
- .remove-padding {
+input.btn.btn-success.mail {
+    background: #db4a3e;
+}
+.text-col {
+    margin-top: 12px;
+    padding-left: 7px;
+}
+.email-icon {
+    float: right;
+    margin-top: 12px;
+    padding-left: 7px;
+}
+.remove-padding {
     padding: 0;
     margin: 0;
 }
