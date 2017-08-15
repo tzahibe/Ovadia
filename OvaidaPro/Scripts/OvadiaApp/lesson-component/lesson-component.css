@@ -207,5 +207,7 @@ lesson-component .body .box-title {
     .body.tfila, .body.lesson {
         height: auto;
     }
-
+    lesson-component .body.tfila{
+        margin-bottom:10px;
+    }
 }
