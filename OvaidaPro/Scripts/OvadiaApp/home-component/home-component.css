@@ -68,15 +68,17 @@
 
 .box-title-white {
     font-size: 16px;
-    font-family: OpenSansHebrew-Bold;
+    font-family: OpenSansHebrew-ExtraBold;
+    margin-bottom: 0;
     color: #284B75;
 }
 input.btn.btn-success.mail {
-    background: #db4a3e;
+    background: #284b75;
 }
 .text-col {
-    margin-top: 12px;
+    margin-top: 0;
     padding-left: 7px;
+    color: #284B75;
 }
 .email-icon {
     float: right;
