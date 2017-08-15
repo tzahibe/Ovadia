@@ -26,29 +26,39 @@
         </div>
     </div>
 
-    <div class="body col-xs-12 col-sm-6 col-md-4">
+    <div class="body col-xs-12 col-sm-6 col-md-8 lesson">
         <img src="/Content/images/microphone.png" class="mic-icon" />
         <h4 class="box-title">
-        השיעורים היום
+            זמני השיעורים
         </h4>
-        <ul>
-            <li class="lesson" ng-repeat="item in weekEvents.Day_1" ng-hide="loader">
-                <strong>{{item.To_Hour}}:{{item.To_Minutes}} - {{item.From_Hour}}:{{item.From_Minutes}}</strong>
-                {{item.Event_Name}}
-            </li>
-            <li class="lesson" ng-show="weekEvents.Day_1.length == 0">
-                אין שיעורים היום במערכת.
-            </li>
-            <li class="lesson loader" ng-show="loader">
-                <img src="/Content/images/loader.gif" />
-            </li>
-        </ul>
-        <div class="all-lesson">
-            לכל השיעורים <a ui-sref="all-lesson">לחץ כאן </a>
+        <div class="col-xs-12 col-sm-6 col-md-6 height100 right">
+            <div class="box-less leftSide">
+                <span class="today-text-left">היום</span>
+                <div class="text">
+                    <strong class="title">שיעור בהלכה!</strong>
+                    <br />
+                   {{weekEvents.Day_1[0].Event_Name}}<br />
+                    בשעה {{weekEvents.Day_1[0].From_Hour}}:{{weekEvents.Day_1[0].From_Minutes}}
+                </div>
+                <img class="clock-icon-right" src="/Content/images/icons/cloakIcon.png" />
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 height100 left">
+            <div class="box-less rightSide">
+                <span class="today-text-right">מחר</span>
+                <div class="text">
+                    <strong class="title">שיעור בהלכה!</strong>
+                    <br />
+                    {{weekEvents.Day_1[0].Event_Name}}<br />
+                    בשעה {{weekEvents.Day_2[0].From_Hour}}:{{weekEvents.Day_2[0].From_Minutes}}
+                </div>
+                <img class="clock-icon-left" src="/Content/images/icons/cloakIcon.png" />
+            </div>
         </div>
     </div>
 
-    <div class="body col-xs-12  col-sm-6 col-md-4">
+    <!--<div class="body col-xs-12  col-sm-6 col-md-4">
         <img src="/Content/images/microphone.png" class="mic-icon" />
         <h4 class="box-title">
         השיעורים מחר
@@ -68,7 +78,7 @@
         <div class="all-lesson">
             לכל השיעורים <a ui-sref="all-lesson">לחץ כאן </a>
         </div>
-    </div>
+    </div>-->
 
     <!--<div class="body col-xs-12 col-md-4 hidden-xs">
         <img src="/Content/images/microphone.png" class="mic-icon" />

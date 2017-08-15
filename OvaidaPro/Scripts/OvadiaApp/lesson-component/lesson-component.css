@@ -26,16 +26,121 @@ lesson-component .body.tfila {
     background: url('/Content/images/tfila-background.png');
     background-size: 100%;
 }
+.height100 {
+    height: 81%;
+    padding: 0;
+    margin: 0;
+}
+.box-less {
+    margin-top: 50px;
+}
+    .box-less .text {
+        padding: 49px;
+        padding-top: 22px;
+        /* text-align: center; */
+        padding-bottom: 10px;
+        background: #284b75;
+        color: #fff;
+        font-size: 16px;
+    }
+    .box-less .clock-right {
+        background: #284b75;
+        border-radius: 100%;
+        padding: 4px;
+        float: right;
+        position: relative;
+        right: 31px;
+        top: -70px;
+    }
+.box-less.leftSide .text {
+    margin-right: 55px;
+    /*margin-left: 5px;*/
+}
+.clock-icon-right {
+    float: right;
+    background: #284b75;
+    border-radius: 50px;
+    padding: 5px;
+    position: relative;
+    right: 23px;
+    top: -78px;
+}
+.clock-icon-left {
+    float: left;
+    background: #284b75;
+    border-radius: 50px;
+    padding: 5px;
+    position: relative;
+    left: 23px;
+    top: -78px;
+}
+.box-less.rightSide .text {
+    margin-left: 53px;
+    margin-right: 5px;
+}
 
+    .box-less .today-text-right {
+        font-family: OpenSansHebrew-ExtraBold;
+        margin-left: 55px;
+        background: url('/Content/images/background-opacity-white.png');
+        background-repeat: repeat;
+        background-size: 100%;
+        color: #284b75;
+        font-size: 13px;
+        padding-right: 30px;
+        padding-left: 30px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        float: left;
+        position: relative;
+        top: -22px;
+    }
+    .box-less .today-text-left {
+        font-family: OpenSansHebrew-ExtraBold;
+        margin-right: 55px;
+        background: url('/Content/images/background-opacity-white.png');
+        background-repeat: repeat;
+        background-size: 100%;
+        color: #284b75;
+        font-size: 13px;
+        padding-right: 30px;
+        padding-left: 30px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        float: right;
+        position: relative;
+        top: -22px;
+    }
+
+
+.box-less strong {
+    font-family: OpenSansHebrew-ExtraBold
+    
+}
+
+    .height100.left {
+        background: url('/Content/images/63ecff_a7f2a11506f242a980e34e08c74827c1-mv2.png');
+        background-size: 100% 103%;
+        background-repeat: no-repeat;
+        background-position: 0px -4px;
+    }
+.height100.right {
+    background: url('/Content/images/63ecff_4fbc24e3ea5c4809b6c855cdf3ca61a0-mv2.png');
+    background-size: 100% 103%;
+    background-repeat: no-repeat;
+    background-position: 0px -4px;
+}
 .block-tfila {
     background: #284b75;
     color: #fff;
-    width: 52%;
+    width: 57%;
+    font-size: 16px;
     padding: 1px;
-    margin-top: 10px;
+    margin-top: 47px;
     margin-bottom: 10px;
     float: left;
 }
+
 lesson-component .body .box-title.padding-right40 {
     padding-right: 40px;
 }
@@ -78,18 +183,29 @@ lesson-component .body .box-title {
     /*font-family: kalisher,Arial;*/
     font-weight: bold;
     margin: 0;
-    height: 40px;
+    height: 44px;
+    font-size:21px;
     padding: 10px;
     padding-right: 35px;
     text-align: right;
     background: #294d77;
 }
+.body.tfila, .body.lesson {
+    height: 234px;
+}
+
 @media screen and (max-width: 768px) {
+    .box-less {
+        margin-top: 38px;
+    }
     lesson-component .all-lesson {
         padding-right: 10px;
     }
     lesson-component .body{
         min-height:unset;
+    }
+    .body.tfila, .body.lesson {
+        height: auto;
     }
 
 }
