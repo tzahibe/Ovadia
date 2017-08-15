@@ -14,7 +14,9 @@
     /*font-family: kalisher,Arial;*/
     font-weight: bold;
 }
-
+.send-mail-margin {
+    margin-top: 37px;
+}
 .body-center {
     background-color: #bdc9d9;
     background-size: 100%;
@@ -106,6 +108,10 @@ input.btn.btn-success.mail {
 padding:0;
 }
 @media screen and (max-width: 768px) {
+    .send-mail-margin {
+        margin-top: 0;
+        margin-right: 10px;
+    }
     .container {
         width: 100%;
         padding: 0;
