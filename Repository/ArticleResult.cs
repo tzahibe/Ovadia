@@ -11,7 +11,7 @@ namespace Repository
 {
     public abstract class ArticleResult
     {
-        public static Result AddArticle(Bo.Article article)
+        public static Result AddArticle(Bo.Article article, string type = "Article")
         {
 
             Result result = new Result();
@@ -24,11 +24,13 @@ namespace Repository
                     {
                         articleRep = new Article();
                         articleRep.Title = article.Title;
+                        articleRep.Type = type;
                         articleRep.ProfilePic = article.ProfilePic;
                         articleRep.CategoryId = article.CategoryId;
                         articleRep.CategoryName = article.CategoryName;
                         articleRep.Publish = article.Publish;
                         articleRep.Body = article.Body;
+                        articleRep.Image1 = article.Image1;
                         articleRep.Video1 = article.Video1;
                         articleRep.Video2 = article.Video2;
                         articleRep.Video3 = article.Video3;
@@ -76,6 +78,7 @@ namespace Repository
                         articleRep.CategoryName = article.CategoryName;
                         articleRep.Body = article.Body + " ";
                         articleRep.Last_edit = DateTime.Today;
+                        articleRep.Image1 = article.Image1;
                         articleRep.Video1 = article.Video1;
                         articleRep.Video2 = article.Video2;
                         articleRep.Video3 = article.Video3;
@@ -90,6 +93,7 @@ namespace Repository
                         entry.Property(e => e.Video1).IsModified = true;
                         entry.Property(e => e.Video2).IsModified = true;
                         entry.Property(e => e.Video3).IsModified = true;
+                        entry.Property(e => e.Image1).IsModified = true;
                         entry.Property(e => e.CategoryName).IsModified = true;
                         entry.Property(e => e.Body).IsModified = true;
                         entry.Property(e => e.Last_edit).IsModified = true;
@@ -213,6 +217,7 @@ namespace Repository
                     List<Article> repResult = (from r in context.Article
                                                join p in context.Art_Cat on r.ArticleId equals p.ArticleId
                                                where categoriesIds.Contains((int)p.CategoryId)
+                                               && r.Type.Equals("Article")
                                                select r).Distinct().ToList();
 
 
@@ -266,6 +271,7 @@ namespace Repository
                 {
 
                     List<Article> repResult = (from r in context.Article
+                                               where r.Type.Equals("Article")
                                                select r).OrderBy(r => r.Last_edit).ToList();
 
                     if (repResult != null)
@@ -303,7 +309,7 @@ namespace Repository
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
                     List<Article> repResult = (from r in context.Article
-                                               where r.ArticleId != 1
+                                               where r.Type.Equals("Article")
                                                select r).ToList();
                     if (repResult != null)
                     {
@@ -335,7 +341,7 @@ namespace Repository
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
                     List<Bo.Article> repResult = (from r in context.Article
-                                                  where r.ArticleId != 1
+                                                  where r.Type.Equals("Article")
                                                   && r.Publish == 1
                                                   select new Bo.Article
                                                   {
@@ -360,6 +366,73 @@ namespace Repository
                                                                             CategoryId = q.CategoryId == null ? 0 : (int)q.CategoryId
                                                                         }).ToList()
                                                   }).ToList();
+                    if (repResult != null)
+                    {
+                        result.ErrorCode = 0;
+                        result.Data = repResult;
+                        return result;
+                    }
+                    else
+                    {
+                        result.ErrorCode = 2;
+                        result.Data = false;
+                        return result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+        }
+
+        //Recomm
+        public static Result GetAllRecomm()
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    List<Article> repResult = (from r in context.Article
+                                               where r.Type.Equals("Recommendation")
+                                               select r).ToList();
+                    if (repResult != null)
+                    {
+                        result.ErrorCode = 0;
+                        result.Data = repResult;
+                        return result;
+                    }
+                    else
+                    {
+                        result.ErrorCode = 2;
+                        result.Data = false;
+                        return result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+        }
+        public static Result GetAllActiveRecomm()
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    List<Article> repResult = (from r in context.Article
+                                               where r.Type.Equals("Recommendation")
+                                               && r.Publish == 1
+                                               select r).ToList();
                     if (repResult != null)
                     {
                         result.ErrorCode = 0;

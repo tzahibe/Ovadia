@@ -134,13 +134,14 @@
    
 }
 .blueLine-title {
-    font-size: 30px;
+    font-size: 22px;
     font-family: OpenSansHebrew-Bold;
     color: #284b75;
     line-height: 65px;
 }
-@media screen and (max-width: 768px) {
-
+.col-xs-12.odaot-for-zibur .container {
+    margin-top:1px;
+}@media screen and (max-width: 768px) {
     .containerX{
         width:100%;
     }

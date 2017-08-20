@@ -11,6 +11,8 @@
             { name: 'ניהול קטגוריות', state: 'admin.categories', url: '/admin/categories' },
             { name: 'ניהול מאמרים\\סרטים', state: 'admin.home-movies', url: '/admin/home-movies' },
             { name: 'הודעות לציבור', state: 'admin.comment-info', url: '/admin/comment-info' },
+            { name: 'ניהול המלצות', state: 'admin.home-recommen', url: '/admin/home-recommen' },
+
         ];
         $scope.plusIcon = true;
 

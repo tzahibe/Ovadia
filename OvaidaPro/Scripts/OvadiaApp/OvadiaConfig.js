@@ -4,8 +4,8 @@
             url: '/',
             templateUrl: '/Scripts/OvadiaApp/home-component/home-component.html',
             controller: 'homeComponentCtrl',
-             data: {
-                 access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
+            data: {
+                access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
             }
         })
         .state("movie-details", {
@@ -89,6 +89,14 @@
                 access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
             }
         })
+        .state("recommendation", {
+            url: '/recommendation',
+            templateUrl: '/Scripts/OvadiaApp/recommen-component/recommen-component.html',
+            controller: 'recommenComponentCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
+            }
+        })
 
         /* Admin */
         .state("admin.lesson", {
@@ -111,6 +119,14 @@
             url: '/upload',
             templateUrl: '/Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.html',
             controller: 'ImagesCntrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
+        .state("admin.uploadRecomm", {
+            url: '/uploadRecomm',
+            templateUrl: '/Scripts/OvadiaApp/Admin/upload-recom/upload-recom.html',
+            controller: 'ImagesRecommCntrl',
             data: {
                 access: [UserRole.Admin, UserRole.Editor]
             }
@@ -170,14 +186,45 @@
                 access: [UserRole.Admin, UserRole.Editor]
             }
         })
-       .state("admin.comment-info", {
-          url: '/comment-info',
-          templateUrl: '/Scripts/OvadiaApp/Admin/comment-info/comment-info.html',
-          controller: 'commentInfoCtrl',
+        .state("admin.comment-info", {
+            url: '/comment-info',
+            templateUrl: '/Scripts/OvadiaApp/Admin/comment-info/comment-info.html',
+            controller: 'commentInfoCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
+
+        .state("admin.add-recommen", {
+            url: '/add-recommen',
+            templateUrl: '/Scripts/OvadiaApp/Admin/recommen/add-recommen/add-recommen.html',
+            controller: 'addRecommenCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            },
+            params: {
+                Recomm: null
+            }
+        })
+        .state("admin.edit-recommen", {
+            url: '/edit-recommen',
+            templateUrl: '/Scripts/OvadiaApp/Admin/recommen/edit-recommen/edit-recommen.html',
+            controller: 'editRecommenCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
+      .state("admin.home-recommen", {
+          url: '/home-recommen',
+          templateUrl: '/Scripts/OvadiaApp/Admin/recommen/home-recommen/home-recommen.html',
+          controller: 'homeRecommCtrl',
         data: {
             access: [UserRole.Admin, UserRole.Editor]
         }
     });
+
+
+    
 
     ngClipProvider.setPath("/Scripts/plugins/ZeroClipboard.swf");
     $locationProvider.hashPrefix('');

@@ -1,0 +1,59 @@
+﻿.hebrewDialog  h2{
+    font-size: 20px;
+}
+h4 {
+    color: #686868;
+    font-weight: bold;
+}
+.title-img {
+    width: 130px;
+    height: 24px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: #eeeeee;
+}
+.removeButton {
+    position: relative;
+    top: -186px;
+    right: 4px;
+}
+
+.rotateIcon {
+    position: relative;
+    top: -186px;
+    right: 39px;
+    font-size: 23px;
+    color: #fff;
+    padding: 6px;
+    border-radius: 20px;
+    background: #009200;
+    cursor: pointer;
+}
+.rotateIcon:hover {
+    background: #079d07;
+}
+.scrollable-content .imgItems-li {
+    display: inline-block;
+}
+
+.buttonsContainerArt {
+    display: inline-block;
+    width: 148px;
+    height: 175px;
+}
+.title-input {
+    width: 88%;
+    background: #f2f1f1;
+    direction:ltr;
+    text-align:left;
+}
+.imgItems-li {
+    display: inline-block;
+}
+@media screen and (max-width: 768px) {
+    .col-xs-12{
+        padding:0;
+    }
+}

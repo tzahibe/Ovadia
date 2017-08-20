@@ -1,0 +1,79 @@
+﻿<link href="/Scripts/OvadiaApp/Admin/recommen/add-recommen/add-recommen.css" rel="stylesheet" />
+<div class="list-group-item list-group-item-home">
+    <form name="movieForm" role="form" novalidate>
+        <div ng-hide="loader">
+            <a href="" ng-click="backToCategory()">< חזרה לכל ההמלצות </a>
+            <fieldset>
+                <legend ng-if="!isNewArticle && !readOnly">עריכת המלצה</legend>
+                <legend ng-if="isNewArticle && !readOnly">יצירת המלצה</legend>
+                <div class="form-group has-feedback" ng-hide="readOnly">
+                    <label>כותרת ההמלצה</label>
+                    <input type="text" required ng-model="Article.Title" class="form-control" placeholder="כותרת המלצה">
+                </div>
+                <legend ng-show="readOnly"><h1>{{Article.Title}}</h1></legend>
+                <div class="form-group">
+                    <label ng-hide="readOnly">תוכן המלצה</label>
+                    <div text-angular ng-model="Article.Body" placeholder="אנא הזן תוכן" ng-hide="readOnly"></div>
+                    <div ng-show="readOnly">
+                        <div class="Article_Body" ng-bind-html="Article.Body"></div>
+                    </div>
+                    <label ng-hide="readOnly">כתובת תמונת הרב</label>
+                    <input ng-hide="readOnly" type="text" ng-model="Article.ProfilePic" class="form-control" placeholder="כתובת תמונת פרופיל">
+                    <div class="col-xs-12 img" ng-show="Article.ProfilePic != null && Article.ProfilePic != ''">
+                        <img ng-src="{{Article.ProfilePic}}" style="width:200px; height:200px" />
+                    </div>
+                    <label ng-hide="readOnly">כתובת תמונת ההמלצה</label>
+                    <input ng-hide="readOnly" type="text" ng-model="Article.Image1" class="form-control" placeholder="כתובת תמונת ההמלצה">
+                    <div class="col-xs-12 img" ng-show="Article.Image1 != null && Article.Image1 != ''">
+                        <img ng-src="{{Article.Image1}}" style="width:200px; height:200px" />
+                    </div>
+                </div>
+            </fieldset>
+            <!--<a ng-show="readOnly" href="/index.html/CategoryArticles?categoryId={{Article.CategoryId}}">חזרה ל {{Article.CategoryName}} >></a>-->
+
+            <div ng-hide="readOnly">
+                האם לפרסם?
+            </div>
+            <select name="categoryChoose"
+                    class="form-control parentCat hebrew"
+                    ng-model="Article.Publish"
+                    required>
+                <option value="0" ng-selected="Article.Publish == 0">אל תפרסם</option>
+                <option value="1" ng-selected="Article.Publish == 1">פרסם</option>
+            </select>
+            <div>
+                <p class="example-p">
+                    יש להוסיף את קוד הסרטון מיוטיוב
+                    לדוגמא בקישור הנ"ל
+                    https://www.youtube.com/watch?v=bdq1WxhqoLQ
+                    הקוד הינו: bdq1WxhqoLQ
+                </p>
+                קוד לסרט 1
+                <input type="text" class="form-control" ng-model="Article.Video1" />
+                <div ng-show="!isNewArticle  && Article.YoutubeLink1 != null">
+                    <iframe width="200" height="200"
+                            ng-src="{{getIframeSrc(Article.YoutubeLink1)}}"
+                            frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <br />
+            <button ng-show="isNewArticle" class="btn btn-primary btn-block" ng-click="AddArticle()">
+                צור המלצה
+            </button>
+            <button ng-hide="isNewArticle" class="btn btn-primary btn-block" ng-click="EditArticle()">
+                שמור שינויים
+            </button>
+            <button ng-hide="isNewArticle" class="btn btn-danger btn-block" ng-click="RemoveArticleById()">
+                הסר המלצה
+            </button>
+            <button ng-hide="isNewArticle" class="btn btn-success btn-block" ng-click="NewArticle()">
+                התחל המלצה חדשה
+            </button>
+        </div>
+        <div ng-show="loader" class="loader1">
+            <img src="/Content/images/loader.gif" />
+        </div>
+    </form>
+    <br />
+
+</div>

@@ -1,0 +1,37 @@
+﻿<link href="/Scripts/OvadiaApp/Admin/recommen/edit-recommen/edit-recommen.css" rel="stylesheet" />
+
+<div class="list-group-item list-group-item-home">
+    <form>
+        <div class="">
+            <div class="body ">
+                <div ng-hide="loader">
+                    <fieldset>
+                        <legend class="panel1">פאנל המלצות רבנים</legend>
+                    </fieldset>
+
+                    <div class="form-group">
+                        <div>
+                            חפש המלצה
+                        </div>
+                        <input type="text" placeholder="חפש" ng-model="search" class="form-control" />
+                    </div>
+
+                    <div class="articles-list" dir-paginate="rcomm in Recomm | itemsPerPage: 12 | filter: search">
+                        <div class="article-box col-md-4_5 col-xs-12" ng-click="goToRecomm(rcomm)"
+                             style="{{myStyle(rcomm)}}">
+                            <div class="article-title">
+                                {{rcomm.Title}}
+                            </div>
+                        </div>
+                    </div>
+                    <dir-pagination-controls class="col-xs-12" ng-hide="Recomm == [] || search != null"></dir-pagination-controls>
+                </div>
+
+                <div ng-show="loader" class="loader1" style="padding: 10px;">
+                    <img src="/Content/images/loader.gif" />
+                </div>
+            </div>
+        </div>
+    </form>
+    
+</div>

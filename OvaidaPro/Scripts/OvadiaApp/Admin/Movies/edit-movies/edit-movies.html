@@ -10,31 +10,7 @@
                 <div ng-hide="readOnly">
                     בחר קטגוריה
                 </div>
-               
-                <!--<select name="categoryChoose"
-                        id="categoryIdElem"
-                        class="form-control parentCat hebrew"
-                        ng-options="cat.Name for cat in categoriesData"
-                        ng-change="chooseCategory(ArticleCat)"
-                        ng-model="ArticleCat">
-                    <option value="">בחר</option>
-                </select>-->
-
-          <!--
-                    <select name="categoryChoose"
-                        id="categoryIdElem"
-                        class="form-control parentCat hebrew"
-                        ng-change="chooseCategory(ArticleCat)"
-                        ng-options="cat.Name for cat in $root.categoriesData"
-                        ng-model="ArticleCat">
-                    <!--<option ng-repeat="cat in categoriesData" value="{{cat.Id}}"
-                            ng-selected="{{ArticleCat == cat.Id}}">
-                        {{cat.Name}}
-                    </option>
-                    <option value="">בחר</option>
-                </select>-->
-            
-
+  
                 <div class="col-xs-12 select2con">
                     <select id="myselect" class="form-control"
                              ng-change="chooseCategory(select2)"
@@ -55,9 +31,11 @@
                     color: #294d77;
                     padding-top: 20px;
                     border-bottom: 1px solid #adadae;
-                    padding-bottom: 5px;"></h3>
+                    padding-bottom: 5px;">
+                </h3>
                 
-                <div class="articles-list" dir-paginate="article in Articles | itemsPerPage: 12 | filter: search">
+                <div class="articles-list" ng-repeat="article in Articles | filter: search">
+                    <!---dir-paginate="article in Articles | itemsPerPage: 12 | filter: search"-->
                     <div class="article-box col-md-4_5 col-xs-12" ng-click="goToArticle(article)"
                         style="{{myStyle(article)}}">
                         <div class="article-title">
@@ -68,16 +46,12 @@
                 <div ng-show="Articles == null || Articles.length == 0 && categorySelected != null">
                     אין מאמרים תחת קטגוריה זו
                 </div>
-
-                <dir-pagination-controls class="col-xs-12" ng-hide="Articles == [] || search != null"></dir-pagination-controls>
-
+                <!--<dir-pagination-controls class="col-xs-12" ng-hide="Articles == [] || search != null"></dir-pagination-controls>-->
             </div>
 
             <div ng-show="loader" class="loader1" style="padding: 10px;">
                 <img src="/Content/images/loader.gif" />
             </div>
-
-
         </div>
     </div>
 </div>

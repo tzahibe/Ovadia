@@ -1,0 +1,20 @@
+﻿<link href="/Scripts/OvadiaApp/Admin/recommen/home-recommen/home-recommen.css" rel="stylesheet" />
+<div class="row list-group-item list-group-item-home">
+    <div class="col-xs-12">
+        <h4>ניהול המלצות</h4>
+
+        <div class="btn-group view_buttons" data-toggle="buttons">
+            <label ng-class="radio == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 1">
+                <input type="radio" name="options" ng-model="radio" value="2" id="option2" autocomplete="off">
+                יצירת המלצה
+            </label>
+            <label ng-class="radio == 2 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 2">
+                <input type="radio" name="options" ng-model="radio" value="3" id="option2" autocomplete="off">
+                עריכת המלצה
+            </label>
+        </div>
+
+        <add-recommen ng-show="radio == 1"></add-recommen>
+        <edit-recommen ng-show="radio == 2"></edit-recommen>
+    </div>
+</div>

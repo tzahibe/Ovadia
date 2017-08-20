@@ -10,6 +10,8 @@
             { name: 'גלריית תמונות', state: 'image-gallery', url: '/image-gallery' },
             { name: 'שיעורים', state: 'movie-category', url: '/movie-category' },
             { name: 'זמני שיעורים ותפילות', state: 'all-lesson', url: '/all-lesson' },
+            { name: 'המלצות', state: 'recommendation', url: '/recommendation' },
+
         ];
 
         self.init = function () {

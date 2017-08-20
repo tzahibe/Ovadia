@@ -1,0 +1,60 @@
+﻿
+<link href="/Scripts/OvadiaApp/Admin/upload-recom/upload-recom.css" rel="stylesheet" />
+<br />
+    <div class="BlockHead">
+        <div class="body ">
+            <div ng-hide="loader" class="list-group-item list-group-item-home">
+                <h4>העלאת קבצים</h4>
+                <form role="form" class="">
+                    <button class="btn btn-default" ngf-select="uploadFiles($files, $invalidFiles)" multiple
+                            accept="image/*" ngf-max-height="90000" ngf-max-size="10MB">
+                        בחר קבצים
+                    </button>
+                    <br><br>
+                    <h3 ng-show="results2.length > 0" class="hebrew">קבצים:</h3>
+                    <div ng-show="file_loader">
+                        <img src="/Content/images/loader.gif" />
+                    </div>
+                    <h5 style="color:red">{{ErrorMsg}}</h5>
+                    <!--<ul>-->
+
+                    <div class="form-group" ng-show="results2 != null">
+                        <div>
+                          חפש תמונה לפי שם
+                        </div>
+                        <input type="text" placeholder="חפש" ng-model="search" class="form-`" />
+                    </div>
+
+                    <div class="imgItems-li" ng-repeat="f in results2 | filter: search" style="font:smaller">
+                        <p class="title-img" alt="{{f.Name}}">{{f.Name}}</p>
+                        <div class="buttonsContainerArt">
+                            <img id="{{f.Name}}" class="imgClass"
+                                 src="{{getImage1Url(f)}}"  alt="{{f.Name}}"
+                                 ng-style="{{f.style}}" /> <!--?ver=ver-->
+                            <input class="title-input" type="text" value="{{CoppyImage1Url(f.Name)}}" />
+                            <button type="button" class="btn btn-default coppy-button" 
+                                    clip-copy="CoppyImage1Url(f.Name)">
+                                העתק כתובת תמונה
+                            </button>
+                            <span class="progress" ng-show="f.progress >= 0">
+                                <span style="width:{{f.progress}}%"
+                                      ng-bind="f.progress + '%'"></span>
+                            </span>
+                            <button type="button" class="btn btn-danger removeButton" ng-click="DeleteFile(f.Name);">הסר</button>
+                            <i class="fa fa-repeat rotateIcon" aria-hidden="true"  ng-click="Rotate90(f);"></i>
+                        </div>
+                    </div>
+
+                    <!--<li ng-repeat="f in errFiles" style="font:smaller">
+                        {{f.name}} {{f.$error}} {{f.$errorParam}}
+                    </li>-->
+                    <!--</ul>-->
+                    {{errorMsg}}
+                </form>
+
+            </div>
+            <div ng-show="loader" class="loader1">
+                <img src="/Content/images/loader.gif" />
+            </div>
+        </div>
+    </div>

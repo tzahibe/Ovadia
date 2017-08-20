@@ -218,6 +218,7 @@
             return response.data;
         });
     }
+
     this.GetAllActiveCategoriesAcceptId = function (id) {
         var param = {
             Id: id
@@ -347,5 +348,78 @@
             return response.data;
         });
     }
-    
+
+  /* Recommendation Services -------------------> */
+
+    this.AddRecomm = function (article) {
+        return $http({
+            url: url + '/RecommendationSer/AddRecomm',
+            method: 'POST',
+            data: JSON.stringify(article),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.EditRecomm = function (article) {
+        return $http({
+            method: 'POST',
+            url: "/RecommendationSer/EditRecomm",
+            data: JSON.stringify(article),
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8"
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.RemoveRecommById = function (id) {
+        var param = {
+            articleId: id
+        }
+        return $http({
+            url: url + '/RecommendationSer/RemoveRecommById',
+            method: 'POST',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetRecommById = function (id) {
+        var param = {
+            articleId: id
+        }
+        return $http({
+            url: url + '/RecommendationSer/GetRecommById',
+            method: 'POST',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllRecomm = function () {
+        return $http({
+            url: url + '/RecommendationSer/GetAllRecomm',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllActiveRecomm = function () {
+        return $http({
+            url: url + '/RecommendationSer/GetAllActiveRecomm',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
 }]);

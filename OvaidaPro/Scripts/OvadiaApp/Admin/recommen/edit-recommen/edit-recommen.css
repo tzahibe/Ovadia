@@ -1,0 +1,72 @@
+﻿
+legend.panel1 {
+    padding-top: 12px;
+}
+
+.ngdialog-close {
+    display: block;
+}
+
+.article-box {
+    padding: 0;
+    background-size: 100% 150px;
+    height: 150px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin: 5px;
+}
+
+.articles-list {
+    margin-top: 20px;
+    margin-bottom: -11px;
+    padding: 0;
+}
+
+.article-title {
+    font-family: OpenSansHebrew-Bold;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 3px;
+    max-height: 100%;
+    /*overflow: hidden;*/
+    background: #fff;
+    opacity: 0.7;
+    height: 64px;
+    bottom: -86px;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.select2con.col-xs-12 {
+    padding: 0;
+}
+
+.col-md-4_5 {
+    width: 30%;
+    float: right;
+}
+
+@media screen and (max-width: 768px) {
+    .article-box {
+        height: 300px;
+        margin-left: 0;
+        margin-bottom: 12px;
+        background-size: 100% 300px;
+    }
+
+    .article-title {
+        font-size: 30px;
+    }
+    .articles-list{
+        
+    } .col-md-4_5 {
+        width: 100%;
+    }
+
+    .article-title {
+        bottom: -58%;
+        height: 126px;
+    }
+}

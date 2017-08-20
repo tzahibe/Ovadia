@@ -3,6 +3,7 @@
         var self = this;
         $scope.results = [];
         $scope.ver = Math.random() * 99999;
+        $scope.radio = 2;
 
         self.init = function () {
             $scope.ShowFiles();

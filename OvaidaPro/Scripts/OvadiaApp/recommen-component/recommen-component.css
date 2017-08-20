@@ -1,0 +1,55 @@
+﻿.background-css {
+    background: #d7dfe8;
+    width:100%;
+}
+.text-1 {
+    height: 185px;
+    margin-bottom: 40px;
+    color: #000;
+    margin-right: 170px;
+    padding-top: 13px;
+    overflow-y: auto;
+}
+.ngdialog-theme-default {
+    width:auto;
+    position:absolute;
+}
+.box-title {
+    margin-bottom: 22px;
+}
+.rabi-image {
+    width: 160px;
+    height: 167px;
+    border-left: 3px solid #284B75;
+    border-right: 3px solid #284B75;
+}
+.rabi-profile {
+    font-size: 17px;
+    font-family: OpenSansHebrew-Bold;
+    text-align: center;
+    color: #D8DCE1;
+    overflow: hidden;
+    width: 160px;
+    height: 215px;
+    position: absolute;
+    margin-top: -18px;
+    background: #284B75;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .ngdialog.ngdialog-theme-default {
+        padding: 0;
+        width: 100%;
+    }
+    .modal-body{
+        padding:0;
+    }
+    .modal-body img{
+        width:100%;
+    }
+    .body.col-xs-12{
+        padding:0;
+    }
+}

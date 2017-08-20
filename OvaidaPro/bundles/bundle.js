@@ -19188,198 +19188,6 @@ OvadiaApp.directive('rotate', function () {
         }
     }
 });
-OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload', 'ngDialog','$rootScope',
-    function ($scope, $http, $timeout, Upload, ngDialog, $rootScope) {
-        var self = this;
-        $scope.results = [];
-        $scope.ver = Math.random() * 99999;
-
-        self.init = function () {
-            $scope.ShowFiles();
-        }
-
-        $scope.ShowFiles = function () {
-            $scope.loader = true;
-            $http.get("/Uploads/ShowFiles").then(function (response) {
-                var ErrorCode;
-                try {
-                    ErrorCode = response.data.ErrorCode;
-                }
-                catch (e) {
-                    ErrorCode = 1;
-                }
-                if (ErrorCode == 0) {
-                    $scope.results = response.data.Data;
-                    angular.forEach($scope.results, function (value, key) {
-                        value.Name = value.Name.split("sm_")[1];
-                    });
-                }
-                else if (ErrorCode == 5) {
-                    $scope.isAllow = false;
-                    $rootScope.LogOut();
-                }
-                $scope.loader = false;
-            });
-        }
-
-        $scope.DeleteFile = function (fname) {
-            $scope.loader = true;
-            $http.get("/Uploads/DeleteFile?fname=" + fname).then(function (response) {
-                if (response.data.ErrorCode == 0) {
-                    if (response.data.Data.length > 0) {
-                        self.RemoveFromArray(fname);
-                    }
-                }
-                else if (data.ErrorCode == 5) {
-                    $rootScope.LogOut();
-                }
-                else {
-                    alert("ארעה שגיאה בלתי צפויה");
-                }
-                $scope.loader = false;
-            });
-        }
-
-        $scope.getImageUrl = function (file) {
-            file.imageUrl = "/Uploads/sm_" + file.Name + "?ver=" + $scope.ver;
-            return file.imageUrl;
-        }
-
-        $scope.Rotate90 = function (f) {
-            $scope.ver++;
-            //$scope.loader = true;
-            $http.get("/Uploads/Rotate90?fname=" + f.Name).then(function (response) {
-                if (response.data.ErrorCode == 0) {
-                    if (f.degree == null) {
-                        f.degree = 0;
-                    }
-                    f.degree += 90;
-                    if (f.degree == 360) {
-                        f.degree == 0;
-                    }
-                    f.style = '-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);';
-                    //$('#' + f.Name).attr("style",'-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);');
-                }
-                else if (data.ErrorCode == 5) {
-                    $rootScope.LogOut();
-                }
-                else {
-                    //
-                }
-                //$scope.loader = false;
-            });
-        }
-
-        $scope.uploadFiles = function (files, errFiles) {
-            $scope.files = files;
-            $scope.errFiles = errFiles;
-            angular.forEach(files, function (file) {
-                $scope.file_loader = true;
-                file.upload = Upload.upload({
-                    url: '/Uploads/AddFile?fileName=' + file.name,
-                    data: { file: file },
-                    dataType: "json",
-                });
-
-                file.upload.then(function (response) {
-                    if (response.data.ErrorCode == 1) {
-                        $scope.file_loader = false;
-                        $scope.ErrorMsg = response.data.ErrorMsg;
-                        return;
-                    }
-                    else if (response.data.ErrorCode == 5){
-                        $rootScope.LogOut();
-                    }
-                    $timeout(function () {
-                        var addFlag = true;
-                        angular.forEach($scope.results, function (value, key) {
-                            if (value.Name == response.data.Data) {
-                                addFlag = false;
-                            }
-                        });
-                        if (addFlag == true) {
-                            $scope.file_loader = false;
-                            $scope.results.push({ Name: response.data.Data });
-                        }
-                        file.result = +response.data.Data;
-                    });
-                }, function (response) {
-                    if (response.status > 0) {
-                        $scope.errorMsg = response.status + ': ' + response.data;
-                    }
-                }, function (evt) {
-                    file.progress = Math.min(100, parseInt(100.0 *
-                        evt.loaded / evt.total));
-                });
-            });
-        }
-
-        $scope.CoppyImageUrl = function (imgName) {
-           // $scope.OpenPopup("http://" + window.location.host + "/Uploads/lg_" + imgName, "כתובת תמונה");
-            return "http://" + window.location.host + "/Uploads/lg_" + imgName;
-        }
-
-        $scope.OpenPopup = function (title, msg) {
-            $scope.Title = title;
-            $scope.Msg = msg;
-            ngDialog.open({
-                template: '/Scripts/OvadiaApp/Admin/events-dialog/popup-screen.html',
-                className: 'ngdialog-theme-default',
-                scope: $scope
-            });
-        }
-
-        self.RemoveFromArray = function (fname) {
-            if ($scope.results.length == 1) {
-                if ($scope.results[0].Name == fname) {
-                    $scope.results.splice(0, 1);
-                }
-            }
-
-            angular.forEach($scope.results, function (value, index) {
-                if (value.Name == fname) {
-                    $scope.results.splice(index, 1);
-                }
-            });
-        }
-       
-        self.init();
-
-    }]);
-
-OvadiaApp.directive('ngFileModel', ['$parse', function ($parse) {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            var model = $parse(attrs.ngFileModel);
-            var isMultiple = attrs.multiple;
-            var modelSetter = model.assign;
-            element.bind('change', function () {
-                var values = [];
-                angular.forEach(element[0].files, function (item) {
-                    var value = {
-                        // File Name 
-                        name: item.name,
-                        //File Size 
-                        size: item.size,
-                        //File URL to view 
-                        url: URL.createObjectURL(item),
-                        // File Input Value 
-                        _file: item
-                    };
-                    values.push(value);
-                });
-                scope.$apply(function () {
-                    if (isMultiple) {
-                        modelSetter(scope, values);
-                    } else {
-                        modelSetter(scope, values[0]);
-                    }
-                });
-            });
-        }
-    };
-}]);
 angular.module('ui.bootstrap.carousel', [])
 
     .controller('UibCarouselController', ['$scope', '$element', '$interval', '$timeout', '$animate', function ($scope, $element, $interval, $timeout, $animate) {
@@ -21042,8 +20850,8 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
             url: '/',
             templateUrl: '/Scripts/OvadiaApp/home-component/home-component.html',
             controller: 'homeComponentCtrl',
-             data: {
-                 access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
+            data: {
+                access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
             }
         })
         .state("movie-details", {
@@ -21127,6 +20935,14 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
             }
         })
+        .state("recommendation", {
+            url: '/recommendation',
+            templateUrl: '/Scripts/OvadiaApp/recommen-component/recommen-component.html',
+            controller: 'recommenComponentCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
+            }
+        })
 
         /* Admin */
         .state("admin.lesson", {
@@ -21149,6 +20965,14 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
             url: '/upload',
             templateUrl: '/Scripts/OvadiaApp/Admin/ng-file-model/ng-file-model.html',
             controller: 'ImagesCntrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
+        .state("admin.uploadRecomm", {
+            url: '/uploadRecomm',
+            templateUrl: '/Scripts/OvadiaApp/Admin/upload-recom/upload-recom.html',
+            controller: 'ImagesRecommCntrl',
             data: {
                 access: [UserRole.Admin, UserRole.Editor]
             }
@@ -21208,14 +21032,45 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Editor]
             }
         })
-       .state("admin.comment-info", {
-          url: '/comment-info',
-          templateUrl: '/Scripts/OvadiaApp/Admin/comment-info/comment-info.html',
-          controller: 'commentInfoCtrl',
+        .state("admin.comment-info", {
+            url: '/comment-info',
+            templateUrl: '/Scripts/OvadiaApp/Admin/comment-info/comment-info.html',
+            controller: 'commentInfoCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
+
+        .state("admin.add-recommen", {
+            url: '/add-recommen',
+            templateUrl: '/Scripts/OvadiaApp/Admin/recommen/add-recommen/add-recommen.html',
+            controller: 'addRecommenCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            },
+            params: {
+                Recomm: null
+            }
+        })
+        .state("admin.edit-recommen", {
+            url: '/edit-recommen',
+            templateUrl: '/Scripts/OvadiaApp/Admin/recommen/edit-recommen/edit-recommen.html',
+            controller: 'editRecommenCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
+      .state("admin.home-recommen", {
+          url: '/home-recommen',
+          templateUrl: '/Scripts/OvadiaApp/Admin/recommen/home-recommen/home-recommen.html',
+          controller: 'homeRecommCtrl',
         data: {
             access: [UserRole.Admin, UserRole.Editor]
         }
     });
+
+
+    
 
     ngClipProvider.setPath("/Scripts/plugins/ZeroClipboard.swf");
     $locationProvider.hashPrefix('');
@@ -22373,6 +22228,650 @@ OvadiaApp.directive('imageGallery', function () {
         templateUrl: '/Scripts/OvadiaApp/image-gallery/image-gallery.html'
     }
 });
+OvadiaApp.controller('ImagesCntrl', ['$scope', '$http', '$timeout', 'Upload', 'ngDialog','$rootScope',
+    function ($scope, $http, $timeout, Upload, ngDialog, $rootScope) {
+        var self = this;
+        $scope.results = [];
+        $scope.ver = Math.random() * 99999;
+        $scope.radio = 2;
+
+        self.init = function () {
+            $scope.ShowFiles();
+        }
+
+        $scope.ShowFiles = function () {
+            $scope.loader = true;
+            $http.get("/Uploads/ShowFiles").then(function (response) {
+                var ErrorCode;
+                try {
+                    ErrorCode = response.data.ErrorCode;
+                }
+                catch (e) {
+                    ErrorCode = 1;
+                }
+                if (ErrorCode == 0) {
+                    $scope.results = response.data.Data;
+                    angular.forEach($scope.results, function (value, key) {
+                        value.Name = value.Name.split("sm_")[1];
+                    });
+                }
+                else if (ErrorCode == 5) {
+                    $scope.isAllow = false;
+                    $rootScope.LogOut();
+                }
+                $scope.loader = false;
+            });
+        }
+
+        $scope.DeleteFile = function (fname) {
+            $scope.loader = true;
+            $http.get("/Uploads/DeleteFile?fname=" + fname).then(function (response) {
+                if (response.data.ErrorCode == 0) {
+                    if (response.data.Data.length > 0) {
+                        self.RemoveFromArray(fname);
+                    }
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    alert("ארעה שגיאה בלתי צפויה");
+                }
+                $scope.loader = false;
+            });
+        }
+
+        $scope.getImageUrl = function (file) {
+            file.imageUrl = "/Uploads/sm_" + file.Name + "?ver=" + $scope.ver;
+            return file.imageUrl;
+        }
+
+        $scope.Rotate90 = function (f) {
+            $scope.ver++;
+            //$scope.loader = true;
+            $http.get("/Uploads/Rotate90?fname=" + f.Name).then(function (response) {
+                if (response.data.ErrorCode == 0) {
+                    if (f.degree == null) {
+                        f.degree = 0;
+                    }
+                    f.degree += 90;
+                    if (f.degree == 360) {
+                        f.degree == 0;
+                    }
+                    f.style = '-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);';
+                    //$('#' + f.Name).attr("style",'-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);');
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    //
+                }
+                //$scope.loader = false;
+            });
+        }
+
+        $scope.uploadFiles = function (files, errFiles) {
+            $scope.files = files;
+            $scope.errFiles = errFiles;
+            angular.forEach(files, function (file) {
+                $scope.file_loader = true;
+                file.upload = Upload.upload({
+                    url: '/Uploads/AddFile?fileName=' + file.name,
+                    data: { file: file },
+                    dataType: "json",
+                });
+
+                file.upload.then(function (response) {
+                    if (response.data.ErrorCode == 1) {
+                        $scope.file_loader = false;
+                        $scope.ErrorMsg = response.data.ErrorMsg;
+                        return;
+                    }
+                    else if (response.data.ErrorCode == 5){
+                        $rootScope.LogOut();
+                    }
+                    $timeout(function () {
+                        var addFlag = true;
+                        angular.forEach($scope.results, function (value, key) {
+                            if (value.Name == response.data.Data) {
+                                addFlag = false;
+                            }
+                        });
+                        if (addFlag == true) {
+                            $scope.file_loader = false;
+                            $scope.results.push({ Name: response.data.Data });
+                        }
+                        file.result = +response.data.Data;
+                    });
+                }, function (response) {
+                    if (response.status > 0) {
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                    }
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            });
+        }
+
+        $scope.CoppyImageUrl = function (imgName) {
+           // $scope.OpenPopup("http://" + window.location.host + "/Uploads/lg_" + imgName, "כתובת תמונה");
+            return "http://" + window.location.host + "/Uploads/lg_" + imgName;
+        }
+
+        $scope.OpenPopup = function (title, msg) {
+            $scope.Title = title;
+            $scope.Msg = msg;
+            ngDialog.open({
+                template: '/Scripts/OvadiaApp/Admin/events-dialog/popup-screen.html',
+                className: 'ngdialog-theme-default',
+                scope: $scope
+            });
+        }
+
+        self.RemoveFromArray = function (fname) {
+            if ($scope.results.length == 1) {
+                if ($scope.results[0].Name == fname) {
+                    $scope.results.splice(0, 1);
+                }
+            }
+
+            angular.forEach($scope.results, function (value, index) {
+                if (value.Name == fname) {
+                    $scope.results.splice(index, 1);
+                }
+            });
+        }
+       
+        self.init();
+
+    }]);
+
+OvadiaApp.directive('ngFileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var model = $parse(attrs.ngFileModel);
+            var isMultiple = attrs.multiple;
+            var modelSetter = model.assign;
+            element.bind('change', function () {
+                var values = [];
+                angular.forEach(element[0].files, function (item) {
+                    var value = {
+                        // File Name 
+                        name: item.name,
+                        //File Size 
+                        size: item.size,
+                        //File URL to view 
+                        url: URL.createObjectURL(item),
+                        // File Input Value 
+                        _file: item
+                    };
+                    values.push(value);
+                });
+                scope.$apply(function () {
+                    if (isMultiple) {
+                        modelSetter(scope, values);
+                    } else {
+                        modelSetter(scope, values[0]);
+                    }
+                });
+            });
+        }
+    };
+}]);
+OvadiaApp.controller('ImagesRecommCntrl', ['$scope', '$http', '$timeout', 'Upload', 'ngDialog','$rootScope',
+    function ($scope, $http, $timeout, Upload, ngDialog, $rootScope) {
+        var self = this;
+        $scope.results2 = [];
+        $scope.ver = Math.random() * 99999;
+
+        self.init = function () {
+            $scope.ShowFiles();
+        }
+
+        $scope.ShowFiles = function () {
+            $scope.loader = true;
+            $http.get("/Uploads/ShowRecomFiles").then(function (response) {
+                var ErrorCode;
+                try {
+                    ErrorCode = response.data.ErrorCode;
+                }
+                catch (e) {
+                    ErrorCode = 1;
+                }
+                if (ErrorCode == 0) {
+                    $scope.results2 = response.data.Data;
+                    angular.forEach($scope.results2, function (value, key) {
+                        value.Name = value.Name.split("sm_")[1];
+                    });
+                }
+                else if (ErrorCode == 5) {
+                    $scope.isAllow = false;
+                    $rootScope.LogOut();
+                }
+                $scope.loader = false;
+            });
+        }
+
+        $scope.DeleteFile = function (fname) {
+            $scope.loader = true;
+            $http.get("/Uploads/DeleteRecomFile?fname=" + fname).then(function (response) {
+                if (response.data.ErrorCode == 0) {
+                    if (response.data.Data.length > 0) {
+                        self.RemoveFromArray(fname);
+                    }
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    alert("ארעה שגיאה בלתי צפויה");
+                }
+                $scope.loader = false;
+            });
+        }
+
+        $scope.getImage1Url = function (file) {
+            file.imageUrl = "/Recom/sm_" + file.Name + "?ver=" + $scope.ver;
+            return file.imageUrl;
+        }
+
+        $scope.Rotate90 = function (f) {
+            $scope.ver++;
+            //$scope.loader = true;
+            $http.get("/Uploads/RotateRecom90?fname=" + f.Name).then(function (response) {
+                if (response.data.ErrorCode == 0) {
+                    if (f.degree == null) {
+                        f.degree = 0;
+                    }
+                    f.degree += 90;
+                    if (f.degree == 360) {
+                        f.degree == 0;
+                    }
+                    f.style = '-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);';
+                    //$('#' + f.Name).attr("style",'-webkit-transform:rotate(' + f.degree + 'deg);-moz-transform:rotate(' + f.degree + 'deg);-ms-transform:rotate(' + f.degree + 'deg);-o-transform:rotate(' + f.degree + 'deg);transform:rotate(' + f.degree + 'deg);');
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    //
+                }
+                //$scope.loader = false;
+            });
+        }
+
+        $scope.uploadFiles = function (files, errFiles) {
+            $scope.files = files;
+            $scope.errFiles = errFiles;
+            angular.forEach(files, function (file) {
+                $scope.file_loader = true;
+                file.upload = Upload.upload({
+                    url: '/Uploads/AddRecomFile?fileName=' + file.name,
+                    data: { file: file },
+                    dataType: "json",
+                });
+
+                file.upload.then(function (response) {
+                    if (response.data.ErrorCode == 1) {
+                        $scope.file_loader = false;
+                        $scope.ErrorMsg = response.data.ErrorMsg;
+                        return;
+                    }
+                    else if (response.data.ErrorCode == 5){
+                        $rootScope.LogOut();
+                    }
+                    $timeout(function () {
+                        var addFlag = true;
+                        angular.forEach($scope.results2, function (value, key) {
+                            if (value.Name == response.data.Data) {
+                                addFlag = false;
+                            }
+                        });
+                        if (addFlag == true) {
+                            $scope.file_loader = false;
+                            $scope.results2.push({ Name: response.data.Data });
+                        }
+                        file.result = +response.data.Data;
+                    });
+                }, function (response) {
+                    if (response.status > 0) {
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                    }
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            });
+        }
+
+        $scope.CoppyImage1Url = function (imgName) {
+           // $scope.OpenPopup("http://" + window.location.host + "/Uploads/lg_" + imgName, "כתובת תמונה");
+            return "http://" + window.location.host + "/Recom/lg_" + imgName;
+        }
+
+        $scope.OpenPopup = function (title, msg) {
+            $scope.Title = title;
+            $scope.Msg = msg;
+            ngDialog.open({
+                template: '/Scripts/OvadiaApp/Admin/events-dialog/popup-screen.html',
+                className: 'ngdialog-theme-default',
+                scope: $scope
+            });
+        }
+
+        self.RemoveFromArray = function (fname) {
+            if ($scope.results2.length == 1) {
+                if ($scope.results2[0].Name == fname) {
+                    $scope.results2.splice(0, 1);
+                }
+            }
+
+            angular.forEach($scope.results2, function (value, index) {
+                if (value.Name == fname) {
+                    $scope.results2.splice(index, 1);
+                }
+            });
+        }
+       
+        self.init();
+
+    }]);
+
+OvadiaApp.directive('uploadRecom', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'ImagesRecommCntrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/upload-recom/upload-recom.html'
+    }
+});
+OvadiaApp.controller('recommenComponentCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$http',
+    function ($scope, appServices, ngDialog, $timeout, $http) {
+        var self = this;
+        $scope.Recomm = {};
+
+        self.init = function () {
+            $scope.getAllRecomm();
+        }
+
+        $scope.getAllRecomm = function () {
+            appServices.GetAllActiveRecomm().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Recomm = data.Data;
+                }
+                else {
+                   // alert("error");
+                }
+            });
+        }
+
+        $scope.OpenLetter = function (recom) {
+            $scope.OpenPopup("מכתב", recom.Image1);
+        }
+
+        $scope.OpenPopup = function (title, msg) {
+            $scope.Title = title;
+            $scope.Msg = msg;
+            ngDialog.open({
+                template: '/Scripts/OvadiaApp/Admin/events-dialog/recomm-image.html',
+                //className: 'ngdialog-theme-default',
+                scope: $scope
+            });
+        }
+
+
+        self.init();
+    }]);
+
+OvadiaApp.directive('recommenComponent', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'recommenComponentCtrl',
+        templateUrl: '/Scripts/OvadiaApp/recommen-component/recommen-component.html'
+    }
+});
+OvadiaApp.controller('addRecommenCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$http', '$stateParams',
+    '$state','$rootScope',
+    function ($scope, appServices, ngDialog, $timeout, $http, $stateParams, $state, $rootScope) {
+        var self = this;
+        $scope.isNewArticle = true;
+        $scope.Article = {};
+
+        self.init = function () {
+
+            if ($stateParams.Recomm != null) {
+                $scope.Article = $stateParams.Recomm;
+                $scope.isNewArticle = false;
+                //$scope.GetArticle();
+            }
+            //else if (window.location.href.indexOf("id") > 0) {
+            //    $scope.articleId = window.location.href.substr(35, 4);
+            //    $scope.GetArticle();
+            //}
+        }
+
+        $scope.AddArticle = function () {
+            if (!movieForm.checkValidity()) {
+                $scope.OpenPopup("שדות חובה לא מולאו!", "אנא מלא את השדות המסומנות באדום בערכים מתאימים");
+                return;
+            }
+
+            $scope.loader = true;
+            appServices.AddRecomm($scope.Article)
+                .then(function (data) {
+                    var ErrorCode;
+                    try {
+                        ErrorCode = data.ErrorCode;
+                    }
+                    catch (e) {
+                        ErrorCode = 1;
+                    }
+                    if (ErrorCode == 0) {
+                        $scope.OpenPopup("המלצה נשמרה בהצלחה!", "תוכל להמשיך לערוך את המלצה");
+                        $scope.Article = data.Data;
+                        $scope.isNewArticle = false;
+                    }
+                    else if (ErrorCode == 2) {
+                        $scope.OpenPopup("שגיאה!", "המלצה עם כותרת זהה כבר קיימת במערכת.");
+
+                    }
+                    else if (data.ErrorCode == 5) {
+                        $rootScope.LogOut();
+                    }
+                    else {
+                        $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                    }
+                    $scope.loader = false;
+                });
+        }
+
+        $scope.GetArticle = function () {
+            $scope.loader = true;
+            appServices.GetRecommById($scope.articleId)
+                .then(function (data) {
+                    var ErrorCode;
+                    try {
+                        ErrorCode = data.ErrorCode;
+                    }
+                    catch (e) {
+                        ErrorCode = 1;
+                    }
+                    if (ErrorCode == 0) {
+                        $scope.Article = data.Data;
+                        $scope.isNewArticle = false;
+                    }
+                    else {
+                        $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                    }
+                    $scope.loader = false;
+                });
+        }
+
+        $scope.backToCategory = function () {
+            $state.go('admin.edit-recommen');
+        }
+
+        $scope.EditArticle = function () {
+            if (!movieForm.checkValidity()) {
+                $scope.OpenPopup("שדות חובה לא מולאו!", "אנא מלא את השדות המסומנות באדום בערכים מתאימים");
+                return;
+            }
+            $scope.loader = true;
+
+            appServices.EditRecomm($scope.Article).then(function (data) {
+                var ErrorCode;
+                try {
+                    ErrorCode = data.ErrorCode;
+                }
+                catch (e) {
+                    ErrorCode = 1;
+                }
+                if (ErrorCode == 0) {
+                    $scope.OpenPopup("המלצה עודכנה בהצלחה!", "תוכל להמשיך לערוך את ההמלצה");
+                    $scope.isNewArticle = false;
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+                $scope.loader = false;
+            });
+        }
+
+        $scope.NewArticle = function () {
+            $scope.isNewArticle = true;
+            $scope.articleId = null;
+            $scope.Article = {};
+        }
+
+        $scope.RemoveArticleById = function () {
+            $scope.loader = true;
+            appServices.RemoveRecommById($scope.Article.ArticleId)
+                .then(function (data) {
+                    debugger;
+                    var ErrorCode;
+                    try {
+                        ErrorCode = data.ErrorCode;
+                    }
+                    catch (e) {
+                        ErrorCode = 1;
+                    }
+                    if (ErrorCode == 0) {
+                        $scope.OpenPopup("המלצה הוסרה בהצלחה!", "תוכל ליצור המלצה חדשה");
+                        $scope.Article = {};
+                        $scope.isNewArticle = true;
+                    }
+                    else if (data.ErrorCode == 5) {
+                        $rootScope.LogOut();
+                    }
+                    else {
+                        $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                    }
+                    $scope.loader = false;
+                });
+        }
+
+        $scope.OpenPopup = function (title, msg) {
+            $scope.Title = title;
+            $scope.Msg = msg;
+            ngDialog.open({
+                template: '/Scripts/OvadiaApp/Admin/events-dialog/Movies/Movie-change.html',
+                //className: 'ngdialog-theme-default',
+                scope: $scope
+            });
+        }
+
+        self.init();
+    }]);
+
+OvadiaApp.directive('addRecommen', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'addRecommenCtrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/recommen/add-recommen/add-recommen.html'
+    }
+});
+OvadiaApp.controller('editRecommenCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$http', "$state",
+    '$rootScope',
+    function ($scope, appServices, ngDialog, $timeout, $http, $state, $rootScope) {
+        var self = this;
+        $scope.Recomm = [];
+
+        self.init = function () {
+            $scope.getallComm();
+        }
+
+        $scope.getallComm = function () {
+            appServices.GetAllRecomm().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Recomm = data.Data;
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    alert("error");
+                }
+            });
+        }
+
+        $scope.getIframeSrc = function (link) {
+            return link;
+        }
+
+        $scope.goToRecomm = function (recomm) {
+            $state.go("admin.add-recommen", { Recomm: recomm });
+        }
+
+        $scope.myStyle = function (article) {
+            if (article.ProfilePic == null || article.ProfilePic == '') {
+                return "background-image:url(/Content/images/default.png)";
+            }
+
+            var urlNoSpace = article.ProfilePic.split(' ').join('%20');
+            return "background-image: url(" + urlNoSpace + ")";
+        }
+
+        self.init();
+    }]);
+
+OvadiaApp.directive('editRecommen', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'editRecommenCtrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/recommen/edit-recommen/edit-recommen.html'
+    }
+});
+OvadiaApp.controller('homeRecommCtrl', ['$scope',
+    '$timeout', '$http', '$rootScope', 'ngDialog', 'appServices',
+    function ($scope, $timeout, $http, $rootScope, ngDialog, appServices) {
+        var self = this;
+        $scope.radio = 2;
+        self.init = function () {
+           
+        }
+
+        self.init();
+
+    }]);
+
+
+OvadiaApp.directive('homeRecomm', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'homeRecommCtrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/recommen/home-recommen/home-recommen.html'
+    }
+});
 OvadiaApp.service('appServices', ['$http', function ($http) {
 
     /* Event Services -------------------> */
@@ -22593,6 +23092,7 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
             return response.data;
         });
     }
+
     this.GetAllActiveCategoriesAcceptId = function (id) {
         var param = {
             Id: id
@@ -22722,7 +23222,80 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
             return response.data;
         });
     }
-    
+
+  /* Recommendation Services -------------------> */
+
+    this.AddRecomm = function (article) {
+        return $http({
+            url: url + '/RecommendationSer/AddRecomm',
+            method: 'POST',
+            data: JSON.stringify(article),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.EditRecomm = function (article) {
+        return $http({
+            method: 'POST',
+            url: "/RecommendationSer/EditRecomm",
+            data: JSON.stringify(article),
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8"
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.RemoveRecommById = function (id) {
+        var param = {
+            articleId: id
+        }
+        return $http({
+            url: url + '/RecommendationSer/RemoveRecommById',
+            method: 'POST',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetRecommById = function (id) {
+        var param = {
+            articleId: id
+        }
+        return $http({
+            url: url + '/RecommendationSer/GetRecommById',
+            method: 'POST',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllRecomm = function () {
+        return $http({
+            url: url + '/RecommendationSer/GetAllRecomm',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllActiveRecomm = function () {
+        return $http({
+            url: url + '/RecommendationSer/GetAllActiveRecomm',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
 }]);
 OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDialog','$rootScope',
     function ($scope, $http, $timeout, ngDialog, $rootScope) {
@@ -24384,6 +24957,8 @@ OvadiaApp.controller('headerComponentCtrl', ['$scope','$rootScope',
             { name: 'גלריית תמונות', state: 'image-gallery', url: '/image-gallery' },
             { name: 'שיעורים', state: 'movie-category', url: '/movie-category' },
             { name: 'זמני שיעורים ותפילות', state: 'all-lesson', url: '/all-lesson' },
+            { name: 'המלצות', state: 'recommendation', url: '/recommendation' },
+
         ];
 
         self.init = function () {
@@ -24914,6 +25489,8 @@ OvadiaApp.controller('homeAdminCtrl', ['$scope', '$rootScope', 'ngDialog', 'appS
             { name: 'ניהול קטגוריות', state: 'admin.categories', url: '/admin/categories' },
             { name: 'ניהול מאמרים\\סרטים', state: 'admin.home-movies', url: '/admin/home-movies' },
             { name: 'הודעות לציבור', state: 'admin.comment-info', url: '/admin/comment-info' },
+            { name: 'ניהול המלצות', state: 'admin.home-recommen', url: '/admin/home-recommen' },
+
         ];
         $scope.plusIcon = true;
 

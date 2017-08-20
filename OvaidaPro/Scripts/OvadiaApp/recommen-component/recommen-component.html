@@ -1,0 +1,26 @@
+﻿
+<link href="/Scripts/OvadiaApp/recommen-component/recommen-component.css" rel="stylesheet" />
+
+    <div class="body col-xs-12">
+        <div ng-hide="loader">
+            <h3 class="box-title">המלצות רבנים</h3>
+
+            <div ng-repeat="recom in Recomm">
+                <div class="background-css">
+                    <div class="rabi-profile">
+                        <img class="rabi-image" src="{{recom.ProfilePic}}" />
+                        {{recom.Title}}
+                    </div>
+                    <div class="text-1">
+                        <div  ng-bind-html="recom.Body"></div>
+                        <br />
+                        לקריאת המכתב <a href="#" ng-click="OpenLetter(recom)">לחץ כאן</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-body center" ng-show="loader">
+            <img src="/Content/images/loader.gif" />
+        </div>
+    </div>

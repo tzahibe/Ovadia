@@ -30,6 +30,8 @@
           <Property Name="Video1" Type="nvarchar(max)" />
           <Property Name="Video2" Type="nvarchar(max)" />
           <Property Name="Video3" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image1" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Categories">
           <Key>
@@ -220,6 +222,8 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="Video1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Video2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Video3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -326,6 +330,8 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySetMapping Name="Article">
             <EntityTypeMapping TypeName="DB_A25801_OvadiaModel.Article">
               <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Video3" ColumnName="Video3" />
                 <ScalarProperty Name="Video2" ColumnName="Video2" />
                 <ScalarProperty Name="Video1" ColumnName="Video1" />

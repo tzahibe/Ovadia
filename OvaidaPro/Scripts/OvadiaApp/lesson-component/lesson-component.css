@@ -37,6 +37,7 @@ lesson-component .body.tfila {
     .box-less .text {
         padding: 49px;
         padding-top: 22px;
+        padding-right:30px;
         /* text-align: center; */
         padding-bottom: 10px;
         background: #284b75;
@@ -63,7 +64,7 @@ lesson-component .body.tfila {
     padding: 5px;
     position: relative;
     right: 23px;
-    top: -78px;
+    top: -70px;
 }
 .clock-icon-left {
     float: left;
@@ -72,7 +73,7 @@ lesson-component .body.tfila {
     padding: 5px;
     position: relative;
     left: 23px;
-    top: -78px;
+    top: -70px;
 }
 .box-less.rightSide .text {
     margin-left: 53px;

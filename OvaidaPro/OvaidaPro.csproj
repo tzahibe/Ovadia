@@ -178,6 +178,7 @@
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\mails-send-succ.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\Movies\Movie-change.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\popup-screen.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\events-dialog\recomm-image.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\success-message.html" />
     <Content Include="Scripts\OvadiaApp\Admin\events-dialog\update-fixed-event.html" />
     <Content Include="Scripts\OvadiaApp\Admin\Movies\edit-movies\edit-movies.css" />
@@ -186,12 +187,24 @@
     <Content Include="Scripts\OvadiaApp\Admin\Movies\home-movies\home-movies.css" />
     <Content Include="Scripts\OvadiaApp\Admin\Movies\home-movies\home-movies.html" />
     <Content Include="Scripts\OvadiaApp\Admin\Movies\home-movies\home-movies.js" />
+    <Content Include="Scripts\OvadiaApp\Admin\upload-recom\upload-recom.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\upload-recom\upload-recom.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\upload-recom\upload-recom.js" />
     <Content Include="Scripts\OvadiaApp\Admin\ng-file-model\ng-file-model.html" />
     <Content Include="Scripts\OvadiaApp\Admin\ng-file-model\ng-file-model.js" />
     <Content Include="Scripts\OvadiaApp\Admin\ng-file-model\ng-file-model.css" />
     <Content Include="Scripts\OvadiaApp\Admin\odot-admin\odot-admin.css" />
     <Content Include="Scripts\OvadiaApp\Admin\odot-admin\odot-admin.html" />
     <Content Include="Scripts\OvadiaApp\Admin\odot-admin\odot-admin.js" />
+    <Content Include="Scripts\OvadiaApp\Admin\recommen\add-recommen\add-recommen.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\recommen\add-recommen\add-recommen.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\recommen\add-recommen\add-recommen.js" />
+    <Content Include="Scripts\OvadiaApp\Admin\recommen\edit-recommen\edit-recommen.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\recommen\edit-recommen\edit-recommen.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\recommen\edit-recommen\edit-recommen.js" />
+    <Content Include="Scripts\OvadiaApp\Admin\recommen\home-recommen\home-recommen.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\recommen\home-recommen\home-recommen.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\recommen\home-recommen\home-recommen.js" />
     <Content Include="Scripts\OvadiaApp\Admin\send-mail\send-mail.css" />
     <Content Include="Scripts\OvadiaApp\Admin\send-mail\send-mail.html" />
     <Content Include="Scripts\OvadiaApp\Admin\tfila-time\tfila-time.css" />
@@ -234,6 +247,9 @@
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.css" />
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.html" />
     <Content Include="Scripts\OvadiaApp\profile-component\profile-component.js" />
+    <Content Include="Scripts\OvadiaApp\recommen-component\recommen-component.css" />
+    <Content Include="Scripts\OvadiaApp\recommen-component\recommen-component.html" />
+    <Content Include="Scripts\OvadiaApp\recommen-component\recommen-component.js" />
     <Content Include="Scripts\OvadiaApp\tfila-time-container\tfila-time-container.css" />
     <Content Include="Scripts\OvadiaApp\tfila-time-container\tfila-time-container.html" />
     <Content Include="Scripts\OvadiaApp\tfila-time-container\tfila-time-container.js" />
@@ -334,6 +350,7 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\RecommendationSerController.cs" />
     <Compile Include="Controllers\TfilaController.cs" />
     <Compile Include="Controllers\UploadsController.cs" />
     <Compile Include="Controllers\UsersDetailsController.cs" />
@@ -375,12 +392,14 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Recom\" />
     <Folder Include="Uploads\" />
     <Folder Include="Views\Api\" />
     <Folder Include="Views\ArticleSer\" />
     <Folder Include="Views\CategorySer\" />
     <Folder Include="Views\CommentSer\" />
     <Folder Include="Views\Message\" />
+    <Folder Include="Views\RecommendationSer\" />
     <Folder Include="Views\Tfila\" />
     <Folder Include="Views\UsersDetails\" />
   </ItemGroup>

@@ -2,7 +2,6 @@
 <link href="/Content/select2.min.css" rel="stylesheet" />
 
 <!--desktop-->
-
 <div class="col-xs-12 removePaddingMargin" ng-hide="isMobile">
     <div class="containerX">
         <div class="Search_header" >
@@ -45,22 +44,23 @@
                     <option ng-repeat="cat in $root.categoriesRabiData" ng-value="{{cat}}">{{cat.Name}}</option>
                 </select>
             </div>
-            <!---Search-->
-            <div id="searchBox">
-                <img src="/Content/images/icons/search_icon.png" class="search-icon" />
-                <input type="text" placeholder="חפש" ng-model="search"  class="form-control" />
-            </div>
-            <div id="submitButton">
-                <input id="submitButton2" ng-model="search" type="button" value="סנן" class="form-control" />
-            </div>  
         </div>
         
     </div>
 </div>
-
 <div class="col-xs-12 removePaddingMargin blueLine" ng-hide="isMobile">
     <div class="containerX">
-        <div class="blueLine-title" >מיין לפי</div>
+        <div class="blueLine-title" >סנן לפי שם שיעור
+            <!---Search-->
+            <div id="searchBox">
+                <img src="/Content/images/icons/search_icon.png" class="search-icon" />
+                <input type="text" placeholder="חפש" ng-model="search" class="form-control" />
+            </div>
+            <div id="submitButton">
+                <input id="submitButton2" ng-model="search" type="button" value="סנן" class="form-control" />
+            </div>  
+        
+        </div>
         <div class="all_articles">
             <div class="articles-list" ng-repeat="article in Articles | filter: search
                 | filter: parentCategoryFilter | filter: subCategoryFilter
@@ -82,8 +82,8 @@
     </div>
 </div>
 
-<!--mobile-->
 
+<!--mobile-->
 <div class="col-xs-12 removePaddingMargin-Mobile" ng-show="isMobile">
     <div class="containerX">
         <div class="all_articles">
