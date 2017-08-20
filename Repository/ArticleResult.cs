@@ -25,6 +25,7 @@ namespace Repository
                         articleRep = new Article();
                         articleRep.Title = article.Title;
                         articleRep.Type = type;
+                        articleRep.Comment = article.Comment;
                         articleRep.ProfilePic = article.ProfilePic;
                         articleRep.CategoryId = article.CategoryId;
                         articleRep.CategoryName = article.CategoryName;
@@ -78,6 +79,7 @@ namespace Repository
                         articleRep.CategoryName = article.CategoryName;
                         articleRep.Body = article.Body + " ";
                         articleRep.Last_edit = DateTime.Today;
+                        articleRep.Comment = article.Comment;
                         articleRep.Image1 = article.Image1;
                         articleRep.Video1 = article.Video1;
                         articleRep.Video2 = article.Video2;
@@ -93,6 +95,7 @@ namespace Repository
                         entry.Property(e => e.Video1).IsModified = true;
                         entry.Property(e => e.Video2).IsModified = true;
                         entry.Property(e => e.Video3).IsModified = true;
+                        entry.Property(e => e.Comment).IsModified = true;
                         entry.Property(e => e.Image1).IsModified = true;
                         entry.Property(e => e.CategoryName).IsModified = true;
                         entry.Property(e => e.Body).IsModified = true;
@@ -236,6 +239,7 @@ namespace Repository
                             boArt.Video1 = articleRep.Video1;
                             boArt.Video2 = articleRep.Video2;
                             boArt.Video3 = articleRep.Video3;
+                            boArt.Comment = articleRep.Comment;
                             boArt.Last_edit = articleRep.Last_edit == null? DateTime.Now : (DateTime)articleRep.Last_edit;
                             boArt.DatePublish = articleRep.DatePublish == null ? DateTime.Now : (DateTime)articleRep.DatePublish;
                             boArt.CategoriesList = null;
@@ -354,6 +358,7 @@ namespace Repository
                                                       Video1 = r.Video1,
                                                       Video2 = r.Video2,
                                                       Video3 = r.Video3,
+                                                      Comment = r.Comment,
                                                       Title = r.Title,
                                                       Publish = r.Publish == null ? 0 : (int)r.Publish,
                                                       CategoryName = "",

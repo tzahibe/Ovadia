@@ -20,6 +20,7 @@ namespace Bo
         public string Video3 { get; set; }
         public string Type { get; set; }
         public string Image1 { get; set; }
+        public string Comment { get; set; }
         public List<Art_Cat> CategoriesList { get; set; }
     }
 }
