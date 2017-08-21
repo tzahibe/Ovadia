@@ -21701,6 +21701,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
         var promisse;
 
         self.init = function () {
+            $scope.loader = true;
             $scope.getAllArticles();
             $scope.getAllCategories();
             $scope.GetAllCategoires_rabi();
