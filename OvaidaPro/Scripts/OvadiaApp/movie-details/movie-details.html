@@ -80,7 +80,7 @@
             </div>
             <div class="article-last col-xs-12 remove-padding" 
                  ng-show="Articles != null && Articles.length > 0"
-                 ng-repeat="article in Articles">
+                 ng-repeat="article in Articles | filter: notSameArticle">
                 <div class="col-xs-7 remove-padding text-a right pointer" ng-click="goToArticle(article)">
                     {{article.Title}}
                 </div>

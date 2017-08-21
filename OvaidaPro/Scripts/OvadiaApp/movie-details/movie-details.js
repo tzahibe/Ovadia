@@ -3,7 +3,7 @@
         var self = this;
         $scope.articleId = null;
         $scope.Article = {};
-        $scope.Articles = {};
+        $scope.Articles = [];
         var promisse;
 
         self.init = function () {
@@ -29,6 +29,14 @@
         $scope.goToArticle = function (article) {
             window.location.href = '/movie-details?articleId=' + article.ArticleId;
         }
+
+        $scope.notSameArticle = function (item) {
+            if (item.Title == $scope.Article.Title)
+                return false;
+
+            return true;
+        }
+
 
         $scope.getIframeSrc = function (link) {
             return link;
