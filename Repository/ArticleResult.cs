@@ -26,6 +26,7 @@ namespace Repository
                         articleRep.Title = article.Title;
                         articleRep.Type = type;
                         articleRep.Comment = article.Comment;
+                        articleRep.Writer = article.Writer;
                         articleRep.Death_date = article.Death_date;
                         articleRep.Lesson_info = article.Lesson_info;
                         articleRep.ProfilePic = article.ProfilePic;
@@ -81,6 +82,7 @@ namespace Repository
                         articleRep.CategoryName = article.CategoryName;
                         articleRep.Body = article.Body + " ";
                         articleRep.Last_edit = DateTime.Today;
+                        articleRep.Writer = article.Writer;
                         articleRep.Comment = article.Comment;
                         articleRep.Death_date = article.Death_date;
                         articleRep.Lesson_info = article.Lesson_info;
@@ -100,6 +102,7 @@ namespace Repository
                         entry.Property(e => e.Video2).IsModified = true;
                         entry.Property(e => e.Video3).IsModified = true;
                         entry.Property(e => e.Comment).IsModified = true;
+                        entry.Property(e => e.Writer).IsModified = true;
                         entry.Property(e => e.Death_date).IsModified = true;
                         entry.Property(e => e.Lesson_info).IsModified = true;
                         entry.Property(e => e.Image1).IsModified = true;
@@ -182,6 +185,7 @@ namespace Repository
                         boArt.CategoryId = repResult.CategoryId == null ? 0 : (int)repResult.CategoryId;
                         boArt.CategoryName = repResult.CategoryName;
                         boArt.Publish = repResult.Publish == null ? 0 : (int)repResult.Publish;
+                        boArt.Writer = repResult.Writer;
                         boArt.Comment = repResult.Comment;
                         boArt.Death_date = repResult.Death_date;
                         boArt.Lesson_info = repResult.Lesson_info;
@@ -248,6 +252,7 @@ namespace Repository
                             boArt.Video1 = articleRep.Video1;
                             boArt.Video2 = articleRep.Video2;
                             boArt.Video3 = articleRep.Video3;
+                            boArt.Writer = articleRep.Writer;
                             boArt.Death_date = articleRep.Death_date;
                             boArt.Lesson_info = articleRep.Lesson_info;
                             boArt.Comment = articleRep.Comment;
@@ -371,6 +376,7 @@ namespace Repository
                                                       Video3 = r.Video3,
                                                       Comment = r.Comment,
                                                       Death_date = r.Death_date,
+                                                      Writer = r.Writer,
                                                       Lesson_info = r.Lesson_info,
                                                       Title = r.Title,
                                                       Publish = r.Publish == null ? 0 : (int)r.Publish,

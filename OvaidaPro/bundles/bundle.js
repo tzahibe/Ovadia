@@ -21588,15 +21588,60 @@ OvadiaApp.directive('addMovie', function () {
         templateUrl: '/Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.html'
     }
 });
-OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval',
-    function ($scope, appServices, ngDialog, $timeout, $interval) {
+OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval','$stateParams',
+    function ($scope, appServices, ngDialog, $timeout, $interval, $stateParams) {
         var self = this;
+        $scope.articleId = null;
+        $scope.Article = {};
         var promisse;
 
         self.init = function () {
-           
+            var url = location.href.toLowerCase();
+
+            if ($stateParams.articleId != null) {
+                $scope.articleId = $stateParams.articleId;
+                $scope.GetArticle();
+            }
+
+            else if (url.indexOf('articleid') > -1) {
+                var split = url.split('articleid=');
+
+                if (split != null && split.length > 0) {
+                    $scope.articleId = split[1];
+                }
+                $scope.GetArticle();
+            }
         }
 
+        $scope.getIframeSrc = function (link) {
+            return link;
+        }
+
+        $scope.GetArticle = function () {
+            debugger;
+            $scope.loader = true;
+            appServices.GetArticle($scope.articleId)
+                .then(function (data) {
+                    var ErrorCode;
+                    try {
+                        ErrorCode = data.ErrorCode;
+                    }
+                    catch (e) {
+                        ErrorCode = 1;
+                    }
+                    if (ErrorCode == 0) {
+                        $scope.Article = data.Data;
+                        $scope.tags = $scope.Article.CategoriesList;
+                        $scope.Article.YoutubeLink1 = $scope.Article.Video1 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video1 : null;
+                        $scope.Article.YoutubeLink2 = $scope.Article.Video2 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
+                        $scope.Article.YoutubeLink3 = $scope.Article.Video3 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
+                    }
+                    else {
+                        //
+                    }
+                    $scope.loader = false;
+                });
+        }
        
         self.init();
     }]);

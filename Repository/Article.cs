@@ -31,5 +31,6 @@ namespace Repository
         public string Comment { get; set; }
         public string Death_date { get; set; }
         public string Lesson_info { get; set; }
+        public string Writer { get; set; }
     }
 }

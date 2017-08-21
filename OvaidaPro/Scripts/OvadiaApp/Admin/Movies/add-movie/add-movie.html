@@ -7,8 +7,12 @@
                 <legend ng-if="!isNewArticle && !readOnly">עריכת מאמר</legend>
                 <legend ng-if="isNewArticle && !readOnly">יצירת מאמר</legend>
                 <div class="form-group has-feedback" ng-hide="readOnly">
-                    <label>כותרת מאמר</label>
+                    <label>* כותרת מאמר</label>
                     <input type="text" required ng-model="Article.Title" class="form-control" placeholder="שם מאמר">
+
+                    <label>* שם הרב/מעביר השיעור</label>
+                    <input type="text" required ng-model="Article.Writer" class="form-control" placeholder="שם כותב המאמר/הרב">
+
                 </div>
                 <legend ng-show="readOnly"><h1>{{Article.Title}}</h1></legend>
                 <div class="form-group">
@@ -36,7 +40,7 @@
             </fieldset>
             <a ng-show="readOnly" href="/index.html/CategoryArticles?categoryId={{Article.CategoryId}}">חזרה ל {{Article.CategoryName}} >></a>
             <div ng-hide="readOnly">
-                בחר קטגוריה
+                 * בחר קטגוריה
             </div>
             <!--<select name="categoryChoose" 
                     class="form-control parentCat hebrew"
