@@ -78,26 +78,21 @@
                 <img class="last-icon" src="/Content/images/icons/last-icon.png"/>
                 אחרונים
             </div>
-            <div class="article-last col-xs-12 remove-padding">
-                <div class="col-xs-7 remove-padding text-a right">
-                    הכותל ישראל בידנו הר הבית בקרוב, קומו ונעלה ציון, עזבו אתכם אונסקו.
+            <div class="article-last col-xs-12 remove-padding" 
+                 ng-show="Articles != null && Articles.length > 0"
+                 ng-repeat="article in Articles">
+                <div class="col-xs-7 remove-padding text-a right pointer" ng-click="goToArticle(article)">
+                    {{article.Title}}
                 </div>
                 <div class="remove-padding image-css right">
-                    <img src="https://static.wixstatic.com/media/63ecff_450af54a7c8d4f38a6aec0d59c71a762~mv2.png/v1/fill/w_118,h_79,al_c,usm_0.66_1.00_0.01/63ecff_450af54a7c8d4f38a6aec0d59c71a762~mv2.png" />
+                    <img src="{{article.ProfilePic}}" />
                 </div>
                 <div class="border-bottom right"></div>
             </div>
-            <div class="article-last col-xs-12 remove-padding">
-                <div class="col-xs-7 remove-padding text-a right">
-                    הכותל ישראל בידנו הר הבית בקרוב, קומו ונעלה ציון, עזבו אתכם אונסקו.
-                </div>
-                <div class="remove-padding image-css right">
-                    <img src="https://static.wixstatic.com/media/63ecff_450af54a7c8d4f38a6aec0d59c71a762~mv2.png/v1/fill/w_118,h_79,al_c,usm_0.66_1.00_0.01/63ecff_450af54a7c8d4f38a6aec0d59c71a762~mv2.png" />
-                </div>
-                <div class="border-bottom right"></div>
+            
+            <div class="article-last col-xs-12 remove-padding" ng-hide="Articles != null && Articles.length > 0">
+                אין שיעורים אחרונים
             </div>
-
-            <br />
         </div>
 
         <!---תמונה תרומה לכולל-->

@@ -21596,9 +21596,12 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
         var self = this;
         $scope.articleId = null;
         $scope.Article = {};
+        $scope.Articles = {};
         var promisse;
 
         self.init = function () {
+            $scope.GetNewActiveArticles();
+
             var url = location.href.toLowerCase();
 
             if ($stateParams.articleId != null) {
@@ -21614,6 +21617,10 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
                 }
                 $scope.GetArticle();
             }
+        }
+
+        $scope.goToArticle = function (article) {
+            window.location.href = '/movie-details?articleId=' + article.ArticleId;
         }
 
         $scope.getIframeSrc = function (link) {
@@ -21644,7 +21651,28 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
                     $scope.loader = false;
                 });
         }
-       
+
+        $scope.GetNewActiveArticles = function () {
+            $scope.loader = true;
+            appServices.GetNewActiveArticles()
+                .then(function (data) {
+                    var ErrorCode;
+                    try {
+                        ErrorCode = data.ErrorCode;
+                    }
+                    catch (e) {
+                        ErrorCode = 1;
+                    }
+                    if (ErrorCode == 0) {
+                        $scope.Articles = data.Data;
+                    }
+                    else {
+                        
+                    }
+                    $scope.loader = false;
+                });
+        }
+
         self.init();
     }]);
 

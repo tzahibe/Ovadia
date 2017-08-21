@@ -110,9 +110,12 @@
         width:100%;
         margin-top:10px;
     }
-
+.pointer {
+    cursor:pointer;
+}
 .iframe-video {
-    width:600px; height:394px;
+    width: 600px;
+    height: 394px;
 }
 .from-css {
 border-right:0;
