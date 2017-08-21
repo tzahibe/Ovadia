@@ -1127,7 +1127,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/21/2017 16:13:11</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-details/movie-details.html">
-      <publishTime>08/21/2017 16:24:47</publishTime>
+      <publishTime>08/21/2017 16:27:21</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-details/movie-details.js">
       <publishTime>08/21/2017 16:18:26</publishTime>
