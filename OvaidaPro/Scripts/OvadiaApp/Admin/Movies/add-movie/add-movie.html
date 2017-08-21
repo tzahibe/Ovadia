@@ -22,8 +22,16 @@
                     <div class="col-xs-12 img" ng-show="Article.ProfilePic != null && Article.ProfilePic != ''">
                         <img ng-src="{{Article.ProfilePic}}" style="width:200px; height:200px"/>
                     </div>
-                    <label ng-hide="readOnly">הקדשה</label>
+                    <label ng-hide="readOnly">הקדשה - לעילוי נשמת\ להצלחת ...</label>
                     <input ng-hide="readOnly" type="text" ng-model="Article.Comment" class="form-control" placeholder="מוקדש ל...">
+                    <p class="example-p remove-margin">אופציונאלי</p>
+                    <label ng-hide="readOnly">תאריך פטירה</label>
+                    <input ng-hide="readOnly" type="text" ng-model="Article.Death_date" class="form-control" placeholder="תאריך פטירה עברי">
+
+                    <p class="example-p remove-margin"> אופציונאלי - קצת מידע על השיעור, ובאיזה שעה מתקיים</p>
+                    <label ng-hide="readOnly">מידע על השיעור</label>
+                    <input ng-hide="readOnly" type="text" ng-model="Article.Lesson_info" class="form-control" placeholder="מידע על השיעור">
+
                 </div>
             </fieldset>
             <a ng-show="readOnly" href="/index.html/CategoryArticles?categoryId={{Article.CategoryId}}">חזרה ל {{Article.CategoryName}} >></a>

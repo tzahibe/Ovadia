@@ -29,5 +29,7 @@ namespace Repository
         public string Type { get; set; }
         public string Image1 { get; set; }
         public string Comment { get; set; }
+        public string Death_date { get; set; }
+        public string Lesson_info { get; set; }
     }
 }

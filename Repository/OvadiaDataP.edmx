@@ -33,6 +33,8 @@
           <Property Name="Type" Type="nvarchar" MaxLength="50" />
           <Property Name="Image1" Type="nvarchar(max)" />
           <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="Death_date" Type="nvarchar(max)" />
+          <Property Name="Lesson_info" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Categories">
           <Key>
@@ -226,6 +228,8 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Death_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lesson_info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -332,6 +336,8 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySetMapping Name="Article">
             <EntityTypeMapping TypeName="DB_A25801_OvadiaModel.Article">
               <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="Lesson_info" ColumnName="Lesson_info" />
+                <ScalarProperty Name="Death_date" ColumnName="Death_date" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Image1" ColumnName="Image1" />
                 <ScalarProperty Name="Type" ColumnName="Type" />

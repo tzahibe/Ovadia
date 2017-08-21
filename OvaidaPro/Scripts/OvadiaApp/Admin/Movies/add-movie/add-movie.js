@@ -218,8 +218,8 @@
                     }
                     if (ErrorCode == 0) {
                         $scope.OpenPopup("מאמר הוסר בהצלחה!", "תוכל ליצור מאמר חדש");
-                        $scope.Article = response.data.Data;
-                        $scope.isNewArticle = false;
+                        $scope.NewArticle();
+                        $scope.isNewArticle = true;
                     }
                     else if (data.ErrorCode == 5) {
                         $rootScope.LogOut();
