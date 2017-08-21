@@ -17,16 +17,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="bin/BL.dll">
-      <publishTime>08/20/2017 17:45:13</publishTime>
+      <publishTime>08/21/2017 13:50:36</publishTime>
     </File>
     <File Include="bin/BL.pdb">
-      <publishTime>08/20/2017 17:45:13</publishTime>
+      <publishTime>08/21/2017 13:50:36</publishTime>
     </File>
     <File Include="bin/Bo.dll">
-      <publishTime>08/20/2017 17:45:12</publishTime>
+      <publishTime>08/21/2017 13:50:35</publishTime>
     </File>
     <File Include="bin/Bo.pdb">
-      <publishTime>08/20/2017 17:45:12</publishTime>
+      <publishTime>08/21/2017 13:50:35</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/11/2017 23:51:53</publishTime>
@@ -53,13 +53,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/OvaidaPro.dll">
-      <publishTime>08/20/2017 17:45:16</publishTime>
+      <publishTime>08/21/2017 13:50:41</publishTime>
     </File>
     <File Include="bin/OvaidaPro.pdb">
-      <publishTime>08/20/2017 17:45:16</publishTime>
+      <publishTime>08/21/2017 13:50:41</publishTime>
     </File>
     <File Include="bin/Repository.dll">
-      <publishTime>08/20/2017 17:45:12</publishTime>
+      <publishTime>08/21/2017 13:50:36</publishTime>
     </File>
     <File Include="bin/Repository.dll.config">
       <publishTime>07/12/2017 11:36:54</publishTime>
@@ -71,7 +71,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/06/2017 15:56:49</publishTime>
     </File>
     <File Include="bin/Repository.pdb">
-      <publishTime>08/20/2017 17:45:12</publishTime>
+      <publishTime>08/21/2017 13:50:36</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>07/11/2017 23:51:54</publishTime>
@@ -257,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bundles/bundle.js">
-      <publishTime>08/20/2017 17:35:15</publishTime>
+      <publishTime>08/21/2017 13:47:27</publishTime>
     </File>
     <File Include="bundles/bundle.min.js">
       <publishTime>07/12/2017 00:06:28</publishTime>
@@ -301,6 +301,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/images/dropdown-icon.png">
       <publishTime>08/08/2017 16:06:37</publishTime>
     </File>
+    <File Include="Content/images/eluy.png">
+      <publishTime>08/21/2017 10:48:06</publishTime>
+    </File>
+    <File Include="Content/images/eluy.webp">
+      <publishTime>08/21/2017 10:45:38</publishTime>
+    </File>
+    <File Include="Content/images/icons/clander-icon.png">
+      <publishTime>08/21/2017 10:34:59</publishTime>
+    </File>
     <File Include="Content/images/icons/close-inline.svg">
       <publishTime>07/12/2017 17:32:48</publishTime>
     </File>
@@ -318,6 +327,18 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/images/icons/external-link.svg">
       <publishTime>07/12/2017 17:32:48</publishTime>
+    </File>
+    <File Include="Content/images/icons/eye-icon.png">
+      <publishTime>08/21/2017 10:34:59</publishTime>
+    </File>
+    <File Include="Content/images/icons/kria-icon.png">
+      <publishTime>08/21/2017 11:04:46</publishTime>
+    </File>
+    <File Include="Content/images/icons/last-icon.png">
+      <publishTime>08/21/2017 11:07:22</publishTime>
+    </File>
+    <File Include="Content/images/icons/lesson-info-icon.png">
+      <publishTime>08/21/2017 11:41:12</publishTime>
     </File>
     <File Include="Content/images/icons/next-inline.svg">
       <publishTime>07/12/2017 17:32:48</publishTime>
@@ -358,6 +379,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/images/microphone.png">
       <publishTime>07/24/2017 13:09:29</publishTime>
     </File>
+    <File Include="Content/images/mobile/bottom-background-.png">
+      <publishTime>08/21/2017 09:12:54</publishTime>
+    </File>
+    <File Include="Content/images/mobile/top-background.png">
+      <publishTime>08/21/2017 09:11:34</publishTime>
+    </File>
     <File Include="Content/images/purple-wallpaper-background-25.jpg">
       <publishTime>07/11/2017 23:51:52</publishTime>
     </File>
@@ -366,6 +393,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/images/tfila-background.png">
       <publishTime>07/24/2017 12:54:15</publishTime>
+    </File>
+    <File Include="Content/images/truma-image.png">
+      <publishTime>08/21/2017 11:32:51</publishTime>
     </File>
     <File Include="Content/images/zmani-icon.png">
       <publishTime>07/24/2017 13:26:00</publishTime>
@@ -902,13 +932,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/10/2017 09:25:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.css">
-      <publishTime>08/04/2017 17:35:03</publishTime>
+      <publishTime>08/21/2017 13:01:01</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.html">
-      <publishTime>08/04/2017 17:35:17</publishTime>
+      <publishTime>08/21/2017 13:29:35</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.js">
-      <publishTime>08/10/2017 09:04:22</publishTime>
+      <publishTime>08/21/2017 13:12:45</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/Movies/edit-movies/edit-movies.css">
       <publishTime>08/04/2017 11:12:33</publishTime>
@@ -1058,7 +1088,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/02/2017 20:06:19</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/lesson-component/lesson-component.css">
-      <publishTime>08/20/2017 11:45:25</publishTime>
+      <publishTime>08/21/2017 09:13:17</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/lesson-component/lesson-component.html">
       <publishTime>08/20/2017 11:42:37</publishTime>
@@ -1088,19 +1118,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/20/2017 13:19:43</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-category/movie-category.html">
-      <publishTime>08/20/2017 11:04:30</publishTime>
+      <publishTime>08/21/2017 09:27:02</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-category/movie-category.js">
-      <publishTime>08/10/2017 13:57:56</publishTime>
+      <publishTime>08/21/2017 13:47:26</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-details/movie-details.css">
-      <publishTime>07/12/2017 23:44:56</publishTime>
+      <publishTime>08/21/2017 13:39:43</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-details/movie-details.html">
-      <publishTime>07/17/2017 10:22:19</publishTime>
+      <publishTime>08/21/2017 13:50:23</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-details/movie-details.js">
-      <publishTime>08/08/2017 13:40:51</publishTime>
+      <publishTime>08/21/2017 13:46:03</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/my-app/my-app.css">
       <publishTime>08/15/2017 17:16:43</publishTime>
@@ -1115,7 +1145,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/04/2017 11:44:24</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/OvadiaConfig.js">
-      <publishTime>08/20/2017 15:19:11</publishTime>
+      <publishTime>08/21/2017 13:47:05</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/profile-component/profile-component.css">
       <publishTime>07/12/2017 00:04:52</publishTime>

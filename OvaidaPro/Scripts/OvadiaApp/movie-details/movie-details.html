@@ -2,13 +2,13 @@
 
 <div class="col-xs-12">
 
-    <div class="col-xs-7 right">
+    <div class="col-xs-12 col-lg-7 right">
         <div class="movie-title">
             <!--ירושלים ציון עיר הקודש, עם אונסקו ובלי. צביעות עולמית-->
             {{Article.Title}}
         </div>
         <div class="col-xs-12 remove-padding custom-width">
-            <span class="from-css col-xs-7">
+            <span class="from-css  col-lg-7">
                 <span class="regular">מאת:</span> {{Article.Writer}}
             </span>
             <span class="view-css col-xs-2">
@@ -20,9 +20,9 @@
                 12.07.2017
             </span>
         </div>
-            <div class="iframe">
+            <div class="">
                 <div ng-show="Article.YoutubeLink1 != null && Article.YoutubeLink1 != ''">
-                    <iframe width="600" height="394"
+                    <iframe class="iframe-video"
                             ng-src="{{getIframeSrc(Article.YoutubeLink1)}}"
                             frameborder="0" allowfullscreen></iframe>
                 </div>
@@ -30,14 +30,10 @@
         <div class="body-text" ng-bind-html="Article.Body">
           
         </div>
-            <br />
-            <br />
-            <br />
-            <br />
-      
+
     </div>
 
-    <div class="col-xs-4 right remove-padding">
+    <div class="col-xs-12  col-lg-4 right remove-padding">
         
         <!--עילוי נשמת-->
         <div class="eluy" ng-show="Article.Comment != null && Article.Comment != ''">
@@ -57,7 +53,7 @@
                 מידע על השיעור
             </div>
             <div class="article-last col-xs-12 remove-padding">
-                <div class="col-xs-7 remove-padding text-a right">
+                <div class="col-xs-7 col-lg-7 remove-padding text-a right">
                     {{Article.Lesson_info}}
                     <span ng-hide="Article.Lesson_info != null && Article.Lesson_info != ''">
                         אין מידע על השיעור.
