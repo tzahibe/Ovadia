@@ -139,8 +139,13 @@
     color: #284b75;
     line-height: 65px;
 }
+.select2-selection__rendered {
+    background: url(/Content/images/dropdown-icon.png);
+    background-repeat: no-repeat;
+    background-position: 6px;
+}
 .col-xs-12.odaot-for-zibur .container {
-    margin-top:1px;
+    margin-top: 1px;
 }@media screen and (max-width: 768px) {
     .containerX{
         width:100%;
