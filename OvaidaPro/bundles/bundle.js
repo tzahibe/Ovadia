@@ -20860,6 +20860,9 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
             controller: 'movieDetailsCtrl',
             data: {
                 access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
+            },
+            params: {
+                articleId: null
             }
         })
         .state("movie-category", {
@@ -21616,9 +21619,8 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
         $scope.getIframeSrc = function (link) {
             return link;
         }
-
+            
         $scope.GetArticle = function () {
-            debugger;
             $scope.loader = true;
             appServices.GetArticle($scope.articleId)
                 .then(function (data) {
@@ -21865,6 +21867,10 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
             }
 
             return false;
+        }
+
+        $scope.goToArticle = function (article) {
+            window.location.href = '/movie-details?articleId=' + article.ArticleId;
         }
 
         self.init();

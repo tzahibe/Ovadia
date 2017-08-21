@@ -211,6 +211,10 @@
             return false;
         }
 
+        $scope.goToArticle = function (article) {
+            window.location.href = '/movie-details?articleId=' + article.ArticleId;
+        }
+
         self.init();
     }]);
 

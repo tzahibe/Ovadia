@@ -14,6 +14,9 @@
             controller: 'movieDetailsCtrl',
             data: {
                 access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
+            },
+            params: {
+                articleId: null
             }
         })
         .state("movie-category", {

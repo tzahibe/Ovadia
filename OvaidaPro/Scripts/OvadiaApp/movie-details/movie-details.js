@@ -28,7 +28,6 @@
         }
             
         $scope.GetArticle = function () {
-            debugger;
             $scope.loader = true;
             appServices.GetArticle($scope.articleId)
                 .then(function (data) {
