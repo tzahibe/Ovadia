@@ -59,6 +59,9 @@
             <div class="article-last col-xs-12 remove-padding">
                 <div class="col-xs-7 remove-padding text-a right">
                     {{Article.Lesson_info}}
+                    <span ng-hide="Article.Lesson_info != null && Article.Lesson_info != ''">
+                        אין מידע על השיעור.
+                    </span>
                 </div>
                 <div class="remove-padding image-css right">
                     <img src="{{Article.ProfilePic}}" />
