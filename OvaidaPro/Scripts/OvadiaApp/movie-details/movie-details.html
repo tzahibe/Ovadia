@@ -9,7 +9,14 @@
         </div>
         <div class="col-xs-12 remove-padding custom-width">
             <span class="from-css  col-lg-7">
-                <span class="regular">מאת:</span> {{Article.Writer}}
+                <span class="regular">
+                מאת:</span> 
+                <span ng-show="Article.Writer != null && Article.Writer != ''">
+                    {{Article.Writer}}
+                </span>
+                <span ng-hide="Article.Writer != null && Article.Writer != ''">
+                    מנהל האתר
+                </span>
             </span>
             <span class="view-css col-xs-2">
                 <img class="eye-icon" src="/Content/images/icons/eye-icon.png" />
@@ -55,7 +62,7 @@
             <div class="article-last col-xs-12 remove-padding">
                 <div class="col-xs-7 col-lg-7 remove-padding text-a right">
                     {{Article.Lesson_info}}
-                    <span ng-hide="Article.Lesson_info != null && Article.Lesson_info != ''">
+                    <span class="text-a right" ng-hide="Article.Lesson_info != null && Article.Lesson_info != ''">
                         אין מידע על השיעור.
                     </span>
                 </div>

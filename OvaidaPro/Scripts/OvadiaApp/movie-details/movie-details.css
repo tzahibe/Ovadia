@@ -129,7 +129,7 @@ border-right:0;
 
     iframe, .iframe-video {
         width: 100%;
-        height: 394px;
+        height: 290px;
     }
     .col-xs-12{
         padding:0;
@@ -164,6 +164,9 @@ border-right:0;
         padding-right: 5px;
         line-height:28px;
     }
+    .article-last .border-bottom {
+        margin-bottom: 9px;
+    }
     .movie-title{
         margin-bottom:10px;
     } .eye-icon {
@@ -177,7 +180,9 @@ border-right:0;
         top: -1px;
         width: 20px;
     }
-    .remove-padding {
-        padding:0;
+    .article-last .text-a{
+        padding-right:8px;
+    } .remove-padding {
+        padding: 0;
     }
 }
