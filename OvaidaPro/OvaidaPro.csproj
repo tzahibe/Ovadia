@@ -132,6 +132,9 @@
     <Content Include="bundles\bundle.min.js">
       <DependentUpon>bundle.js</DependentUpon>
     </Content>
+    <Content Include="Content\images\eluy.png" />
+    <Content Include="Content\images\icons\clander-icon.png" />
+    <Content Include="Content\images\icons\eye-icon.png" />
     <Content Include="Content\images\63ecff_cc4f7c1c9e324e54854af1333240abc6-mv2.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -140,10 +143,16 @@
     <Content Include="Content\images\backgtoundnreto.png" />
     <Content Include="Content\images\colel-ico.png" />
     <Content Include="Content\images\colel.jpg" />
+    <Content Include="Content\images\icons\kria-icon.png" />
+    <Content Include="Content\images\icons\last-icon.png" />
+    <Content Include="Content\images\icons\lesson-info-icon.png" />
     <Content Include="Content\images\login.png" />
     <Content Include="Content\images\logoNew.png" />
     <Content Include="Content\images\magenDavid.png" />
     <Content Include="Content\images\microphone.png" />
+    <Content Include="Content\images\mobile\bottom-background-.png" />
+    <Content Include="Content\images\mobile\top-background.png" />
+    <Content Include="Content\images\truma-image.png" />
     <Content Include="Content\images\zmani-icon.png" />
     <Content Include="Content\images\logoNew.jpg" />
     <Content Include="Content\ng-tags-input.bootstrap.css" />
@@ -275,6 +284,7 @@
     <Content Include="Content\Fonts\OpenSansHebrew-ExtraBold.ttf" />
     <Content Include="Content\Fonts\OpenSansHebrew-Light.ttf" />
     <Content Include="Content\Fonts\OpenSansHebrew-Regular.ttf" />
+    <Content Include="Content\images\eluy.webp" />
     <None Include="Dockerfile" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\OvadiaApp\carousel-component\carousel-component.js" />

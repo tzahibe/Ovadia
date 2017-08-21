@@ -1,1 +1,111 @@
-﻿
+﻿.right{
+    float:right !important;
+}
+.iframe {
+    width: 600px;
+    height: 394px;
+    background: #005180;
+    margin-top: 38px;
+}
+.custom-width {
+    width:600px;
+}.remove-padding {
+    padding: 0;
+    float: right;
+}.movie-title {
+    font-size: 39px;
+    font-family: OpenSansHebrew-Bold;
+    color: #284B75;
+}
+.from-css, .publish-css, .view-css {
+    float: right;
+    height: 37px;
+    background: #e8eaed;
+    font-size: 18px;
+    font-family: OpenSansHebrew-Bold;
+    color: #637993;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-right:2px solid #fff;
+}
+    .from-css{
+        padding-right:5px;
+    }
+    .publish-css, .view-css, .from-css .regular {
+        font-family: OpenSansHebrew-Regular;
+    }
+.calender-icon {
+    position: relative;
+    top: -2px;
+}
+.eye-icon {
+    position: relative;
+    top: -2px;
+}
+.eluy .text2 {
+    font-family: OpenSansHebrew-Bold;
+    position: absolute;
+    color: #F9791D;
+    font-size: 15px;
+    margin-right: 109px;
+    margin-top: 12px;
+}
+.eluy .info {
+    font-family: OpenSansHebrew-Bold;
+    font-size: 18px;
+    color: #F6AA74;
+    position: absolute;
+    margin-right: 117px;
+    margin-top: 39px;
+}
+.eluy img {
+    width: 100%;
+}
+.block {
+    margin-top:10px;
+    background: #e8eaed;
+}
+    .block .title {
+        background: #284b75;
+        font-family: OpenSansHebrew-Bold;
+        color: #fff;
+        font-size: 23px;
+        height: 44px;
+        padding-right: 10px;
+        padding-top: 7px;
+        margin-bottom:15px;
+    }
+.last-icon {
+    position: relative;
+    top: -3px;
+}.body-text {
+    font-size: 20px;
+    color: #000;
+    font-family: OpenSansHebrew-Regular;
+}
+.article-last {
+    margin-bottom: 15px;
+    padding-right: 23px;
+    padding-left: 1px;
+}
+.article-last .text-a {
+    color: #676767;
+    font-size: 16px;
+    font-family: OpenSansHebrew-bold;
+}
+.article-last .image-css img{
+    width:118px;
+    height:79px;
+}
+    .article-last .border-bottom {
+        width: 93%;
+        border: 3px #bbbbbb solid;
+        margin-top: 8px;
+    }
+
+    .truma img{
+        width:100%;
+        margin-top:10px;
+    }

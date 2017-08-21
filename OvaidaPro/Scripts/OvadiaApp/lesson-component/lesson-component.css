@@ -211,4 +211,13 @@ lesson-component .body .box-title {
     lesson-component .body.tfila{
         margin-bottom:10px;
     }
+
+    .height100.left {
+        background: url('/Content/images/mobile/top-background.png');
+        background-size: 100% 100%;
+    }
+    .height100.right {
+        background: url('/Content/images/mobile/bottom-background-.png');
+        background-size: 100% 100%;
+    }
 }

@@ -176,6 +176,7 @@ namespace Repository
                         boArt.CategoryId = repResult.CategoryId == null ? 0 : (int)repResult.CategoryId;
                         boArt.CategoryName = repResult.CategoryName;
                         boArt.Publish = repResult.Publish == null ? 0 : (int)repResult.Publish;
+                        boArt.Comment = repResult.Comment;
                         boArt.Body = repResult.Body;
                         boArt.Video1 = repResult.Video1;
                         boArt.Video2 = repResult.Video2;
