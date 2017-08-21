@@ -21634,7 +21634,31 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
         $scope.getIframeSrc = function (link) {
             return link;
         }
-            
+
+        $scope.DateToClient = function (date) {
+            try {
+                var temp = new Date(parseInt(date.split('/Date(')[1].split(')/')[0]));
+                var nday, nmonth;
+                var day = temp.getDate();
+                var month = (temp.getMonth() * 1 + 1);
+                var year = temp.getFullYear();
+                nday = temp.getDate();
+                nmonth = (temp.getMonth() * 1 + 1);
+
+                if (day * 1 < 10) {
+                    nday = '0' + day;
+                }
+                if (month * 1 < 10) {
+                    nmonth = '0' + month;
+                }
+
+                return nday + '.' +nmonth + '.' + year;
+            }
+            catch (e) {
+                return null;
+            }
+        };
+
         $scope.GetArticle = function () {
             $scope.loader = true;
             appServices.GetArticle($scope.articleId)
@@ -21648,6 +21672,7 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
                     }
                     if (ErrorCode == 0) {
                         $scope.Article = data.Data;
+                        $scope.Article.DatePublish = $scope.DateToClient($scope.Article.DatePublish);
                         $scope.tags = $scope.Article.CategoriesList;
                         $scope.Article.YoutubeLink1 = $scope.Article.Video1 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video1 : null;
                         $scope.Article.YoutubeLink2 = $scope.Article.Video2 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
