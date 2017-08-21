@@ -76,6 +76,7 @@
         padding-right: 10px;
         padding-top: 7px;
         margin-bottom:15px;
+        width:100%;
     }
 .last-icon {
     position: relative;
@@ -145,6 +146,14 @@ border-right:0;
     .article-last{
         padding-bottom:10px;
     }
+    .eluy .info {
+        font-family: OpenSansHebrew-Bold;
+        font-size: 13px;
+        color: #F6AA74;
+        position: absolute;
+        margin-right: 101px;
+        margin-top: 30px;
+    }
     .from-css, .publish-css, .view-css {
         width: auto;
         padding-top: 5px;
@@ -153,12 +162,16 @@ border-right:0;
         height: 28px;
         position: relative;
         padding-right: 5px;
-        padding-left: 17px;
     }
-    .eye-icon {
+    .movie-title{
+        margin-bottom:10px;
+    } .eye-icon {
         position: relative;
         top: -6px;
         padding-top: 10px;
         width: 20px;
+    }
+    .remove-padding {
+        padding:0;
     }
 }
