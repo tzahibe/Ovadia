@@ -223,6 +223,14 @@ padding:0;
     }
 
 
+.fc-day-header.fc-widget-header {
+    padding: 9px;
+}
+.fc-day-header {
+    background: #294d77;
+    color: #fff;
+    padding: 20px;
+}
 @media screen and (min-width: 768px) {
     .scrollable{
         padding:0;
