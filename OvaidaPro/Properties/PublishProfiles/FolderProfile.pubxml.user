@@ -53,10 +53,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/OvaidaPro.dll">
-      <publishTime>08/21/2017 13:50:41</publishTime>
+      <publishTime>08/22/2017 13:02:46</publishTime>
     </File>
     <File Include="bin/OvaidaPro.pdb">
-      <publishTime>08/21/2017 13:50:41</publishTime>
+      <publishTime>08/22/2017 13:02:46</publishTime>
     </File>
     <File Include="bin/Repository.dll">
       <publishTime>08/21/2017 13:50:36</publishTime>
@@ -257,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bundles/bundle.js">
-      <publishTime>08/22/2017 09:08:11</publishTime>
+      <publishTime>08/22/2017 13:02:30</publishTime>
     </File>
     <File Include="bundles/bundle.min.js">
       <publishTime>07/12/2017 00:06:28</publishTime>
@@ -384,6 +384,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/images/mobile/top-background.png">
       <publishTime>08/21/2017 09:11:34</publishTime>
+    </File>
+    <File Include="Content/images/no-image-details.png">
+      <publishTime>08/22/2017 13:08:01</publishTime>
     </File>
     <File Include="Content/images/purple-wallpaper-background-25.jpg">
       <publishTime>07/11/2017 23:51:52</publishTime>
@@ -1130,10 +1133,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/21/2017 16:41:19</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-details/movie-details.js">
-      <publishTime>08/21/2017 16:40:24</publishTime>
+      <publishTime>08/22/2017 13:02:36</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/my-app/my-app.css">
-      <publishTime>08/15/2017 17:16:43</publishTime>
+      <publishTime>08/22/2017 11:42:17</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/my-app/my-app.html">
       <publishTime>08/10/2017 13:05:38</publishTime>

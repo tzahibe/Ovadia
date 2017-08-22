@@ -37,6 +37,14 @@
             return true;
         }
 
+        $scope.defaultProfilePic = function (article) {
+            if (article.ProfilePic == '' || article.ProfilePic == null) {
+                return "/Content/images/no-image-details.png";
+            }
+            else {
+                return article.ProfilePic;
+            }
+        }
 
         $scope.getIframeSrc = function (link) {
             return link;
@@ -81,6 +89,7 @@
                         $scope.Article = data.Data;
                         $scope.Article.DatePublish = $scope.DateToClient($scope.Article.DatePublish);
                         $scope.tags = $scope.Article.CategoriesList;
+                        $scope.Article.ProfilePic = $scope.defaultProfilePic($scope.Article);
                         $scope.Article.YoutubeLink1 = $scope.Article.Video1 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video1 : null;
                         $scope.Article.YoutubeLink2 = $scope.Article.Video2 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
                         $scope.Article.YoutubeLink3 = $scope.Article.Video3 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
@@ -105,6 +114,13 @@
                     }
                     if (ErrorCode == 0) {
                         $scope.Articles = data.Data;
+
+                        angular.forEach($scope.Articles, function (value, key) {
+                            value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
+                            value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
+                            value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
+                            valie.profImage = $scope.defaultProfilePic(value);
+                        });
                     }
                     else {
                         

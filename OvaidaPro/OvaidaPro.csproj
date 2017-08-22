@@ -158,6 +158,7 @@
     <Content Include="Content\ng-tags-input.bootstrap.css" />
     <Content Include="Content\ng-tags-input.css" />
     <Content Include="Content\images\icons\search_icon.png" />
+    <Content Include="Content\images\no-image-details.png" />
     <Content Include="Content\select2.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\textAngular.css" />

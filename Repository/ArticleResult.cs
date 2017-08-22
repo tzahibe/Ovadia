@@ -292,7 +292,8 @@ namespace Repository
 
                     List<Article> repResult = (from r in context.Article
                                                where r.Type.Equals("Article")
-                                               select r).OrderBy(r => r.Last_edit).ToList();
+                                               orderby r.Last_edit descending
+                                               select r).ToList();
 
                     if (repResult != null)
                     {
