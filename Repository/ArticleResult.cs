@@ -292,7 +292,7 @@ namespace Repository
 
                     List<Article> repResult = (from r in context.Article
                                                where r.Type.Equals("Article")
-                                               orderby r.Last_edit descending
+                                               orderby r.DatePublish descending
                                                select r).Take(5).ToList();
 
                     if (repResult != null)
