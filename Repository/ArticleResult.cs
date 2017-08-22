@@ -293,24 +293,21 @@ namespace Repository
                     List<Article> repResult = (from r in context.Article
                                                where r.Type.Equals("Article")
                                                orderby r.Last_edit descending
-                                               select r).ToList();
+                                               select r).Take(5).ToList();
 
                     if (repResult != null)
                     {
+                        result.Data = repResult;
                         result.ErrorCode = 0;
-                        if(repResult.Count > 4)
-                            result.Data = repResult.Take(5);
-                        else
-                            result.Data = repResult;
-
-                        return result;
                     }
+
                     else
                     {
                         result.ErrorCode = 2;
                         result.Data = false;
-                        return result;
                     }
+
+                    return result;
                 }
             }
             catch (Exception ex)

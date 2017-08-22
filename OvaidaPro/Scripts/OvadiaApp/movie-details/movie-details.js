@@ -119,7 +119,7 @@
                             value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
                             value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
                             value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
-                            valie.profImage = $scope.defaultProfilePic(value);
+                            value.ProfilePic = $scope.defaultProfilePic(value);
                         });
                     }
                     else {
