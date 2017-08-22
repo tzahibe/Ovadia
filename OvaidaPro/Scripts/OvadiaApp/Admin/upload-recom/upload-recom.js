@@ -32,7 +32,7 @@
             });
         }
 
-        $scope.DeleteFile = function (fname) {
+        $scope.DeleteRecomFile = function (fname) {
             $scope.loader = true;
             $http.get("/Uploads/DeleteRecomFile?fname=" + fname).then(function (response) {
                 if (response.data.ErrorCode == 0) {
@@ -55,7 +55,7 @@
             return file.imageUrl;
         }
 
-        $scope.Rotate90 = function (f) {
+        $scope.RotateRecom90 = function (f) {
             $scope.ver++;
             //$scope.loader = true;
             $http.get("/Uploads/RotateRecom90?fname=" + f.Name).then(function (response) {
@@ -80,7 +80,7 @@
             });
         }
 
-        $scope.uploadFiles = function (files, errFiles) {
+        $scope.uploadRecomFiles = function (files, errFiles) {
             $scope.files = files;
             $scope.errFiles = errFiles;
             angular.forEach(files, function (file) {

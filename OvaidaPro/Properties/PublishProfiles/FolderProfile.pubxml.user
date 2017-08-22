@@ -1115,10 +1115,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-category/movie-category.css">
-      <publishTime>08/20/2017 13:19:43</publishTime>
+      <publishTime>08/21/2017 22:02:10</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-category/movie-category.html">
-      <publishTime>08/21/2017 16:25:52</publishTime>
+      <publishTime>08/21/2017 22:03:30</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-category/movie-category.js">
       <publishTime>08/21/2017 16:25:25</publishTime>

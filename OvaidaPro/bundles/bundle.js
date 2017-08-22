@@ -22568,7 +22568,7 @@ OvadiaApp.controller('ImagesRecommCntrl', ['$scope', '$http', '$timeout', 'Uploa
             });
         }
 
-        $scope.DeleteFile = function (fname) {
+        $scope.DeleteRecomFile = function (fname) {
             $scope.loader = true;
             $http.get("/Uploads/DeleteRecomFile?fname=" + fname).then(function (response) {
                 if (response.data.ErrorCode == 0) {
@@ -22616,7 +22616,7 @@ OvadiaApp.controller('ImagesRecommCntrl', ['$scope', '$http', '$timeout', 'Uploa
             });
         }
 
-        $scope.uploadFiles = function (files, errFiles) {
+        $scope.uploadRecomFiles = function (files, errFiles) {
             $scope.files = files;
             $scope.errFiles = errFiles;
             angular.forEach(files, function (file) {

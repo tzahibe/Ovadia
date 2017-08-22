@@ -6,7 +6,7 @@
             <div ng-hide="loader" class="list-group-item list-group-item-home">
                 <h4>העלאת קבצים</h4>
                 <form role="form" class="">
-                    <button class="btn btn-default" ngf-select="uploadFiles($files, $invalidFiles)" multiple
+                    <button class="btn btn-default" ngf-select="uploadRecomFiles($files, $invalidFiles)" multiple
                             accept="image/*" ngf-max-height="90000" ngf-max-size="10MB">
                         בחר קבצים
                     </button>
@@ -40,8 +40,8 @@
                                 <span style="width:{{f.progress}}%"
                                       ng-bind="f.progress + '%'"></span>
                             </span>
-                            <button type="button" class="btn btn-danger removeButton" ng-click="DeleteFile(f.Name);">הסר</button>
-                            <i class="fa fa-repeat rotateIcon" aria-hidden="true"  ng-click="Rotate90(f);"></i>
+                            <button type="button" class="btn btn-danger removeButton" ng-click="DeleteRecomFile(f.Name);">הסר</button>
+                            <i class="fa fa-repeat rotateIcon" aria-hidden="true"  ng-click="RotateRecom90(f);"></i>
                         </div>
                     </div>
 

@@ -9,10 +9,6 @@
                 <div class="form-group has-feedback" ng-hide="readOnly">
                     <label>* כותרת מאמר</label>
                     <input type="text" required ng-model="Article.Title" class="form-control" placeholder="שם מאמר">
-
-                    <label>* שם הרב/מעביר השיעור</label>
-                    <input type="text" required ng-model="Article.Writer" class="form-control" placeholder="שם כותב המאמר/הרב">
-
                 </div>
                 <legend ng-show="readOnly"><h1>{{Article.Title}}</h1></legend>
                 <div class="form-group">
@@ -23,7 +19,7 @@
                     </div>
                     <label ng-hide="readOnly">כתובת תמונת פרופיל</label>
                     <input ng-hide="readOnly" type="text" ng-model="Article.ProfilePic" class="form-control" placeholder="כתובת תמונת פרופיל">
-                    <div class="col-xs-12 img" ng-show="Article.ProfilePic != null && Article.ProfilePic != ''">
+                    <div class="col-xs-12 img" ng-show="Articl  e.ProfilePic != null && Article.ProfilePic != ''">
                         <img ng-src="{{Article.ProfilePic}}" style="width:200px; height:200px"/>
                     </div>
                     <label ng-hide="readOnly">הקדשה - לעילוי נשמת\ להצלחת ...</label>
@@ -35,6 +31,10 @@
                     <p class="example-p remove-margin"> אופציונאלי - קצת מידע על השיעור, ובאיזה שעה מתקיים</p>
                     <label ng-hide="readOnly">מידע על השיעור</label>
                     <input ng-hide="readOnly" type="text" ng-model="Article.Lesson_info" class="form-control" placeholder="מידע על השיעור">
+
+                    <p class="example-p remove-margin"> אופציונאלי- השאר שדה ריק על מנת שיהיה כתוב מאת מנהל האתר </p>
+                    <label>* שם הרב/מעביר השיעור</label>
+                    <input type="text" ng-model="Article.Writer" class="form-control" placeholder="שם כותב המאמר/הרב">
 
                 </div>
             </fieldset>
