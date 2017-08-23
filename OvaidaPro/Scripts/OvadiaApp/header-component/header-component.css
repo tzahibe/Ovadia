@@ -68,11 +68,14 @@ header-component .rabi-ovadia {
     position: absolute;
     right: 0;
 }
+/*#newMenu, .x-icon, .close-nav, .amburger {
+    visibility:hidden;
+}*/
 
 @media screen and (max-width: 768px) {
     #newMenu {
         position: fixed;
-        right: -239px;
+        right: -105%;
         width: 75%;
         height: 100%;
         background: #284b75;

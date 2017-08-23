@@ -20,7 +20,7 @@ function closePopup() {
 }
 
 function closeNav() {
-    $('#newMenu').animate({ right: '-239px' });
+    $('#newMenu').animate({ right: '-105%' });
     $('.close-nav').hide();
     $('.amburger').show();
     visible = false;
@@ -35,7 +35,7 @@ function navClicked() {
         visible = true;
     }
     else {
-        $('#newMenu').animate({ right: '-239px' });
+        $('#newMenu').animate({ right: '-105%' });
         $('.close-nav').hide();
         $('.amburger').show();
         visible = false;
