@@ -48,16 +48,20 @@ header-component .navbar-default .navbar-nav li a.active {
     }
 
 header-component .amburger {
-    padding-top:10px;
-    padding-bottom:10px;
-    text-align: center;
-    /*padding-bottom: 14px;*/
-    padding-left:0%;
+    left: 12px;
+    top: 10px;
+    background: #284b75;
+    padding: 4px;
+    padding-right: 8px;
+    padding-left: 8px;
+    border-radius: 2px;
+    position: fixed;
+    z-index:9999;
 }
 
 header-component .fa.fa-bars {
     cursor: pointer;
-    color: #868585;
+    color: #fff;
 }
 
 header-component .rabi-ovadia {
@@ -66,8 +70,56 @@ header-component .rabi-ovadia {
 }
 
 @media screen and (max-width: 768px) {
-    .img-responsive.logo1{
-        height:auto;
+    #newMenu {
+        position: fixed;
+        right: -239px;
+        width: 75%;
+        height: 100%;
+        background: #284b75;
+        opacity: 0.9;
+    }
+    .x-icon {
+        font-size: 27px;
+        font-family: Arial;
+        color: #284b75;
+        font-weight: bold;
+    }
+    .col-xs-12.odaot-for-zibur {
+        margin-top: 3px;
+    }
+    .close-nav {
+        z-index: 9999;
+        position: fixed;
+        border: 1px solid #fff;
+        background: #dcdcdc;
+        left: 12px;
+        top: 10px;
+        padding: 0px;
+        padding-right: 10px;
+        padding-left: 10px;
+        border-radius: 2px;
+    } header-component .navbar-nav > li:hover {
+        background: #99a2ad;
+    }
+    .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+        color: #fff;
+    } .navbar-default .navbar-nav > li > a {
+        color: #fff;
+        font-size: 18px;
+        font-family: OpenSansHebrew-Regular;
+        border-bottom: 2px solid;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    #newMenu .navbar-nav {
+        margin: 0;
+    }
+
+
+    .img-responsive.logo1 {
+        height: 91px;
+        width: 100%;
     }
     
     header-component .navbar-nav > li {

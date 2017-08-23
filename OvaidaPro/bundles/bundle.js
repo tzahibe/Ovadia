@@ -20855,7 +20855,7 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
             }
         })
         .state("movie-details", {
-            url: '/movie-details',
+            url: '/movie-category/movie-details/:articleId',
             templateUrl: '/Scripts/OvadiaApp/movie-details/movie-details.html',
             controller: 'movieDetailsCtrl',
             data: {
@@ -21591,8 +21591,9 @@ OvadiaApp.directive('addMovie', function () {
         templateUrl: '/Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.html'
     }
 });
-OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval','$stateParams',
-    function ($scope, appServices, ngDialog, $timeout, $interval, $stateParams) {
+OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval', '$stateParams',
+    '$rootScope','$state',
+    function ($scope, appServices, ngDialog, $timeout, $interval, $stateParams, $rootScope, $state) {
         var self = this;
         $scope.articleId = null;
         $scope.Article = {};
@@ -21600,10 +21601,10 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
         var promisse;
 
         self.init = function () {
+            //$rootScope.menu = "שיעורים";
             $scope.GetNewActiveArticles();
-
             var url = location.href.toLowerCase();
-
+            
             if ($stateParams.articleId != null) {
                 $scope.articleId = $stateParams.articleId;
                 $scope.GetArticle();
@@ -21620,7 +21621,7 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
         }
 
         $scope.goToArticle = function (article) {
-            window.location.href = '/movie-details?articleId=' + article.ArticleId;
+            window.location.href = '/movie-category/movie-details/' + article.ArticleId;
         }
 
         $scope.notSameArticle = function (item) {
@@ -21948,7 +21949,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
         }
 
         $scope.goToArticle = function (article) {
-            window.location.href = '/movie-details?articleId=' + article.ArticleId;
+            window.location.href = '/movie-category/movie-details/' + article.ArticleId;
         }
 
         self.init();
@@ -25091,13 +25092,16 @@ OvadiaApp.controller('headerComponentCtrl', ['$scope','$rootScope',
         ];
 
         self.init = function () {
-            if (isMobile()) {
-                $('#menuBar').hide();
-            }
+            //if (isMobile()) {
+            //   // $('#menuBar').hide();
+            //}
 
             var url = window.location.href.substr(window.location.host.length + 7, window.location.href.length);
-
+            
             angular.forEach($scope.menuItems, function (value, key) {
+                if (url.indexOf('movie-details') > 0) {
+                    $scope.menu = "שיעורים";
+                }
                 if (value.url == url) {
                     $scope.menu = value.name;
                 }
@@ -25114,7 +25118,7 @@ OvadiaApp.controller('headerComponentCtrl', ['$scope','$rootScope',
                 return;
             }
 
-            $('#menuBar').slideUp();
+          //  $('#menuBar').slideUp();
         }
 
         $scope.DestoryDialogs = function () {

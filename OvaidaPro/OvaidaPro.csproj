@@ -147,6 +147,7 @@
     <Content Include="Content\images\icons\last-icon.png" />
     <Content Include="Content\images\icons\lesson-info-icon.png" />
     <Content Include="Content\images\login.png" />
+    <Content Include="Content\images\logo-mobile.png" />
     <Content Include="Content\images\logoNew.png" />
     <Content Include="Content\images\magenDavid.png" />
     <Content Include="Content\images\microphone.png" />
@@ -325,6 +326,8 @@
     <Content Include="Scripts\Plugins\fontawesome.js" />
     <Content Include="Scripts\Plugins\fullcalendar.min.js" />
     <Content Include="Scripts\Plugins\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\Plugins\jquery-ui.js" />
+    <Content Include="Scripts\Plugins\jquery-ui.min.css" />
     <Content Include="Scripts\Plugins\locale-all.js" />
     <Content Include="Scripts\Plugins\moment.js" />
     <Content Include="Scripts\Plugins\ng-file-upload.min.js" />

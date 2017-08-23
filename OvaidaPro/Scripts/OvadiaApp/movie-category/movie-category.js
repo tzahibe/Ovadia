@@ -213,7 +213,7 @@
         }
 
         $scope.goToArticle = function (article) {
-            window.location.href = '/movie-details?articleId=' + article.ArticleId;
+            window.location.href = '/movie-category/movie-details/' + article.ArticleId;
         }
 
         self.init();

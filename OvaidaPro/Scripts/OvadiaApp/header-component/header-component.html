@@ -1,20 +1,47 @@
 ﻿<link href="/Scripts/OvadiaApp/header-component/header-component.css" rel="stylesheet" />
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default hidden-xs">
     <div class="container-fluid">
         <!--<img class="img-responsive rabi-ovadia hidden-xs" src="/Content/images/rabi-ovadia.png" />-->
         <div class="logo col-xs-12">
-            <img src="/Content/images/logoNew.jpg" class="img-responsive logo1"/>
+            <img src="/Content/images/logoNew.jpg" class="img-responsive logo1" />
             <!--<img class="logo_img img-responsive" src="/Content/images/logozakai.png" />-->
         </div>
 
         <ul class="nav navbar-nav" id="menuBar" onclick="toggleMenu()" ng-click="DestroyDialogs()">
             <li ng-repeat="item in menuItems" >
-            <a ng-click="headerClicked(item.name)" ui-sref="{{item.state}}" ng-class="$root.menu == item.name ?'active' : ''">{{item.name}}</a></li> <!---routerLink="index" routerLinkActive="active"-->
+            <a ng-click="headerClicked(item.name)" ui-sref="{{item.state}}" ng-class="$root.menu == item.name ?'active' : ''">{{item.name}}</a></li> 
         </ul>
     </div>
-    <div class="amburger visible-xs">
-        <i class="icon-menu fa fa-bars fa-2x" aria-hidden="true" onClick="navClicked()"></i>
+
+    <!--<div class="amburger visible-xs">
+        <i class="icon-menu fa fa-bars fa-2x" onClick="navClicked()"></i>
+    </div>-->
+</nav>
+
+<!--- Mobile ------------------->
+    <div class="logo col-xs-12 visible-xs">
+        <div class="">
+            <!--<div class="container-fluid">-->
+            <div class="amburger">
+                <i class="icon-menu fa fa-bars fa-2x" onClick="navClicked()"></i>
+            </div>
+            <div class="close-nav" style="display:none">
+                <i class="x-icon" onClick="navClicked()">x</i>
+            </div>
+                <img src="/Content/images/logo-mobile.png" class="img-responsive logo1" />
+                <!--<img class="logo_img img-responsive" src="/Content/images/logozakai.png" />-->
+            <!--</div>-->
+        </div>
+    </div>
+
+<nav id="newMenu" class="navbar navbar-default visible-xs">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav" onclick="closeNav()">
+            <li ng-repeat="item in menuItems" ng-class="$root.menu == item.name ?'active' : ''">
+                <a ng-click="headerClicked(item.name)" ui-sref="{{item.state}}" >{{item.name}}</a>
+            </li>
+        </ul>
     </div>
 </nav>
-<div class="visible-xs spcae-from-header"></div>
+
 

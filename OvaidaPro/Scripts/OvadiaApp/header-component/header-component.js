@@ -15,13 +15,16 @@
         ];
 
         self.init = function () {
-            if (isMobile()) {
-                $('#menuBar').hide();
-            }
+            //if (isMobile()) {
+            //   // $('#menuBar').hide();
+            //}
 
             var url = window.location.href.substr(window.location.host.length + 7, window.location.href.length);
-
+            
             angular.forEach($scope.menuItems, function (value, key) {
+                if (url.indexOf('movie-details') > 0) {
+                    $scope.menu = "שיעורים";
+                }
                 if (value.url == url) {
                     $scope.menu = value.name;
                 }
@@ -38,7 +41,7 @@
                 return;
             }
 
-            $('#menuBar').slideUp();
+          //  $('#menuBar').slideUp();
         }
 
         $scope.DestoryDialogs = function () {

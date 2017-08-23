@@ -9,7 +9,7 @@
             }
         })
         .state("movie-details", {
-            url: '/movie-details',
+            url: '/movie-category/movie-details/:articleId',
             templateUrl: '/Scripts/OvadiaApp/movie-details/movie-details.html',
             controller: 'movieDetailsCtrl',
             data: {

@@ -1,4 +1,5 @@
-﻿
+﻿var visible = false;
+
 $(document).ready(function () {
     //if (!isMobile()) {
     //    return;
@@ -11,15 +12,34 @@ function toggleMenu() {
         return;
     }
 
-    $('#menuBar').slideUp();
+    //$('#menuBar').slideUp();
 }
 
 function closePopup() {
     $('.modal').hide(300);
 }
 
+function closeNav() {
+    $('#newMenu').animate({ right: '-239px' });
+    $('.close-nav').hide();
+    $('.amburger').show();
+    visible = false;
+}
+
 function navClicked() {
-    $('#menuBar').slideToggle(500);
+
+    if (visible == false) {
+        $('#newMenu').animate({ right: '0' });
+        $('.close-nav').show();
+        $('.amburger').hide();
+        visible = true;
+    }
+    else {
+        $('#newMenu').animate({ right: '-239px' });
+        $('.close-nav').hide();
+        $('.amburger').show();
+        visible = false;
+    }
 }
 
 function openCloseAdminMenu(param) {

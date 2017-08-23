@@ -1,5 +1,6 @@
-﻿OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval','$stateParams',
-    function ($scope, appServices, ngDialog, $timeout, $interval, $stateParams) {
+﻿OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval', '$stateParams',
+    '$rootScope','$state',
+    function ($scope, appServices, ngDialog, $timeout, $interval, $stateParams, $rootScope, $state) {
         var self = this;
         $scope.articleId = null;
         $scope.Article = {};
@@ -7,10 +8,10 @@
         var promisse;
 
         self.init = function () {
+            //$rootScope.menu = "שיעורים";
             $scope.GetNewActiveArticles();
-
             var url = location.href.toLowerCase();
-
+            
             if ($stateParams.articleId != null) {
                 $scope.articleId = $stateParams.articleId;
                 $scope.GetArticle();
@@ -27,7 +28,7 @@
         }
 
         $scope.goToArticle = function (article) {
-            window.location.href = '/movie-details?articleId=' + article.ArticleId;
+            window.location.href = '/movie-category/movie-details/' + article.ArticleId;
         }
 
         $scope.notSameArticle = function (item) {
