@@ -180,4 +180,8 @@
         width:auto;
         display:block;
     }
+    .col-xs-12.removePaddingMargin.mob {
+        padding-bottom: 25px;
+        height: auto;
+    }
 }
