@@ -21632,6 +21632,10 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
         }
 
         $scope.defaultProfilePic = function (article) {
+            if (article.Video1 != null && article.Video1 != '') {
+                return "https://i.ytimg.com/vi_webp/" + article.Video1 + "/sddefault.webp";
+            }
+
             if (article.ProfilePic == '' || article.ProfilePic == null) {
                 return "/Content/images/no-image-details.png";
             }
@@ -21683,7 +21687,7 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
                         $scope.Article = data.Data;
                         $scope.Article.DatePublish = $scope.DateToClient($scope.Article.DatePublish);
                         $scope.tags = $scope.Article.CategoriesList;
-                        $scope.Article.ProfilePic = $scope.defaultProfilePic($scope.Article);
+                        //$scope.Article.ProfilePic = $scope.defaultProfilePic($scope.Article);
                         $scope.Article.YoutubeLink1 = $scope.Article.Video1 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video1 : null;
                         $scope.Article.YoutubeLink2 = $scope.Article.Video2 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
                         $scope.Article.YoutubeLink3 = $scope.Article.Video3 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
@@ -21713,7 +21717,7 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
                             value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
                             value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
                             value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
-                            value.ProfilePic = $scope.defaultProfilePic(value);
+                            //value.ProfilePic = $scope.defaultProfilePic(value);
                         });
                     }
                     else {
@@ -21778,11 +21782,11 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
         }
 
         $scope.myStyle = function (article) {
+            if (article.Video1 != null && article.Video1 != '') {
+                return "background-image:url(https://i.ytimg.com/vi_webp/" + article.Video1 + "/sddefault.webp); left:5px;background-size: 100% 203px;";
+            }
+
             if (article.profImage == null || article.profImage == '') {
-                //var style = {
-                //    "background-image": "url(/Content/images/default.png)"
-                //}
-                //return style; 
                 return "background-image:url(/Content/images/default.png); left:5px;background-size: 100% 203px;";
             }
 

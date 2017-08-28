@@ -29,7 +29,7 @@ function closeNav() {
 function navClicked() {
 
     if (visible == false) {
-        $('#newMenu').animate({ right: '0' });
+        $('#newMenu').show().animate({ right: '0' });
         $('.close-nav').show();
         $('.amburger').hide();
         visible = true;

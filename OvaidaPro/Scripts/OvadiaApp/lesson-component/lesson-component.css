@@ -35,9 +35,10 @@ lesson-component .body.tfila {
     margin-top: 50px;
 }
     .box-less .text {
+        min-height: 98px;
         padding: 49px;
         padding-top: 22px;
-        padding-right:30px;
+        padding-right: 30px;
         /* text-align: center; */
         padding-bottom: 10px;
         background: #284b75;

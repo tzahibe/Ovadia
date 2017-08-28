@@ -39,6 +39,10 @@
         }
 
         $scope.defaultProfilePic = function (article) {
+            if (article.Video1 != null && article.Video1 != '') {
+                return "https://i.ytimg.com/vi_webp/" + article.Video1 + "/sddefault.webp";
+            }
+
             if (article.ProfilePic == '' || article.ProfilePic == null) {
                 return "/Content/images/no-image-details.png";
             }
@@ -90,7 +94,7 @@
                         $scope.Article = data.Data;
                         $scope.Article.DatePublish = $scope.DateToClient($scope.Article.DatePublish);
                         $scope.tags = $scope.Article.CategoriesList;
-                        $scope.Article.ProfilePic = $scope.defaultProfilePic($scope.Article);
+                        //$scope.Article.ProfilePic = $scope.defaultProfilePic($scope.Article);
                         $scope.Article.YoutubeLink1 = $scope.Article.Video1 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video1 : null;
                         $scope.Article.YoutubeLink2 = $scope.Article.Video2 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
                         $scope.Article.YoutubeLink3 = $scope.Article.Video3 != null ? "https://www.youtube.com/embed/" + $scope.Article.Video2 : null;
@@ -120,7 +124,7 @@
                             value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
                             value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
                             value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
-                            value.ProfilePic = $scope.defaultProfilePic(value);
+                            //value.ProfilePic = $scope.defaultProfilePic(value);
                         });
                     }
                     else {

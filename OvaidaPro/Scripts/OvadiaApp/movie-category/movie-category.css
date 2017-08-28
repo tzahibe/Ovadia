@@ -108,18 +108,23 @@
 
 .article-title {
     font-family: OpenSansHebrew-Bold;
-    color: #2f2727;
+    color: #fff;
     font-size: 20px;
     font-weight: bold;
     padding: 3px;
     max-height: 100%;
-    background: #fff;
-    opacity: 0.85;
+    background: url('/Content/images/text_shadow.png');
+    background-repeat: repeat-x;
+    background-size: 100% 100%;
+    /*opacity: 0.85;*/
     height: 64px;
     bottom: -136px;
     position: relative;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: table-cell;
+    vertical-align:bottom;
+    width: 342px;
 }
 
 .select2con.col-xs-12 {
@@ -168,7 +173,11 @@
     .article-title {
         margin-top: 38px;
         height: 126px;
-        border-top: 2px solid #00f5ff;
-        border-bottom: 2px solid #1c676a;
+        /*border-top: 2px solid #00f5ff;*/
+        /*border-bottom: 2px solid #1c676a;*/
+        padding-top: 37px;
+        padding-right: 9px;
+        width:auto;
+        display:block;
     }
 }

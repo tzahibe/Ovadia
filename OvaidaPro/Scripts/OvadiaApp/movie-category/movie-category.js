@@ -42,11 +42,11 @@
         }
 
         $scope.myStyle = function (article) {
+            if (article.Video1 != null && article.Video1 != '') {
+                return "background-image:url(https://i.ytimg.com/vi_webp/" + article.Video1 + "/sddefault.webp); left:5px;background-size: 100% 203px;";
+            }
+
             if (article.profImage == null || article.profImage == '') {
-                //var style = {
-                //    "background-image": "url(/Content/images/default.png)"
-                //}
-                //return style; 
                 return "background-image:url(/Content/images/default.png); left:5px;background-size: 100% 203px;";
             }
 
