@@ -4,6 +4,9 @@
     "inputFiles": [
       "Scripts/Plugins/fontawesome.js",
       "Scripts/Plugins/angular.min.js",
+      "Scripts/plugins/blueimp-gallery.min.js",
+      "Scripts/plugins/blueimp-gallery-video.js",
+      "Scripts/plugins/blueimp-gallery-youtube.js",
       "Scripts/Plugins/textAngular/textAngular-rangy.min.js",
       "Scripts/Plugins/textAngular/textAngular-sanitize.js",
       "Scripts/Plugins/textAngular/textAngular-sanitize.min.js",

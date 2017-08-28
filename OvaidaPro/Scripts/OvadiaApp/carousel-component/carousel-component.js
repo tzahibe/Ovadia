@@ -1,95 +1,69 @@
-﻿OvadiaApp.controller('carouselComponentCtrl', ['$scope','$interval',
-    function ($scope, $interval)
-    {
+﻿OvadiaApp.controller('carouselComponentCtrl', ['$scope', '$interval','appServices',
+    function ($scope, $interval, appServices) {
         self = this;
-        var _setIntervalHandler;
-        $scope.randNumber;
-        $scope.images = [true, false, false, false];
-        $scope.imageText = ['סיכום פרשת אמור- מפי הרב אליהו נגר', 'text2', 'text3', 'text4'];
-        $scope.imageUrl = ['#', '#', '#', '#'];
+        $scope.Articles = [];
 
-        self.RandomImage = function() {
-            if ($scope.randNumber == null) {
-                $scope.randNumber = Math.floor((Math.random() * 4));
-            }
-            else {
-                $scope.randNumber++;
-                $scope.randNumber = $scope.randNumber  % 3;
-            }
-            $scope.images = [false];
-
-            $scope.images[$scope.randNumber] = true;
+        self.init = function () {///
+            $scope.GetNewActiveArticles();
         }
 
-        $scope.circleClicked = function(index) {
-            switch (index) {
-                case 0:
-                    $scope.images[0] = true;
-                    $scope.images[1] = false;
-                    $scope.images[2] = false;
-                    $scope.images[3] = false;
-                    break;
-                case 1:
-                    $scope.images[0] = false;
-                    $scope.images[1] = true;
-                    $scope.images[2] = false;
-                    $scope.images[3] = false;
-                    break;
-                case 2:
-                    $scope.images[0] = false;
-                    $scope.images[1] = false;
-                    $scope.images[2] = true;
-                    $scope.images[3] = false;
-                    break;
-                case 3:
-                    $scope.images[0] = false;
-                    $scope.images[1] = false;
-                    $scope.images[2] = false;
-                    $scope.images[3] = true;
-                    break;
-            }
+        $scope.GetNewActiveArticles = function () {
+            $scope.loader = true;
+            appServices.GetNewActiveArticles()
+                .then(function (data) {
+                    var ErrorCode;
+                    try {
+                        ErrorCode = data.ErrorCode;
+                    }
+                    catch (e) {
+                        ErrorCode = 1;
+                    }
+                    if (ErrorCode == 0) {
+                        $scope.Articles = data.Data;
+
+                        angular.forEach($scope.Articles, function (value, key) {
+                            value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
+                            value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
+                            value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
+                            //value.ProfilePic = $scope.defaultProfilePic(value);
+                        });
+                        self.initCarusel();
+
+                    }
+                    else {
+
+                    }
+                    $scope.loader = false;
+                });
         }
 
-        $scope.moveSlide = function(position) {
 
-            if ($scope.randNumber == null) {
-                $scope.randNumber = 0;
-                $scope.images = [false];
-                $scope.images[$scope.randNumber] = true;
-                return;
+        self.initCarusel = function () {
+            var videos = [];
+
+            for (var i = 0; i < $scope.Articles.length; i++) {
+                var data = {
+                    title: $scope.Articles[i].Title,
+                    type: 'text/html',
+                    youtube: $scope.Articles[i].Video1
+                }
+                videos.push(data);
             }
-            if (position == "right") {
-                if ($scope.randNumber == 0) {
-                    $scope.randNumber = 3;
-                }
-                else {
-                    $scope.randNumber--;
-                }
-            }
-            else {
-                if ($scope.randNumber  == 3) {
-                    $scope.randNumber = 0;
-                }
-                else {
-                    $scope.randNumber++;
-                }
-            }
+            
+           
+            
+            // Initialize the Gallery as video carousel:
+            blueimp.Gallery(
+                videos, {
+                    container: '#blueimp-video-carousel',
+                    carousel: true
+                });
 
-            $scope.images = [false];
-            $scope.images[$scope.randNumber] = true;
-
-        }
-
-        self.init = function() {///
-            this._setIntervalHandler = $interval(() => {
-                if (self.RandomImage != null)
-                    self.RandomImage();
-            }, 6000);
         }
 
         self.init();
 
-}]);
+    }]);
 
 
 OvadiaApp.directive('carouselComponent', function () {
@@ -97,6 +71,6 @@ OvadiaApp.directive('carouselComponent', function () {
         restrict: 'E',
         bindToController: true,
         controller: 'carouselComponentCtrl',
-        templateUrl:'/Scripts/OvadiaApp/carousel-component/carousel-component.html'
+        templateUrl: '/Scripts/OvadiaApp/carousel-component/carousel-component.html'
     }
 });
