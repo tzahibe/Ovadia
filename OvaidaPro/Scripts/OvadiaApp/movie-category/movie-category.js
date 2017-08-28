@@ -43,11 +43,11 @@
 
         $scope.myStyle = function (article) {
             if (article.Video1 != null && article.Video1 != '') {
-                return "background-image:url(https://i.ytimg.com/vi_webp/" + article.Video1 + "/sddefault.webp); left:5px;background-size: 100% 203px;";
+                return "background-image:url(https://i.ytimg.com/vi_webp/" + article.Video1 + "/sddefault.webp); left:5px;background-size: 100% 100%;";
             }
 
             if (article.profImage == null || article.profImage == '') {
-                return "background-image:url(/Content/images/default.png); left:5px;background-size: 100% 203px;";
+                return "background-image:url(/Content/images/default.png); left:5px;background-size: 100% 100%;";
             }
 
             var urlNoSpace = article.profImage.split(' ').join('%20');
@@ -55,7 +55,7 @@
             //    "background-image": "url(" + urlNoSpace + ")",
             //}
             // return style;
-            return "background-image: url(" + urlNoSpace + "); left:5px;background-size: 100% 203px";
+            return "background-image: url(" + urlNoSpace + "); left:5px;background-size: 100% 100%";
         }
 
         $scope.getAllCategories = function () {

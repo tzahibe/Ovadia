@@ -7,8 +7,10 @@
     background: #005180;
     margin-top: 38px;
 }
-.custom-width {
-    width:600px;
+.tag-title {
+    font-weight:bold;
+}.custom-width {
+    width: 600px;
 }.remove-padding {
     padding: 0;
     float: right;

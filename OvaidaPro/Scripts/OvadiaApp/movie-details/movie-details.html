@@ -37,7 +37,10 @@
             <div class="body-text" ng-bind-html="Article.Body">
 
             </div>
-
+            <div class="tag-title">תגיות: </div>
+            <div ng-repeat="item in Article.CategoriesList">
+                {{item.text}}
+            </div>
         </div>
         <div class="col-xs-12  col-lg-4 right remove-padding">
 
