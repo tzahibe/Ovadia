@@ -48,11 +48,14 @@
         }
 
         $scope.addTag = function (newCategory) {
+            debugger;
             if (newCategory == null || newCategory == ''){
                 return;
             }
             appServices.AddTag(newCategory).then(function (data) {
                 if (data.ErrorCode == 0) {
+                    $rootScope.categoriesData = null;
+                    $scope.getAllCategories();
                     $('#succ-msg').slideToggle(100);
                     $timeout(function () {
                         $('#succ-msg').slideToggle(1200);
