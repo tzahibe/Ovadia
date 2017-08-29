@@ -40,7 +40,6 @@ namespace BL
             return CategoriesResult.isCategoryExist(catName);
 
         }
-
         public static Result AutoCompleteGetCategoriesByName(string name, int id)
         {
             return CategoriesResult.AutoCompleteGetCategoriesByName(name, id);
@@ -50,12 +49,10 @@ namespace BL
         {
             return CategoriesResult.AddSubCategory(catName, parentId, isActive, isTag);
         }
-
         public static Result GetAllActiveCategories()
         {
             return CategoriesResult.GetAllActiveCategories();
         }
-
         public static Result GetAllActiveCategoriesAcceptId(int id)
         {
             Result result = new Result();
@@ -79,6 +76,12 @@ namespace BL
             return result;
         }
 
+
+        //tags
+        public static Result AddTag(string tagName)
+        {
+            return CategoriesResult.AddTag(tagName, true);
+        }
 
     }
 }

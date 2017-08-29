@@ -422,4 +422,20 @@
         });
     }
 
+   /* Tags Services -------------------> */
+
+    this.AddTag = function (tag) {
+        var obj = {
+            tagName: tag
+        }
+        return $http({
+            url: url + '/CategorySer/AddTag',
+            method: 'POST',
+            data: JSON.stringify(obj),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
 }]);

@@ -11,7 +11,7 @@ namespace OvaidaPro.Controllers
 {
     public class CategorySerController : ControllerHelper
     {
-        // GET: Categories
+        // GET: CategorySer
 
         public ActionResult GetAllActiveCategoriesAcceptId(int Id)
         {
@@ -130,6 +130,15 @@ namespace OvaidaPro.Controllers
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
 
-  
+        //tags
+        public ActionResult AddTag(string tagName)
+        {
+            isAllow();
+            Result resultToClient = CategoriesLogic.AddTag(tagName);
+            return Json(resultToClient, JsonRequestBehavior.AllowGet);
+        }
+
+        
+
     }
 }

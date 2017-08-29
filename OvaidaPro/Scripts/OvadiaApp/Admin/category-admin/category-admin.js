@@ -21,7 +21,6 @@
     /*-------------------Parent Category ----------------------------*/
 
     $scope.AddCategory = function (catName, isActive, isTag) {
-        debugger;
         
         if (catName == null || catName.trim() == "") return;
 
@@ -149,7 +148,6 @@
     }
 
     $scope.SelectedParentCat = function (item) {
-        debugger;
         $scope.parentCat = item;
         if (item == null) return;
         $scope.loader = true;
@@ -225,7 +223,6 @@
     }
 
     $scope.RenameSubCategory = function (parentId, catId, newName, isActive, order, isTag) {
-        debugger;
         if (catId == null) return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
@@ -328,7 +325,7 @@
     /*-------------------Sub3Parent Category ----------------------------*/
 
     $scope.AddSub3Category = function (parentId, catName, isActive, isTag) {
-        debugger;
+
         if (catName == null || catName.trim() == "") return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;

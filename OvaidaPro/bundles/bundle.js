@@ -21752,6 +21752,28 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
             $state.go("admin.edit-movies", { category: $scope.category });
         }
 
+        $scope.addTag = function (newCategory) {
+            if (newCategory == null || newCategory == ''){
+                return;
+            }
+            appServices.AddTag(newCategory).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $('#succ-msg').slideToggle(100);
+                    $timeout(function () {
+                        $('#succ-msg').slideToggle(1200);
+                        $scope.newCategory = "";
+                    }, 1000);
+                }
+                else if (data.ErrorCode == 2) {
+                    $('#error-msg').slideToggle(100);
+                    $timeout(function () {
+                        $('#error-msg').slideToggle(1200);
+                        $scope.newCategory = "";
+                    }, 1000);
+                }
+            });
+        }
+
         $scope.SelectChange = function (item) {
             $scope.Article.CategoryName = item.Name;
             $scope.Article.CategoryId = item.Id;
@@ -23823,6 +23845,22 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         });
     }
 
+   /* Tags Services -------------------> */
+
+    this.AddTag = function (tag) {
+        var obj = {
+            tagName: tag
+        }
+        return $http({
+            url: url + '/CategorySer/AddTag',
+            method: 'POST',
+            data: JSON.stringify(obj),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
 }]);
 OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDialog','$rootScope',
     function ($scope, $http, $timeout, ngDialog, $rootScope) {
@@ -23847,7 +23885,6 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
     /*-------------------Parent Category ----------------------------*/
 
     $scope.AddCategory = function (catName, isActive, isTag) {
-        debugger;
         
         if (catName == null || catName.trim() == "") return;
 
@@ -23975,7 +24012,6 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
     }
 
     $scope.SelectedParentCat = function (item) {
-        debugger;
         $scope.parentCat = item;
         if (item == null) return;
         $scope.loader = true;
@@ -24051,7 +24087,6 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
     }
 
     $scope.RenameSubCategory = function (parentId, catId, newName, isActive, order, isTag) {
-        debugger;
         if (catId == null) return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
@@ -24154,7 +24189,7 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
     /*-------------------Sub3Parent Category ----------------------------*/
 
     $scope.AddSub3Category = function (parentId, catName, isActive, isTag) {
-        debugger;
+
         if (catName == null || catName.trim() == "") return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;

@@ -47,6 +47,28 @@
             $state.go("admin.edit-movies", { category: $scope.category });
         }
 
+        $scope.addTag = function (newCategory) {
+            if (newCategory == null || newCategory == ''){
+                return;
+            }
+            appServices.AddTag(newCategory).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $('#succ-msg').slideToggle(100);
+                    $timeout(function () {
+                        $('#succ-msg').slideToggle(1200);
+                        $scope.newCategory = "";
+                    }, 1000);
+                }
+                else if (data.ErrorCode == 2) {
+                    $('#error-msg').slideToggle(100);
+                    $timeout(function () {
+                        $('#error-msg').slideToggle(1200);
+                        $scope.newCategory = "";
+                    }, 1000);
+                }
+            });
+        }
+
         $scope.SelectChange = function (item) {
             $scope.Article.CategoryName = item.Name;
             $scope.Article.CategoryId = item.Id;
