@@ -9,7 +9,7 @@ namespace Repository
 {
     public class CategoriesResult
     {
-        public static Result RenameCategoryName(int catId, string newName, bool isActive, string order)
+        public static Result RenameCategoryName(int catId, string newName, bool isActive, string order, int isTag)
         {
             Result result = new Result();
             try
@@ -19,7 +19,11 @@ namespace Repository
                     Categories repResult = (from r in context.Categories where r.Id == catId select r).FirstOrDefault();
                     if (repResult != null)
                     {
-                        repResult.Name = newName;
+                        if(newName != "")
+                        {
+                            repResult.Name = newName;
+                        }
+                        repResult.isTag = isTag;
                         if (order != null)
                             repResult.Cat_Order = order;
                         else
@@ -35,6 +39,7 @@ namespace Repository
                         context.Categories.Attach(repResult);
                         var enrty = context.Entry(repResult);
                         enrty.Property(e => e.Name).IsModified = true;
+                        enrty.Property(e => e.isTag).IsModified = true;
                         enrty.Property(e => e.Cat_Order).IsModified = true;
                         enrty.Property(e => e.isActive).IsModified = true;
                         context.SaveChanges();
@@ -61,7 +66,7 @@ namespace Repository
                 return result;
             }
         }
-        public static Result AddCategory(string catName, bool isActive)
+        public static Result AddCategory(string catName, bool isActive, int isTag)
         {
             Result result = new Result();
             try
@@ -74,6 +79,7 @@ namespace Repository
                         Categories newCatName = new Categories();
                         newCatName.Name = catName;
                         newCatName.ParentId = 0;
+                        newCatName.isTag = isTag;
                         newCatName.Cat_Order = "0";
                         if (isActive)
                         {
@@ -163,9 +169,31 @@ namespace Repository
             {
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
-                    var repResult = (from r in context.Categories where r.ParentId == 0 select r);
+                    var repResult = (from r in context.Categories
+                                     orderby r.Cat_Order descending
+                                     where r.ParentId == 0
+                                     select r);
+
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
-                    result.Data = categoryList.OrderBy(x => int.Parse(x.Cat_Order)).ToList().Reverse<Repository.Categories>();
+
+                    if (categoryList.Count > 0)
+                    {
+                        List<CategoryBo> listBo = new List<CategoryBo>();
+                        foreach (Categories cat in categoryList)
+                        {
+                            CategoryBo catBo = new CategoryBo();
+                            catBo.Id = cat.Id;
+                            catBo.isActive = cat.isActive == 1 ? true : false;
+                            catBo.Name = cat.Name;
+                            catBo.isTag = cat.isTag == 1 ? true : false;
+                            catBo.ParentId = cat.ParentId == null ? 0 : (int)cat.ParentId;
+                            catBo.Cat_Order = cat.Cat_Order;
+                            listBo.Add(catBo);
+                        }
+
+                        result.Data = listBo;
+                    }
+
                     result.ErrorCode = 0;
                     return result;
                 }
@@ -188,9 +216,31 @@ namespace Repository
             {
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
-                    var repResult = (from r in context.Categories where r.ParentId == catId select r);
+                    var repResult = (from r in context.Categories
+                                     orderby r.Cat_Order descending
+                                     where r.ParentId == catId
+                                     select r);
+
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
-                    result.Data = categoryList.OrderBy(x => int.Parse(x.Cat_Order)).ToList().Reverse<Repository.Categories>();
+
+                    if (categoryList.Count > 0)
+                    {
+                        List<CategoryBo> listBo = new List<CategoryBo>();
+                        foreach (Categories cat in categoryList)
+                        {
+                            CategoryBo catBo = new CategoryBo();
+                            catBo.Id = cat.Id;
+                            catBo.isActive = cat.isActive == 1 ? true : false;
+                            catBo.Name = cat.Name;
+                            catBo.isTag = cat.isTag == 1 ? true : false;
+                            catBo.ParentId = cat.ParentId == null ? 0 : (int)cat.ParentId;
+                            catBo.Cat_Order = cat.Cat_Order;
+                            listBo.Add(catBo);
+                        }
+
+                        result.Data = listBo;
+                    }
+
                     result.ErrorCode = 0;
                     return result;
                 }
@@ -216,8 +266,25 @@ namespace Repository
                                      orderby r.Cat_Order descending
                                      select r);
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
-                    //result.Data = categoryList.OrderBy(x => x.Cat_Order).ToList().Reverse<Repository.Categories>();
-                    result.Data = categoryList;
+
+                    if (categoryList.Count > 0)
+                    {
+                        List<CategoryBo> listBo = new List<CategoryBo>();
+                        foreach (Categories cat in categoryList)
+                        {
+                            CategoryBo catBo = new CategoryBo();
+                            catBo.Id = cat.Id;
+                            catBo.isActive = cat.isActive == 1 ? true : false;
+                            catBo.Name = cat.Name;
+                            catBo.isTag = cat.isTag == 1 ? true : false;
+                            catBo.ParentId = cat.ParentId == null ? 0 : (int)cat.ParentId;
+                            catBo.Cat_Order = cat.Cat_Order;
+                            listBo.Add(catBo);
+                        }
+
+                        result.Data = listBo;
+                    }
+
                     result.ErrorCode = 0;
                     return result;
                 }
@@ -274,9 +341,13 @@ namespace Repository
             {
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
-                    var repResult = (from r in context.Categories where r.isActive.HasValue && r.isActive == 1 select r );
+                    var repResult = (from r in context.Categories
+                                     orderby r.Cat_Order descending
+                                     where r.isActive.HasValue && r.isActive == 1
+                                     select r );
+
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
-                    result.Data = categoryList.OrderBy(x => int.Parse(x.Cat_Order)).ToList().Reverse<Repository.Categories>();
+                    //result.Data = categoryList.OrderBy(x => int.Parse(x.Cat_Order)).ToList().Reverse<Repository.Categories>();
                     result.ErrorCode = 0;
 
                     if(categoryList.Count > 0)
@@ -285,9 +356,10 @@ namespace Repository
                         foreach(Categories cat in categoryList)
                         {
                             CategoryBo catBo = new CategoryBo();
-                            catBo.id = cat.Id;
+                            catBo.Id = cat.Id;
                             catBo.isActive = cat.isActive == 1 ? true : false;
                             catBo.Name = cat.Name;
+                            catBo.isTag = cat.isTag == 1? true : false;
                             catBo.ParentId = cat.ParentId == null ? 0 : (int)cat.ParentId;
                             catBo.Cat_Order = cat.Cat_Order;
                             listBo.Add(catBo);
@@ -339,7 +411,7 @@ namespace Repository
             }
 
         }
-        public static Result AddSubCategory(string catName, int parentId, bool isActive)
+        public static Result AddSubCategory(string catName, int parentId, bool isActive, int isTag)
         {
             Result result = new Result();
             bool flag = Convert.ToBoolean(isCategoryExist(catName).Data);
@@ -353,6 +425,7 @@ namespace Repository
                         cat.Name = catName;
                         cat.ParentId = parentId;
                         cat.Cat_Order = "0";
+                        cat.isTag = isTag;
                         if (isActive)
                         {
                             cat.isActive = 1;
@@ -416,6 +489,104 @@ namespace Repository
 
             return result;
 
+        }
+
+        //tags
+        public static Result AddTag(string catName, bool isActive)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    Categories repResult = (from r in context.Categories where r.Name.Equals(catName) select r).FirstOrDefault();
+                    if (repResult == null)
+                    {
+                        Categories newCatName = new Categories();
+                        newCatName.Name = catName;
+                        newCatName.ParentId = 0;
+                        newCatName.Cat_Order = "0";
+                        newCatName.isTag = 1;
+                        if (isActive)
+                        {
+                            newCatName.isActive = 1;
+                        }
+                        else
+                        {
+                            newCatName.isActive = 0;
+                        }
+                        context.Categories.Add(newCatName);
+                        context.SaveChanges();
+                        result.ErrorCode = 0;
+                        result.Data = true;
+                        return result;
+                    }
+                    else
+                    {
+                        result.ErrorCode = 2; //categoryExist
+                        result.ErrorMsg = "Tag Already Exist!";
+                        return result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Exception = ex.ToString();
+                result.ErrorCode = 1;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+        }
+        public static Result RenameTag(int catId, string newName, bool isActive)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    Categories repResult = (from r in context.Categories where r.Id == catId select r).FirstOrDefault();
+                    if (repResult != null)
+                    {
+                        repResult.Name = newName;
+                        repResult.isTag = 1;
+                  
+                        if (isActive)
+                        {
+                            repResult.isActive = 1;
+                        }
+                        else
+                        {
+                            repResult.isActive = 0;
+                        }
+                        context.Categories.Attach(repResult);
+                        var enrty = context.Entry(repResult);
+                        enrty.Property(e => e.Name).IsModified = true;
+                        enrty.Property(e => e.Cat_Order).IsModified = true;
+                        enrty.Property(e => e.isActive).IsModified = true;
+                        context.SaveChanges();
+                        //result.ErrorCode = 0;
+                        //result.Data = true;
+
+                        result = UpadateArticles_Category(newName, catId);
+                        return result;
+                    }
+                    else
+                    {
+                        result.ErrorCode = 3; //categoryExist
+                        result.ErrorMsg = "Category Not Exist";
+                        return result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Exception = ex.ToString();
+                result.ErrorCode = 1;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("CategoriesResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
         }
 
     }

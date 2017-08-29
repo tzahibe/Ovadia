@@ -458,13 +458,43 @@ body:last-child .blueimp-gallery > .slides > .slide > .video-content:not(.video-
     }
 
 h3.title {
-    background: black;
+ 
+}
+
+.blueimp-gallery > .close, .blueimp-gallery > .title {
+    background: url(/Content/images/text_shadow.png);
+    background-repeat: repeat-x;
+    background-size: 100% 100%;
+    opacity: 1;
+    left: unset;
+    width: 100%;
+    top: unset;
+    height: 58px;
+    bottom: 0;
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
     padding-right: 10px;
     padding-left: 10px;
+    line-height: 68px;
+    font-family: OpenSansHebrew-Bold;
+    font-size: 27px;
 }
-@media screen and (max-width: 768px) {
 
-    h3.title {
-        position: relative !important;
-    }
+.blueimp-gallery > .slides > .slide > .video-content > img {
+    max-width: 120%;
+    max-height: 133%;
 }
+
+
+@media screen and (max-width: 768px) {
+    .blueimp-gallery > .slides > .slide > .video-content > img {
+        max-width: 100%;
+        max-height: 134%;
+    }
+
+    .blueimp-gallery > .close, .blueimp-gallery > .title {
+        font-family: OpenSansHebrew-Bold;
+        font-size: 16px;
+    }

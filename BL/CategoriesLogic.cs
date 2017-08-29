@@ -10,13 +10,13 @@ namespace BL
 {
     public abstract class CategoriesLogic
     {
-        public static Result RenameCategoryName(int catId, string newName, bool isActive, string order)
+        public static Result RenameCategoryName(int catId, string newName, bool isActive, string order, int isTag)
         {
-            return CategoriesResult.RenameCategoryName(catId, newName, isActive, order);
+            return CategoriesResult.RenameCategoryName(catId, newName, isActive, order, isTag);
         }
-        public static Result AddCategory(string catName, bool isActive)
+        public static Result AddCategory(string catName, bool isActive, int isTag)
         {
-            return CategoriesResult.AddCategory(catName, isActive);
+            return CategoriesResult.AddCategory(catName, isActive, isTag);
         }
         public static Result RemoveCategoryById(int catId)
         {
@@ -46,9 +46,9 @@ namespace BL
             return CategoriesResult.AutoCompleteGetCategoriesByName(name, id);
 
         }
-        public static Result AddSubCategory(string catName, int parentId, bool isActive)
+        public static Result AddSubCategory(string catName, int parentId, bool isActive, int isTag)
         {
-            return CategoriesResult.AddSubCategory(catName, parentId, isActive);
+            return CategoriesResult.AddSubCategory(catName, parentId, isActive, isTag);
         }
 
         public static Result GetAllActiveCategories()
@@ -65,7 +65,7 @@ namespace BL
             {
                 List<CategoryBo> list = (List<CategoryBo>)result.Data;
                 list = list.Where(i => i.isActive == true && i.ParentId == 0
-                && i.id != id
+                && i.Id != id
                 ).ToList<CategoryBo>();
                 result.Data = list;
             }

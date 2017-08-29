@@ -53,10 +53,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/OvaidaPro.dll">
-      <publishTime>08/28/2017 11:28:12</publishTime>
+      <publishTime>08/28/2017 21:40:38</publishTime>
     </File>
     <File Include="bin/OvaidaPro.pdb">
-      <publishTime>08/28/2017 11:28:12</publishTime>
+      <publishTime>08/28/2017 21:40:38</publishTime>
     </File>
     <File Include="bin/Repository.dll">
       <publishTime>08/22/2017 14:05:15</publishTime>
@@ -257,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bundles/bundle.js">
-      <publishTime>08/28/2017 10:45:12</publishTime>
+      <publishTime>08/28/2017 22:28:12</publishTime>
     </File>
     <File Include="bundles/bundle.min.js">
       <publishTime>07/12/2017 00:06:28</publishTime>
@@ -1055,16 +1055,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/24/2017 16:37:42</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/carousel-component/carousel-component.css">
-      <publishTime>08/01/2017 17:46:27</publishTime>
+      <publishTime>08/29/2017 10:09:33</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/carousel-component/carousel-component.html">
-      <publishTime>07/24/2017 17:16:04</publishTime>
+      <publishTime>08/28/2017 22:09:55</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/carousel-component/carousel-component.js">
-      <publishTime>07/24/2017 17:16:08</publishTime>
+      <publishTime>08/28/2017 22:20:53</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/header-component/header-component.css">
-      <publishTime>08/23/2017 17:10:18</publishTime>
+      <publishTime>08/28/2017 11:36:49</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/header-component/header-component.html">
       <publishTime>08/23/2017 16:04:44</publishTime>
@@ -1079,7 +1079,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/15/2017 17:23:07</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/home-component/home-component.html">
-      <publishTime>08/15/2017 17:18:17</publishTime>
+      <publishTime>08/28/2017 21:42:26</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/home-component/home-component.js">
       <publishTime>08/08/2017 14:18:38</publishTime>
@@ -1124,10 +1124,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-category/movie-category.css">
-      <publishTime>08/28/2017 09:52:59</publishTime>
+      <publishTime>08/28/2017 11:36:09</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-category/movie-category.html">
-      <publishTime>08/28/2017 10:08:09</publishTime>
+      <publishTime>08/28/2017 11:33:58</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/movie-category/movie-category.js">
       <publishTime>08/28/2017 11:27:44</publishTime>
@@ -1215,6 +1215,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/Plugins/angular.min.js">
       <publishTime>07/12/2017 00:04:52</publishTime>
+    </File>
+    <File Include="Scripts/Plugins/blueimp-gallery-video.js">
+      <publishTime>08/28/2017 21:10:11</publishTime>
+    </File>
+    <File Include="Scripts/Plugins/blueimp-gallery-youtube.js">
+      <publishTime>08/28/2017 22:28:11</publishTime>
+    </File>
+    <File Include="Scripts/Plugins/blueimp-gallery.min.js">
+      <publishTime>08/28/2017 20:53:07</publishTime>
     </File>
     <File Include="Scripts/Plugins/bootstrap.min.js">
       <publishTime>07/24/2017 16:38:32</publishTime>

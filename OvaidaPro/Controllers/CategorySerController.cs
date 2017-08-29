@@ -44,10 +44,13 @@ namespace OvaidaPro.Controllers
             return Json(resultToClient.Data, JsonRequestBehavior.AllowGet);
         }
         //Admin
-        public ActionResult RenameCategoryName(int catId, string newName, bool isActive, string order)
+        public ActionResult RenameCategoryName(int catId, string newName, bool isActive, string order, bool isTag)
         {
             isAllow();
-            Result resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive, order);
+
+            int tag = isTag ? 1 : 0;
+            
+            Result resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive, order, tag);
 
             if (resultToClient.ErrorCode == 0)
             {
@@ -56,10 +59,11 @@ namespace OvaidaPro.Controllers
 
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult RenameSubCategoryName(int parentId, int catId, string newName, bool isActive, string order)
+        public ActionResult RenameSubCategoryName(int parentId, int catId, string newName, bool isActive, string order, bool isTag)
         {
             isAllow();
-            Result resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive,order);
+            int tag = isTag ? 1 : 0;
+            Result resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive,order, tag);
 
             if (resultToClient.ErrorCode == 0)
             {
@@ -67,10 +71,13 @@ namespace OvaidaPro.Controllers
             }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult AddCategory(string catName, bool isActive)
+        public ActionResult AddCategory(string catName, bool isActive, bool isTag)
         {
             isAllow();
-            Result resultToClient = CategoriesLogic.AddCategory(catName, isActive);
+
+            int tag = isTag ? 1 : 0;
+
+            Result resultToClient = CategoriesLogic.AddCategory(catName, isActive, tag);
 
             if (resultToClient.ErrorCode == 0)
             {
@@ -78,12 +85,15 @@ namespace OvaidaPro.Controllers
             }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult AddSubCategory(string catName, int parentId, bool isActive)
+        public ActionResult AddSubCategory(string catName, int parentId, bool isActive, bool  isTag)
         {
             isAllow();
+
+            int tag = isTag ? 1 : 0;
+
             Result resultToClient = new Result();
 
-            resultToClient = CategoriesLogic.AddSubCategory(catName, parentId, isActive);
+            resultToClient = CategoriesLogic.AddSubCategory(catName, parentId, isActive, tag);
 
             if (resultToClient.ErrorCode == 0)
             {

@@ -20,11 +20,18 @@
 
     /*-------------------Parent Category ----------------------------*/
 
-    $scope.AddCategory = function (catName, isActive) {
+    $scope.AddCategory = function (catName, isActive, isTag) {
+        debugger;
+        
         if (catName == null || catName.trim() == "") return;
+
+        if (isTag == null) {
+            isTag = false;
+        }
+
         isActive = $scope.isActiveHelper(isActive);
 
-        $http.get("/CategorySer/AddCategory?catName=" + catName + "&isActive=" + isActive)
+        $http.get("/CategorySer/AddCategory?catName=" + catName + "&isActive=" + isActive + "&isTag=" + isTag)
             .then(function (response) {
             var errorCode;
             try {
@@ -55,6 +62,7 @@
 
     $scope.InitCategories = function () {
         $scope.loader = true;
+
         $http.get("/CategorySer/GetAllParentCategories").then(function (response) {
             var errorCode;
             try {
@@ -106,11 +114,12 @@
         });
     }
 
-    $scope.RenameCategory = function (catId, newName, isActive,order) {
-        if (catId == null || newName == null || newName == "") return;
+    $scope.RenameCategory = function (catId, newName, isActive, order, isTag) {
+
+        if (catId == null) return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/RenameCategoryName?catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order)
+        $http.get("/CategorySer/RenameCategoryName?catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order + "&isTag=" + isTag)
             .then(function (response) {
             var errorCode;
             try {
@@ -140,9 +149,11 @@
     }
 
     $scope.SelectedParentCat = function (item) {
+        debugger;
         $scope.parentCat = item;
         if (item == null) return;
         $scope.loader = true;
+
         $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id).then(function (response) {
             var errorCode;
             try {
@@ -167,11 +178,17 @@
 
     /*-------------------SubParent Category ----------------------------*/
 
-    $scope.AddSubCategory = function (parentId, catName, isActive) {
+    $scope.AddSubCategory = function (parentId, catName, isActive, isTag) {
         if (catName == null || catName.trim() == "") return;
+
+
+        if (isTag == null) {
+            isTag = false;
+        }
+
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/AddSubCategory?&catName=" + catName + "&parentId=" + parentId + "&isActive=" + isActive )
+        $http.get("/CategorySer/AddSubCategory?&catName=" + catName + "&parentId=" + parentId + "&isActive=" + isActive + "&isTag=" + isTag )
             .then(function (response) {
             var errorCode;
             try {
@@ -207,12 +224,12 @@
         });
     }
 
-    $scope.RenameSubCategory = function (parentId, catId, newName, isActive, order) {
+    $scope.RenameSubCategory = function (parentId, catId, newName, isActive, order, isTag) {
         debugger;
-        if (catId == null || newName == null || newName == "") return;
+        if (catId == null) return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order)
+        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order + "&isTag=" + isTag)
             .then(function (response) {
             var errorCode;
             try {
@@ -310,12 +327,12 @@
 
     /*-------------------Sub3Parent Category ----------------------------*/
 
-    $scope.AddSub3Category = function (parentId, catName, isActive) {
+    $scope.AddSub3Category = function (parentId, catName, isActive, isTag) {
         debugger;
         if (catName == null || catName.trim() == "") return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/AddSubCategory?&catName=" + catName + "&parentId=" + parentId + "&isActive=" + isActive )
+        $http.get("/CategorySer/AddSubCategory?&catName=" + catName + "&parentId=" + parentId + "&isActive=" + isActive + "&isTag=" + isTag )
             .then(function (response) {
             var errorCode;
             try {
@@ -351,11 +368,11 @@
         });
     }
 
-    $scope.RenameSub3Category = function (parentId, catId, newName, isActive,order) {
+    $scope.RenameSub3Category = function (parentId, catId, newName, isActive,order,isTag) {
         if (catId == null || newName == null || newName == "") return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order)
+        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order + "&isTag=" + isTag)
             .then(function (response) {
             var errorCode;
             try {

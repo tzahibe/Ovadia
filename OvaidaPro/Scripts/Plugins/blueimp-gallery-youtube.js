@@ -202,8 +202,8 @@
         if (
           this.getItemProperty(obj, options.videoPosterProperty) === undefined
         ) {
-          obj[options.videoPosterProperty] =
-            '//img.youtube.com/vi/' + videoId + '/maxresdefault.jpg'
+            obj[options.videoPosterProperty] =
+                'https://i.ytimg.com/vi_webp/' + videoId + '/sddefault.webp'
         }
         return this.videoFactory(
           obj,

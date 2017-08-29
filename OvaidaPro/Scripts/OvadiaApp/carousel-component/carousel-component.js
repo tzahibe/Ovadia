@@ -45,12 +45,11 @@
                 var data = {
                     title: $scope.Articles[i].Title,
                     type: 'text/html',
-                    youtube: $scope.Articles[i].Video1
+                    youtube: $scope.Articles[i].Video1,
                 }
                 videos.push(data);
             }
             
-           
             
             // Initialize the Gallery as video carousel:
             blueimp.Gallery(

@@ -19,5 +19,6 @@ namespace Repository
         public string Name { get; set; }
         public Nullable<int> isActive { get; set; }
         public string Cat_Order { get; set; }
+        public int isTag { get; set; }
     }
 }

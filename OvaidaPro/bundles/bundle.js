@@ -719,8 +719,8 @@ c){var e=a|0,f=c;void 0===f&&(f=Math.min(b(a),3));Math.pow(10,f);return 1==e&&0=
         if (
           this.getItemProperty(obj, options.videoPosterProperty) === undefined
         ) {
-          obj[options.videoPosterProperty] =
-            '//img.youtube.com/vi/' + videoId + '/maxresdefault.jpg'
+            obj[options.videoPosterProperty] =
+                'https://i.ytimg.com/vi_webp/' + videoId + '/sddefault.webp'
         }
         return this.videoFactory(
           obj,
@@ -23846,11 +23846,18 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
 
     /*-------------------Parent Category ----------------------------*/
 
-    $scope.AddCategory = function (catName, isActive) {
+    $scope.AddCategory = function (catName, isActive, isTag) {
+        debugger;
+        
         if (catName == null || catName.trim() == "") return;
+
+        if (isTag == null) {
+            isTag = false;
+        }
+
         isActive = $scope.isActiveHelper(isActive);
 
-        $http.get("/CategorySer/AddCategory?catName=" + catName + "&isActive=" + isActive)
+        $http.get("/CategorySer/AddCategory?catName=" + catName + "&isActive=" + isActive + "&isTag=" + isTag)
             .then(function (response) {
             var errorCode;
             try {
@@ -23881,6 +23888,7 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
 
     $scope.InitCategories = function () {
         $scope.loader = true;
+
         $http.get("/CategorySer/GetAllParentCategories").then(function (response) {
             var errorCode;
             try {
@@ -23932,11 +23940,12 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
         });
     }
 
-    $scope.RenameCategory = function (catId, newName, isActive,order) {
-        if (catId == null || newName == null || newName == "") return;
+    $scope.RenameCategory = function (catId, newName, isActive, order, isTag) {
+
+        if (catId == null) return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/RenameCategoryName?catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order)
+        $http.get("/CategorySer/RenameCategoryName?catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order + "&isTag=" + isTag)
             .then(function (response) {
             var errorCode;
             try {
@@ -23966,9 +23975,11 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
     }
 
     $scope.SelectedParentCat = function (item) {
+        debugger;
         $scope.parentCat = item;
         if (item == null) return;
         $scope.loader = true;
+
         $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id).then(function (response) {
             var errorCode;
             try {
@@ -23993,11 +24004,17 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
 
     /*-------------------SubParent Category ----------------------------*/
 
-    $scope.AddSubCategory = function (parentId, catName, isActive) {
+    $scope.AddSubCategory = function (parentId, catName, isActive, isTag) {
         if (catName == null || catName.trim() == "") return;
+
+
+        if (isTag == null) {
+            isTag = false;
+        }
+
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/AddSubCategory?&catName=" + catName + "&parentId=" + parentId + "&isActive=" + isActive )
+        $http.get("/CategorySer/AddSubCategory?&catName=" + catName + "&parentId=" + parentId + "&isActive=" + isActive + "&isTag=" + isTag )
             .then(function (response) {
             var errorCode;
             try {
@@ -24033,12 +24050,12 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
         });
     }
 
-    $scope.RenameSubCategory = function (parentId, catId, newName, isActive, order) {
+    $scope.RenameSubCategory = function (parentId, catId, newName, isActive, order, isTag) {
         debugger;
-        if (catId == null || newName == null || newName == "") return;
+        if (catId == null) return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order)
+        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order + "&isTag=" + isTag)
             .then(function (response) {
             var errorCode;
             try {
@@ -24136,12 +24153,12 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
 
     /*-------------------Sub3Parent Category ----------------------------*/
 
-    $scope.AddSub3Category = function (parentId, catName, isActive) {
+    $scope.AddSub3Category = function (parentId, catName, isActive, isTag) {
         debugger;
         if (catName == null || catName.trim() == "") return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/AddSubCategory?&catName=" + catName + "&parentId=" + parentId + "&isActive=" + isActive )
+        $http.get("/CategorySer/AddSubCategory?&catName=" + catName + "&parentId=" + parentId + "&isActive=" + isActive + "&isTag=" + isTag )
             .then(function (response) {
             var errorCode;
             try {
@@ -24177,11 +24194,11 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
         });
     }
 
-    $scope.RenameSub3Category = function (parentId, catId, newName, isActive,order) {
+    $scope.RenameSub3Category = function (parentId, catId, newName, isActive,order,isTag) {
         if (catId == null || newName == null || newName == "") return;
         isActive = $scope.isActiveHelper(isActive);
         $scope.loader = true;
-        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order)
+        $http.get("/CategorySer/RenameSubCategoryName?parentId=" + parentId + "&catId=" + catId + "&newName=" + newName + "&isActive=" + isActive + "&order=" + order + "&isTag=" + isTag)
             .then(function (response) {
             var errorCode;
             try {
@@ -25417,12 +25434,11 @@ OvadiaApp.controller('carouselComponentCtrl', ['$scope', '$interval','appService
                 var data = {
                     title: $scope.Articles[i].Title,
                     type: 'text/html',
-                    youtube: $scope.Articles[i].Video1
+                    youtube: $scope.Articles[i].Video1,
                 }
                 videos.push(data);
             }
             
-           
             
             // Initialize the Gallery as video carousel:
             blueimp.Gallery(

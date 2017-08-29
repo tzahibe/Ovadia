@@ -45,7 +45,8 @@
           <Property Name="ParentId" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="isActive" Type="int" />
-          <Property Name="Cat_Order" Type="char" MaxLength="10" />
+          <Property Name="Cat_Order" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="isTag" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="db_Comment">
           <Key>
@@ -255,7 +256,8 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="ParentId" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="isActive" Type="Int32" />
-          <Property Name="Cat_Order" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Cat_Order" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="isTag" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Art_Cat">
           <Key>
@@ -377,6 +379,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="DB_A25801_OvadiaModel.Categories">
               <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="isTag" ColumnName="isTag" />
                 <ScalarProperty Name="Cat_Order" ColumnName="Cat_Order" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
