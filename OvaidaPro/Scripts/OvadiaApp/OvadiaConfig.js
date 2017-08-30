@@ -173,6 +173,14 @@
                 access: [UserRole.Admin, UserRole.Editor]
             }
         })
+        .state("admin.carusel", {
+            url: '/carusel',
+            templateUrl: '/Scripts/OvadiaApp/Admin/carusel-admin/carusel-admin.html',
+            controller: 'caruselAdminCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
         .state("admin.tfila", {
             url: '/tfila',
             templateUrl: '/Scripts/OvadiaApp/Admin/tfila-time/tfila-time.html',

@@ -170,6 +170,9 @@
     <Content Include="pages\errorRemoveMail.html" />
     <Content Include="pages\removeEmail.html" />
     <Content Include="Scripts\Directives\rotate-degree\rotate-degree.js" />
+    <Content Include="Scripts\OvadiaApp\Admin\carusel-admin\carusel-admin.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\carusel-admin\carusel-admin.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\carusel-admin\carusel-admin.js" />
     <Content Include="Scripts\OvadiaApp\Admin\category-admin\category-admin.css" />
     <Content Include="Scripts\OvadiaApp\Admin\category-admin\category-admin.html" />
     <Content Include="Scripts\OvadiaApp\Admin\category-admin\category-admin.js" />

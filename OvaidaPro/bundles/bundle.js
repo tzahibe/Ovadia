@@ -21412,6 +21412,14 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Editor]
             }
         })
+        .state("admin.carusel", {
+            url: '/carusel',
+            templateUrl: '/Scripts/OvadiaApp/Admin/carusel-admin/carusel-admin.html',
+            controller: 'caruselAdminCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
         .state("admin.tfila", {
             url: '/tfila',
             templateUrl: '/Scripts/OvadiaApp/Admin/tfila-time/tfila-time.html',
@@ -21530,6 +21538,87 @@ OvadiaApp.directive('homeMovies', function () {
         bindToController: true,
         controller: 'homeMoviesCtrl',
         templateUrl: '/Scripts/OvadiaApp/Admin/Movies/home-movies/home-movies.html'
+    }
+});
+OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount', '$rootScope','$http',
+    function ($scope, appServices, UserAccount, $rootScope, $http) {
+        var self = this;
+        $scope.tags = null;
+        $scope.Articles = [];
+
+        self.init = function () {
+            $scope.getAllArticles();
+        }
+
+        $scope.loadTags = function (query) {
+            return $http.get('/CategorySer/AutoCompleteGetCategoriesByName?name=' + query );
+        }
+
+        $scope.getAllArticles = function () {
+            appServices.GetAllArticles().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Articles = data.Data;
+                    angular.forEach($scope.Articles, function (value, key) {
+                        var profImage;
+                        value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
+                        value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
+                        value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
+
+                        if (value.ProfilePic == null || value.ProfilePic == '') {
+                            value.profImage = "/Content/images/default.png";
+                        }
+                        else {
+                            value.profImage = value.ProfilePic.split(' ').join('%20');;
+                        }
+
+                    });
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+
+            });
+        }
+
+        $scope.myStyle = function (article) {
+            if (article.profImage == null || article.profImage == '') {
+                return "background-image:url(/Content/images/default.png)";
+            }
+            var urlNoSpace = article.profImage.split(' ').join('%20');
+
+            return "background-image: url(" + urlNoSpace + ")";
+        }
+
+        $scope.tagsFilter = function (item) {
+            debugger;
+
+            if ($scope.tags == null || $scope.tags == "" || $scope.tags.length == 0) {
+                return false;
+            }
+            if (item == null || item.CategoriesList == null || item.CategoriesList == "" ||
+                item.CategoriesList.length == 0 )
+                return false;
+            for (var i = 0; i < item.CategoriesList.length; i++) {
+                for (var j = 0; j < $scope.tags.length; j++) {
+                    
+                    if (item.CategoriesList[i].CategoryId == $scope.tags[j].CategoryId)
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+        self.init();
+
+    }]);
+
+OvadiaApp.directive('caruselAdmin', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'caruselAdminCtrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/carusel-admin/carusel-admin.html'
     }
 });
 OvadiaApp.controller('editMoviesCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$state', '$stateParams',
@@ -26048,7 +26137,7 @@ OvadiaApp.controller('homeAdminCtrl', ['$scope', '$rootScope', 'ngDialog', 'appS
             { name: 'ניהול מאמרים\\סרטים', state: 'admin.home-movies', url: '/admin/home-movies' },
             { name: 'הודעות לציבור', state: 'admin.comment-info', url: '/admin/comment-info' },
             { name: 'ניהול המלצות', state: 'admin.home-recommen', url: '/admin/home-recommen' },
-
+            { name: 'ניהול קרוסלה', state: 'admin.carusel', url: '/admin/carusel' }
         ];
         $scope.plusIcon = true;
 

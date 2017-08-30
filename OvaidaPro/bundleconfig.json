@@ -31,6 +31,7 @@
       "Scripts/Plugins/ngClip.js",
       "Scripts/OvadiaApp/OvadiaConfig.js",
       "Scripts/ovadiaapp/Admin/movies/home-movies/home-movies.js",
+      "Scripts/ovadiaapp/admin/carusel-admin/carusel-admin.js",
       "Scripts/ovadiaapp/admin/movies/edit-movies/edit-movies.js",
       "Scripts/ovadiaapp/Admin/movies/add-movie/add-movie.js",
       "Scripts/ovadiaapp/movie-details/movie-details.js",

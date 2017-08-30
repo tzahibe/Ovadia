@@ -1,0 +1,30 @@
+﻿<link href="/Scripts/OvadiaApp/Admin/carusel-admin/carusel-admin.css" rel="stylesheet" />
+
+<div class="list-group-item list-group-item-home">
+    <form name="movieForm" role="form" novalidate>
+        <div ng-hide="loader">
+            <fieldset>
+                <legend>קרוסלת מאמרים</legend>
+            </fieldset>
+
+            <div>
+                בחר תגיות\קטגוריות
+            </div>
+            <tags-input ng-model="tags" minTags="1" add-from-autocomplete-only="true" placeholder="הוסף קטגוריה">
+                <auto-complete source="loadTags($query)"></auto-complete>
+            </tags-input>
+
+            <div class="articles-list" ng-repeat="article in Articles | filter: tagsFilter">
+                <div class="article-box col-md-4_5 col-xs-12" 
+                     style="{{myStyle(article)}}">
+                    <div class="article-title">
+                        {{article.Title}}
+                    </div>
+                </div>
+            </div>
+            <div ng-show="Articles == null || Articles.length == 0">
+                אין מאמרים תחת התגיות/הקטגוריותת שנבחרו
+            </div>
+        </div>
+    </form>
+</div>

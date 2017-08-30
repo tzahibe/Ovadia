@@ -1,1 +1,3 @@
-﻿
+﻿.btn-toolbar .btn, .btn-toolbar .btn-group, .btn-toolbar .input-group {
+    float: right;
+}
