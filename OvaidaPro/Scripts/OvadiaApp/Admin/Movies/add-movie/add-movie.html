@@ -40,11 +40,11 @@
             </fieldset>
             <div class="form-group" ng-hide="readOnly" >
                 <input type="text" class="addNewCAT form-control" ng-model="newCategory" />
-                <input type="button" class="addNewCAT btn btn-success" ng-click="addTag(newCategory)" value="הוסף טאג" />
+                <input type="button" class="addNewCAT btn btn-success" ng-click="addTag(newCategory)" value="הוסף תגית" />
             </div>
 
-            <p class="bg-success succCat" id="succ-msg" style="display:none">הטאג נוסף בהצלחה!</p>
-            <p class="bg-danger succCat" id="error-msg" style="display:none">הטאג כבר קיים במערכת!</p>
+            <p class="bg-success succCat" id="succ-msg" style="display:none">התגית נוספה בהצלחה!</p>
+            <p class="bg-danger succCat" id="error-msg" style="display:none">התגית כבר קיים במערכת!</p>
 
 
             <a ng-show="readOnly" href="/index.html/CategoryArticles?categoryId={{Article.CategoryId}}">חזרה ל {{Article.CategoryName}} >></a>
