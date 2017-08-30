@@ -3,10 +3,8 @@
     <div ng-hide="loaderSend" class="">
         <div class="form-group">
             <label for="exampleInputPassword1">גוף ההודעה</label>
-            <textarea required="" type="t" #subject="ngModel" name="Subject" ng-trim="false"
-                      rows="5" cols="40" ng-model="Comment.Text"
-                      class="form-control hugeSize" id="Event_Name">
-            </textarea>
+            <div required text-angular ng-model="Comment.Text" placeholder="אנא הזן תוכן" ng-hide="readOnly"></div>
+
         </div>
         <button type="button" class="btn btn-success" ng-click="saveComment()">עדכן</button>
     </div>

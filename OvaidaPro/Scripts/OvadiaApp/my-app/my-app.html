@@ -7,7 +7,7 @@
             <div class="container">
                 <strong> הודעות לציבור: </strong>
                 <marquee class="slide-script" width="80%" Loop="infinite" direction="right" scrollamount="5" scrolldelay="2">
-                    {{Comment.Text}}
+                    <div ng-bind-html="Comment.Text"></div>
                 </marquee>
             </div>
         </div>
