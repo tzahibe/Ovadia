@@ -109,14 +109,17 @@
                             <th>מיון</th> 
                             <th></th>
                         </tr>
-                        <tbody ng-repeat="item in ParentCategories | orderBy : '-Cat_Order'">
+                        <tbody ng-repeat="item in ParentCategories | orderBy : '-Cat_Order' | filter:  isTag == '0' ">
                             <tr class="table-hover">
                                 <td>
                                     <i ng-hide="childrens[$index]" class="fa fa-plus-square-o" aria-hidden="true" ng-click="openChildren(item,$index,0)"></i>
                                     <i ng-show="childrens[$index]" class="fa fa-minus-square-o" aria-hidden="true" ng-click="openChildren(item,$index,0)"></i>
                                 </td>
                                 <td>{{item.Name}}</td>
-                                <td>{{item.isActive}}</td>
+                                <td>
+                                    <span ng-show="item.isActive == 1">פעיל</span>
+                                    <span ng-show="item.isActive == 0">לא פעיל</span>
+                                </td>
                                 <td>{{item.Cat_Order}}</td>
                                 <td>
                                     <i ng-click="Plus1(item,0)" class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -133,15 +136,17 @@
                                             <th>מיון</th>
                                             <th></th>
                                         </tr>
-                                        <tbody ng-repeat="child in item.Children | orderBy : '-Cat_Order'">
+                                        <tbody ng-repeat="child in item.Children | orderBy : '-Cat_Order' | filter:  isTag == '0'">
                                             <tr class="table-hover">
                                                 <td>
                                                     <i ng-hide="subchildrens[$index]" class="fa fa-plus-square-o" aria-hidden="true" ng-click="openChildren(child,$index,1)"></i>
                                                     <i ng-show="subchildrens[$index]" class="fa fa-minus-square-o" aria-hidden="true" ng-click="openChildren(child,$index,1)"></i>
-
                                                 </td>
                                                 <td>{{child.Name}}</td>
-                                                <td>{{child.isActive}}</td>
+                                                <td>
+                                                    <span ng-show="child.isActive == 1">פעיל</span>
+                                                    <span ng-show="child.isActive == 0">לא פעיל</span>
+                                                </td>
                                                 <td>{{child.Cat_Order}}</td>
                                                 <td>
                                                     <i ng-click="Plus1(child,1)" class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -158,13 +163,16 @@
                                                             <th>מיון</th>
                                                             <th></th>
                                                         </tr>
-                                                        <tbody ng-repeat="subchild in child.Children | orderBy : '-Cat_Order'">
+                                                        <tbody ng-repeat="subchild in child.Children | orderBy : '-Cat_Order' | filter:  isTag == '0'">
                                                             <tr class="table-hover">
                                                                 <td>
                                                                     <!--<i class="fa fa-plus-square-o" aria-hidden="true" ng-click="openChildren(subchild,$index, 2)"></i>-->
                                                                 </td>
                                                                 <td>{{subchild.Name}}</td>
-                                                                <td>{{subchild.isActive}}</td>
+                                                                <td>
+                                                                    <span ng-show="subchild.isActive == 1">פעיל</span>
+                                                                    <span ng-show="subchild.isActive == 0">לא פעיל</span>
+                                                                </td>
                                                                 <td>{{subchild.Cat_Order}}</td>
                                                                 <td>
                                                                     <i ng-click="Plus1(subchild,1)" class="fa fa-plus-circle" aria-hidden="true"></i>
