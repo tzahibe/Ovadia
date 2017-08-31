@@ -21540,14 +21540,16 @@ OvadiaApp.directive('homeMovies', function () {
         templateUrl: '/Scripts/OvadiaApp/Admin/Movies/home-movies/home-movies.html'
     }
 });
-OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount', '$rootScope','$http',
-    function ($scope, appServices, UserAccount, $rootScope, $http) {
+OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount', '$rootScope', '$http','ngDialog',
+    function ($scope, appServices, UserAccount, $rootScope, $http, ngDialog ) {
         var self = this;
         $scope.tags = null;
         $scope.Articles = [];
 
         self.init = function () {
             $scope.getAllArticles();
+            $scope.initSavedResult();
+
         }
 
         $scope.loadTags = function (query) {
@@ -21555,7 +21557,7 @@ OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount'
         }
 
         $scope.getAllArticles = function () {
-            appServices.GetAllArticles().then(function (data) {
+            appServices.GetAllActiveArticles().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.Articles = data.Data;
                     angular.forEach($scope.Articles, function (value, key) {
@@ -21581,11 +21583,13 @@ OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount'
         }
 
         $scope.toShow = function () {
-            if ($scope.Video1 != null || $scope.Video2 != null || $scope.tags != null) {
+            if ($scope.FilteredData != null && $scope.FilteredData.length > 0 != null ||
+                $scope.datSaved != null && $scope.datSaved.length > 0 != null) {
                 return true;
             }
             return false;
         }
+
         $scope.myStyle = function (article) {
             if (article.profImage == null || article.profImage == '') {
                 return "background-image:url(/Content/images/default.png)";
@@ -21596,7 +21600,7 @@ OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount'
         }
 
         $scope.tagsFilter = function (item) {
-
+         
             if (item == null || item.CategoriesList == null || item.CategoriesList == "" ||
                 item.CategoriesList.length == 0 )
                 return false;
@@ -21604,13 +21608,13 @@ OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount'
                 if  (  item.Video1 == $scope.Video1 && item.Video1 != null
                     || item.Video1 == $scope.Video2 && item.Video1  != null
                     || item.Video2 == $scope.Video1 && item.Video2 != null
-                    || item.Video2 == $scope.Video2 && item.Video2 != null
+                    || item.Video2 == $scope.Video2 && item.Video2 != null 
                 )
                     return true;
 
             if ($scope.tags == null || $scope.tags == "" || $scope.tags.length == 0) {
                 return false;
-            }
+                }
 
             for (var i = 0; i < item.CategoriesList.length; i++) {
                 for (var j = 0; j < $scope.tags.length; j++) {
@@ -21622,18 +21626,53 @@ OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount'
             return false;
         }
 
-        $scope.videoCodeFilter = function (item) {
-            
-            for (var i = 0; i < item.CategoriesList.length; i++) {
-                if (item.CategoriesList[i].Video1 == $scope.Video1
-                    || item.CategoriesList[i].Video1 == $scope.Video2 || 
-                    item.CategoriesList[i].Video2 == $scope.Video1
-                    || item.CategoriesList[i].Video2 == $scope.Video2
-                    )
-                    return true;
-            }
+        $scope.saveCarusel = function () {
+            appServices.SaveCaruselArticles($scope.FilteredData).then(function (data) {
+                debugger;
+                if (data.ErrorCode == 0) {
+                    $scope.OpenPopup("הודעת מערכת","הנתונים נשמרו בהצלחה!");
+                }
+                else {
+                    $scope.OpenPopup("שגיאה", "תקלה בשמירת הנתונים");
+                }
+            })
+        }
 
-            return false;
+        $scope.OpenPopup = function (title, msg) {
+            $scope.Title = title;
+            $scope.Msg = msg;
+            ngDialog.open({
+                template: '/Scripts/OvadiaApp/Admin/events-dialog/Movies/Movie-change.html',
+                className: 'ngdialog-theme-default',
+                scope: $scope
+            });
+        }
+
+        $scope.initSavedResult = function (){ 
+           
+            appServices.GetCaruselArticles().then(function (data) {
+
+                if (data.ErrorCode == 0) {
+                    $scope.datSaved = data.Data;
+
+                    angular.forEach($scope.datSaved, function (value, key) {
+                        var profImage;
+                        value.YoutubeLink1 = "https://www.youtube.com/embed/" + value.Video1;
+                        value.YoutubeLink2 = "https://www.youtube.com/embed/" + value.Video1;
+                        value.YoutubeLink3 = "https://www.youtube.com/embed/" + value.Video1;
+
+                        if (value.ProfilePic == null || value.ProfilePic == '') {
+                            value.profImage = "/Content/images/default.png";
+                        }
+                        else {
+                            value.profImage = value.ProfilePic.split(' ').join('%20');;
+                        }
+
+                    });
+                }
+                else {
+                }
+            })
         }
 
         self.init();
@@ -23980,6 +24019,29 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         });
     }
 
+    /* Carusel -----------------> */
+
+    this.SaveCaruselArticles = function (articles) {
+        
+        return $http({
+            url: url + '/ArticleSer/SaveCaruselArticles',
+            method: 'POST',
+            data: JSON.stringify(articles),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetCaruselArticles = function () {
+        return $http({
+            url: url + '/ArticleSer/GetCaruselArticles',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);
 OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDialog','$rootScope',
     function ($scope, $http, $timeout, ngDialog, $rootScope) {
@@ -25552,7 +25614,7 @@ OvadiaApp.controller('carouselComponentCtrl', ['$scope', '$interval','appService
 
         $scope.GetNewActiveArticles = function () {
             $scope.loader = true;
-            appServices.GetNewActiveArticles()
+            appServices.GetCaruselArticles()
                 .then(function (data) {
                     var ErrorCode;
                     try {

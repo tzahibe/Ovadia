@@ -28,13 +28,22 @@
                 </div>
             </div>
 
-            <div ng-show="Articles == null || Articles.length == 0">
-                אין מאמרים תחת התגיות/הקטגוריותת שנבחרו
+            <div class="articles-list" ng-repeat="article1 in datSaved" ng-hide="FilteredData != null && FilteredData.length > 0">
+                <div class="article-box col-md-4_5 col-xs-12"
+                     style="{{myStyle(article1)}}">
+                    <div class="article-title">
+                        {{article1.Title}}
+                    </div>
+                </div>
             </div>
+
+            <!--<div ng-show="Articles == null || Articles.length == 0">
+                אין מאמרים תחת התגיות/הקטגוריותת שנבחרו
+            </div>-->
         </div>
 
         <div class="col-xs-12">
-            <input ng-show="toShow()" type="button" class="btn btn-success" value="שמור שינויים" />
+            <input ng-show="toShow()" ng-click="saveCarusel()" type="button" class="btn btn-success" value="שמור שינויים" />
         </div>
 
     </form>

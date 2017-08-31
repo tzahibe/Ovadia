@@ -9,7 +9,7 @@
 
         $scope.GetNewActiveArticles = function () {
             $scope.loader = true;
-            appServices.GetNewActiveArticles()
+            appServices.GetCaruselArticles()
                 .then(function (data) {
                     var ErrorCode;
                     try {

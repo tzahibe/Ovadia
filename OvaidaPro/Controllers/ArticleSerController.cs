@@ -55,13 +55,17 @@ namespace OvaidaPro.Controllers
             Result result = ArticleLogic.GetNewActiveArticles();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
-        //public static Result GetArtCat(int articleId)
-        //{
-        //    Result result = ArticleLogic.GetArtCat(articleId);
-        //    return Json(result, JsonRequestBehavior.AllowGet);
-        //}
-
+        //Carusel
+        public ActionResult SaveCaruselArticles(List<Bo.Article> articles)
+        {
+            Result result = ArticleLogic.SaveCaruselArticles(articles);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetCaruselArticles()
+        {
+            Result result = ArticleLogic.GetCaruselArticles();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

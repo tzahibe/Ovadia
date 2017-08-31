@@ -608,5 +608,87 @@ namespace Repository
                 return result;
             }
         }
+        //carusel
+        public static Result SaveCaruselArticles(List<Bo.Article> articles)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    context.Article.RemoveRange(context.Article.Where(x => x.Type.Equals("Carusel")));
+                    context.SaveChanges();
+
+                    foreach(Bo.Article articleBo in articles)
+                    {
+                        Article articleRep = new Article();
+                        articleRep.Title = articleBo.Title;
+                        articleRep.Type = "Carusel";
+                        articleRep.Comment = articleBo.Comment;
+                        articleRep.Writer = articleBo.Writer;
+                        articleRep.Death_date = articleBo.Death_date;
+                        articleRep.Lesson_info = articleBo.Lesson_info;
+                        articleRep.ProfilePic = articleBo.ProfilePic;
+                        articleRep.CategoryId = articleBo.CategoryId;
+                        articleRep.CategoryName = articleBo.CategoryName;
+                        articleRep.Publish = articleBo.Publish;
+                        articleRep.Body = articleBo.Body;
+                        articleRep.Image1 = articleBo.Image1;
+                        articleRep.Video1 = articleBo.Video1;
+                        articleRep.Video2 = articleBo.Video2;
+                        articleRep.Video3 = articleBo.Video3;
+                        articleRep.Last_edit = DateTime.Now;
+                        articleRep.DatePublish = DateTime.Now;
+                        context.Article.Add(articleRep);
+                        context.SaveChanges();
+                        result.Data = 0;
+                    }
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                result.ErrorCode = 1;
+                result.Data = true;
+                return result;
+            }
+        }
+        public static Result GetCaruselArticles()
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    List<Article> repResult = (from r in context.Article
+                                               where r.Type.Equals("Carusel")
+                                               select r).ToList();
+
+                    if(repResult != null)
+                    {
+                        result.Data = repResult;
+                        result.ErrorCode = 0;
+                    }
+                    else
+                    {
+                        result.ErrorCode = (int)ErrorEnumcs.NoData;
+                        result.Data = null;
+                    }
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                result.ErrorCode = 1;
+                result.Data = true;
+                return result;
+            }
+        }
     }
 }

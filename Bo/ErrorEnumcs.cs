@@ -8,6 +8,7 @@ namespace Bo
     {
         ErrorServer =1,
         DetailsNotMatch = 2,
+        NoData = 3,
         NotPremission = 5
     }
 }

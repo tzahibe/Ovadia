@@ -438,4 +438,27 @@
         });
     }
 
+    /* Carusel -----------------> */
+
+    this.SaveCaruselArticles = function (articles) {
+        
+        return $http({
+            url: url + '/ArticleSer/SaveCaruselArticles',
+            method: 'POST',
+            data: JSON.stringify(articles),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetCaruselArticles = function () {
+        return $http({
+            url: url + '/ArticleSer/GetCaruselArticles',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);
