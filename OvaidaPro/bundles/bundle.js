@@ -21580,6 +21580,12 @@ OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount'
             });
         }
 
+        $scope.toShow = function () {
+            if ($scope.Video1 != null || $scope.Video2 != null || $scope.tags != null) {
+                return true;
+            }
+            return false;
+        }
         $scope.myStyle = function (article) {
             if (article.profImage == null || article.profImage == '') {
                 return "background-image:url(/Content/images/default.png)";
@@ -21590,20 +21596,41 @@ OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount'
         }
 
         $scope.tagsFilter = function (item) {
-            debugger;
+
+            if (item == null || item.CategoriesList == null || item.CategoriesList == "" ||
+                item.CategoriesList.length == 0 )
+                return false;
+
+                if  (  item.Video1 == $scope.Video1 && item.Video1 != null
+                    || item.Video1 == $scope.Video2 && item.Video1  != null
+                    || item.Video2 == $scope.Video1 && item.Video2 != null
+                    || item.Video2 == $scope.Video2 && item.Video2 != null
+                )
+                    return true;
 
             if ($scope.tags == null || $scope.tags == "" || $scope.tags.length == 0) {
                 return false;
             }
-            if (item == null || item.CategoriesList == null || item.CategoriesList == "" ||
-                item.CategoriesList.length == 0 )
-                return false;
+
             for (var i = 0; i < item.CategoriesList.length; i++) {
                 for (var j = 0; j < $scope.tags.length; j++) {
-                    
                     if (item.CategoriesList[i].CategoryId == $scope.tags[j].CategoryId)
                         return true;
                 }
+            }
+
+            return false;
+        }
+
+        $scope.videoCodeFilter = function (item) {
+            
+            for (var i = 0; i < item.CategoriesList.length; i++) {
+                if (item.CategoriesList[i].Video1 == $scope.Video1
+                    || item.CategoriesList[i].Video1 == $scope.Video2 || 
+                    item.CategoriesList[i].Video2 == $scope.Video1
+                    || item.CategoriesList[i].Video2 == $scope.Video2
+                    )
+                    return true;
             }
 
             return false;

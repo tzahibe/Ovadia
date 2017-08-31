@@ -1,11 +1,15 @@
 ﻿<link href="/Scripts/OvadiaApp/Admin/carusel-admin/carusel-admin.css" rel="stylesheet" />
 
-<div class="list-group-item list-group-item-home">
+<div>
     <form name="movieForm" role="form" novalidate>
         <div ng-hide="loader">
             <fieldset>
                 <legend>קרוסלת מאמרים</legend>
             </fieldset>
+            לפי קוד סרט
+            <input ng-model="Video1" class="form-control" placeholder=" 1 קוד סרט" style="width: 30%;" />
+            לפי קוד סרט
+            <input ng-model="Video2" class="form-control" placeholder=" 1 קוד סרט" style="width: 30%;"/>
 
             <div>
                 בחר תגיות\קטגוריות
@@ -13,8 +17,9 @@
             <tags-input ng-model="tags" minTags="1" add-from-autocomplete-only="true" placeholder="הוסף קטגוריה">
                 <auto-complete source="loadTags($query)"></auto-complete>
             </tags-input>
+            <h3 ng-show="toShow()">המאמרים שיוצגו בקרוסלה</h3>
 
-            <div class="articles-list" ng-repeat="article in Articles | filter: tagsFilter">
+            <div class="articles-list" ng-repeat="article in (FilteredData =  (Articles | filter: tagsFilter)) ">
                 <div class="article-box col-md-4_5 col-xs-12" 
                      style="{{myStyle(article)}}">
                     <div class="article-title">
@@ -22,9 +27,15 @@
                     </div>
                 </div>
             </div>
+
             <div ng-show="Articles == null || Articles.length == 0">
                 אין מאמרים תחת התגיות/הקטגוריותת שנבחרו
             </div>
         </div>
+
+        <div class="col-xs-12">
+            <input ng-show="toShow()" type="button" class="btn btn-success" value="שמור שינויים" />
+        </div>
+
     </form>
 </div>
