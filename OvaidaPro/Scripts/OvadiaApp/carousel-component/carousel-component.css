@@ -486,7 +486,9 @@ h3.title {
     max-width: 120%;
     max-height: 133%;
 }
-
+.col-xs-12.col-md-7{
+    padding:0;
+}
 
 @media screen and (max-width: 768px) {
     .blueimp-gallery > .slides > .slide > .video-content > img {
