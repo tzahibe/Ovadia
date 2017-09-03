@@ -49,30 +49,35 @@
         }
 
         $scope.myStyle = function (article) {
-            if (article.profImage == null || article.profImage == '') {
-                return "background-image:url(/Content/images/default.png)";
+            if (article.Video1 != null && article.Video1 != '') {
+                return "background-image:url('https://i.ytimg.com/vi_webp/" + article.Video1 + "/sddefault.webp');BACKGROUND-SIZE: 100% 130%;background-position: 121% -20px;";
             }
-            var urlNoSpace = article.profImage.split(' ').join('%20');
 
-            return "background-image: url(" + urlNoSpace + ")";
+            if (article.ProfilePic == '' || article.ProfilePic == null) {
+                return "background-image:url('/Content/images/no-image-details.png') BACKGROUND-SIZE: 100% 130%;background-position: 121% -20px;";
+            }
+            else {
+                return "background - image:url0('" + article.ProfilePic + "';BACKGROUND-SIZE: 100% 130%;background-position: 121% -20px;";
+            }
         }
 
         $scope.tagsFilter = function (item) {
-         
-            if (item == null || item.CategoriesList == null || item.CategoriesList == "" ||
-                item.CategoriesList.length == 0 )
-                return false;
 
-                if  (  item.Video1 == $scope.Video1 && item.Video1 != null
-                    || item.Video1 == $scope.Video2 && item.Video1  != null
-                    || item.Video2 == $scope.Video1 && item.Video2 != null
-                    || item.Video2 == $scope.Video2 && item.Video2 != null 
-                )
-                    return true;
+            if (item.Video1 == $scope.Video1 && item.Video1 != null || item.Video1 == $scope.Video2 && item.Video1 != null
+                || item.Video2 == $scope.Video1 && item.Video2 != null || item.Video2 == $scope.Video2 && item.Video2 != null
+            ) {
+                return true;
+
+            }
 
             if ($scope.tags == null || $scope.tags == "" || $scope.tags.length == 0) {
                 return false;
-                }
+            }
+
+            if (item == null || item.CategoriesList == null || item.CategoriesList == "" ||
+                item.CategoriesList.length == 0)
+                return false;
+
 
             for (var i = 0; i < item.CategoriesList.length; i++) {
                 for (var j = 0; j < $scope.tags.length; j++) {
@@ -80,6 +85,7 @@
                         return true;
                 }
             }
+
 
             return false;
         }
@@ -131,6 +137,10 @@
                 else {
                 }
             })
+        }
+
+        $scope.cleanData = function () {
+            $scope.datSaved = null;
         }
 
         self.init();

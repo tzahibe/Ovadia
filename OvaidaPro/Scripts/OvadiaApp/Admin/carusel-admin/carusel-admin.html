@@ -7,9 +7,9 @@
                 <legend>קרוסלת מאמרים</legend>
             </fieldset>
             לפי קוד סרט
-            <input ng-model="Video1" class="form-control" placeholder=" 1 קוד סרט" style="width: 30%;" />
+            <input ng-model="Video1" ng-change="cleanData()" class="form-control" placeholder=" 1 קוד סרט" style="width: 30%;" />
             לפי קוד סרט
-            <input ng-model="Video2" class="form-control" placeholder=" 1 קוד סרט" style="width: 30%;"/>
+            <input ng-model="Video2" ng-change="cleanData()" class="form-control" placeholder=" 1 קוד סרט" style="width: 30%;"/>
 
             <div>
                 בחר תגיות\קטגוריות

@@ -8,10 +8,10 @@
     padding-left: 12px;
     width: 63%;
 }
-p {
+/*p {
     font-size: 20px;
     color: #434141;  
-}
+}*/
 
 @media screen and (max-width: 768px) {
     .col-xs-12 {
