@@ -60,6 +60,14 @@
                 access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
             }
         })
+        .state("donation", {
+            url: '/donation',
+            templateUrl: '/Scripts/OvadiaApp/donation-screen/donation-screen.html',
+            controller: 'donationScreenCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
+            }
+        })
         .state("map", {
             url: '/map',
             templateUrl: '/Scripts/OvadiaApp/mapa-component/mapa-component.html',

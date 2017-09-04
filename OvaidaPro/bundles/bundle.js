@@ -21299,6 +21299,14 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
             }
         })
+        .state("donation", {
+            url: '/donation',
+            templateUrl: '/Scripts/OvadiaApp/donation-screen/donation-screen.html',
+            controller: 'donationScreenCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
+            }
+        })
         .state("map", {
             url: '/map',
             templateUrl: '/Scripts/OvadiaApp/mapa-component/mapa-component.html',
@@ -22319,6 +22327,29 @@ OvadiaApp.directive('movieDetails', function () {
         bindToController: true,
         controller: 'movieDetailsCtrl',
         templateUrl: '/Scripts/OvadiaApp/movie-details/movie-details.html'
+    }
+});
+OvadiaApp.controller('donationScreenCtrl', ['$scope', '$interval', 'appServices',
+    function ($scope, $interval, appServices) {
+        self = this;
+        $scope.Articles = [];
+
+        self.init = function () {///
+         
+        }
+
+
+        self.init();
+
+    }]);
+
+
+OvadiaApp.directive('donationScreen', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'donationScreenCtrl',
+        templateUrl: '/Scripts/OvadiaApp/donation-screen/donation-screen.html'
     }
 });
 OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval',

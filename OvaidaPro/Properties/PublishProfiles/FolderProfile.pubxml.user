@@ -257,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bundles/bundle.js">
-      <publishTime>08/31/2017 11:32:24</publishTime>
+      <publishTime>09/03/2017 10:33:26</publishTime>
     </File>
     <File Include="bundles/bundle.min.js">
       <publishTime>07/12/2017 00:06:28</publishTime>
@@ -854,13 +854,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/21/2017 10:00:39</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/carusel-admin/carusel-admin.css">
-      <publishTime>08/31/2017 09:20:02</publishTime>
+      <publishTime>09/03/2017 10:18:38</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/carusel-admin/carusel-admin.html">
-      <publishTime>08/31/2017 10:34:18</publishTime>
+      <publishTime>09/03/2017 10:31:35</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/carusel-admin/carusel-admin.js">
-      <publishTime>08/31/2017 10:39:56</publishTime>
+      <publishTime>09/03/2017 10:33:59</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/category-admin/category-admin.css">
       <publishTime>08/09/2017 11:06:48</publishTime>
@@ -1328,7 +1328,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/12/2017 00:04:52</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/23/2017 11:30:18</publishTime>
+      <publishTime>09/03/2017 08:45:55</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>08/23/2017 16:08:24</publishTime>
