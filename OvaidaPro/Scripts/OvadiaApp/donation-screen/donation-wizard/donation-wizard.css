@@ -1,0 +1,205 @@
+﻿.stage-car-form {
+    /*width:780px;*/
+    direction: rtl;
+    font-family: Arial;
+}
+
+    .stage-car-form .step-content {
+        overflow: hidden;
+        /*padding: 8px 25px;*/
+        padding: 8px 15px 0px 8px;
+        border: 1px solid #d8d8d8;
+        border-top: 0;
+        background: #ffffff;
+        position: relative;
+        background: -moz-linear-gradient(top, #ffffff 0%, #f0f0f0 100%);
+        background: -webkit-linear-gradient(top, #ffffff 0%,#f0f0f0 100%);
+        background: linear-gradient(to bottom, #ffffff 0%,#f0f0f0 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f0f0f0',GradientType=0 );
+    }
+
+    .stage-car-form ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        line-height: 30px;
+    }
+
+    .stage-car-form .step-head.active {
+        background: #000060;
+        height: 73px;
+        position: relative;
+    }
+
+    .stage-car-form .step-head {
+        height: 73px;
+        background: #cecece;
+        position: relative;
+        box-sizing: border-box;
+        overflow: hidden;
+        margin-bottom: 2px;
+        transition: all 0.5s;
+    }
+
+.step-head.active h2 {
+    color: #fff !important;
+    margin: 0;
+    line-height: 73px;
+    padding-right: 67px;
+}
+
+.step-head h2 {
+    color: #505052;
+    margin: 0;
+    line-height: 73px;
+    padding-right: 67px;
+}
+
+.step-head span.stepNumber {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #f1f0f5;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 30px;
+    font-size: 21px;
+    font-weight: bold;
+    color: #000060;
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    margin-top: -15px;
+}
+
+    .step-head span.stepNumber.done {
+        background: center no-repeat #fa6821;
+    }
+
+        .step-head span.stepNumber.done img {
+            position: relative;
+            top: -2px;
+        }
+
+.open-icon {
+    width: 17px;
+    height: 17px;
+    background: url('/Content/images/icon-plus.png');
+    background-position: 0px;
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    cursor: pointer;
+    margin-top: -8px;
+}
+donation-wizard h2 {
+    color: #000 !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    font-family: Arial !important;
+    margin-top: 5px !important;
+    margin-bottom: 0px !important;
+}
+.close-icon {
+    width: 15px;
+    height: 3px;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    cursor: pointer;
+    margin-top: -3px;
+}
+
+.form-control {
+    display: inline-block;
+    width: 170px;
+    border-radius: 3px;
+    border: 1px solid #a3a3a3;
+    background: #eaeaea;
+    padding: 0px 10px 0px 0px;
+    font-size: 15px;
+    background: -moz-linear-gradient(top, #eaeaea 0%, #ffffff 100%);
+    background: -webkit-linear-gradient(top, #eaeaea 0%,#ffffff 100%);
+    background: linear-gradient(to bottom, #eaeaea 0%,#ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeaea', endColorstr='#ffffff',GradientType=0 );
+    margin-left: 20px;
+}
+
+select.form-control {
+    width: inherit;
+    min-width: 82px;
+}
+
+    select.form-control option {
+        font-size: 15px;
+    }
+
+.form-control-small {
+    width: 80px !important;
+}
+
+.form-control-medium {
+    width: 120px !important;
+    text-align: center;
+}
+
+.readonlyArea {
+    border: none !important;
+    background: unset !important;
+    border-radius: 0px !important;
+    filter: unset !important;
+    box-shadow: none !important;
+    cursor: not-allowed;
+}
+
+label.input-title-small {
+    width: 80px;
+}
+
+label.input-title {
+    width: 200px;
+}
+
+label.input-title-long {
+    width: 200px;
+}
+
+.fade.ng-enter {
+    transition: 0.5s linear all;
+    opacity: 1;
+}
+
+    /* The finishing CSS styles for the enter animation */
+    .fade.ng-enter.ng-enter-active {
+        opacity: 0;
+    }
+.zipper.ng-animate {
+    transition: 0.5s linear all;
+}
+
+.zipper.ng-enter {
+    opacity: 0;
+}
+
+    .zipper.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+
+.zipper.ng-leave {
+    opacity: 1;
+}
+
+    .zipper.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+   /*----------------------*/
+.fade-in-out {
+    transition: 1s linear all;
+    opacity: 1;
+}
+
+    .fade-in-out.ng-hide {
+        opacity: 0;
+    }

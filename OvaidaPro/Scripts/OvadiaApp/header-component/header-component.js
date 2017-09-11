@@ -11,6 +11,8 @@
             { name: 'שיעורים', state: 'movie-category', url: '/movie-category' },
             { name: 'זמני שיעורים ותפילות', state: 'all-lesson', url: '/all-lesson' },
             { name: 'המלצות', state: 'recommendation', url: '/recommendation' },
+            { name: 'תרומות', state: 'donation', url: '/donation' },
+
 
         ];
 

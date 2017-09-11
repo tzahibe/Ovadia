@@ -461,4 +461,75 @@
             return response.data;
         });
     }
+
+     /* TRUMA -----------------> */
+
+    this.SaveTruma = function (truma) {
+
+        return $http({
+            url: url + '/TrumaSer/Save',
+            method: 'POST',
+            data: JSON.stringify(truma),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllTActiveTruma = function () {
+        return $http({
+            url: url + '/TrumaSer/GetAllTActiveTruma',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllTTruma = function () {
+        return $http({
+            url: url + '/TrumaSer/GetAllTTruma',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    /* TRUMA Person-----------------> */
+    this.SavePersonTruma = function (truma) {
+
+        return $http({
+            url: url + '/TrumaPersonSer/Save',
+            method: 'POST',
+            data: JSON.stringify(truma),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetPersonTruma = function (id) {
+        var param = {
+            Id : id
+        }
+        return $http({
+            url: url + '/TrumaPersonSer/Get',
+            method: 'POST',
+            data: JSON.stringify(param),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.SmallGet = function () {
+        return $http({
+            url: url + '/TrumaPersonSer/SmallGet',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);

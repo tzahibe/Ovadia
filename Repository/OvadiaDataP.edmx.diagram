@@ -13,7 +13,9 @@
         <EntityTypeShape EntityType="DB_A25801_OvadiaModel.Users" Width="1.5" PointX="8.875" PointY="0.75" />
         <EntityTypeShape EntityType="DB_A25801_OvadiaModel.Categories" Width="1.5" PointX="10.5" PointY="0.75" />
         <EntityTypeShape EntityType="DB_A25801_OvadiaModel.Art_Cat" Width="1.5" PointX="12.25" PointY="0.75" />
-        <EntityTypeShape EntityType="DB_A25801_OvadiaModel.db_Comment" Width="1.5" PointX="12.25" PointY="2.75" />
+        <EntityTypeShape EntityType="DB_A25801_OvadiaModel.db_Comment" Width="1.5" PointX="12.25" PointY="2.625" />
+        <EntityTypeShape EntityType="DB_A25801_OvadiaModel.db_Truma" Width="1.5" PointX="2.375" PointY="2.625" />
+        <EntityTypeShape EntityType="DB_A25801_OvadiaModel.db_TrumaPerson" Width="1.5" PointX="4" PointY="3.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

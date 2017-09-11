@@ -11,71 +11,27 @@
     </div>
     <div class="col-xs-12">
         <div class="center">
-
-            <div class="col-sm-3 donation-block">
-                <img src="/Content/images/donation/hands.jpg" class="resp-img" />
+            <div class="fade-in-out zipper col-sm-3 donation-block" ng-repeat="truma in Trumot" ng-hide="wizard">
+                <img src="{{ImageProfile(truma)}}" class="resp-img" />
                 <div class="blue-width">
                     <p>
-                        יששכר וזבולון
+                        {{truma.Title}}
                     </p>
                 </div>
                 <img src="/Content/images/donation/bottom-arrow.png" class="bottom-arrow-donation" />
                 <div class="white-box">
-                    <p>
-                        זכות מיוחדת לתמוך באברך הלומד בכולל יום משעה 9:00 עד 17:00.
-                    </p>
+                    <div ng-bind-html="truma.Body"></div>
                 </div>
-                <input type="button" class="trom-btn btn btn-info" value="תרום" />
+                <input type="button" class="trom-btn btn btn-info" value="תרום" ng-click="Trom(truma)" />
             </div>
-            <div class="col-sm-3 donation-block">
-                <img src="/Content/images/donation/paint.jpg" class="resp-img" />
-                <div class="blue-width">
-                    <p>
-                        הוראת קבע
-                    </p>
-                </div>
-                <img src="/Content/images/donation/bottom-arrow.png" class="bottom-arrow-donation" />
-                <div class="white-box">
-                    <p>
-                        רצ"ב מסמך להוראת קבע – כאשר אתה קובע כל סכום שתבחר ולמשך כל תקופה שתקבע.
-                    </p>
-                </div>
-                <input type="button" class="trom-btn btn btn-info" value="תרום" />
-            </div>
-            <div class="col-sm-3 donation-block">
-                <img src="/Content/images/donation/film.jpg" class="resp-img" />
-                <div class="blue-width">
-                    <p>
-                        הקדש שיעור באתר
-                    </p>
-                </div>
-                <img src="/Content/images/donation/bottom-arrow.png" class="bottom-arrow-donation" />
-                <div class="white-box">
-                    <p>
-                       הנצח שיעור באתר שיוקדש לנצח! בהקדשה מיוחדת לעילוי נשמת, או להצלחה.
-                    </p>
-                </div>
-                <input type="button" class="trom-btn btn btn-info" value="תרום" />
-            </div>
-            <div class="col-sm-3 donation-block">
-                <img src="/Content/images/donation/junkfood.jpg" class="resp-img" />
-                <div class="blue-width">
-                    <p>
-                        סעודה לת"ח
-                    </p>
-                </div>
-                <img src="/Content/images/donation/bottom-arrow.png" class="bottom-arrow-donation" />
-                <div class="white-box">
-                    <p>
-                     ארוחת צהריים לאברכי הכולל(20 אברכים):
-                      סעודת הודיה, או לכל מטרה אחרת.
-                    </p>
-                </div>
-                <input type="button" class="trom-btn btn btn-info" value="תרום" />
+           
+            <div ng-show="loader" class="loader1">
+                <img src="/Content/images/loader.gif" />
             </div>
             <br />
             <br />
             <br />
+            <donation-wizard class="animate-show-hide" ng-show="wizard"></donation-wizard>
         </div>
     </div>
    

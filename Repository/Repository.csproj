@@ -76,6 +76,12 @@
     <Compile Include="db_Event.cs">
       <DependentUpon>OvadiaDataP.tt</DependentUpon>
     </Compile>
+    <Compile Include="db_Truma.cs">
+      <DependentUpon>OvadiaDataP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_TrumaPerson.cs">
+      <DependentUpon>OvadiaDataP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Emails.cs">
       <DependentUpon>OvadiaDataP.tt</DependentUpon>
     </Compile>
@@ -121,6 +127,8 @@
       <DependentUpon>OvadiaDataP.tt</DependentUpon>
     </Compile>
     <Compile Include="TfilaResult.cs" />
+    <Compile Include="TrumaPersonResult.cs" />
+    <Compile Include="TrumaResult.cs" />
     <Compile Include="Users.cs">
       <DependentUpon>OvadiaDataP.tt</DependentUpon>
     </Compile>

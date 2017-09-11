@@ -1,0 +1,22 @@
+﻿.row-title {
+    font-weight: bold;
+    /* font-family: arial; */
+    font-size: 17px;
+    color: #636362;
+}
+.ngdialog-close {
+    display: block;
+}
+.btn-toolbar .btn, .btn-toolbar .btn-group, .btn-toolbar .input-group{
+    float:right;
+}
+
+.select2-container--default .select2-selection--single {
+    height: 34px;
+    margin-bottom: 5px;
+}
+
+.btn-primary.active, .btn-primary:active {
+    background-color: #153b5d;
+    border-color: #245580;
+}

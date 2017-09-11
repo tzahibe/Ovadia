@@ -50,6 +50,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecommendationLogic.cs" />
     <Compile Include="TfilaLogic.cs" />
+    <Compile Include="TrumaLogic.cs" />
+    <Compile Include="TrumaPersonLogic.cs" />
     <Compile Include="UsersLogic.cs" />
   </ItemGroup>
   <ItemGroup>

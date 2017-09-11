@@ -74,6 +74,44 @@
           <Property Name="event_date" Type="nvarchar" MaxLength="50" />
           <Property Name="comment" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="db_Truma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Truma_Type" Type="nvarchar" MaxLength="250" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="Total" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="250" />
+          <Property Name="TotalMoney" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="int" />
+          <Property Name="ProfilePic" Type="nvarchar(max)" />
+          <Property Name="IsAlowComment" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="db_TrumaPerson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Type" Type="int" />
+          <Property Name="ExpDate" Type="nvarchar" MaxLength="100" />
+          <Property Name="Payment_FullName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Total" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="100" />
+          <Property Name="NumberId" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="500" />
+          <Property Name="State" Type="nvarchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="FlatNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="Cur" Type="int" />
+          <Property Name="PayDate" Type="datetime" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="Lesson_date" Type="datetime" />
+          <Property Name="Lesson_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Donates" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Emails">
           <Key>
             <PropertyRef Name="ID" />
@@ -129,6 +167,8 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="db_Comment" EntityType="Self.db_Comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="db_Event" EntityType="Self.db_Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_Truma" EntityType="Self.db_Truma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="db_TrumaPerson" EntityType="Self.db_TrumaPerson" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Emails" EntityType="Self.Emails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tfila" EntityType="Self.Tfila" Schema="dbo" store:Type="Tables" />
@@ -177,6 +217,8 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySet Name="Categories" EntityType="DB_A25801_OvadiaModel.Categories" />
           <EntitySet Name="Art_Cat" EntityType="DB_A25801_OvadiaModel.Art_Cat" />
           <EntitySet Name="db_Comment" EntityType="DB_A25801_OvadiaModel.db_Comment" />
+          <EntitySet Name="db_Truma" EntityType="DB_A25801_OvadiaModel.db_Truma" />
+          <EntitySet Name="db_TrumaPerson" EntityType="DB_A25801_OvadiaModel.db_TrumaPerson" />
         </EntityContainer>
         <EntityType Name="Emails">
           <Key>
@@ -276,6 +318,44 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PublishDate" Type="DateTime" Precision="3" />
           <Property Name="Show" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="db_Truma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Truma_Type" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TotalMoney" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int32" />
+          <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsAlowComment" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="db_TrumaPerson">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Type" Type="Int32" />
+          <Property Name="ExpDate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NumberId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FlatNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cur" Type="Int32" />
+          <Property Name="PayDate" Type="DateTime" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lesson_date" Type="DateTime" Precision="3" />
+          <Property Name="Lesson_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Donates" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -405,6 +485,46 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
                 <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_Truma">
+            <EntityTypeMapping TypeName="DB_A25801_OvadiaModel.db_Truma">
+              <MappingFragment StoreEntitySet="db_Truma">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsAlowComment" ColumnName="IsAlowComment" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Truma_Type" ColumnName="Truma_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="db_TrumaPerson">
+            <EntityTypeMapping TypeName="DB_A25801_OvadiaModel.db_TrumaPerson">
+              <MappingFragment StoreEntitySet="db_TrumaPerson">
+                <ScalarProperty Name="Donates" ColumnName="Donates" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Lesson_Name" ColumnName="Lesson_Name" />
+                <ScalarProperty Name="Lesson_date" ColumnName="Lesson_date" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="PayDate" ColumnName="PayDate" />
+                <ScalarProperty Name="Cur" ColumnName="Cur" />
+                <ScalarProperty Name="FlatNumber" ColumnName="FlatNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="NumberId" ColumnName="NumberId" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Payment_FullName" ColumnName="Payment_FullName" />
+                <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

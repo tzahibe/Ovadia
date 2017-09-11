@@ -1,12 +1,39 @@
 ﻿OvadiaApp.controller('donationScreenCtrl', ['$scope', '$interval', 'appServices',
     function ($scope, $interval, appServices) {
         self = this;
-        $scope.Articles = [];
+        $scope.Trumot = [];
+        $scope.loader = false;
+        $scope.wizard = false;
 
-        self.init = function () {///
-         
+        self.init = function () {
+            $scope.getAllTrumot();
         }
 
+        $scope.getAllTrumot = function () {
+            $scope.loader = true;
+            appServices.GetAllTActiveTruma().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Trumot = data.Data;
+                }
+                else {
+
+                }
+                $scope.loader = false;
+            });
+        }
+
+        $scope.ImageProfile = function (item) {
+            if (item.ProfilePic == '' || item.ProfilePic == null) {
+                return "/Content/images/no-Image.png";
+            }
+            else {
+                return item.ProfilePic;
+            }
+        }
+
+        $scope.Trom = function (item) {
+            $scope.wizard = true;
+        }
 
         self.init();
 

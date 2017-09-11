@@ -34,7 +34,7 @@
         font-family: OpenSansHebrew-ExtraBold;
     }
 .blue-width {
-    height:84px;
+    height:110px;
     background: #bdc9d9;
 }
     .blue-width p {
@@ -46,7 +46,7 @@
         top: 42px;
     }
 .donation-block {
-    margin-top: -19px;
+    margin-top: 0;
 }
 .white-box {
     background: #fff;
@@ -68,7 +68,9 @@
     margin-right: 96px;
     margin-top: -2px;
 }
-input.trom-btn {
+.loader1 {
+    text-align:center;
+}input.trom-btn {
     background: #284b75;
     color: #fff;
     width: 99px;

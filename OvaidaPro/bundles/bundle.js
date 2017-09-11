@@ -21357,6 +21357,14 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Editor]
             }
         })
+        .state("admin.donation-home", {
+            url: '/donation-home',
+            templateUrl: '/Scripts/OvadiaApp/Admin/donation/donation-home/donation-home.html',
+            controller: 'donationHomeCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
         .state("admin.home-movies", {
             url: '/home-movies',
             templateUrl: '/Scripts/OvadiaApp/Admin/Movies/home-movies/home-movies.html',
@@ -22332,12 +22340,39 @@ OvadiaApp.directive('movieDetails', function () {
 OvadiaApp.controller('donationScreenCtrl', ['$scope', '$interval', 'appServices',
     function ($scope, $interval, appServices) {
         self = this;
-        $scope.Articles = [];
+        $scope.Trumot = [];
+        $scope.loader = false;
+        $scope.wizard = false;
 
-        self.init = function () {///
-         
+        self.init = function () {
+            $scope.getAllTrumot();
         }
 
+        $scope.getAllTrumot = function () {
+            $scope.loader = true;
+            appServices.GetAllTActiveTruma().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Trumot = data.Data;
+                }
+                else {
+
+                }
+                $scope.loader = false;
+            });
+        }
+
+        $scope.ImageProfile = function (item) {
+            if (item.ProfilePic == '' || item.ProfilePic == null) {
+                return "/Content/images/no-Image.png";
+            }
+            else {
+                return item.ProfilePic;
+            }
+        }
+
+        $scope.Trom = function (item) {
+            $scope.wizard = true;
+        }
 
         self.init();
 
@@ -23620,6 +23655,20 @@ OvadiaApp.directive('homeRecomm', function () {
         templateUrl: '/Scripts/OvadiaApp/Admin/recommen/home-recommen/home-recommen.html'
     }
 });
+OvadiaApp.controller('donationWizardCtrl', ['$scope','$timeout', '$http', '$rootScope', 'ngDialog',
+    function ($scope, $timeout, $http, $rootScope, ngDialog) {
+
+    }
+]);
+
+OvadiaApp.directive('donationWizard', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'donationWizardCtrl',
+        templateUrl: '/Scripts/OvadiaApp/donation-screen/donation-wizard/donation-wizard.html'
+    }
+});
 OvadiaApp.service('appServices', ['$http', function ($http) {
 
     /* Event Services -------------------> */
@@ -24077,6 +24126,77 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
     this.GetCaruselArticles = function () {
         return $http({
             url: url + '/ArticleSer/GetCaruselArticles',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+     /* TRUMA -----------------> */
+
+    this.SaveTruma = function (truma) {
+
+        return $http({
+            url: url + '/TrumaSer/Save',
+            method: 'POST',
+            data: JSON.stringify(truma),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllTActiveTruma = function () {
+        return $http({
+            url: url + '/TrumaSer/GetAllTActiveTruma',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllTTruma = function () {
+        return $http({
+            url: url + '/TrumaSer/GetAllTTruma',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    /* TRUMA Person-----------------> */
+    this.SavePersonTruma = function (truma) {
+
+        return $http({
+            url: url + '/TrumaPersonSer/Save',
+            method: 'POST',
+            data: JSON.stringify(truma),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetPersonTruma = function (id) {
+        var param = {
+            Id : id
+        }
+        return $http({
+            url: url + '/TrumaPersonSer/Get',
+            method: 'POST',
+            data: JSON.stringify(param),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.SmallGet = function () {
+        return $http({
+            url: url + '/TrumaPersonSer/SmallGet',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
@@ -24638,6 +24758,82 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
 //        templateUrl: '/Scripts/OvadiaApp/Admin/category-admin/category-admin.html'
 //    }
 //});
+OvadiaApp.controller('donationHomeCtrl', ['$scope', '$interval', 'appServices','ngDialog',
+    function ($scope, $interval, appServices, ngDialog) {
+        self = this;
+        $scope.Truma = {};
+        $scope.Trumot = [];
+        $scope.trumot = [
+            { id: 1, Name: 'ברכת השנה' }, 
+            { id: 2, Name: 'הוראות קבע' },
+            { id: 3, Name: 'הקדשת ארוחת צהריים לאברכים' },
+            { id: 4, Name: 'הקדשת שיעור לברכה' },
+            { id: 5, Name: 'הקדשת שיעור לעילוי נשמת \\ הצלחה' },
+            { id: 6, Name: 'מחצית השקל' },
+            { id: 7, Name: 'פדיון כפרות' },
+            { id: 8, Name: 'פרנס היום' },
+            { id: 9, Name: 'צדקה לפני סוכות' },
+            { id: 10, Name: 'קמחא דפסחא' }
+        ];
+        $scope.loader = false;
+
+        self.init = function () {///
+            $scope.getAllTrumaTypes();
+        }
+
+        $scope.getAllTrumaTypes = function () {
+            $scope.loader = true;
+            appServices.GetAllTTruma().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Trumot = data.Data;
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+
+                $scope.loader = false;
+            });
+        }
+
+        $scope.selectTruma = function () {
+            $scope.Truma = $scope.truma_select;
+        }
+
+        $scope.SaveTruma = function () {
+            appServices.SaveTruma($scope.Truma).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    var index = $scope.Trumot.findIndex(item => item.Id === data.Data.Id);
+                    $scope.Trumot[index] = data.Data;
+                    $scope.OpenPopup("תרומה נשמרה בהצלחה!", "פרטי התרומה נשמרו בהצלחה!");
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+            });
+        }
+
+        $scope.OpenPopup = function (title, msg) {
+            $scope.Title = title;
+            $scope.Msg = msg;
+            ngDialog.open({
+                template: '/Scripts/OvadiaApp/Admin/events-dialog/Movies/Movie-change.html',
+                scope: $scope
+            });
+        }
+
+        self.init();
+
+    }]);
+
+
+OvadiaApp.directive('donationHome', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'donationHomeCtrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/donation/donation-home/donation-home.html'
+    }
+});
 OvadiaApp.controller('sendMailCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout','$rootScope',
     function ($scope, appServices, ngDialog, $timeout, $rootScope) {
         var self = this;
@@ -25732,6 +25928,8 @@ OvadiaApp.controller('headerComponentCtrl', ['$scope','$rootScope',
             { name: 'שיעורים', state: 'movie-category', url: '/movie-category' },
             { name: 'זמני שיעורים ותפילות', state: 'all-lesson', url: '/all-lesson' },
             { name: 'המלצות', state: 'recommendation', url: '/recommendation' },
+            { name: 'תרומות', state: 'donation', url: '/donation' },
+
 
         ];
 
@@ -26267,8 +26465,10 @@ OvadiaApp.controller('homeAdminCtrl', ['$scope', '$rootScope', 'ngDialog', 'appS
             { name: 'ניהול מאמרים\\סרטים', state: 'admin.home-movies', url: '/admin/home-movies' },
             { name: 'הודעות לציבור', state: 'admin.comment-info', url: '/admin/comment-info' },
             { name: 'ניהול המלצות', state: 'admin.home-recommen', url: '/admin/home-recommen' },
-            { name: 'ניהול קרוסלה', state: 'admin.carusel', url: '/admin/carusel' }
+            { name: 'ניהול קרוסלה', state: 'admin.carusel', url: '/admin/carusel' },
+            { name: 'ניהול תרומות', state: 'admin.donation-home', url: '/admin/donation-home' }
         ];
+
         $scope.plusIcon = true;
 
         var self = this;

@@ -118,6 +118,14 @@
                 access: [UserRole.Admin, UserRole.Editor]
             }
         })
+        .state("admin.donation-home", {
+            url: '/donation-home',
+            templateUrl: '/Scripts/OvadiaApp/Admin/donation/donation-home/donation-home.html',
+            controller: 'donationHomeCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+        })
         .state("admin.home-movies", {
             url: '/home-movies',
             templateUrl: '/Scripts/OvadiaApp/Admin/Movies/home-movies/home-movies.html',

@@ -43,7 +43,6 @@
     <Compile Include="Article.cs" />
     <Compile Include="Bo_Tfila.cs" />
     <Compile Include="CategoryBo.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Consts.cs" />
     <Compile Include="ErrorEnumcs.cs" />
@@ -52,6 +51,8 @@
     <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result.cs" />
+    <Compile Include="Truma.cs" />
+    <Compile Include="TrumaPerson.cs" />
     <Compile Include="User.cs" />
     <Compile Include="WeekEventsResult.cs" />
   </ItemGroup>
