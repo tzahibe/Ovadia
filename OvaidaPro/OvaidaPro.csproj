@@ -170,8 +170,10 @@
     <Content Include="Content\images\text_shadow.png" />
     <Content Include="Global.asax" />
     <Content Include="Iqndex.html" />
+    <Content Include="pages\ErrorPayment.html" />
     <Content Include="pages\errorRemoveMail.html" />
     <Content Include="pages\removeEmail.html" />
+    <Content Include="pages\successfulPayment.html" />
     <Content Include="Scripts\Directives\rotate-degree\rotate-degree.js" />
     <Content Include="Scripts\OvadiaApp\Admin\carusel-admin\carusel-admin.css" />
     <Content Include="Scripts\OvadiaApp\Admin\carusel-admin\carusel-admin.html" />

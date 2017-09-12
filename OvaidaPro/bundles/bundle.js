@@ -23696,7 +23696,7 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
                     $scope.currentStep = 1;
                     break;
                 case 2:
-                    if ($scope.PassStep[1]) {
+                    if ($scope.PassStep[0]) {
                         $scope.currentStep = 2;
                     }
                     break;
