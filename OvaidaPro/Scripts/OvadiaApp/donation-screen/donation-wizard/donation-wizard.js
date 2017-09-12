@@ -37,7 +37,9 @@
                     $scope.currentStep = 1;
                     break;
                 case 2:
-                    $scope.currentStep = 2;
+                    if ($scope.PassStep[1]) {
+                        $scope.currentStep = 2;
+                    }
                     break;
              
             }
