@@ -4,50 +4,128 @@
     <ul>
         <li class="accordion-form-step">
             <form name="WizardForm">
-                <div class="step-head active">
+                <div class="step-head" ng-show="PassStep[0]">
                     <!---Header -->
                     <span class="stepNumber" ng-hide="PassStep[0]">1</span>
                     <!--- done step----->
-                    <span class="stepNumber done ng-hide" ng-show="PassStep[0]"><img src="/Content/images/icon-v.png"></span>
+                    <span class="stepNumber done" ng-show="PassStep[0]"><img src="/Content/images/icon-v.png"></span>
                     <h2>פרטים אישיים</h2>
-                    <span class="close-icon"></span>
+                    <!--<span class="open-icon"></span>-->
+                    <!--<span class="open-icon" ng-click="StartStep(2)"></span>-->
                 </div>
-                <div class="step-content" ng-hide="loader">
-                    <h1 class="car-sub-title ng-binding" title="הצטרפות לביטוח רכב" alt="הצטרפות לביטוח רכב">הצטרפות לביטוח רכב</h1>
-                    <p class="text" style="line-height:25px;">
-                        מצורפת בזאת הצעה לחידוש פוליסת הרכב שלך לתקופת הביטוח שתפורט בהמשך.<br>
-                        תוקף ההצעה הינו עד לתאריך תחילת הביטוח או עד למועד שצוין בהודעה שנמסרה לך בכתב, לפי המאוחר ביניהם.<br>
-                        פוליסה זו כוללת את הכיסויים וההרחבות המפורטים בתכנית הביטוח בלבד.<br>
-                        באפשרותך לקבל הסבר מפורט, לבצע שינויים בהצעה זו ולרכוש כיסויים נוספים על ידי פניה לסוכן הביטוח שלך.
-                    </p><div class="paragraphHeadlines">פרטי זיהוי:</div>
-                    <p class="" style="line-height:20px; margin:-3px 0 15px 0;">
-                        יש להזין לפחות 2 נתונים מתוך ה 3 לצורך המשך התהליך
+                <div class="ActiveStep" ng-hide="PassStep[0]">
+                    <div class="step-head active">
+                        <!---Header -->
+                        <span class="stepNumber">1</span>
+                        <!--- done step----->
+                        <span class="stepNumber done ng-hide" ng-show="PassStep[0]"><img src="/Content/images/icon-v.png"></span>
+                        <h2>פרטים אישיים</h2>
+                        <span class="close-icon"></span>
+                    </div>
+                    <div class="step-content" ng-hide="loader || PassStep[0]">
+                        <h1 class="car-sub-title ng-binding" title="{{Truma.Title}}" alt="{{Truma.Title}}">{{Truma.Title}}</h1>
+                        <p class="text" style="line-height:25px;" ng-bind-html="Truma.Body">
+                        </p>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                *
+                                <label for="toremName">שם התורם</label>
+                                <input required type="text" ng-model="Truma.Payment_FullName" class="form-control" id="toremName" placeholder="שם מלא">
+                            </div>
+                            <div class="form-group">
+                                <label class="block" for="sumTorem">* סכום התרומה</label>
+                                <input required type="number" ng-model="Truma.Total" class="form-control" id="sumTorem" placeholder="סכום תרומה">
+                                <select required class="form-control" ng-model="cur">
+                                    <option value="">מטבע</option>
+                                    <option value="1">שקל</option>
+                                    <option value="2">דולר</option>
+                                    <option value="978">יורו</option>
+                                </select>
+                            </div>
 
-                    </p>
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            <label for="IdNumber1" class="input-title">
-                                מספר ת.ז
-                                (9 ספרות):
-                            </label>
-                            <input only-digits="" type="text" ng-model="IdentificationModel.IdNumber" ng-disabled="disabledFeilds" name="user_ID" class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength" id="IdNumber1" maxlength="9" placeholder="מספר תעודת זהות" disabled="disabled">
-                            <!--<div class="spacing errorValidation" ng-show="validationObj.IdRequired || carsOnlineForm.user_ID.$error.required &&  carsOnlineForm.user_ID.$touched ||
-                        carsOnlineForm.user_ID.$error.required &&  submit">יש להזין תעודת זהות</div>-->
-                            <div class="errorValidation ng-hide" ng-show="validationObj.IdlInvalid || isInvalidIdNumber(IdentificationModel.IdNumber)
-                     &amp;&amp; carsOnlineForm.user_ID.$touched|| isInvalidIdNumber(IdentificationModel.IdNumber) &amp;&amp; submit">יש להזין תעודת זהות תיקנית</div>
+                            <div class="form-group">
+                               *
+                                <label for="Phone1">טלפון</label>
+                                <input required type="text" ng-model="Truma.Phone1" class="form-control" id="Phone1" placeholder="טלפון">
+                            </div>
+                            <div class="form-group">
+                                *
+                                <label for="idNumber">תעודת זהות</label>
+                                <input required type="number" ng-model="Truma.NumberId" class="form-control" id="idNumber" placeholder="תעודת זהות">
+                            </div>
+                            <div class="form-group">
+                                &nbsp;
+                                <label for="city">עיר </label>
+                                <input type="text" ng-model="Truma.City" class="form-control" id="city" placeholder="עיר">
+                            </div>
+                            <div class="form-group">
+                                &nbsp;
+                                <label for="address"> רחוב + דירה</label>
+                                <input type="text" ng-model="Truma.Address" class="form-control" id="address" placeholder="כתובת">
+                            </div>
+
                         </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <!--<div class="form-group">
+                                &nbsp;
+                                <label for="flatNumber"> מספר דירה</label>
+                                <input type="text" ng-model="Truma.FlatNumber" class="form-control" id="flatNumber" placeholder="מספר דירה">
+                            </div>-->
+                            <div class="form-group">
+                                &nbsp;
+                                <label for="email1">דואר אלקטרוני </label>
+                                <input type="email" ng-model="Truma.Email"  class="form-control" id="email1" placeholder="דואר אלקטרוני">
+                            </div>
+                            <div class="form-group">
+                                &nbsp;
+                                <label for="Donates1">לעילוי נשמת\ברכה </label>
+                                <textarea maxlength="100" ng-model="Truma.Donates" type="text" class="form-control" id="Donates1" placeholder="מוגבל ל100 תווים בלבד"></textarea>
+                            </div>
+                            <div class="form-group">
+                                &nbsp;
+                                <label for="Comment"> הערה בנוגע לתשלום</label>
+                                <textarea ng-model="Truma.Comment" type="text" class="form-control" id="Comment" placeholder="כתוב הערה"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                * שדות חובה <br />
+                                <div class="form-group">
+                                    <input type="button" class="btn btn-success" ng-click="moveStep()" id="submitButton" value="שלח">
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
-                <div class="step-head">
+                <div class="step-head" ng-hide="PassStep[0]">
                     <!---Header -->
                     <span class="stepNumber" ng-hide="PassStep[1]">2</span>
                     <!--- done step----->
-                    <span class="stepNumber done ng-hide" ng-show="PassStep[1]"><img ng-src="/Content/images/CarsOnLine/icon-v.png" src="/Content/images/CarsOnLine/icon-v.png"></span>
-                    <h2>פרטים נוספים</h2>
+                    <span class="stepNumber done" ng-show="PassStep[1]"><img src="/Content/images/icon-v.png"></span>
+                    <h2>אמצעי תשלום</h2>
                     <!--<span class="open-icon"></span>-->
-                    <span class="open-icon" ng-click="StartStep(2)"></span>
+                    <!--<span class="open-icon" ng-click="StartStep(2)"></span>-->
                 </div>
-
+                <div class="ActiveStep" ng-show="PassStep[0]">
+                    <div class="step-head active">
+                        <!---Header -->
+                        <span class="stepNumber">2</span>
+                        <!--- done step----->
+                        <span class="stepNumber done"><img src="/Content/images/icon-v.png"></span>
+                        <h2>אמצעי תשלום</h2>
+                        <span class="close-icon"></span>
+                    </div>
+                    <div class="step-content big-height">
+                        <h1 class="car-sub-title ng-binding" title="אמצעי תשלום" alt="אמצעי תשלום">אמצעי תשלום</h1>
+                        <p class="text" style="line-height:25px;">
+                          ביצוע התשלום נעשה בצורה מאובטחת על ידי שימוש בחברת קשר.
+                        </p>
+                        <iframe src="{{iframeUrl}}" ng-show="PassStep[0]"  class="payIframe"></iframe>
+                    </div>
+                </div>
             </form>
         </li>
     </ul>

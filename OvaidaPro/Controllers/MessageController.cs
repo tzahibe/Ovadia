@@ -14,9 +14,12 @@ namespace OvaidaPro.Controllers
         // GET: Message
         public JsonResult SendMail(MessageSend MessageSend)
         {
-            isAllow();
-            Result result = new Result();
-            Message_Logic.SendMsg(MessageSend);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = new Result();
+                Message_Logic.SendMsg(MessageSend);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public JsonResult AddEmail(Message msg)
@@ -26,8 +29,11 @@ namespace OvaidaPro.Controllers
         }
         public JsonResult RemoveEmail(int msgId)
         {
-            isAllow();
-            Result result = Message_Logic.RemoveEmail(msgId);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = Message_Logic.RemoveEmail(msgId);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult RemoveEmailByToken(int msgId, string token)
@@ -44,8 +50,11 @@ namespace OvaidaPro.Controllers
         }
         public JsonResult GetAllMembers()
         {
-            isAllow();
-            Result result = Message_Logic.GetAllMembers();
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = Message_Logic.GetAllMembers();
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

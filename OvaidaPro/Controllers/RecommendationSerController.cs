@@ -14,20 +14,30 @@ namespace OvaidaPro.Controllers
         //RecommendationSer
         public ActionResult AddRecomm(Bo.Article article)
         {
-            isAllow();
-            Result result = RecommendationLogic.AddRecomm(article);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = RecommendationLogic.AddRecomm(article);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult EditRecomm(Bo.Article article)
         {
-            isAllow();
-            Result result = RecommendationLogic.EditRecomm(article);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = RecommendationLogic.EditRecomm(article);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
 
         }
         public ActionResult RemoveRecommById(int articleId)
         {
-            Result result = RecommendationLogic.RemoveRecommById(articleId);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = RecommendationLogic.RemoveRecommById(articleId);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public  ActionResult GetRecommById(int articleId)
@@ -37,7 +47,11 @@ namespace OvaidaPro.Controllers
         }
         public  ActionResult GetAllRecomm()
         {
-            Result result = RecommendationLogic.GetAllRecomm();
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = RecommendationLogic.GetAllRecomm();
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public  ActionResult GetAllActiveRecomm()

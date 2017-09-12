@@ -204,7 +204,7 @@
                     //$scope.Article = response.data.Data;
                     $scope.isNewArticle = false;
                 }
-                else if (data.ErrorCode == 5) {
+                else if (ErrorCode == 5) {
                     $rootScope.LogOut();
                 }
                 else {

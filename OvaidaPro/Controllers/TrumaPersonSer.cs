@@ -14,14 +14,20 @@ namespace OvaidaPro.Controllers
     {
         public ActionResult Save(TrumaPerson truma)
         {
-            isAllow();
-            Result resultToClient = TrumaPersonLogic.Save(truma);
+            Result resultToClient = isAllow();
+            if (resultToClient.ErrorCode == 0)
+            {
+                 resultToClient = TrumaPersonLogic.Save(truma);
+            }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Get(int Id)
         {
-            isAllow();
-            Result resultToClient = TrumaPersonLogic.Get(Id);
+            Result resultToClient = isAllow();
+            if (resultToClient.ErrorCode == 0)
+            {
+                 resultToClient = TrumaPersonLogic.Get(Id);
+            }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
 
         }

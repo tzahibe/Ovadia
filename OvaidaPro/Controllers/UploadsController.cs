@@ -21,15 +21,7 @@ namespace OvaidaPro.Controllers
         {
             HttpContext context = System.Web.HttpContext.Current;
             Result resultToClient = new Result();
-
-            //if (context.Session["Admin"] == null ||
-            //    Convert.ToBoolean(context.Session["Admin"]) == false)
-            //{
-            //    resultToClient.ErrorCode = 5;
-            //    resultToClient.ErrorMsg = "עליך להתחבר תחילה על מנת לבצע פעולה זו";
-            //}
-            //else
-            //{
+         
             DirectoryInfo dirInfo = new DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\\Uploads");
             FileInfo[] info = dirInfo.GetFiles("*sm_*");
             List<FileNames> items = new List<FileNames>();
@@ -47,9 +39,18 @@ namespace OvaidaPro.Controllers
         }
         public void AddFile(int imgSize = 1) //imgsize = 1 small one
         {
-            isAllow();
+          
             HttpContext context = System.Web.HttpContext.Current;
             Result resultToClient = new Result();
+            resultToClient = isAllow();
+            if (resultToClient.ErrorCode != 0)
+            {
+                responseJsonFromServer(context);
+                var serializer = new JavaScriptSerializer();
+                var serializedResult = serializer.Serialize(resultToClient);
+                context.Response.Write(serializedResult);
+                return;
+            }
 
             FileResult result = new FileResult();
          
@@ -137,11 +138,20 @@ namespace OvaidaPro.Controllers
         }
         public void DeleteFile(string fname)
         {
-            isAllow();
+            
             HttpContext context = System.Web.HttpContext.Current;
             Result resultToClient = new Result();
+            resultToClient = isAllow();
+            if (resultToClient.ErrorCode != 0)
+            {
+                responseJsonFromServer(context);
+                var serializer1 = new JavaScriptSerializer();
+                var serializedResult1 = serializer1.Serialize(resultToClient);
+                context.Response.Write(serializedResult1);
+                return;
+            }
 
-                       DirectoryInfo dirInfo = new DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\\Uploads");
+            DirectoryInfo dirInfo = new DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\\Uploads");
             FileInfo[] info = dirInfo.GetFiles("*.*");
             List<string> items = new List<string>();
             foreach (FileInfo f in info)

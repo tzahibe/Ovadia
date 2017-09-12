@@ -22090,7 +22090,7 @@ OvadiaApp.controller('addMovieCtrl', ['$scope',
                     //$scope.Article = response.data.Data;
                     $scope.isNewArticle = false;
                 }
-                else if (data.ErrorCode == 5) {
+                else if (ErrorCode == 5) {
                     $rootScope.LogOut();
                 }
                 else {
@@ -22341,6 +22341,7 @@ OvadiaApp.controller('donationScreenCtrl', ['$scope', '$interval', 'appServices'
     function ($scope, $interval, appServices) {
         self = this;
         $scope.Trumot = [];
+        $scope.Truma = {};
         $scope.loader = false;
         $scope.wizard = false;
 
@@ -22372,6 +22373,7 @@ OvadiaApp.controller('donationScreenCtrl', ['$scope', '$interval', 'appServices'
 
         $scope.Trom = function (item) {
             $scope.wizard = true;
+            $scope.Truma = item;
         }
 
         self.init();
@@ -23655,9 +23657,37 @@ OvadiaApp.directive('homeRecomm', function () {
         templateUrl: '/Scripts/OvadiaApp/Admin/recommen/home-recommen/home-recommen.html'
     }
 });
-OvadiaApp.controller('donationWizardCtrl', ['$scope','$timeout', '$http', '$rootScope', 'ngDialog',
-    function ($scope, $timeout, $http, $rootScope, ngDialog) {
+OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$rootScope', 'ngDialog',
+    '$sce',
+    function ($scope, $timeout, $http, $rootScope, ngDialog, $sce) {
+        var self = this;
+        $scope.PassStep = [false, false];
+        var url = "https://kesherhk.info/Pay.aspx?id=15&value=22b2629453fb4fa68e57f508552d88e9&pId=2862&dest=1&lang=he-IL";
 
+        self.init = function () {
+          
+        }
+
+        
+        $scope.moveStep = function () {
+            if (!WizardForm.checkValidity()) {
+                return;
+            }
+
+            $scope.PassStep[0] = true;
+            $scope.Truma.Address = $scope.Truma.Address == null ? "" : $scope.Truma.Address;
+            $scope.Truma.Email = $scope.Truma.Email == null ? "" : $scope.Truma.Email;
+            $scope.Truma.Comment = $scope.Truma.Comment == null ? "" : $scope.Truma.Comment;
+
+
+            var param = url + "&titles=hide&cur=" + $scope.cur + "&tz=" + $scope.Truma.NumberId + "&tl=" + $scope.Truma.Phone1
+                + "&total=" + $scope.Truma.Total + "&ml=" + $scope.Truma.Email + "&nm=" + $scope.Truma.Payment_FullName
+                + "&adrs=" + $scope.Truma.Address + "&cmnt=" + $scope.Truma.Comment; 
+            $scope.iframeUrl = $sce.trustAsResourceUrl(param);
+
+        }
+
+        self.init();
     }
 ]);
 

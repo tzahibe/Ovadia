@@ -12,8 +12,11 @@ namespace OvaidaPro.Controllers
     {
         public ActionResult GetAllEvents()
         {
-            isAllow();
-            Result result = Event_Logic.GetEvents();
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = Event_Logic.GetEvents();
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
 
         }
@@ -42,20 +45,29 @@ namespace OvaidaPro.Controllers
         }
         public ActionResult AddEvent(Event eventObj)
         {
-            isAllow();
-            Result result = Event_Logic.AddEvent(eventObj);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = Event_Logic.AddEvent(eventObj);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult RemoveEvent(int eventId)
         {
-            isAllow();
-            Result result = Event_Logic.RemoveEvent(eventId);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = Event_Logic.RemoveEvent(eventId);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult UpdateEvent(Event eventObj)
         {
-            isAllow();
-            Result result = Event_Logic.UpdateEvent(eventObj);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = Event_Logic.UpdateEvent(eventObj);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
     }

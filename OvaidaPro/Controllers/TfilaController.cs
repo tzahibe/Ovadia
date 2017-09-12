@@ -15,20 +15,29 @@ namespace OvaidaPro.Controllers
 
         public ActionResult AddTfila(Bo_Tfila Tfila)
         {
-            isAllow();
-            Result result = TfilaLogic.AddTfila(Tfila);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = TfilaLogic.AddTfila(Tfila);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult UpdateTfila(Bo_Tfila Tfila)
         {
-            isAllow();
-            Result result = TfilaLogic.UpdateTfila(Tfila);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = TfilaLogic.UpdateTfila(Tfila);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult RemoveTfila(int ID)
         {
-            isAllow();
-            Result result = TfilaLogic.RemoveTfila(ID);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = TfilaLogic.RemoveTfila(ID);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GetAllTfilot()

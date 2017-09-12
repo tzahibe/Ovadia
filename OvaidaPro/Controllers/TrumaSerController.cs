@@ -19,14 +19,20 @@ namespace OvaidaPro.Controllers
         }
         public ActionResult GetAllTTruma()
         {
-            isAllow();
-            Result result = TrumaLogic.GetAllTruma();
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = TrumaLogic.GetAllTruma();
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Save(Truma truma)
         {
-            isAllow();
-            Result result = TrumaLogic.Save(truma);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = TrumaLogic.Save(truma);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
     }

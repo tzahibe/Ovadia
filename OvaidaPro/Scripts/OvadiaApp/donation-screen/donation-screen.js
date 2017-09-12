@@ -2,6 +2,7 @@
     function ($scope, $interval, appServices) {
         self = this;
         $scope.Trumot = [];
+        $scope.Truma = {};
         $scope.loader = false;
         $scope.wizard = false;
 
@@ -33,6 +34,7 @@
 
         $scope.Trom = function (item) {
             $scope.wizard = true;
+            $scope.Truma = item;
         }
 
         self.init();

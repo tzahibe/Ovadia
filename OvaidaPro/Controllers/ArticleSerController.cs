@@ -14,20 +14,29 @@ namespace OvaidaPro.Controllers
         // GET: ArticleSer
         public ActionResult AddArticle(Bo.Article article)
         {
-            isAllow();
-            Result result = ArticleLogic.AddArticle(article);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                result = ArticleLogic.AddArticle(article);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult EditArticle(Bo.Article article)
         {
-            isAllow();
-            Result result = ArticleLogic.EditArticle(article);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                result = ArticleLogic.EditArticle(article);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult RemoveArticleById(int articleId)
         {
-            isAllow();
-            Result result = ArticleLogic.RemoveArticleById(articleId);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                result = ArticleLogic.RemoveArticleById(articleId);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GetArticleById(int articleId)

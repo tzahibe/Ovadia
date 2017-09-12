@@ -15,8 +15,11 @@ namespace OvaidaPro.Controllers
         // GET: CommentSer
         public ActionResult Save(Comment comment)
         {
-            isAllow();
-            Result resultToClient = CommentLogic.Save(comment);
+            Result resultToClient = isAllow();
+            if (resultToClient.ErrorCode == 0)
+            {
+                 resultToClient = CommentLogic.Save(comment);
+            }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
 

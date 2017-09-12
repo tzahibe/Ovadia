@@ -46,69 +46,81 @@ namespace OvaidaPro.Controllers
         //Admin
         public ActionResult RenameCategoryName(int catId, string newName, bool isActive, string order, bool isTag)
         {
-            isAllow();
-
-            int tag = isTag ? 1 : 0;
-            
-            Result resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive, order, tag);
-
+            Result resultToClient = isAllow();
             if (resultToClient.ErrorCode == 0)
             {
-                resultToClient = CategoriesLogic.GetAllParentCategories();
-            }
+                int tag = isTag ? 1 : 0;
 
+                 resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive, order, tag);
+
+                if (resultToClient.ErrorCode == 0)
+                {
+                    resultToClient = CategoriesLogic.GetAllParentCategories();
+                }
+            }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
         public ActionResult RenameSubCategoryName(int parentId, int catId, string newName, bool isActive, string order, bool isTag)
         {
-            isAllow();
-            int tag = isTag ? 1 : 0;
-            Result resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive,order, tag);
 
+            Result resultToClient = isAllow();
             if (resultToClient.ErrorCode == 0)
             {
-                resultToClient = CategoriesLogic.GetAllChildrensCategoriesById(parentId);
+                int tag = isTag ? 1 : 0;
+                 resultToClient = CategoriesLogic.RenameCategoryName(catId, newName, isActive, order, tag);
+
+                if (resultToClient.ErrorCode == 0)
+                {
+                    resultToClient = CategoriesLogic.GetAllChildrensCategoriesById(parentId);
+                }
             }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AddCategory(string catName, bool isActive, bool isTag)
         {
-            isAllow();
-
-            int tag = isTag ? 1 : 0;
-
-            Result resultToClient = CategoriesLogic.AddCategory(catName, isActive, tag);
-
+            Result resultToClient = isAllow();
             if (resultToClient.ErrorCode == 0)
             {
-                resultToClient = CategoriesLogic.GetAllParentCategories();
+                int tag = isTag ? 1 : 0;
+
+                 resultToClient = CategoriesLogic.AddCategory(catName, isActive, tag);
+
+                if (resultToClient.ErrorCode == 0)
+                {
+                    resultToClient = CategoriesLogic.GetAllParentCategories();
+                }
             }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AddSubCategory(string catName, int parentId, bool isActive, bool  isTag)
         {
-            isAllow();
-
-            int tag = isTag ? 1 : 0;
-
-            Result resultToClient = new Result();
-
-            resultToClient = CategoriesLogic.AddSubCategory(catName, parentId, isActive, tag);
-
+            Result resultToClient = isAllow();
             if (resultToClient.ErrorCode == 0)
             {
-                resultToClient = CategoriesLogic.GetAllChildrensCategoriesById(parentId);
+                int tag = isTag ? 1 : 0;
+
+                 resultToClient = new Result();
+
+                resultToClient = CategoriesLogic.AddSubCategory(catName, parentId, isActive, tag);
+
+                if (resultToClient.ErrorCode == 0)
+                {
+                    resultToClient = CategoriesLogic.GetAllChildrensCategoriesById(parentId);
+                }
             }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
         public ActionResult RemoveCategoryById(int catId)
         {
-            isAllow();
-            Result resultToClient = CategoriesLogic.RemoveCategoryById(catId);
-
+            Result resultToClient = isAllow();
             if (resultToClient.ErrorCode == 0)
             {
-                resultToClient = CategoriesLogic.GetAllParentCategories();
+                 resultToClient = CategoriesLogic.RemoveCategoryById(catId);
+
+                if (resultToClient.ErrorCode == 0)
+                {
+                    resultToClient = CategoriesLogic.GetAllParentCategories();
+                }
             }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
@@ -120,12 +132,15 @@ namespace OvaidaPro.Controllers
         }
         public ActionResult RemoveSubCategoryById(int parentId, int catId)
         {
-            isAllow();
-            Result resultToClient = CategoriesLogic.RemoveCategoryById(catId);
-
+            Result resultToClient = isAllow();
             if (resultToClient.ErrorCode == 0)
             {
-                resultToClient = CategoriesLogic.GetAllChildrensCategoriesById(parentId);
+                 resultToClient = CategoriesLogic.RemoveCategoryById(catId);
+
+                if (resultToClient.ErrorCode == 0)
+                {
+                    resultToClient = CategoriesLogic.GetAllChildrensCategoriesById(parentId);
+                }
             }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
@@ -133,8 +148,11 @@ namespace OvaidaPro.Controllers
         //tags
         public ActionResult AddTag(string tagName)
         {
-            isAllow();
-            Result resultToClient = CategoriesLogic.AddTag(tagName);
+            Result resultToClient = isAllow();
+            if (resultToClient.ErrorCode == 0)
+            {
+                 resultToClient = CategoriesLogic.AddTag(tagName);
+            }
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
 

@@ -48,26 +48,38 @@ namespace OvaidaPro.Controllers
         }
         public ActionResult GetActiveUsers()
         {
-            isAllow();
-            Result result = UsersLogic.GetActiveUsers();
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                result = UsersLogic.GetActiveUsers();
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AddUser(User userObj)
         {
-            isAllow();
-            Result result = UsersLogic.AddUser(userObj);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = UsersLogic.AddUser(userObj);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult RemoveUser(int userId)
         {
-            isAllow();
-            Result result = UsersLogic.RemoveUser(userId);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = UsersLogic.RemoveUser(userId);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult UpdateUser(User userObj)
         {
-            isAllow();
-            Result result = UsersLogic.UpdateUser(userObj);
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = UsersLogic.UpdateUser(userObj);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

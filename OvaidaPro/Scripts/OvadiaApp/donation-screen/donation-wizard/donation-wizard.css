@@ -72,10 +72,12 @@
     right: 14px;
     margin-top: -15px;
 }
+.step-content.big-height{
+    min-height:600px;
 
-    .step-head span.stepNumber.done {
-        background: center no-repeat #fa6821;
-    }
+} .step-head span.stepNumber.done {
+    background: center no-repeat #fa6821;
+}
 
         .step-head span.stepNumber.done img {
             position: relative;
@@ -165,6 +167,36 @@ label.input-title {
 label.input-title-long {
     width: 200px;
 }
+#sumTorem {
+    margin-left: 0;
+    width: 85px;
+}
+donation-wizard label {
+    width: 109px;
+}
+.form-control{
+    height:30px;
+}
+.car-sub-title {
+    font-family: OpenSansHebrew-Bold;
+}
+#submitButton {
+    padding-right: 29px;
+    font-size: 20px;
+    padding-left: 29px;
+}
+/*.ta-scroll-window.form-control {
+    width: auto;
+}*/
+textarea.form-control {
+    height: auto;
+    vertical-align: middle;
+}
+.btn-toolbar .btn, .btn-toolbar .btn-group, .btn-toolbar .input-group {
+    float:right;
+}.ta-scroll-window.ta-text.ta-editor.form-control {
+    width: 100%;
+}
 
 .fade.ng-enter {
     transition: 0.5s linear all;
@@ -203,3 +235,26 @@ label.input-title-long {
     .fade-in-out.ng-hide {
         opacity: 0;
     }
+
+.payIframe {
+    height:600px;
+    width:1000px;
+}
+.block {
+    width:118px;
+}
+@media screen and (max-width: 768px) {
+    .block{
+        display:block;
+    }
+    .col.col-md-8.col-md-offset-2{
+        padding:0;
+    }
+    .payIframe {
+        height: 600px;
+        width: 100%;
+    }
+    .stage-car-form{
+padding:0;
+    }
+}
