@@ -53,10 +53,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/OvaidaPro.dll">
-      <publishTime>09/12/2017 14:49:09</publishTime>
+      <publishTime>09/12/2017 22:25:05</publishTime>
     </File>
     <File Include="bin/OvaidaPro.pdb">
-      <publishTime>09/12/2017 14:49:09</publishTime>
+      <publishTime>09/12/2017 22:25:05</publishTime>
     </File>
     <File Include="bin/Repository.dll">
       <publishTime>09/12/2017 14:49:04</publishTime>
@@ -775,11 +775,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="packages.config">
       <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
+    <File Include="pages/ErrorPayment.html">
+      <publishTime>09/12/2017 16:39:27</publishTime>
+    </File>
     <File Include="pages/errorRemoveMail.html">
       <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="pages/removeEmail.html">
       <publishTime>07/11/2017 23:51:53</publishTime>
+    </File>
+    <File Include="pages/successfulPayment.html">
+      <publishTime>09/12/2017 16:39:13</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>05/21/2017 10:00:37</publishTime>
@@ -1109,7 +1115,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2017 14:56:02</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/header-component/header-component.css">
-      <publishTime>09/03/2017 15:01:55</publishTime>
+      <publishTime>09/12/2017 22:29:02</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/header-component/header-component.html">
       <publishTime>08/23/2017 16:04:44</publishTime>
