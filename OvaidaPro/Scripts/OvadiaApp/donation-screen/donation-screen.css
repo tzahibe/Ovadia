@@ -79,7 +79,14 @@
     top: -23px;
     right: 60px;
 }
+.truma-body {
+    height: 94px;
+    overflow: hidden;
+}
 @media screen and (max-width: 768px) {
+    .truma-body {
+        height:auto;
+    }
     .resp-img {
         width: 45%;
         right: 67px;
