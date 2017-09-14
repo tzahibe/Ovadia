@@ -264,15 +264,61 @@ textarea.form-control {
         transform: rotateY(0);
     }
 
-
+.form-control.disabled {
+    background: #d4cdcd;
+}
+donation-wizard label.btn-primary {
+    width: 44px !important;
+}
+.inputName {
+    padding: 0;
+    width: 30%;
+    height: 34px;
+    margin: 0;
+    position: relative;
+    top: 1px;
+}
+.mob-btn {
+    margin:0;
+}
+.btn-primary.active, .btn-primary:active {
+    background-color: #113350;
+}
+.Donates_label{
+    display:block;
+}
 
 @media screen and (max-width: 768px) {
-    .block{
-        display:block;
+    .mob-btn {
+        margin-top: 1px;
+        margin-right: 0;
+        float: left;
+        width: 31px;
+        font-size: 14px;
     }
-    .col.col-md-8.col-md-offset-2{
-        padding:0;
+    .btn-group, .btn-group-vertical {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        float: right;
+        margin-right: 1px;
+        margin-left: 1px;
     }
+    donation-wizard label.btn-primary{
+        width:35px !important;
+    } .removePaddingMob {
+        padding: 0;
+    } .form-control {
+        width: 100%;
+    } .block {
+            display: block;
+        }
+        #Donates1, #Donates2 {
+            float:right;
+            width: 30%;
+        } .col.col-md-8.col-md-offset-2 {
+            padding: 0;
+        }
     .payIframe {
         height: 600px;
         width: 100%;

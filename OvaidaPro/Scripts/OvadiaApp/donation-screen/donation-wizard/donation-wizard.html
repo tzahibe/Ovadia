@@ -27,46 +27,44 @@
                         <h1 class="car-sub-title ng-binding" title="{{Truma.Title}}" alt="{{Truma.Title}}">{{Truma.Title}}</h1>
                         <p class="text" style="line-height:25px;" ng-bind-html="Truma.Body">
                         </p>
-                        <div class="col-xs-12 col-sm-6">
+                        <div class="col-xs-12 col-sm-6 removePaddingMob">
                             <div class="form-group">
                                 *
                                 <label for="toremName">שם התורם</label>
-                                <input required type="text" ng-model="Truma.Payment_FullName" class="form-control" id="toremName" placeholder="שם מלא">
+                                <input required type="text" ng-model="TrumaPerson.Payment_FullName" class="form-control" id="toremName" placeholder="שם מלא">
                             </div>
                             <div class="form-group">
                                 <label class="block" for="sumTorem">* סכום התרומה</label>
-                                <input required type="number" ng-model="Truma.Total" class="form-control" id="sumTorem" placeholder="סכום תרומה">
-                                <select required class="form-control" ng-model="cur">
-                                    <option value="">מטבע</option>
-                                    <option value="1">שקל</option>
-                                    <option value="2">דולר</option>
-                                    <option value="978">יורו</option>
+                                <input ng-hide="fixedTotal" ng-required="!fixedTotal" type="number" ng-model="TrumaPerson.Total" class="form-control" id="sumTorem" placeholder="סכום תרומה">
+                                <input ng-show="fixedTotal" disabled type="number"  value="{{TrumaPerson.Total}}" class="disabled form-control" id="sumTorem" placeholder="סכום תרומה">
+                                <select class="form-control disabled" ng-model="cur" disabled>
+                                    <option value="">שקל</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                *
                                 <label for="Phone1">טלפון</label>
-                                <input required type="text" ng-model="Truma.Phone1" class="form-control" id="Phone1" placeholder="טלפון">
+                                <input required type="text" ng-model="TrumaPerson.Phone1" class="form-control" id="Phone1" placeholder="טלפון">
                             </div>
                             <div class="form-group">
                                 *
                                 <label for="idNumber">תעודת זהות</label>
-                                <input required type="number" ng-model="Truma.NumberId" class="form-control" id="idNumber" placeholder="תעודת זהות">
+                                <input required type="number" ng-model="TrumaPerson.NumberId" class="form-control" id="idNumber" placeholder="תעודת זהות">
                             </div>
                             <div class="form-group">
                                 &nbsp;
                                 <label for="city">עיר </label>
-                                <input type="text" ng-model="Truma.City" class="form-control" id="city" placeholder="עיר">
+                                <input type="text" ng-model="TrumaPerson.City" class="form-control" id="city" placeholder="עיר">
                             </div>
                             <div class="form-group">
                                 &nbsp;
                                 <label for="address"> רחוב + דירה</label>
-                                <input type="text" ng-model="Truma.Address" class="form-control" id="address" placeholder="כתובת">
+                                <input type="text" ng-model="TrumaPerson.Address" class="form-control" id="address" placeholder="כתובת">
                             </div>
 
                         </div>
-                        <div class="col-xs-12 col-sm-6">
+                        <div class="col-xs-12 col-sm-6 removePaddingMob">
                             <!--<div class="form-group">
                                 &nbsp;
                                 <label for="flatNumber"> מספר דירה</label>
@@ -75,17 +73,34 @@
                             <div class="form-group">
                                 &nbsp;
                                 <label for="email1">דואר אלקטרוני </label>
-                                <input type="email" ng-model="Truma.Email"  class="form-control" id="email1" placeholder="דואר אלקטרוני">
+                                <input type="email" ng-model="TrumaPerson.Email"  class="form-control" id="email1" placeholder="דואר אלקטרוני">
                             </div>
-                            <div class="form-group">
-                                &nbsp;
-                                <label for="Donates1">לעילוי נשמת\ברכה </label>
-                                <textarea maxlength="100" ng-model="Truma.Donates" type="text" class="form-control" id="Donates1" placeholder="מוגבל ל100 תווים בלבד"></textarea>
+                            <label for="Donates1" class="Donates_label">{{Truma.TextBeforeNames}} </label>
+                            <div ng-repeat="item in items" style="    display: inline-block;">
+                                <div class="form-group">
+                                    &nbsp;
+                                    <input type="text" maxlength="100" ng-model="item.model_son" class="inputName form-control" id="Donates1" />
+                                    <div class="btn-group view_buttons" data-toggle="buttons">
+                                        <label ng-class="item.model_gender == 0 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="item.model_gender = 0">
+                                            <input type="radio" name="options" ng-model="radio" value="1" id="option2" autocomplete="off">
+                                            בן
+                                        </label>
+                                        <label ng-class="item.model_gender == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="item.model_gender = 1">
+                                            <input type="radio" name="options" ng-model="radio" value="0" id="option2" autocomplete="off">
+                                           בת
+                                        </label>
+                                    </div>
+                                    <input type="text" maxlength="100" ng-model="item.model_father" class="inputName form-control" id="Donates2" />
+                                    <input  ng-hide="$index == 0" type="button" class="mob-btn btn btn-danger" value="X" ng-click="removeInput(item)" />
+                                    <input ng-show="$index == 0" type="button" class="mob-btn btn btn-success" value="+" ng-click="addInput()" />
+
+                                </div>
                             </div>
+                            
                             <div class="form-group">
                                 &nbsp;
                                 <label for="Comment"> הערה בנוגע לתשלום</label>
-                                <textarea ng-model="Truma.Comment" type="text" class="form-control" id="Comment" placeholder="כתוב הערה"></textarea>
+                                <textarea ng-model="TrumaPerson.Comment" type="text" class="form-control" id="Comment" placeholder="כתוב הערה"></textarea>
                             </div>
                         </div>
 

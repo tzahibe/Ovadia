@@ -18,6 +18,7 @@ namespace BO
         public string ProfilePic { get; set; }
         public int? IsAlowComment { get; set; }
         public int Id { get; set; }
+        public string TextBeforeNames { get; set; }
 
     }
 }

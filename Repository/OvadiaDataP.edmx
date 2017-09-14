@@ -88,6 +88,7 @@
           <Property Name="ProfilePic" Type="nvarchar(max)" />
           <Property Name="IsAlowComment" Type="int" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TextBeforeNames" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="db_TrumaPerson">
           <Key>
@@ -333,6 +334,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsAlowComment" Type="Int32" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TextBeforeNames" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="db_TrumaPerson">
           <Key>
@@ -491,6 +493,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySetMapping Name="db_Truma">
             <EntityTypeMapping TypeName="DB_A25801_OvadiaModel.db_Truma">
               <MappingFragment StoreEntitySet="db_Truma">
+                <ScalarProperty Name="TextBeforeNames" ColumnName="TextBeforeNames" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IsAlowComment" ColumnName="IsAlowComment" />
                 <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />

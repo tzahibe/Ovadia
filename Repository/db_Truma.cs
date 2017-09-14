@@ -24,5 +24,6 @@ namespace Repository
         public string ProfilePic { get; set; }
         public Nullable<int> IsAlowComment { get; set; }
         public int Id { get; set; }
+        public string TextBeforeNames { get; set; }
     }
 }
