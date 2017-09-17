@@ -22664,8 +22664,8 @@ OvadiaApp.directive('commentInfo', function () {
         templateUrl: '/Scripts/OvadiaApp/Admin/comment-info/comment-info.html'
     }
 });
-OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices', 'UserAccount','$rootScope',
-    function ($scope, appServices, UserAccount, $rootScope) {
+OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices', 'UserAccount','$rootScope','$interval',
+    function ($scope, appServices, UserAccount, $rootScope, $interval) {
         var self = this;
         var currentDialog = null;
         $scope.currentEvent = null;
@@ -22676,6 +22676,9 @@ OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices', 'UserAccount','$root
         self.init = function () {
             $scope.isMobileDevice();
             $rootScope.GetComment();
+            //$interval(function () {
+            //    marquee($('#display'), $('#text'));  //Enter name of container element & marquee element
+            //},1000);
         }
 
         $rootScope.GetComment = function () {
@@ -22751,6 +22754,8 @@ OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices', 'UserAccount','$root
             
         });
 
+  
+
         self.init();
      
     }]);
@@ -22763,6 +22768,45 @@ OvadiaApp.directive('myApp', function () {
         templateUrl:'/Scripts/OvadiaApp/my-app/my-app.html'
     }
 });
+
+
+//function marquee(a, b) {
+//    var width = b.width();
+//    var start_pos = a.width();
+//    var end_pos = -width;
+
+//    function scroll() {
+//        if (b.position().left <= -width) {
+//            b.css('left', start_pos);
+//            scroll();
+//        }
+//        else {
+//            time = (parseInt(b.position().left, 10) - end_pos) *
+//                (10000 / (start_pos - end_pos)); // Increase or decrease speed by changing value 10000
+//            b.animate({
+//                'left': -width
+//            }, time, 'linear', function () {
+//                scroll();
+//            });
+//        }
+//    }
+
+//    b.css({
+//        'width': width,
+//        'left': start_pos
+//    });
+//    scroll(a, b);
+
+//    b.mouseenter(function () {     // Remove these lines
+//        b.stop();                 //
+//        b.clearQueue();           // if you don't want
+//    });                           //
+//    b.mouseleave(function () {     // marquee to pause
+//        scroll(a, b);             //
+//    });                           // on mouse over
+
+//}
+
 OvadiaApp.controller('imageGalleryCtrl', ['$scope', '$timeout', '$interval','$http',
     function ($scope, $timeout, $interval, $http) {
         var currentDialog = null;
@@ -23658,8 +23702,8 @@ OvadiaApp.directive('homeRecomm', function () {
     }
 });
 OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$rootScope', 'ngDialog',
-    '$sce',
-    function ($scope, $timeout, $http, $rootScope, ngDialog, $sce) {
+    '$sce','appServices',
+    function ($scope, $timeout, $http, $rootScope, ngDialog, $sce, appServices) {
         var self = this;
         var inputIndex = 1;
         $scope.currentStep = 1;
@@ -23673,6 +23717,7 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
         self.init = function () {
             if ($scope.Truma.Total > 0) {
                 $scope.TrumaPerson.Total = $scope.Truma.Total;
+                $scope.TrmaPerson.Type = $scope.Truma.Type;
                 $scope.fixedTotal = true;
             }
         }
@@ -23683,8 +23728,7 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
                 return;
             }
 
-            $scope.PassStep[0] = true;
-            $scope.currentStep = 2;
+            $scope.TrumaPerson.Donates = "";
             $scope.TrumaPerson.Address = $scope.TrumaPerson.Address == null ? "" : $scope.TrumaPerson.Address;
             $scope.TrumaPerson.Email = $scope.TrumaPerson.Email == null ? "" : $scope.TrumaPerson.Email;
             $scope.TrumaPerson.Comment = $scope.TrumaPerson.Comment == null ? "" : $scope.TrumaPerson.Comment;
@@ -23693,8 +23737,34 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
             var param = url + "&titles=hide&cur=" + 1 + "&tz=" + $scope.TrumaPerson.NumberId + "&tl=" + $scope.TrumaPerson.Phone1
                 + "&total=" + $scope.TrumaPerson.Total + "&ml=" + $scope.TrumaPerson.Email + "&nm=" + $scope.TrumaPerson.Payment_FullName
                 + "&adrs=" + $scope.TrumaPerson.Address + "&cmnt=" + $scope.TrumaPerson.Comment; 
+
+            angular.forEach($scope.items, function (value, key) {
+                $scope.TrumaPerson.Donates += value.model_son + " " + $scope.getNameByType(value.model_gender) +
+                    " " + value.model_father + "$$$";
+            });
+            debugger;
+
+            appServices.SavePersonTruma($scope.TrumaPerson).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.PassStep[0] = true;
+                    $scope.currentStep = 2;
+                }
+                else {
+                    console.log(data.ErrorMsg);
+                }
+            });
+
             $scope.iframeUrl = $sce.trustAsResourceUrl(param);
 
+        }
+
+        $scope.getNameByType = function (type) {
+            if (type == 0) {
+                return "בן";
+            }
+            else {
+                return "בת";
+            }
         }
 
         $scope.StartStep = function (step) {
@@ -24243,7 +24313,7 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
     this.SavePersonTruma = function (truma) {
 
         return $http({
-            url: url + '/TrumaPersonSer/Save',
+            url: url + '/TrummaPersonSer/Save',
             method: 'POST',
             data: JSON.stringify(truma),
             headers: { 'Content-Type': 'application/json' }
@@ -24257,7 +24327,7 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
             Id : id
         }
         return $http({
-            url: url + '/TrumaPersonSer/Get',
+            url: url + '/TrummaPersonSer/Get',
             method: 'POST',
             data: JSON.stringify(param),
             headers: { 'Content-Type': 'application/json' }
@@ -24268,7 +24338,7 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
 
     this.SmallGet = function () {
         return $http({
-            url: url + '/TrumaPersonSer/SmallGet',
+            url: url + '/TrummaPersonSer/SmallGet',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {

@@ -72,10 +72,31 @@ tags-input .tags .input, tags-input .tags .tag-item {
 }
 .form-control{
     height:auto;
-}my-app .row {
+}
+my-app .row {
     margin: 0;
     /*line-height: 0.5;*/
-}.navbar-default .navbar-nav > li > a {
+}
+/*#display {
+    height: 60px;
+    width: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+#text {
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    left: 10px;
+    margin-right: 10px;
+    top: 10px;
+    
+}*/
+
+
+
+.navbar-default .navbar-nav > li > a {
      text-align:center;
 }
 .has-feedback .form-control {

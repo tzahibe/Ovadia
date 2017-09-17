@@ -1,6 +1,6 @@
 ﻿OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$rootScope', 'ngDialog',
-    '$sce',
-    function ($scope, $timeout, $http, $rootScope, ngDialog, $sce) {
+    '$sce','appServices',
+    function ($scope, $timeout, $http, $rootScope, ngDialog, $sce, appServices) {
         var self = this;
         var inputIndex = 1;
         $scope.currentStep = 1;
@@ -14,6 +14,7 @@
         self.init = function () {
             if ($scope.Truma.Total > 0) {
                 $scope.TrumaPerson.Total = $scope.Truma.Total;
+                $scope.TrmaPerson.Type = $scope.Truma.Type;
                 $scope.fixedTotal = true;
             }
         }
@@ -24,8 +25,7 @@
                 return;
             }
 
-            $scope.PassStep[0] = true;
-            $scope.currentStep = 2;
+            $scope.TrumaPerson.Donates = "";
             $scope.TrumaPerson.Address = $scope.TrumaPerson.Address == null ? "" : $scope.TrumaPerson.Address;
             $scope.TrumaPerson.Email = $scope.TrumaPerson.Email == null ? "" : $scope.TrumaPerson.Email;
             $scope.TrumaPerson.Comment = $scope.TrumaPerson.Comment == null ? "" : $scope.TrumaPerson.Comment;
@@ -34,8 +34,34 @@
             var param = url + "&titles=hide&cur=" + 1 + "&tz=" + $scope.TrumaPerson.NumberId + "&tl=" + $scope.TrumaPerson.Phone1
                 + "&total=" + $scope.TrumaPerson.Total + "&ml=" + $scope.TrumaPerson.Email + "&nm=" + $scope.TrumaPerson.Payment_FullName
                 + "&adrs=" + $scope.TrumaPerson.Address + "&cmnt=" + $scope.TrumaPerson.Comment; 
+
+            angular.forEach($scope.items, function (value, key) {
+                $scope.TrumaPerson.Donates += value.model_son + " " + $scope.getNameByType(value.model_gender) +
+                    " " + value.model_father + "$$$";
+            });
+            debugger;
+
+            appServices.SavePersonTruma($scope.TrumaPerson).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.PassStep[0] = true;
+                    $scope.currentStep = 2;
+                }
+                else {
+                    console.log(data.ErrorMsg);
+                }
+            });
+
             $scope.iframeUrl = $sce.trustAsResourceUrl(param);
 
+        }
+
+        $scope.getNameByType = function (type) {
+            if (type == 0) {
+                return "בן";
+            }
+            else {
+                return "בת";
+            }
         }
 
         $scope.StartStep = function (step) {

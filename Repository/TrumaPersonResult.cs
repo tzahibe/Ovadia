@@ -74,6 +74,7 @@ namespace Repository
                     }
                     else
                     {
+                        trumaRep = new db_TrumaPerson();
                         trumaRep.Address = truma.Address;
                         trumaRep.City = truma.City;
                         trumaRep.Comment = truma.Comment;
@@ -82,7 +83,7 @@ namespace Repository
                         trumaRep.Email = truma.Email;
                         trumaRep.ExpDate = truma.ExpDate;
                         trumaRep.FlatNumber = truma.FlatNumber;
-                        trumaRep.Lesson_date = new DateTime();
+                        trumaRep.Lesson_date = DateTime.Now;
                         DateTime myDate;
                         if (DateTime.TryParse(truma.Lesson_date, out myDate))
                         {
@@ -91,10 +92,7 @@ namespace Repository
                         trumaRep.Lesson_Name = truma.Lesson_Name;
                         trumaRep.NumberId = truma.NumberId;
                         trumaRep.PayDate = new DateTime();
-                        if (DateTime.TryParse(truma.Lesson_date, out myDate))
-                        {
-                            trumaRep.PayDate = myDate;
-                        }
+                        trumaRep.PayDate = DateTime.Now;
                         trumaRep.Payment_FullName = truma.Payment_FullName;
                         trumaRep.Phone1 = truma.Phone1;
                         trumaRep.State = truma.State;

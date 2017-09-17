@@ -386,8 +386,8 @@
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\RecommendationSerController.cs" />
     <Compile Include="Controllers\TfilaController.cs" />
-    <Compile Include="Controllers\TrumaPersonSer.cs" />
     <Compile Include="Controllers\TrumaSerController.cs" />
+    <Compile Include="Controllers\TrummaPersonSerController.cs" />
     <Compile Include="Controllers\UploadsController.cs" />
     <Compile Include="Controllers\UsersDetailsController.cs" />
     <Compile Include="Filters\AdminFilter.cs" />
@@ -437,7 +437,9 @@
     <Folder Include="Views\Message\" />
     <Folder Include="Views\RecommendationSer\" />
     <Folder Include="Views\Tfila\" />
+    <Folder Include="Views\TrumaPersonSer\" />
     <Folder Include="Views\TrumaSer\" />
+    <Folder Include="Views\TrummaPersonSer\" />
     <Folder Include="Views\UsersDetails\" />
   </ItemGroup>
   <ItemGroup>

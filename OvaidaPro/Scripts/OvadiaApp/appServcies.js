@@ -500,7 +500,7 @@
     this.SavePersonTruma = function (truma) {
 
         return $http({
-            url: url + '/TrumaPersonSer/Save',
+            url: url + '/TrummaPersonSer/Save',
             method: 'POST',
             data: JSON.stringify(truma),
             headers: { 'Content-Type': 'application/json' }
@@ -514,7 +514,7 @@
             Id : id
         }
         return $http({
-            url: url + '/TrumaPersonSer/Get',
+            url: url + '/TrummaPersonSer/Get',
             method: 'POST',
             data: JSON.stringify(param),
             headers: { 'Content-Type': 'application/json' }
@@ -525,7 +525,7 @@
 
     this.SmallGet = function () {
         return $http({
-            url: url + '/TrumaPersonSer/SmallGet',
+            url: url + '/TrummaPersonSer/SmallGet',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
