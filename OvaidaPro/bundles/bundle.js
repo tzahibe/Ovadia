@@ -23717,7 +23717,7 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
         self.init = function () {
             if ($scope.Truma.Total > 0) {
                 $scope.TrumaPerson.Total = $scope.Truma.Total;
-                $scope.TrmaPerson.Type = $scope.Truma.Type;
+                $scope.TrumaPerson.Type = $scope.Truma.Truma_Type;
                 $scope.fixedTotal = true;
             }
         }
