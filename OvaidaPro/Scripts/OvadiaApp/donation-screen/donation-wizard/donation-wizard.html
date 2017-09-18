@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 *
                                 <label for="toremName">שם התורם</label>
-                                <input required type="text" ng-model="TrumaPerson.Payment_FullName" class="form-control" id="toremName" placeholder="שם מלא">
+                                <input required type="text" ng-pattern="/^[א-ת ?./-]*$/" ng-model="TrumaPerson.Payment_FullName" class="form-control" id="toremName" placeholder="שם מלא">
                             </div>
                             <div class="form-group">
                                 <label class="block" for="sumTorem">* סכום התרומה</label>
@@ -45,22 +45,24 @@
                             <div class="form-group">
                                *
                                 <label for="Phone1">טלפון</label>
-                                <input required type="text" ng-model="TrumaPerson.Phone1" class="form-control" id="Phone1" placeholder="טלפון">
+                                <input required type="text" ng-model="TrumaPerson.Phone1" class="form-control" 
+                                       ng-pattern="/^[0]{1}(2|3|4|8|9|72|73|76|77|50|52|53|54|55|57|58)[2-9]{1}\d{6}|[0]{1}(50|52|53|54|57|58)[2-9]{1}\d{6}$/"
+                                       id="Phone1" placeholder="טלפון">
                             </div>
                             <div class="form-group">
                                 *
                                 <label for="idNumber">תעודת זהות</label>
-                                <input required type="number" ng-model="TrumaPerson.NumberId" class="form-control" id="idNumber" placeholder="תעודת זהות">
+                                <input required type="number" ng-keypress="$scope.idNumberError = ''" ng-model="TrumaPerson.NumberId" class="form-control" id="idNumber" placeholder="תעודת זהות">
                             </div>
                             <div class="form-group">
                                 &nbsp;
                                 <label for="city">עיר </label>
-                                <input type="text" ng-model="TrumaPerson.City" class="form-control" id="city" placeholder="עיר">
+                                <input type="text"  ng-pattern="/^[א-ת ?./-]*$/" ng-model="TrumaPerson.City" class="form-control" id="city" placeholder="עיר">
                             </div>
                             <div class="form-group">
                                 &nbsp;
                                 <label for="address"> רחוב + דירה</label>
-                                <input type="text" ng-model="TrumaPerson.Address" class="form-control" id="address" placeholder="כתובת">
+                                <input type="text" ng-pattern="/^[א-ת ?./-]*$/" ng-model="TrumaPerson.Address" class="form-control" id="address" placeholder="למשל רמבם 7 אשדוד">
                             </div>
 
                         </div>
@@ -73,11 +75,13 @@
                             <div class="form-group">
                                 &nbsp;
                                 <label for="email1">דואר אלקטרוני </label>
-                                <input type="email" ng-model="TrumaPerson.Email"  class="form-control" id="email1" placeholder="דואר אלקטרוני">
+                                <input type="email" ng-model="TrumaPerson.Email" 
+                                       ng-pattern="/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i"
+                                       class="form-control" id="email1" placeholder="דואר אלקטרוני">
                             </div>
                             <label for="Donates1" class="Donates_label">{{Truma.TextBeforeNames}} </label>
                             <div ng-repeat="item in items" style="    display: inline-block;">
-                                <div class="form-group">
+                                <div class="form-group">תע
                                     &nbsp;
                                     <input type="text" maxlength="100" ng-model="item.model_son" class="inputName form-control" id="Donates1" />
                                     <div class="btn-group view_buttons" data-toggle="buttons">
@@ -100,13 +104,14 @@
                             <div class="form-group">
                                 &nbsp;
                                 <label for="Comment"> הערה בנוגע לתשלום</label>
-                                <textarea ng-model="TrumaPerson.Comment" type="text" class="form-control" id="Comment" placeholder="כתוב הערה"></textarea>
+                                <textarea ng-model="TrumaPerson.Comment"  ng-pattern="/^[א-ת ?./-]*$/" type="text" class="form-control" id="Comment" placeholder="ללא תווים מיוחדים"></textarea>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-xs-12">
                                 * שדות חובה <br />
+                              <div style="color:red">{{idNumberError}}</div>
                                 <div class="form-group">
                                     <input type="button" class="btn btn-success" ng-click="moveStep()" id="submitButton" value="שלח">
                                 </div>
@@ -138,8 +143,9 @@
                     </div>
                     <div class="step-content big-height">
                         <h1 class="car-sub-title ng-binding" title="אמצעי תשלום" alt="אמצעי תשלום">אמצעי תשלום</h1>
-                        <p class="text" style="line-height:25px;">
-                          ביצוע התשלום נעשה בצורה מאובטחת על ידי שימוש בחברת קשר.
+                        <p class="text" style="line-height:25px;direction:rtl">
+                          ביצוע התשלום נעשה בצורה מאובטחת על ידי שימוש בחברת קשר. <br />
+                            לחזרה אחורה לתיקון הפרטים נא לחץ על הפלוס בלשונית הראשונה.
                         </p>
                         <iframe src="{{iframeUrl}}" ng-show="PassStep[0]"  class="payIframe"></iframe>
                     </div>

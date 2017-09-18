@@ -23708,6 +23708,7 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
         var inputIndex = 1;
         $scope.currentStep = 1;
         $scope.fixedTotal = false;
+        $scope.idNumberError = "";
         $scope.TrumaPerson = {};
         $scope.PassStep = [false, false];
         $scope.items = [{ model_father: '', model_son: '', id: "input_1", model_gender:'0'}];
@@ -23716,7 +23717,7 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
 
         self.init = function () {
             if ($scope.Truma.Total > 0) {
-                $scope.TrumaPerson.Total = $scope.Truma.Total;
+                $scope.TrumaPerson.Total = $scope.Truma.Total * 1;
                 $scope.TrumaPerson.Type = $scope.Truma.Truma_Type;
                 $scope.fixedTotal = true;
             }
@@ -23725,6 +23726,10 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
         
         $scope.moveStep = function () {
             if (!WizardForm.checkValidity()) {
+                return;
+            }
+            if ($scope.isInvalidIdNumber($scope.TrumaPerson.NumberId)) {
+                $scope.idNumberError = "תעודת הזהות שהוקשה איננה תקינה";
                 return;
             }
 
@@ -23798,6 +23803,46 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
 
             $scope.items.splice(index, 1);
         }
+
+        $scope.isInvalidIdNumber = function (field) {
+            var showError;
+            var idnum = field + "";
+
+            if ($.trim(idnum) == '') { return false; }
+
+            while (idnum.length < 9) { idnum = "0" + idnum; }
+            idnum1 = idnum.substr(0, 1) * 1;
+            idnum2 = idnum.substr(1, 1) * 2;
+            idnum3 = idnum.substr(2, 1) * 1;
+            idnum4 = idnum.substr(3, 1) * 2;
+            idnum5 = idnum.substr(4, 1) * 1;
+            idnum6 = idnum.substr(5, 1) * 2;
+            idnum7 = idnum.substr(6, 1) * 1;
+            idnum8 = idnum.substr(7, 1) * 2;
+            idnum9 = idnum.substr(8, 1) * 1;
+
+            if (idnum1 > 9) idnum1 = (idnum1 % 10) + 1
+            if (idnum2 > 9) idnum2 = (idnum2 % 10) + 1
+            if (idnum3 > 9) idnum3 = (idnum3 % 10) + 1
+            if (idnum4 > 9) idnum4 = (idnum4 % 10) + 1
+            if (idnum5 > 9) idnum5 = (idnum5 % 10) + 1
+            if (idnum6 > 9) idnum6 = (idnum6 % 10) + 1
+            if (idnum7 > 9) idnum7 = (idnum7 % 10) + 1
+            if (idnum8 > 9) idnum8 = (idnum8 % 10) + 1
+            if (idnum9 > 9) idnum9 = (idnum9 % 10) + 1
+
+            var sumval = idnum1 + idnum2 + idnum3 + idnum4 + idnum5 + idnum6 + idnum7 + idnum8 + idnum9;
+
+            if (isNaN(sumval) || (sumval == 0)) showError = true;
+            else {
+                sumval = sumval % 10
+                if (isNaN(sumval) || (sumval > 0)) showError = true;
+                else showError = false;
+            }
+
+            return showError;
+
+        };
 
         self.init();
     }
