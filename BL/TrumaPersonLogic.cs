@@ -23,6 +23,10 @@ namespace BL
         {
             return TrumaPersonResult.PaySucceed(Id);
         }
+        public static Result PayFailed(int Id)
+        {
+            return TrumaPersonResult.PayFailed(Id);
+        }
         public static Result SmallGet()
         {
             return TrumaPersonResult.SmallGet();

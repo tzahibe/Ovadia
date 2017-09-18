@@ -785,7 +785,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="pages/successfulPayment.html">
-      <publishTime>09/18/2017 11:30:21</publishTime>
+      <publishTime>09/18/2017 13:10:40</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>05/21/2017 10:00:37</publishTime>

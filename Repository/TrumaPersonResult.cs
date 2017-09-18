@@ -150,6 +150,35 @@ namespace Repository
 
             return result;
         }
+        public static Result PayFailed(int id)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    db_TrumaPerson trumaRep = (from r in context.db_TrumaPerson
+                                               where r.Id == id
+                                               select r).FirstOrDefault();
+
+                    trumaRep.Step = "2";
+                    var entry = context.Entry(trumaRep);
+                    entry.Property(e => e.Step).IsModified = true;
+                    result.ErrorCode = 0;
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("TrumaPersonResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+
+            return result;
+        }
         public static Result Get(int Id)
         {
             Result result = new Result();

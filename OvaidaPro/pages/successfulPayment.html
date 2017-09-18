@@ -37,6 +37,7 @@
                 data: JSON.stringify(param),
                 headers: { 'Content-Type': 'application/json' }
             }).done(function (data) {
+                console.log(data);
                 console.log("Payment Succeed!")
                 }), function (err) {
                     console.log("Payment Faild!")

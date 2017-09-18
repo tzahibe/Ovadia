@@ -18,6 +18,12 @@ namespace OvaidaPro.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult PayFailed(int Id)
+        {
+            Result result = TrumaPersonLogic.PayFailed(Id);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Save(TrumaPerson truma)
         {
             Result result = TrumaPersonLogic.Save(truma);
