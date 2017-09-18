@@ -18,30 +18,6 @@
         </div>
     </center>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var param = {
-                Id : 1
-            }
-
-            var idparam = location.href.split("ref=")
-            if (idparam != null && idparam.length > 1) {
-                param.Id = idparam[1];
-            }
-
-            $.ajax({
-                url: '/TrummaPersonSer/PayFailed',
-                method: 'POST',
-                data: JSON.stringify(param),
-                headers: { 'Content-Type': 'application/json' }
-            }).done(function (data) {
-                console.log(data);
-                console.log("Payment Faild!")
-                }), function (err) {
-                    console.log("Payment Error!")
-                }
-        });
-    </script>
 </body>
 
 </html>
