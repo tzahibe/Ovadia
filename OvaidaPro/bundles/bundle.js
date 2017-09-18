@@ -23774,7 +23774,8 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
                 + "&adrs=" + $scope.TrumaPerson.Address + "&cmnt=" + $scope.TrumaPerson.Comment; 
 
             angular.forEach($scope.items, function (value, key) {
-                if (value.value.model_son != null && value.value.model_son != "" && value.model_father != "" && value.model_father != null) {
+                debugger;
+                if (value.model_son != null && value.model_son != "" && value.model_father != "" && value.model_father != null) {
                     $scope.TrumaPerson.Donates += value.model_son + " " + $scope.getNameByType(value.model_gender) +
                         " " + value.model_father + "$$$";
                 }

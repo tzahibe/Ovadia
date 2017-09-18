@@ -33,7 +33,7 @@ namespace Repository
                         trumaRep.Email = truma.Email;
                         trumaRep.ExpDate = truma.ExpDate;
                         trumaRep.FlatNumber = truma.FlatNumber;
-                        trumaRep.Lesson_date = new DateTime();
+                        trumaRep.Lesson_date = DateTime.Now;
                         DateTime myDate;
                         if (DateTime.TryParse(truma.Lesson_date, out myDate))
                         {
@@ -41,7 +41,7 @@ namespace Repository
                         }
                         trumaRep.Lesson_Name = truma.Lesson_Name;
                         trumaRep.NumberId = truma.NumberId;
-                        trumaRep.PayDate = new DateTime();
+                        trumaRep.PayDate = DateTime.Now;
                         if (DateTime.TryParse(truma.Lesson_date, out myDate))
                         {
                             trumaRep.PayDate = myDate;
