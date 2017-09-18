@@ -26,6 +26,7 @@ namespace Repository
 
                         trumaRep.Address = truma.Address;
                         trumaRep.City = truma.City;
+                        trumaRep.Step = "1";
                         truma.Comment = truma.Comment;
                         trumaRep.Cur = truma.Cur;
                         trumaRep.Donates = truma.Donates;
@@ -55,6 +56,7 @@ namespace Repository
                         var entry = context.Entry(trumaRep);
                         entry.Property(e => e.Address).IsModified = true;
                         entry.Property(e => e.City).IsModified = true;
+                        entry.Property(e => e.Step).IsModified = true;
                         entry.Property(e => e.Comment).IsModified = true;
                         entry.Property(e => e.Cur).IsModified = true;
                         entry.Property(e => e.Donates).IsModified = true;
@@ -77,6 +79,7 @@ namespace Repository
                         trumaRep = new db_TrumaPerson();
                         trumaRep.Address = truma.Address;
                         trumaRep.City = truma.City;
+                        trumaRep.Step = "1";
                         trumaRep.Comment = truma.Comment;
                         trumaRep.Cur = truma.Cur;
                         trumaRep.Donates = truma.Donates;
@@ -116,6 +119,35 @@ namespace Repository
                 Logger.Write("TrumaPersonResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
                 return result;
             }
+            return result;
+        }
+        public static Result PaySucceed(int id)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    db_TrumaPerson trumaRep = (from r in context.db_TrumaPerson
+                                               where r.Id == id
+                                               select r).FirstOrDefault();
+
+                    trumaRep.Step = "3";
+                    var entry = context.Entry(trumaRep);
+                    entry.Property(e => e.Step).IsModified = true;
+                    result.ErrorCode = 0;
+                    context.SaveChanges();
+                }
+            }
+            catch(Exception ex)
+            {
+                result.Data = false;
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("TrumaPersonResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+
             return result;
         }
         public static Result Get(int Id)

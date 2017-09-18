@@ -23755,7 +23755,8 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
 
         
         $scope.moveStep = function () {
-            if (!WizardForm.checkValidity()) {
+           
+            if (!$scope.WizardForm.$valid) {
                 return;
             }
             if ($scope.isInvalidIdNumber($scope.TrumaPerson.NumberId)) {
@@ -23768,21 +23769,23 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
             $scope.TrumaPerson.Email = $scope.TrumaPerson.Email == null ? "" : $scope.TrumaPerson.Email;
             $scope.TrumaPerson.Comment = $scope.TrumaPerson.Comment == null ? "" : $scope.TrumaPerson.Comment;
 
-
             var param = url + "&titles=hide&cur=" + 1 + "&tz=" + $scope.TrumaPerson.NumberId + "&tl=" + $scope.TrumaPerson.Phone1
                 + "&total=" + $scope.TrumaPerson.Total + "&ml=" + $scope.TrumaPerson.Email + "&nm=" + $scope.TrumaPerson.Payment_FullName
                 + "&adrs=" + $scope.TrumaPerson.Address + "&cmnt=" + $scope.TrumaPerson.Comment; 
 
             angular.forEach($scope.items, function (value, key) {
-                $scope.TrumaPerson.Donates += value.model_son + " " + $scope.getNameByType(value.model_gender) +
-                    " " + value.model_father + "$$$";
+                if (value.value.model_son != null && value.value.model_son != "" && value.model_father != "" && value.model_father != null) {
+                    $scope.TrumaPerson.Donates += value.model_son + " " + $scope.getNameByType(value.model_gender) +
+                        " " + value.model_father + "$$$";
+                }
             });
-            debugger;
+           
 
             appServices.SavePersonTruma($scope.TrumaPerson).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.PassStep[0] = true;
                     $scope.currentStep = 2;
+                    $scope.TrumaPerson = data.Data;
                 }
                 else {
                     console.log(data.ErrorMsg);
@@ -24408,6 +24411,20 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         }
         return $http({
             url: url + '/TrummaPersonSer/Get',
+            method: 'POST',
+            data: JSON.stringify(param),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.PaySucceed = function (id) {
+        var param = {
+            Id: id
+        }
+        return $http({
+            url: url + '/TrummaPersonSer/PaySucceed',
             method: 'POST',
             data: JSON.stringify(param),
             headers: { 'Content-Type': 'application/json' }

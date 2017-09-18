@@ -32,5 +32,6 @@ namespace Repository
         public string Lesson_Name { get; set; }
         public int Id { get; set; }
         public string Donates { get; set; }
+        public string Step { get; set; }
     }
 }

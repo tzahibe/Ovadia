@@ -96,7 +96,7 @@
           </Key>
           <Property Name="Type" Type="int" />
           <Property Name="ExpDate" Type="nvarchar" MaxLength="100" />
-          <Property Name="Payment_FullName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Payment_FullName" Type="nvarchar(max)" />
           <Property Name="Total" Type="nvarchar" MaxLength="50" />
           <Property Name="Phone1" Type="nvarchar" MaxLength="100" />
           <Property Name="NumberId" Type="nvarchar" MaxLength="100" />
@@ -112,6 +112,7 @@
           <Property Name="Lesson_Name" Type="nvarchar" MaxLength="250" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Donates" Type="nvarchar(max)" />
+          <Property Name="Step" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Emails">
           <Key>
@@ -342,7 +343,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           </Key>
           <Property Name="Type" Type="Int32" />
           <Property Name="ExpDate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Payment_FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="NumberId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -358,6 +359,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="Lesson_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Donates" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Step" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -510,6 +512,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySetMapping Name="db_TrumaPerson">
             <EntityTypeMapping TypeName="DB_A25801_OvadiaModel.db_TrumaPerson">
               <MappingFragment StoreEntitySet="db_TrumaPerson">
+                <ScalarProperty Name="Step" ColumnName="Step" />
                 <ScalarProperty Name="Donates" ColumnName="Donates" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Lesson_Name" ColumnName="Lesson_Name" />

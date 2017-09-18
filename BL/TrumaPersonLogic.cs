@@ -19,6 +19,10 @@ namespace BL
         {
             return TrumaPersonResult.Get(Id);
         }
+        public static Result PaySucceed(int Id)
+        {
+            return TrumaPersonResult.PaySucceed(Id);
+        }
         public static Result SmallGet()
         {
             return TrumaPersonResult.SmallGet();

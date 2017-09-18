@@ -26,6 +26,7 @@ namespace BO
         public string Donates { get; set; }
         public string Lesson_date { get; set; }
         public string Lesson_Name { get; set; }
+        public string Step { get; set; }
     }
 
     public class TrumaPersonSmall

@@ -528,6 +528,20 @@
         });
     }
 
+    this.PaySucceed = function (id) {
+        var param = {
+            Id: id
+        }
+        return $http({
+            url: url + '/TrummaPersonSer/PaySucceed',
+            method: 'POST',
+            data: JSON.stringify(param),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
     this.SmallGet = function () {
         return $http({
             url: url + '/TrummaPersonSer/SmallGet',

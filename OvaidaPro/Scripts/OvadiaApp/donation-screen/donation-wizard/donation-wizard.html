@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <label class="block" for="sumTorem">* סכום התרומה</label>
                                 <input ng-hide="fixedTotal" ng-required="!fixedTotal" type="number" ng-model="TrumaPerson.Total" class="form-control" id="sumTorem" placeholder="סכום תרומה">
-                                <input ng-show="fixedTotal" disabled type="number"  value="{{TrumaPerson.Total}}" class="disabled form-control" id="sumTorem" placeholder="סכום תרומה">
+                                <input ng-show="fixedTotal" disabled type="number" step="any"  value="{{TrumaPerson.Total}}" class="disabled form-control" id="sumTorem" placeholder="סכום תרומה">
                                 <select class="form-control disabled" ng-model="cur" disabled>
                                     <option value="">שקל</option>
                                 </select>
@@ -81,7 +81,7 @@
                             </div>
                             <label for="Donates1" class="Donates_label">{{Truma.TextBeforeNames}} </label>
                             <div ng-repeat="item in items" style="    display: inline-block;">
-                                <div class="form-group">תע
+                                <div class="form-group">
                                     &nbsp;
                                     <input type="text" maxlength="100" ng-model="item.model_son" class="inputName form-control" id="Donates1" />
                                     <div class="btn-group view_buttons" data-toggle="buttons">

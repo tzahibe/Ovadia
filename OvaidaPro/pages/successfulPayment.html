@@ -5,6 +5,7 @@
     <title>כולל חזון עובדיה- מושב בן זכאי</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Scripts/Plugins/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
@@ -18,5 +19,31 @@
             </p>
         </div>
     </center>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var param = {
+                Id : 1
+            }
+
+            var idparam = location.href.split("addData=")
+            if (idparam != null && idparam.length > 1) {
+                param.Id = idparam[1];
+            }
+
+            $.ajax({
+                url: '/TrummaPersonSer/PaySucceed',
+                method: 'POST',
+                data: JSON.stringify(param),
+                headers: { 'Content-Type': 'application/json' }
+            }).done(function (data) {
+                console.log("Payment Succeed!")
+                }), function (err) {
+                    console.log("Payment Faild!")
+                }
+        });
+    </script>
+
+
 </body>
 </html>
