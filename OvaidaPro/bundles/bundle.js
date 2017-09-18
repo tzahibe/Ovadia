@@ -24067,10 +24067,14 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         });
     }
 
-    this.GetAllCategories = function () {
+    this.GetAllCategories = function (showtags) {
+        var param = {
+            showTags: showtags
+        }
         return $http({
             url: url + '/CategorySer/GetAllCategories',
             method: 'POST',
+            data: param,
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
             return response.data;
@@ -24091,9 +24095,10 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         });
     }
 
-    this.GetAllChildrensCategoriesById = function (id) {
+    this.GetAllChildrensCategoriesById = function (id, showtags) {
         var param = {
-            catId: id
+            catId: id,
+            showTags: showtags
         }
         return $http({
             url: url + '/CategorySer/GetAllChildrensCategoriesById',
@@ -24397,7 +24402,9 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
     $scope.lastChosenCat = null;
     $scope.ParentCategories = [];
     $scope.radio = 1;
+    $scope.TagShow = false;
     $scope.childrens = [], $scope.subchildrens = [];
+
     self.init = function () {
         $scope.InitCategories();
     }
@@ -24409,6 +24416,10 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
             if (isActive) { return true; }
             else { return false; }
         }
+    }
+
+    $scope.changeParent = function () {
+        $scope.InitCategories();
     }
 
     /*-------------------Parent Category ----------------------------*/
@@ -24455,7 +24466,7 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
     $scope.InitCategories = function () {
         $scope.loader = true;
 
-        $http.get("/CategorySer/GetAllParentCategories").then(function (response) {
+        $http.get("/CategorySer/GetAllParentCategories?showTags=" + $scope.TagShow).then(function (response) {
             var errorCode;
             try {
                 errorCode = response.data.ErrorCode;
@@ -24545,7 +24556,8 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
         if (item == null) return;
         $scope.loader = true;
 
-        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id).then(function (response) {
+        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id
+            + "&showTags=" + $scope.TagShow).then(function (response) {
             var errorCode;
             try {
                 errorCode = response.data.ErrorCode;
@@ -24692,7 +24704,8 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
     $scope.SelectedSubParentCat = function (item) {
         if (item == null) return;
         $scope.loader = true;
-        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id).then(function (response) {
+        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id
+             + "&showTags=" + $scope.TagShow).then(function (response) {
             var errorCode;
             try {
                 errorCode = response.data.ErrorCode;
@@ -24908,6 +24921,7 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
         }
     }
 
+     
     $scope.openChildren = function (item, index, dor) {
         if (item == null) return;
         if (dor == 0) {
@@ -24918,7 +24932,8 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
         }
         
         $scope.loader_parent = true;
-        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id).then(function (response) {
+        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id
+            + "&showTags=" + $scope.TagShow).then(function (response) {
             var errorCode;
                 try {
                     errorCode = response.data.ErrorCode;

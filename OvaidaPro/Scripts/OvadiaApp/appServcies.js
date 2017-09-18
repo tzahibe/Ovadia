@@ -209,10 +209,14 @@
         });
     }
 
-    this.GetAllCategories = function () {
+    this.GetAllCategories = function (showtags) {
+        var param = {
+            showTags: showtags
+        }
         return $http({
             url: url + '/CategorySer/GetAllCategories',
             method: 'POST',
+            data: param,
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
             return response.data;
@@ -233,9 +237,10 @@
         });
     }
 
-    this.GetAllChildrensCategoriesById = function (id) {
+    this.GetAllChildrensCategoriesById = function (id, showtags) {
         var param = {
-            catId: id
+            catId: id,
+            showTags: showtags
         }
         return $http({
             url: url + '/CategorySer/GetAllChildrensCategoriesById',

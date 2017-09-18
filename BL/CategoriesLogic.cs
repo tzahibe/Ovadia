@@ -22,18 +22,18 @@ namespace BL
         {
             return CategoriesResult.RemoveCategoryById(catId);
         }
-        public static Result GetAllParentCategories()
+        public static Result GetAllParentCategories(bool showTags = true)
         {
-            return CategoriesResult.GetAllParentCategories();
+            return CategoriesResult.GetAllParentCategories(showTags);
 
         }
-        public static Result GetAllChildrensCategoriesById(int catId)
+        public static Result GetAllChildrensCategoriesById(int catId, bool showTags = true)
         {
-            return CategoriesResult.GetAllChildrensCategoriesById(catId);
+            return CategoriesResult.GetAllChildrensCategoriesById(catId, showTags);
         }
-        public static Result GetAllCategories()
+        public static Result GetAllCategories(bool showTags = true)
         {
-            return CategoriesResult.GetAllCategories();
+            return CategoriesResult.GetAllCategories(showTags);
         }
         public static Result isCategoryExist(string catName)
         {

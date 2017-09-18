@@ -161,18 +161,31 @@ namespace Repository
                 return result;
             }
         }
-        public static Result GetAllParentCategories()
+        public static Result GetAllParentCategories(bool showTags = true)
         {
+            int showTagsInt = showTags == true ? 1 : 0;
+            List<Categories> repResult = new List<Categories>();
             Result result = new Result();
 
             try
             {
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
-                    var repResult = (from r in context.Categories
+                    if (showTagsInt == 1)
+                    {
+                        repResult = (from r in context.Categories
                                      orderby r.Cat_Order descending
                                      where r.ParentId == 0
-                                     select r);
+                                     select r).ToList<Categories>();
+                    }
+                    else
+                    {
+                        repResult = (from r in context.Categories
+                                     orderby r.Cat_Order descending
+                                     where r.ParentId == 0
+                                     && r.isTag == 0
+                                     select r).ToList<Categories>();
+                    }
 
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
 
@@ -208,18 +221,32 @@ namespace Repository
             }
 
         }
-        public static Result GetAllChildrensCategoriesById(int catId)
+        public static Result GetAllChildrensCategoriesById(int catId, bool showTags = true)
         {
+            int showTagsInt = showTags == true ? 1 : 0;
+            List<Categories> repResult = new List<Categories>();
             Result result = new Result();
 
             try
             {
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
-                    var repResult = (from r in context.Categories
+                
+                    if (showTagsInt == 1)
+                    {
+                        repResult = (from r in context.Categories
                                      orderby r.Cat_Order descending
                                      where r.ParentId == catId
-                                     select r);
+                                     select r).ToList<Categories>();
+                    }
+                    else
+                    {
+                        repResult = (from r in context.Categories
+                                     orderby r.Cat_Order descending
+                                     where r.ParentId == catId
+                                     && r.isTag == 0
+                                     select r).ToList<Categories>();
+                    }
 
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
 
@@ -254,17 +281,31 @@ namespace Repository
                 return result;
             }
         }
-        public static Result GetAllCategories()
+        public static Result GetAllCategories(bool showTags = true)
         {
+            int showTagsInt = showTags == true ? 1 : 0;
             Result result = new Result();
-
+            List<Categories> repResult = new List<Categories>();
             try
             {
+             
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
-                    var repResult = (from r in context.Categories
-                                     orderby r.Cat_Order descending
-                                     select r);
+                  
+                    if (showTagsInt == 1)
+                    {
+                           repResult = (from r in context.Categories
+                                         orderby r.Cat_Order descending
+                                         select r).ToList<Categories>();
+                    }
+                    else
+                    {
+                          repResult = (from r in context.Categories
+                                         orderby r.Cat_Order descending
+                                         where r.isTag == 0
+                                         select r).ToList<Categories>();
+                    }
+                    
                     List<Repository.Categories> categoryList = repResult.ToList<Repository.Categories>();
 
                     if (categoryList.Count > 0)

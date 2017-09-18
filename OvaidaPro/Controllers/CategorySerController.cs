@@ -18,9 +18,9 @@ namespace OvaidaPro.Controllers
             Result resultToClient = CategoriesLogic.GetAllActiveCategoriesAcceptId(Id);
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult GetAllParentCategories()
+        public ActionResult GetAllParentCategories(bool showTags = true)
         {
-            Result resultToClient = CategoriesLogic.GetAllParentCategories();
+            Result resultToClient = CategoriesLogic.GetAllParentCategories(showTags);
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
         public ActionResult isCategoryExist(string catName)
@@ -28,14 +28,14 @@ namespace OvaidaPro.Controllers
             Result resultToClient = CategoriesLogic.isCategoryExist(catName);
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult GetAllChildrensCategoriesById(int catId)
+        public ActionResult GetAllChildrensCategoriesById(int catId, bool showTags = true)
         {
-            Result resultToClient = CategoriesLogic.GetAllChildrensCategoriesById(catId);
+            Result resultToClient = CategoriesLogic.GetAllChildrensCategoriesById(catId, showTags);
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult GetAllCategories()
+        public ActionResult GetAllCategories(bool showTags = true)
         {
-            Result resultToClient = CategoriesLogic.GetAllCategories();
+            Result resultToClient = CategoriesLogic.GetAllCategories(showTags);
             return Json(resultToClient, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AutoCompleteGetCategoriesByName(string name, int id = 0)

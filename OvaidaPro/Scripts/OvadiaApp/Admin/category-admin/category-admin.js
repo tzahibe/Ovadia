@@ -4,7 +4,9 @@
     $scope.lastChosenCat = null;
     $scope.ParentCategories = [];
     $scope.radio = 1;
+    $scope.TagShow = false;
     $scope.childrens = [], $scope.subchildrens = [];
+
     self.init = function () {
         $scope.InitCategories();
     }
@@ -16,6 +18,10 @@
             if (isActive) { return true; }
             else { return false; }
         }
+    }
+
+    $scope.changeParent = function () {
+        $scope.InitCategories();
     }
 
     /*-------------------Parent Category ----------------------------*/
@@ -62,7 +68,7 @@
     $scope.InitCategories = function () {
         $scope.loader = true;
 
-        $http.get("/CategorySer/GetAllParentCategories").then(function (response) {
+        $http.get("/CategorySer/GetAllParentCategories?showTags=" + $scope.TagShow).then(function (response) {
             var errorCode;
             try {
                 errorCode = response.data.ErrorCode;
@@ -152,7 +158,8 @@
         if (item == null) return;
         $scope.loader = true;
 
-        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id).then(function (response) {
+        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id
+            + "&showTags=" + $scope.TagShow).then(function (response) {
             var errorCode;
             try {
                 errorCode = response.data.ErrorCode;
@@ -299,7 +306,8 @@
     $scope.SelectedSubParentCat = function (item) {
         if (item == null) return;
         $scope.loader = true;
-        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id).then(function (response) {
+        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id
+             + "&showTags=" + $scope.TagShow).then(function (response) {
             var errorCode;
             try {
                 errorCode = response.data.ErrorCode;
@@ -515,6 +523,7 @@
         }
     }
 
+     
     $scope.openChildren = function (item, index, dor) {
         if (item == null) return;
         if (dor == 0) {
@@ -525,7 +534,8 @@
         }
         
         $scope.loader_parent = true;
-        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id).then(function (response) {
+        $http.get("/CategorySer/GetAllChildrensCategoriesById?catId=" + item.Id
+            + "&showTags=" + $scope.TagShow).then(function (response) {
             var errorCode;
                 try {
                     errorCode = response.data.ErrorCode;
