@@ -175,6 +175,9 @@
     <Content Include="pages\removeEmail.html" />
     <Content Include="pages\successfulPayment.html" />
     <Content Include="Scripts\Directives\rotate-degree\rotate-degree.js" />
+    <Content Include="Scripts\OvadiaApp\Admin\admin-home\admin-home.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\admin-home\admin-home.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\admin-home\admin-home.js" />
     <Content Include="Scripts\OvadiaApp\Admin\carusel-admin\carusel-admin.css" />
     <Content Include="Scripts\OvadiaApp\Admin\carusel-admin\carusel-admin.html" />
     <Content Include="Scripts\OvadiaApp\Admin\carusel-admin\carusel-admin.js" />

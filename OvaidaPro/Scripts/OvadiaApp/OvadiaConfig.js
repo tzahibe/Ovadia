@@ -52,6 +52,15 @@
             }
 
         })
+        .state("admin.home", {
+            url: '/home',
+            templateUrl: '/Scripts/OvadiaApp/Admin/admin-home/admin-home.html',
+            controller: 'adminHomeCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+
+        })
         .state("profile", {
             url: '/profile',
             templateUrl: '/Scripts/OvadiaApp/profile-component/profile-component.html',

@@ -4,7 +4,7 @@
         $rootScope.menu = 'ראשי';
         $scope.menuItems = [
             { name: 'ראשי', state: 'index', url:'/index' },
-            { name: 'ניהול', state: 'admin.lesson', url:'/admin/lesson' },
+            { name: 'ניהול', state: 'admin.home', url:'/admin/home' },
             { name: 'אודות', state: 'profile',  url: '/profile' },
             { name: 'מפת הגעה', state: 'map', url: '/map' },
             { name: 'גלריית תמונות', state: 'image-gallery', url: '/image-gallery' },

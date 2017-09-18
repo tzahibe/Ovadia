@@ -21291,6 +21291,15 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
             }
 
         })
+        .state("admin.home", {
+            url: '/home',
+            templateUrl: '/Scripts/OvadiaApp/Admin/admin-home/admin-home.html',
+            controller: 'adminHomeCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+
+        })
         .state("profile", {
             url: '/profile',
             templateUrl: '/Scripts/OvadiaApp/profile-component/profile-component.html',
@@ -22188,6 +22197,27 @@ OvadiaApp.directive('addMovie', function () {
         bindToController: true,
         controller: 'addMovieCtrl',
         templateUrl: '/Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.html'
+    }
+});
+OvadiaApp.controller('adminHomeCtrl', ['$scope', '$interval', 'appServices', 'ngDialog',
+    function ($scope, $interval, appServices, ngDialog) {
+        self = this;
+
+        self.init = function () {///
+
+        }
+
+        self.init();
+
+    }]);
+
+
+OvadiaApp.directive('adminHome', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'adminHomeCtrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/admin-home/admin-home.html'
     }
 });
 OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$interval', '$stateParams',
@@ -25254,7 +25284,7 @@ OvadiaApp.controller('loginContainerCtrl', ['$scope', 'appServices', 'UserAccoun
                     UserAccount.Role = UserAccount.User.UserRole;
                     $scope.loader = false;
                     //$cookies.put('UserRole', UserAccount.Role);
-                    $state.go('admin.lesson');
+                    $state.go('admin.home');
                 }
                 else {
                     $scope.loader = false;
@@ -26123,7 +26153,7 @@ OvadiaApp.controller('headerComponentCtrl', ['$scope','$rootScope',
         $rootScope.menu = 'ראשי';
         $scope.menuItems = [
             { name: 'ראשי', state: 'index', url:'/index' },
-            { name: 'ניהול', state: 'admin.lesson', url:'/admin/lesson' },
+            { name: 'ניהול', state: 'admin.home', url:'/admin/home' },
             { name: 'אודות', state: 'profile',  url: '/profile' },
             { name: 'מפת הגעה', state: 'map', url: '/map' },
             { name: 'גלריית תמונות', state: 'image-gallery', url: '/image-gallery' },
@@ -26658,6 +26688,7 @@ OvadiaApp.controller('homeAdminCtrl', ['$scope', '$rootScope', 'ngDialog', 'appS
     function ($scope, $rootScope, ngDialog, appServices, UserAccount, $state, $cookies) {
         $rootScope.admin_menu = 'תכנים שבועיים';
         $scope.admin_menuItems = [
+            { name: 'עדכוני מערכת', state: 'admin.home', url: '/admin/home' },
             { name: 'זמני תפילות', state: 'admin.tfila', url: '/admin/tfila' },
             { name: 'עריכת אודות', state: 'admin.odot', url: '/admin/odot-admin' },
             { name: 'הפצת הודעות במייל', state: 'admin.sendmail', url: '/admin/sendmail' },

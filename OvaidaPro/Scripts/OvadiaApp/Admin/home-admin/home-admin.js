@@ -3,6 +3,7 @@
     function ($scope, $rootScope, ngDialog, appServices, UserAccount, $state, $cookies) {
         $rootScope.admin_menu = 'תכנים שבועיים';
         $scope.admin_menuItems = [
+            { name: 'עדכוני מערכת', state: 'admin.home', url: '/admin/home' },
             { name: 'זמני תפילות', state: 'admin.tfila', url: '/admin/tfila' },
             { name: 'עריכת אודות', state: 'admin.odot', url: '/admin/odot-admin' },
             { name: 'הפצת הודעות במייל', state: 'admin.sendmail', url: '/admin/sendmail' },

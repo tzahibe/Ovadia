@@ -23,7 +23,7 @@
                     UserAccount.Role = UserAccount.User.UserRole;
                     $scope.loader = false;
                     //$cookies.put('UserRole', UserAccount.Role);
-                    $state.go('admin.lesson');
+                    $state.go('admin.home');
                 }
                 else {
                     $scope.loader = false;
