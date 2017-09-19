@@ -22,10 +22,10 @@
         var self = this;
 
         self.init = function () {
-            var url = window.location.href.substr(window.location.host.length + 7, window.location.href.length);
+           
             
             angular.forEach($scope.admin_menuItems, function (value, key) {
-                if (value.url == url) {
+                if (value.state == $state.current.name) {
                     $rootScope.admin_menu = value.name;
                 }
             });
