@@ -33,6 +33,9 @@
 
                     });
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                 }
@@ -92,7 +95,6 @@
 
         $scope.saveCarusel = function () {
             appServices.SaveCaruselArticles($scope.FilteredData).then(function (data) {
-                debugger;
                 if (data.ErrorCode == 0) {
                     $scope.OpenPopup("הודעת מערכת","הנתונים נשמרו בהצלחה!");
                 }
@@ -133,6 +135,9 @@
                         }
 
                     });
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                 }

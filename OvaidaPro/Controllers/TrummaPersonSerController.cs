@@ -29,5 +29,15 @@ namespace OvaidaPro.Controllers
             Result result = TrumaPersonLogic.Save(truma);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetAllTormim()
+        {
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                 result = TrumaPersonLogic.GetAllTormim();
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

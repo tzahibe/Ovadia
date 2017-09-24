@@ -256,5 +256,39 @@ namespace Repository
             }
             return result;
         }
+        public static Result GetAllTormim()
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    List<db_TrumaPerson> trumaPerson = (from r in context.db_TrumaPerson
+                                                    select r).ToList<db_TrumaPerson>();
+
+                    if (trumaPerson != null)
+                    {
+                        result.Data = trumaPerson;
+                        result.ErrorCode = 0;
+                    }
+                    else
+                    {
+                        result.Data = trumaPerson;
+                        result.ErrorCode = (int)ErrorEnumcs.NoData;
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("TrumaPersonResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+            return result;
+        }
     }
 }

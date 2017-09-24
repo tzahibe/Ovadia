@@ -15,6 +15,30 @@
             //},1000);
         }
 
+        $scope.DateToClient = function (date) {
+            try {
+                var temp = new Date(parseInt(date.split('/Date(')[1].split(')/')[0]));
+                var nday, nmonth;
+                var day = temp.getDate();
+                var month = (temp.getMonth() * 1 + 1);
+                var year = temp.getFullYear();
+                nday = temp.getDate();
+                nmonth = (temp.getMonth() * 1 + 1);
+
+                if (day * 1 < 10) {
+                    nday = '0' + day;
+                }
+                if (month * 1 < 10) {
+                    nmonth = '0' + month;
+                }
+
+                return nday + '.' + nmonth + '.' + year;
+            }
+            catch (e) {
+                return null;
+            }
+        };
+
         $rootScope.GetComment = function () {
             appServices.GetComment().then(function (data) {
                 if (data.ErrorCode == 0) {

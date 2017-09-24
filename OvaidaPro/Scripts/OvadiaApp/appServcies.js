@@ -551,4 +551,14 @@
             return response.data;
         });
     }
+
+    this.GetAllTormim = function () {
+        return $http({
+            url: url + '/TrummaPersonSer/GetAllTormim',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);

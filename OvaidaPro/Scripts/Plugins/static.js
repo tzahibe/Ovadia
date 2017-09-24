@@ -15,6 +15,10 @@ function toggleMenu() {
     //$('#menuBar').slideUp();
 }
 
+function SlideToggle(param) {
+    $(param).slideToggle(400);
+}
+
 function closePopup() {
     $('.modal').hide(300);
 }

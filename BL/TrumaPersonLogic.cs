@@ -31,5 +31,10 @@ namespace BL
         {
             return TrumaPersonResult.SmallGet();
         }
+
+        public static Result GetAllTormim()
+        {
+            return TrumaPersonResult.GetAllTormim();
+        }
     }
 }

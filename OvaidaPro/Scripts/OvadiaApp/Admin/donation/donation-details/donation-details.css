@@ -1,0 +1,36 @@
+﻿.dateRow {
+    padding-bottom: 10px;
+}
+
+.newsUl li {
+    padding-bottom: 5px;
+}
+
+h4 {
+    color: #686868;
+    font-weight: bold;
+}
+td, th{
+    text-align:center;
+}
+
+table.table tr td {
+    background: #f8f8f8;
+    font-weight: bold;
+    border: 1px solid #8f8b8b;
+}
+
+table.table tr th {
+    background: #294d77;
+    font-size: 15px;
+    /* font-weight: normal; */
+    color: #fff;
+    border: 1px solid #8f8b8b;
+}
+table.table tr.tab_info :hover {
+    background: #f3f0f0;
+}
+
+span{
+    font-weight:normal;
+}

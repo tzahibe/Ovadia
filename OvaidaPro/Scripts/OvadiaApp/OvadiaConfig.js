@@ -77,6 +77,14 @@
                 access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
             }
         })
+        .state("admin.donation-details", {
+            url: '/donation-details',
+            templateUrl: '/Scripts/OvadiaApp/Admin/donation/donation-details/donation-details.html',
+            controller: 'donationDetailsCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
+            }
+        })
         .state("map", {
             url: '/map',
             templateUrl: '/Scripts/OvadiaApp/mapa-component/mapa-component.html',

@@ -1,0 +1,102 @@
+﻿<link href="/Scripts/OvadiaApp/Admin/donation/donation-details/donation-details.css" rel="stylesheet" />
+<br />
+
+<div class="row">
+    <div class="col-xs-12">
+        <h4>רשימת תורמים</h4>
+      
+        <table class="table table-info">
+            <tr class="bg-info">
+                    <th>שם מלא</th>
+                    <th>תרומה</th>
+                    <th>תאריך</th>
+                    <th>סטטוס תרומה</th>
+                    <th></th>
+                </tr>
+            <tbody ng-repeat="Torem in Tormim | orderBy : '-PayDate' ">
+                <tr class="tab_info" ng-hide="loader1" style="">
+                    <!-- ng-repeat="item in Tfilot.data  | orderBy : 'PayDate' "-->
+                    <td>
+                        {{Torem.Payment_FullName}}
+                    </td>
+                    <td style="direction: ltr;">
+                        <span>{{Torem.Total}} ש"ח</span>
+                    </td>
+                    <td style="direction: ltr;">
+                        <span>{{Torem.PayDate}}</span>
+                    </td>
+                    <td style="direction: rtl;">
+                        <strong ng-show="Torem.Step == 3" style="color:green">הושלם</strong>
+                        <strong ng-show="Torem.Step != 3" style="color:red">נכשל</strong>
+                    </td>
+                    <td ng-click="SlideToggle('.tab_fullInfo'+ $index)">
+                        +
+                    </td>
+                </tr>
+                <tr class="tab_fullInfo{{$index}}" style="display:none">
+                    <td colspan="5">
+                        <div class="tab_fullInfo{{$index}}" style="display:none">
+                            <div class="">
+                                <!--<label for="fullname">שם מלא:</label>-->
+                                <h4 ng-bind-html="Torem.Payment_FullName"></h4>
+                            </div>
+                            <div class="">
+                                <label for="fullname">ת.ז:</label>
+                                <span ng-bind-html="Torem.NumberId"></span>
+                            </div>
+                            <div class="">
+                                <label for="fullname">טלפון:</label>
+                                <span ng-bind-html="Torem.Phone1"></span>
+                            </div>
+                            <div class="">
+                                <label for="fullname">תרומה:</label>
+                                <span> {{Torem.Total}} ש"ח</span>
+                            </div>
+                            <div class="">
+                                <label for="fullname">סוג תרומה:</label>
+                                <span ng-show="Torem.Type == 1">ברכת השנה</span>
+                                <span ng-show="Torem.Type == 2">הוראת קבע</span>
+                                <span ng-show="Torem.Type == 3">הקדשת ארוחת צהריים</span>
+                                <span ng-show="Torem.Type == 4">הקדשה שיעור לברכה\עילוי נשמה</span>
+                                <span ng-show="Torem.Type == 5">הקדשה לעילוי נשמה</span>
+                                <span ng-show="Torem.Type == 6">זכר מחצית השקל</span>
+                                <span ng-show="Torem.Type == 7">פדיון כפרות</span>
+                                <span ng-show="Torem.Type == 8">פרנס היום</span>
+                                <span ng-show="Torem.Type == 9">צדקה לפני סוכות</span>
+                                <span ng-show="Torem.Type == 10">קמחא דפסחא</span>
+                                <span ng-show="Torem.Type == 11">יששכר וזבולון</span>
+                            </div>
+                            <div class="">
+                                <label for="fullname">כתובת:</label>
+                                <span ng-bind-html="Torem.Address"></span>
+                            </div>
+                            <div class="">
+                                <label for="fullname">תאריך תשלום:</label>
+                                <span ng-bind-html="Torem.PayDate"></span>
+                            </div>
+                            <div class="">
+                                <label for="fullname">דואר אלקטרוני:</label>
+                                <span ng-bind-html="Torem.Email"></span>
+                            </div>
+                            <div class="">
+                                <label for="fullname">להצלחה\עילוי נשמת:</label>
+                                <div ng-repeat="item in Torem.Donates1">
+                                    <span>{{item}}</span>
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="">
+                                <label for="fullname">סטטוס תשלום:</label>
+                                <strong ng-show="Torem.Step == 3" style="color:green">הושלם</strong>
+                                <strong ng-show="Torem.Step != 3 " style="color:red">נכשל</strong>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+       
+    </div>
+</div>

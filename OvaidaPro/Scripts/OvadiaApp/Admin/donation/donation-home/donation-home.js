@@ -1,6 +1,7 @@
 ﻿OvadiaApp.controller('donationHomeCtrl', ['$scope', '$interval', 'appServices','ngDialog',
     function ($scope, $interval, appServices, ngDialog) {
         self = this;
+        $scope.radio = 1;
         $scope.Truma = {};
         $scope.Trumot = [];
         $scope.trumot = [

@@ -250,6 +250,9 @@
     <Content Include="Content\images\icons\next.svg" />
     <Content Include="Content\images\icons\prev-inline.svg" />
     <Content Include="Content\images\icons\prev.svg" />
+    <Content Include="Scripts\OvadiaApp\Admin\donation\donation-details\donation-details.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\donation\donation-details\donation-details.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\donation\donation-details\donation-details.js" />
     <Content Include="Scripts\OvadiaApp\donation-screen\donation-screen.css" />
     <Content Include="Scripts\OvadiaApp\donation-screen\donation-screen.html" />
     <Content Include="Scripts\OvadiaApp\donation-screen\donation-screen.js" />

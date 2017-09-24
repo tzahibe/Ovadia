@@ -6,90 +6,106 @@
     <div class="body ">
         <div ng-hide="loader" class="list-group-item list-group-item-home">
             <legend>ניהול תרומות</legend>
-            <div class="row-title">תרומות שמפורסמות כרגע:</div>
-            <div ng-repeat="truma in Trumot">
-                <span ng-show="truma.IsActive == 1">{{truma.Title}}</span>
+
+            <div class="btn-group view_buttons" data-toggle="buttons">
+                <label ng-class="radio == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 1" class="btn btn-primary">
+                    <input type="radio" name="options" ng-model="radio" value="1" id="option1" autocomplete="off">עריכה/יצירה תרומות
+                </label>
+                <label ng-class="radio == 2 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 2" class="btn btn-primary">
+                    <input type="radio" name="options" ng-model="radio" value="2" id="option2" autocomplete="off">צפייה בתרומות
+                </label>
             </div>
-            <br />
-            <div class="row-title">אנא בחר תרומה</div>
-            <select id="myselect" class="form-control"
-                    ng-change="selectTruma()"
-                    ui-select2 ng-model="truma_select" data-placeholder="בחר תרומה" style="width:100% !important">
-                <option value=""></option>
-                <option ng-repeat="truma in Trumot" ng-value="{{truma}}">{{truma.Title}}</option>
-            </select>
-            
-            <form ng-show="truma_select != null && truma_select != ''" class="form-control">
-                <div class="list-group-item">
-                    <label>שם התרומה</label>
-                    <input required type="text" ng-model="Truma.Title" class="form-control" placeholder="שם התרומה">
-                </div>
-               
-                <div class="list-group-item">
-                    <label>הסבר התרומה</label>
-                    <div text-angular ng-model="Truma.Body" placeholder="אנא הזן תוכן"></div>
-                </div>
 
-                <div class="list-group-item">
-                    <label>קבע סכום לתרומה</label>
-                    <p>השאר ריק אם הנך מעוניין לאפשר תרומה חופשית</p>
-                    <input type="number" ng-model="Truma.Total" class="form-control" placeholder="סכום התרומה קבוע">
-                </div>
-
-                <div class="list-group-item">
-                    <label>טקסט לפני שמות המתברכים</label>
-                    <p>טקסט שיופיע לפני שמות האנשים, למשל "לברכה והצלחה"</p>
-                    <input type="text" ng-model="Truma.TextBeforeNames" class="form-control" placeholder="למשל לברכה והצלחה">
-                </div>
-
-                <div class="list-group-item">
-                    <label for="isActive">האם לפרסם</label>
-                    <!--<input type="checkbox" ng-model="Truma.IsActive" id="isActive">-->
-
-                    <div class="btn-group view_buttons" data-toggle="buttons">
-                        <label ng-class="Truma.IsActive == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsActive = 1">
-                            <input type="radio" name="options" ng-model="radio" value="1" id="option2" autocomplete="off">
-                         פרסם
-                        </label>
-                        <label ng-class="Truma.IsActive == 0 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsActive = 0">
-                            <input type="radio" name="options" ng-model="radio" value="0" id="option2" autocomplete="off">
-                           אל תפרסם
-                        </label>
-                    </div>
-                </div>
-
-              
-
-                <div class="list-group-item">
-                    <label for="IsAlowComment">האם לאפשר לתורם כתיבה למי הוא תורם</label>
-                    <div class="btn-group view_buttons" data-toggle="buttons">
-                        <label ng-class="Truma.IsAlowComment == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsAlowComment = 1">
-                            <input type="radio" name="options" ng-model="radio" value="1" id="option2" autocomplete="off">
-                            פרסם
-                        </label>
-                        <label ng-class="Truma.IsAlowComment == 0 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsAlowComment = 0">
-                            <input type="radio" name="options" ng-model="radio" value="0" id="option2" autocomplete="off">
-                            אל תפרסם
-                        </label>
-                    </div>
-                </div>
-
-                <div class="list-group-item">
-                    <label>תמונת פרופיל לתרומה</label>
-                    <input type="text" ng-model="Truma.ProfilePic" class="form-control" placeholder="תמונת פרופיל לתרומה">
-                    <div class="col-xs-12 img" ng-show="Truma.ProfilePic != null && Truma.ProfilePic != ''">
-                        <img ng-src="{{Truma.ProfilePic}}" style="width:200px; height:200px;margin-top: 5px;margin-bottom: 5px;" />
-                    </div>
-                </div>
-
-                <button  class="btn btn-primary btn-block" ng-click="SaveTruma()">
-                    שמור שינויים
-                </button>
-
-            </form>
-            <div ng-show="loader" class="loader1">
-                <img src="/Content/images/loader.gif" />
+            <div ng-show="radio == 2">
+              <donation-details></donation-details>
             </div>
+            <div ng-show="radio == 1">
+                <div class="row-title">תרומות שמפורסמות כרגע:</div>
+                <div ng-repeat="truma in Trumot">
+                    <span ng-show="truma.IsActive == 1">{{truma.Title}}</span>
+                </div>
+                <br />
+                <div class="row-title">אנא בחר תרומה</div>
+                <select id="myselect" class="form-control"
+                        ng-change="selectTruma()"
+                        ui-select2 ng-model="truma_select" data-placeholder="בחר תרומה" style="width:100% !important">
+                    <option value=""></option>
+                    <option ng-repeat="truma in Trumot" ng-value="{{truma}}">{{truma.Title}}</option>
+                </select>
+
+                <form ng-show="truma_select != null && truma_select != ''" class="form-control">
+                    <div class="list-group-item">
+                        <label>שם התרומה</label>
+                        <input required type="text" ng-model="Truma.Title" class="form-control" placeholder="שם התרומה">
+                    </div>
+
+                    <div class="list-group-item">
+                        <label>הסבר התרומה</label>
+                        <div text-angular ng-model="Truma.Body" placeholder="אנא הזן תוכן"></div>
+                    </div>
+
+                    <div class="list-group-item">
+                        <label>קבע סכום לתרומה</label>
+                        <p>השאר ריק אם הנך מעוניין לאפשר תרומה חופשית</p>
+                        <input type="number" ng-model="Truma.Total" class="form-control" placeholder="סכום התרומה קבוע">
+                    </div>
+
+                    <div class="list-group-item">
+                        <label>טקסט לפני שמות המתברכים</label>
+                        <p>טקסט שיופיע לפני שמות האנשים, למשל "לברכה והצלחה"</p>
+                        <input type="text" ng-model="Truma.TextBeforeNames" class="form-control" placeholder="למשל לברכה והצלחה">
+                    </div>
+
+                    <div class="list-group-item">
+                        <label for="isActive">האם לפרסם</label>
+                        <!--<input type="checkbox" ng-model="Truma.IsActive" id="isActive">-->
+
+                        <div class="btn-group view_buttons" data-toggle="buttons">
+                            <label ng-class="Truma.IsActive == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsActive = 1">
+                                <input type="radio" name="options" ng-model="radio" value="1" id="option2" autocomplete="off">
+                                פרסם
+                            </label>
+                            <label ng-class="Truma.IsActive == 0 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsActive = 0">
+                                <input type="radio" name="options" ng-model="radio" value="0" id="option2" autocomplete="off">
+                                אל תפרסם
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="list-group-item">
+                        <label for="IsAlowComment">האם לאפשר לתורם כתיבה למי הוא תורם</label>
+                        <div class="btn-group view_buttons" data-toggle="buttons">
+                            <label ng-class="Truma.IsAlowComment == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsAlowComment = 1">
+                                <input type="radio" name="options" ng-model="radio" value="1" id="option2" autocomplete="off">
+                                פרסם
+                            </label>
+                            <label ng-class="Truma.IsAlowComment == 0 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsAlowComment = 0">
+                                <input type="radio" name="options" ng-model="radio" value="0" id="option2" autocomplete="off">
+                                אל תפרסם
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item">
+                        <label>תמונת פרופיל לתרומה</label>
+                        <input type="text" ng-model="Truma.ProfilePic" class="form-control" placeholder="תמונת פרופיל לתרומה">
+                        <div class="col-xs-12 img" ng-show="Truma.ProfilePic != null && Truma.ProfilePic != ''">
+                            <img ng-src="{{Truma.ProfilePic}}" style="width:200px; height:200px;margin-top: 5px;margin-bottom: 5px;" />
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" ng-click="SaveTruma()">
+                        שמור שינויים
+                    </button>
+
+                </form>
+                <div ng-show="loader" class="loader1">
+                    <img src="/Content/images/loader.gif" />
+                </div>
+            </div>
+         
             </div>
         </div>
     </div>

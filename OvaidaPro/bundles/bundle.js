@@ -21316,6 +21316,14 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
             }
         })
+        .state("admin.donation-details", {
+            url: '/donation-details',
+            templateUrl: '/Scripts/OvadiaApp/Admin/donation/donation-details/donation-details.html',
+            controller: 'donationDetailsCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
+            }
+        })
         .state("map", {
             url: '/map',
             templateUrl: '/Scripts/OvadiaApp/mapa-component/mapa-component.html',
@@ -21600,6 +21608,9 @@ OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount'
 
                     });
                 }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
                 else {
                     $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
                 }
@@ -21659,7 +21670,6 @@ OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount'
 
         $scope.saveCarusel = function () {
             appServices.SaveCaruselArticles($scope.FilteredData).then(function (data) {
-                debugger;
                 if (data.ErrorCode == 0) {
                     $scope.OpenPopup("הודעת מערכת","הנתונים נשמרו בהצלחה!");
                 }
@@ -21700,6 +21710,9 @@ OvadiaApp.controller('caruselAdminCtrl', ['$scope', 'appServices', 'UserAccount'
                         }
 
                     });
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
                 }
                 else {
                 }
@@ -22197,6 +22210,55 @@ OvadiaApp.directive('addMovie', function () {
         bindToController: true,
         controller: 'addMovieCtrl',
         templateUrl: '/Scripts/OvadiaApp/Admin/Movies/add-movie/add-movie.html'
+    }
+});
+OvadiaApp.controller('donationDetailsCtrl', ['$scope', '$interval', 'appServices', 'ngDialog','$rootScope',
+    function ($scope, $interval, appServices, ngDialog, $rootScope) {
+        self = this;
+        $scope.Tormim = [];
+        $scope.loader = false;
+
+        self.init = function () {///
+            $scope.getAllDonates();
+        }
+
+        $scope.SlideToggleInfo = function (param) {
+            $("." +param).slideToggle(300);
+        }
+
+        $scope.getAllDonates = function () {
+            appServices.GetAllTormim().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Tormim = data.Data;
+
+                    angular.forEach($scope.Tormim, function (value, index) {
+                        value.PayDate = $rootScope.DateToClient(value.PayDate);
+                        var donates = value.Donates.split("$$$");
+                        value.Donates1 = donates;
+                    });
+
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+            });
+        }
+
+        $scope.SlideToggle = function(param) {
+            $(param).slideToggle(400);
+        }
+
+        self.init();
+
+    }]);
+
+
+OvadiaApp.directive('donationDetails', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'donationDetailsCtrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/donation/donation-details/donation-details.html'
     }
 });
 OvadiaApp.controller('adminHomeCtrl', ['$scope', '$interval', 'appServices', 'ngDialog',
@@ -22710,6 +22772,30 @@ OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices', 'UserAccount','$root
             //    marquee($('#display'), $('#text'));  //Enter name of container element & marquee element
             //},1000);
         }
+
+        $scope.DateToClient = function (date) {
+            try {
+                var temp = new Date(parseInt(date.split('/Date(')[1].split(')/')[0]));
+                var nday, nmonth;
+                var day = temp.getDate();
+                var month = (temp.getMonth() * 1 + 1);
+                var year = temp.getFullYear();
+                nday = temp.getDate();
+                nmonth = (temp.getMonth() * 1 + 1);
+
+                if (day * 1 < 10) {
+                    nday = '0' + day;
+                }
+                if (month * 1 < 10) {
+                    nmonth = '0' + month;
+                }
+
+                return nday + '.' + nmonth + '.' + year;
+            }
+            catch (e) {
+                return null;
+            }
+        };
 
         $rootScope.GetComment = function () {
             appServices.GetComment().then(function (data) {
@@ -24443,6 +24529,16 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
             return response.data;
         });
     }
+
+    this.GetAllTormim = function () {
+        return $http({
+            url: url + '/TrummaPersonSer/GetAllTormim',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);
 OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDialog','$rootScope',
     function ($scope, $http, $timeout, ngDialog, $rootScope) {
@@ -25011,6 +25107,7 @@ OvadiaApp.controller('CategoryAdminCtrl', ['$scope', '$http', '$timeout', 'ngDia
 OvadiaApp.controller('donationHomeCtrl', ['$scope', '$interval', 'appServices','ngDialog',
     function ($scope, $interval, appServices, ngDialog) {
         self = this;
+        $scope.radio = 1;
         $scope.Truma = {};
         $scope.Trumot = [];
         $scope.trumot = [
