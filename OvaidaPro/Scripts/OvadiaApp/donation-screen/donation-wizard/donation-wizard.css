@@ -278,8 +278,16 @@ donation-wizard label.btn-primary {
     position: relative;
     top: 1px;
 }
-.mob-btn {
-    margin:0;
+.selectPra {
+    padding: 0;
+    height: 34px;
+    margin: 0;
+    position: relative;
+    top: 1px;
+    right: 8px;
+    margin-bottom: 3px;
+}.mob-btn {
+    margin: 0;
 }
 .btn-primary.active, .btn-primary:active {
     background-color: #113350;

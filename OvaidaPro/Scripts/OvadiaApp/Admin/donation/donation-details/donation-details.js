@@ -19,8 +19,10 @@
 
                     angular.forEach($scope.Tormim, function (value, index) {
                         value.PayDate = $rootScope.DateToClient(value.PayDate);
-                        var donates = value.Donates.split("$$$");
-                        value.Donates1 = donates;
+                        if (value.Donates != null) {
+                            var donates = value.Donates.split("$$$");
+                            value.Donates1 = donates;
+                        }
                     });
 
                 }

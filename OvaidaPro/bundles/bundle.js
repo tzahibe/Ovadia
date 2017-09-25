@@ -22233,8 +22233,10 @@ OvadiaApp.controller('donationDetailsCtrl', ['$scope', '$interval', 'appServices
 
                     angular.forEach($scope.Tormim, function (value, index) {
                         value.PayDate = $rootScope.DateToClient(value.PayDate);
-                        var donates = value.Donates.split("$$$");
-                        value.Donates1 = donates;
+                        if (value.Donates != null) {
+                            var donates = value.Donates.split("$$$");
+                            value.Donates1 = donates;
+                        }
                     });
 
                 }
@@ -23861,8 +23863,8 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
 
             angular.forEach($scope.items, function (value, key) {
                 debugger;
-                if (value.model_son != null && value.model_son != "" && value.model_father != "" && value.model_father != null) {
-                    $scope.TrumaPerson.Donates += value.model_son + " " + $scope.getNameByType(value.model_gender) +
+                if (value.Pray != null && value.model_son != null && value.model_son != "" && value.model_father != "" && value.model_father != null) {
+                    $scope.TrumaPerson.Donates += value.Pray + " " + value.model_son + " " + $scope.getNameByType(value.model_gender) +
                         " " + value.model_father + "$$$";
                 }
             });
