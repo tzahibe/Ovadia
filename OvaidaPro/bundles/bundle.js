@@ -25802,6 +25802,7 @@ OvadiaApp.controller('homeComponentCtrl', ['$scope', 'appServices','ngDialog','$
     function ($scope, appServices, ngDialog, $timeout) {
         var self = this;
         //$scope.Tfilot = [];
+        var currentDialog;
 
         self.init = function () {
             //$scope.tfilot_loader = true;
@@ -25818,6 +25819,20 @@ OvadiaApp.controller('homeComponentCtrl', ['$scope', 'appServices','ngDialog','$
         }
 
         $scope.successMail = false;
+
+        $scope.OpenLetter = function (recom) {
+            $scope.OpenPopup("זמני שיעורים", recom);
+        }
+
+        $scope.OpenPopup = function (title, msg) {
+            $scope.Title = title;
+            $scope.Msg = msg;
+            ngDialog.open({
+                template: '/Scripts/OvadiaApp/Admin/events-dialog/recomm-image.html',
+                //className: 'ngdialog-theme-default',
+                scope: $scope
+            });
+        }
 
         $scope.OpenSuccessPopup = function () {
             currentDialog = ngDialog.open({
