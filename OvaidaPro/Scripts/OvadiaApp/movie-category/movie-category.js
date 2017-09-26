@@ -96,7 +96,8 @@
                 return;
             }
             $scope.loader = true;
-            appServices.GetAllChildrensCategoriesById(item.id).then(function (data) {
+            
+            appServices.GetAllChildrensCategoriesById(item.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesSubData = data.Data;
                     if ($rootScope.categoriesSubData.length > 0) {
@@ -143,72 +144,89 @@
         }
 
         $scope.parentCategoryFilter = function (item) {
+            
             if ($scope.select2 == null || $scope.select2.Name == "הכל") {
+                console.log("parentCategoryFilter : true");
                 return true;
             }
             if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
                 item.CategoriesList.length == 0 | $scope.select2 == null | $scope.select2 == "")
+                console.log("parentCategoryFilter : false");
                 return false;
             for (var i = 0; i < item.CategoriesList.length; i++) {
                 if (item.CategoriesList[i].CategoryId == $scope.select2.id) {
+                    console.log("parentCategoryFilter : true");
                     return true;
                 }
             }
-
+            console.log("parentCategoryFilter : false");
             return false;
         }
 
         $scope.subCategoryFilter = function (item) {
+            
             if ($scope.select2_1 == null || $scope.select2_1.Name == "הכל") {
+                console.log("subCategoryFilter : true");
                 return true;
             }
 
             if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
                 item.CategoriesList.length == 0 | $scope.select2_1 == null | $scope.select2_1 == "")
+                console.log("subCategoryFilter : false");
                 return false;
 
             for (var i = 0; i < item.CategoriesList.length; i++) {
                 if (item.CategoriesList[i].CategoryId == $scope.select2_1.Id) {
+                    console.log("subCategoryFilter : true");
                     return true;
                 }
             }
 
+            console.log("subCategoryFilter : false");
             return false;
         }
 
         $scope.subSubCategoryFilter = function (item) {
+            
             if ($scope.select2_1_1 == null || $scope.select2_1_1.Name == "הכל") {
+                console.log("subSubCategoryFilter : true");
                 return true;
             }
 
             if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
                 item.CategoriesList.length == 0 | $scope.select2_1_1 == null | $scope.select2_1_1 == "")
+                console.log("subSubCategoryFilter : false");
                 return false;
 
             for (var i = 0; i < item.CategoriesList.length; i++) {
                 if (item.CategoriesList[i].CategoryId == $scope.select2_1_1.Id) {
+                    console.log("subSubCategoryFilter : true");
                     return true;
                 }
             }
-
+            console.log("subSubCategoryFilter : false");
             return false;
         }
 
         $scope.rabiFilter = function (item) {
+            
             if ($scope.select3 == null || $scope.select3.Name == "הכל") {
+                console.log("rabiFilter : true");
                 return true;
             }
 
             if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
                 item.CategoriesList.length == 0 | $scope.select3 == null | $scope.select3 == "")
+                console.log("rabiFilter : false");
                 return false;
 
             for (var i = 0; i < item.CategoriesList.length; i++) {
                 if (item.CategoriesList[i].CategoryId == $scope.select3.Id) {
+                    console.log("rabiFilter : true");
                     return true;
                 }
             }
-
+            console.log("rabiFilter : false");
             return false;
         }
 

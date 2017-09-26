@@ -47,7 +47,7 @@
                     <div class="list-group-item">
                         <label>קבע סכום לתרומה</label>
                         <p>השאר ריק אם הנך מעוניין לאפשר תרומה חופשית</p>
-                        <input type="number" ng-model="Truma.Total" class="form-control" placeholder="סכום התרומה קבוע">
+                        <input type="text" ng-pattern="/^\d{1,10}$/" ng-model="Truma.Total" class="form-control" placeholder="סכום התרומה קבוע">
                     </div>
 
                     <div class="list-group-item">
@@ -62,11 +62,11 @@
 
                         <div class="btn-group view_buttons" data-toggle="buttons">
                             <label ng-class="Truma.IsActive == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsActive = 1">
-                                <input type="radio" name="options" ng-model="radio" value="1" id="option2" autocomplete="off">
+                                <input type="radio" name="options" ng-model="radio3" value="1" id="option2" autocomplete="off">
                                 פרסם
                             </label>
                             <label ng-class="Truma.IsActive == 0 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsActive = 0">
-                                <input type="radio" name="options" ng-model="radio" value="0" id="option2" autocomplete="off">
+                                <input type="radio" name="options" ng-model="radio3" value="0" id="option2" autocomplete="off">
                                 אל תפרסם
                             </label>
                         </div>
@@ -75,15 +75,15 @@
 
 
                     <div class="list-group-item">
-                        <label for="IsAlowComment">האם לאפשר לתורם כתיבה למי הוא תורם</label>
+                        <label for="IsAlowComment">האם לאפשר בחירה לסוג ברכה\עילוי נשמת</label>
                         <div class="btn-group view_buttons" data-toggle="buttons">
                             <label ng-class="Truma.IsAlowComment == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsAlowComment = 1">
-                                <input type="radio" name="options" ng-model="radio" value="1" id="option2" autocomplete="off">
-                                פרסם
+                                <input type="radio" name="options" ng-model="radio5" value="1" id="option2" autocomplete="off">
+                               אפשר
                             </label>
                             <label ng-class="Truma.IsAlowComment == 0 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="Truma.IsAlowComment = 0">
-                                <input type="radio" name="options" ng-model="radio" value="0" id="option2" autocomplete="off">
-                                אל תפרסם
+                                <input type="radio" name="options" ng-model="radio5" value="0" id="option2" autocomplete="off">
+                                אל תאפשר
                             </label>
                         </div>
                     </div>
