@@ -79,7 +79,14 @@
                                 <span ng-bind-html="Torem.Email"></span>
                             </div>
                             <div class="">
-                                <label for="fullname">להצלחה\עילוי נשמת:</label>
+                                <label for="fullname">מספר ייחודי לבירור עסקה:</label>
+                                <span ng-bind-html="Torem.Id"></span>
+                            </div>
+                            <div class="">
+                                <label for="fullname">
+                                    <strong ng-show="Truma.TextBeforeNames!= null">{{Truma.TextBeforeNames}}:</strong>
+                                    <strong ng-show="Truma.TextBeforeNames == null || Truma.TextBeforeNames == ''">טקסט לפני מברכים לא הוגדר:</strong>
+                                </label>
                                 <div ng-repeat="item in Torem.Donates1">
                                     <span>{{item}}</span>
                                 </div>

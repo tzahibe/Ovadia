@@ -23855,9 +23855,9 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
         self.init = function () {
             if ($scope.Truma.Total > 0) {
                 $scope.TrumaPerson.Total = $scope.Truma.Total * 1;
-                $scope.TrumaPerson.Type = $scope.Truma.Truma_Type;
                 $scope.fixedTotal = true;
             }
+            $scope.TrumaPerson.Type = $scope.Truma.Truma_Type;
         }
 
         
@@ -23892,8 +23892,9 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
             appServices.SavePersonTruma($scope.TrumaPerson).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.PassStep[0] = true;
-                    $scope.currentStep = 2;
                     $scope.TrumaPerson = data.Data;
+                    param += "&addData=" + $scope.TrumaPerson.Id
+                    $scope.currentStep = 2;
                 }
                 else {
                     console.log(data.ErrorMsg);

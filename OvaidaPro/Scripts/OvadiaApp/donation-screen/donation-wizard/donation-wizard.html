@@ -52,7 +52,7 @@
                             <div class="form-group">
                                 *
                                 <label for="idNumber">תעודת זהות</label>
-                                <input required type="number" ng-keypress="idNumberError = ''" ng-model="TrumaPerson.NumberId" class="form-control" id="idNumber" placeholder="תעודת זהות">
+                                <input required type="text" ng-pattern="/^\d{1,10}$/" ng-keypress="idNumberError = ''" ng-model="TrumaPerson.NumberId" class="form-control" id="idNumber" placeholder="תעודת זהות">
                             </div>
                             <div class="form-group">
                                 &nbsp;
