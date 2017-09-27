@@ -22586,7 +22586,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
             appServices.GetAllChildrensCategoriesById(item.Id).then(function (data) {
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesSubData = data.Data;
-                    if ($rootScope.categoriesSubData.length > 0) {
+                    if ($rootScope.categoriesSubData != null && $rootScope.categoriesSubData.length > 0) {
                         $rootScope.categoriesSubData.unshift({ Name: "הכל" });
                         $scope.showSub = true;
                     }
@@ -22613,7 +22613,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
                 if (data.ErrorCode == 0) {
                     $rootScope.categoriesSubSubData = data.Data
                    
-                    if ($rootScope.categoriesSubSubData.length > 0) {
+                    if ($rootScope.categoriesSubSubData != null && $rootScope.categoriesSubSubData.length > 0) {
                         $rootScope.categoriesSubSubData.unshift({ Name: "הכל" });
                         $scope.showSubSub = true;
                     }
@@ -22630,89 +22630,75 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
         }
 
         $scope.parentCategoryFilter = function (item) {
-            
+  
             if ($scope.select2 == null || $scope.select2.Name == "הכל") {
-                console.log("parentCategoryFilter : true");
                 return true;
             }
             if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
                 item.CategoriesList.length == 0 | $scope.select2 == null | $scope.select2 == "")
-                console.log("parentCategoryFilter : false");
                 return false;
+
             for (var i = 0; i < item.CategoriesList.length; i++) {
-                if (item.CategoriesList[i].CategoryId == $scope.select2.id) {
-                    console.log("parentCategoryFilter : true");
-                    return true;
-                }
+                for (var j = 0; j < $scope.categoriesData.length; j++)
+                    if (item.CategoriesList[i].CategoryId == $scope.categoriesData[j].Id) {
+                        return true;
+                    }
             }
-            console.log("parentCategoryFilter : false");
             return false;
         }
 
         $scope.subCategoryFilter = function (item) {
-            
             if ($scope.select2_1 == null || $scope.select2_1.Name == "הכל") {
-                console.log("subCategoryFilter : true");
+                console.log('subCategoryFilter ALL');
                 return true;
             }
 
             if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
                 item.CategoriesList.length == 0 | $scope.select2_1 == null | $scope.select2_1 == "")
-                console.log("subCategoryFilter : false");
                 return false;
 
             for (var i = 0; i < item.CategoriesList.length; i++) {
                 if (item.CategoriesList[i].CategoryId == $scope.select2_1.Id) {
-                    console.log("subCategoryFilter : true");
                     return true;
                 }
             }
-
-            console.log("subCategoryFilter : false");
             return false;
         }
 
         $scope.subSubCategoryFilter = function (item) {
-            
             if ($scope.select2_1_1 == null || $scope.select2_1_1.Name == "הכל") {
-                console.log("subSubCategoryFilter : true");
+                console.log('subSubCategoryFilter ALL');
                 return true;
             }
 
             if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
                 item.CategoriesList.length == 0 | $scope.select2_1_1 == null | $scope.select2_1_1 == "")
-                console.log("subSubCategoryFilter : false");
                 return false;
 
             for (var i = 0; i < item.CategoriesList.length; i++) {
                 if (item.CategoriesList[i].CategoryId == $scope.select2_1_1.Id) {
-                    console.log("subSubCategoryFilter : true");
                     return true;
                 }
             }
-            console.log("subSubCategoryFilter : false");
             return false;
         }
 
         $scope.rabiFilter = function (item) {
-            
+           
             if ($scope.select3 == null || $scope.select3.Name == "הכל") {
-                console.log("rabiFilter : true");
+                console.log('rabiFilter ALL');
                 return true;
             }
 
             if (item == null || item.CategoriesList == null || item.CategoriesList == "" |
                 item.CategoriesList.length == 0 | $scope.select3 == null | $scope.select3 == "")
-                console.log("rabiFilter : false");
                 return false;
 
             for (var i = 0; i < item.CategoriesList.length; i++) {
                 if (item.CategoriesList[i].CategoryId == $scope.select3.Id) {
-                    console.log("rabiFilter : true");
                     return true;
                 }
             }
-            console.log("rabiFilter : false");
             return false;
         }
 
