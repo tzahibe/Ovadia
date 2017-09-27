@@ -22630,7 +22630,6 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
         }
 
         $scope.parentCategoryFilter = function (item) {
-  
             if ($scope.select2 == null || $scope.select2.Name == "הכל") {
                 return true;
             }
