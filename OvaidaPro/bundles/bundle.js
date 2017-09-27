@@ -22459,11 +22459,13 @@ OvadiaApp.controller('donationScreenCtrl', ['$scope', '$interval', 'appServices'
                 if (data.ErrorCode == 0) {
                     $scope.Trumot = data.Data;
 
-                    angular.forEach($scope.Trumot, function (value, key) {
-                        if (value.Truma_Type == $scope.Type) {
-                            $scope.Trom(value);
-                        }
-                    });
+                    if ($scope.Type != null) {
+                        angular.forEach($scope.Trumot, function (value, key) {
+                            if (value.Truma_Type == $scope.Type) {
+                                $scope.Trom(value);
+                            }
+                        });
+                    }
                 }
                 else {
 
