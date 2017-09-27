@@ -1,13 +1,18 @@
-﻿OvadiaApp.controller('donationScreenCtrl', ['$scope', '$interval', 'appServices',
-    function ($scope, $interval, appServices) {
+﻿OvadiaApp.controller('donationScreenCtrl', ['$scope', '$interval', 'appServices', '$stateParams',
+    function ($scope, $interval, appServices, $stateParams) {
         self = this;
         $scope.Trumot = [];
         $scope.Truma = {};
         $scope.loader = false;
         $scope.wizard = false;
+        $scope.Type = null;
 
         self.init = function () {
             $scope.getAllTrumot();
+
+            if ($stateParams.Type != null) {
+                $scope.Type = $stateParams.Type;
+            }
         }
 
         $scope.getAllTrumot = function () {
@@ -15,6 +20,12 @@
             appServices.GetAllTActiveTruma().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.Trumot = data.Data;
+
+                    angular.forEach($scope.Trumot, function (value, key) {
+                        if (value.Truma_Type == $scope.Type) {
+                            $scope.Trom(value);
+                        }
+                    });
                 }
                 else {
 

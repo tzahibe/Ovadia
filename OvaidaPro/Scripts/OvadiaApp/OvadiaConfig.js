@@ -70,11 +70,15 @@
             }
         })
         .state("donation", {
-            url: '/donation',
+            url: '/donation/:Type',
             templateUrl: '/Scripts/OvadiaApp/donation-screen/donation-screen.html',
             controller: 'donationScreenCtrl',
             data: {
                 access: [UserRole.Admin, UserRole.Editor, UserRole.Guest]
+            }
+            ,
+            params: {
+                Type: null,
             }
         })
         .state("admin.donation-details", {

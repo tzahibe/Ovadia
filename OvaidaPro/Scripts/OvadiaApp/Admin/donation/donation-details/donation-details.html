@@ -84,7 +84,7 @@
                             </div>
                             <div class="">
                                 <label for="fullname">
-                                    <strong ng-show="Truma.TextBeforeNames!= null">{{Truma.TextBeforeNames}}:</strong>
+                                    <strong ng-show="Truma.TextBeforeNames != null && Truma.TextBeforeNames == ''">{{Truma.TextBeforeNames}}:</strong>
                                     <strong ng-show="Truma.TextBeforeNames == null || Truma.TextBeforeNames == ''">טקסט לפני מברכים לא הוגדר:</strong>
                                 </label>
                                 <div ng-repeat="item in Torem.Donates1">
