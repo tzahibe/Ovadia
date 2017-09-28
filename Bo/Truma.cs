@@ -19,6 +19,7 @@ namespace BO
         public int? IsAlowComment { get; set; }
         public int Id { get; set; }
         public string TextBeforeNames { get; set; }
+        public int isPerPerson { get; set; }
 
     }
 }

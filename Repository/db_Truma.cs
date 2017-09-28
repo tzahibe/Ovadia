@@ -25,5 +25,6 @@ namespace Repository
         public Nullable<int> IsAlowComment { get; set; }
         public int Id { get; set; }
         public string TextBeforeNames { get; set; }
+        public Nullable<int> isPerPerson { get; set; }
     }
 }

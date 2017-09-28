@@ -23938,6 +23938,10 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
 
             $scope.items.push(item);
             inputIndex++;
+
+            if ($scope.Truma.isPerPerson == 1) {
+                $scope.TrumaPerson.Total = inputIndex * $scope.Truma.Total * 1;
+            }
         }
 
         $scope.removeInput = function (item) {

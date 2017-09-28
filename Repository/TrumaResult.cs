@@ -34,10 +34,12 @@ namespace Repository
                         trumaRep.TotalMoney = truma.TotalMoney;
                         trumaRep.Truma_Type = truma.Truma_Type;
                         trumaRep.TextBeforeNames = truma.TextBeforeNames;
+                        trumaRep.isPerPerson = truma.isPerPerson;
 
                         context.db_Truma.Attach(trumaRep);
                         var entry = context.Entry(trumaRep);
                         entry.Property(e => e.Body).IsModified = true;
+                        entry.Property(e => e.isPerPerson).IsModified = true;
                         entry.Property(e => e.TextBeforeNames).IsModified = true;
                         entry.Property(e => e.FullName).IsModified = true;
                         entry.Property(e => e.IsActive).IsModified = true;
