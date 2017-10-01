@@ -257,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bundles/bundle.js">
-      <publishTime>10/01/2017 21:04:05</publishTime>
+      <publishTime>10/01/2017 21:39:15</publishTime>
     </File>
     <File Include="bundles/bundle.min.js">
       <publishTime>07/12/2017 00:06:28</publishTime>
@@ -908,10 +908,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2017 10:20:22</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/donation/donation-details/donation-details.html">
-      <publishTime>10/01/2017 21:23:47</publishTime>
+      <publishTime>10/01/2017 21:43:33</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/donation/donation-details/donation-details.js">
-      <publishTime>10/01/2017 21:03:35</publishTime>
+      <publishTime>10/01/2017 21:39:34</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/donation/donation-home/donation-home.css">
       <publishTime>09/14/2017 11:30:30</publishTime>
@@ -1217,7 +1217,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/14/2017 22:46:02</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/my-app/my-app.js">
-      <publishTime>09/24/2017 10:12:32</publishTime>
+      <publishTime>10/01/2017 21:39:11</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/OvadiaApp.js">
       <publishTime>08/04/2017 11:44:24</publishTime>

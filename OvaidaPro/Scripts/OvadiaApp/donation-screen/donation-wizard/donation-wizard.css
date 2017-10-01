@@ -294,6 +294,7 @@ donation-wizard label.btn-primary {
 }
 .Donates_label{
     display:block;
+    width:100%;
 }
 
 @media screen and (max-width: 768px) {
