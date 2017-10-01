@@ -22240,7 +22240,6 @@ OvadiaApp.controller('donationDetailsCtrl', ['$scope', '$interval', 'appServices
                         if (value.Donates != null) {
                             var donates = value.Donates.split("$$$");
                             value.Donates1 = donates;
-                            debugger;
                         }
                     });
 
@@ -23883,7 +23882,6 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
                 + "&adrs=" + $scope.TrumaPerson.Address + "&cmnt=" + $scope.TrumaPerson.Comment; 
 
             angular.forEach($scope.items, function (value, key) {
-                debugger;
                 if (value.Pray != null && value.model_son != null && value.model_son != "" && value.model_father != "" && value.model_father != null) {
                     $scope.TrumaPerson.Donates += value.Pray + " " + value.model_son + " " + $scope.getNameByType(value.model_gender) +
                         " " + value.model_father + "$$$";
@@ -23895,7 +23893,8 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
                 if (data.ErrorCode == 0) {
                     $scope.PassStep[0] = true;
                     $scope.TrumaPerson = data.Data;
-                    param += "&addData=" + $scope.TrumaPerson.Id
+                    param += "&addData=" + $scope.TrumaPerson.Id;
+                    $scope.iframeUrl = $sce.trustAsResourceUrl(param);
                     $scope.currentStep = 2;
                 }
                 else {
@@ -23903,7 +23902,7 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
                 }
             });
 
-            $scope.iframeUrl = $sce.trustAsResourceUrl(param);
+          
 
         }
 
@@ -23945,6 +23944,10 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
         }
 
         $scope.removeInput = function (item) {
+            inputIndex--;
+            if ($scope.Truma.isPerPerson == 1) {
+                $scope.TrumaPerson.Total = inputIndex * $scope.Truma.Total * 1;
+            }
             var index = $scope.items.findIndex(function (o) {
                 return o.id === item.id;
             });

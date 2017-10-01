@@ -22,7 +22,6 @@
                         if (value.Donates != null) {
                             var donates = value.Donates.split("$$$");
                             value.Donates1 = donates;
-                            debugger;
                         }
                     });
 

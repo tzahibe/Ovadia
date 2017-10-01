@@ -41,7 +41,6 @@
                 + "&adrs=" + $scope.TrumaPerson.Address + "&cmnt=" + $scope.TrumaPerson.Comment; 
 
             angular.forEach($scope.items, function (value, key) {
-                debugger;
                 if (value.Pray != null && value.model_son != null && value.model_son != "" && value.model_father != "" && value.model_father != null) {
                     $scope.TrumaPerson.Donates += value.Pray + " " + value.model_son + " " + $scope.getNameByType(value.model_gender) +
                         " " + value.model_father + "$$$";
@@ -53,7 +52,8 @@
                 if (data.ErrorCode == 0) {
                     $scope.PassStep[0] = true;
                     $scope.TrumaPerson = data.Data;
-                    param += "&addData=" + $scope.TrumaPerson.Id
+                    param += "&addData=" + $scope.TrumaPerson.Id;
+                    $scope.iframeUrl = $sce.trustAsResourceUrl(param);
                     $scope.currentStep = 2;
                 }
                 else {
@@ -61,7 +61,7 @@
                 }
             });
 
-            $scope.iframeUrl = $sce.trustAsResourceUrl(param);
+          
 
         }
 
@@ -103,6 +103,10 @@
         }
 
         $scope.removeInput = function (item) {
+            inputIndex--;
+            if ($scope.Truma.isPerPerson == 1) {
+                $scope.TrumaPerson.Total = inputIndex * $scope.Truma.Total * 1;
+            }
             var index = $scope.items.findIndex(function (o) {
                 return o.id === item.id;
             });

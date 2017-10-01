@@ -463,10 +463,11 @@ h3.title {
 
 .blueimp-gallery > .close, .blueimp-gallery > .title {
     /*background: url(/Content/images/text_shadow.png);*/
-    background: rgb(249, 249, 249); 
+    background: rgb(249, 249, 249);
     background-repeat: repeat-x;
     background-size: 100% 100%;
     opacity: 1;
+    color: #284b75;
     left: unset;
     width: 100%;
     top: unset;
