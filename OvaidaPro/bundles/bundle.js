@@ -22236,7 +22236,8 @@ OvadiaApp.controller('donationDetailsCtrl', ['$scope', '$interval', 'appServices
                     $scope.Tormim = data.Data;
 
                     angular.forEach($scope.Tormim, function (value, index) {
-                        value.PayDate = $rootScope.DateToClient(value.PayDate);
+                        value.PayDate = $rootScope.FullDateToClient(value.PayDate);
+                       
                         if (value.Donates != null) {
                             var donates = value.Donates.split("$$$");
                             value.Donates1 = donates;
@@ -22818,6 +22819,16 @@ OvadiaApp.controller('myAppCtrl', ['$scope', 'appServices', 'UserAccount','$root
                 return null;
             }
         };
+
+        $scope.FullDateToClient = function (date) {
+            try {
+                var temp = new Date(parseInt(date.split('/Date(')[1].split(')/')[0]));
+                return temp;
+            }
+            catch (e) {
+                return null;
+            }
+        }
 
         $rootScope.GetComment = function () {
             appServices.GetComment().then(function (data) {

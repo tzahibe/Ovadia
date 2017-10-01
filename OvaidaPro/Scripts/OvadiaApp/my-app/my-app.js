@@ -39,6 +39,16 @@
             }
         };
 
+        $scope.FullDateToClient = function (date) {
+            try {
+                var temp = new Date(parseInt(date.split('/Date(')[1].split(')/')[0]));
+                return temp;
+            }
+            catch (e) {
+                return null;
+            }
+        }
+
         $rootScope.GetComment = function () {
             appServices.GetComment().then(function (data) {
                 if (data.ErrorCode == 0) {

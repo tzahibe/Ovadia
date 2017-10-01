@@ -13,7 +13,7 @@
                     <th>סטטוס תרומה</th>
                     <th></th>
                 </tr>
-            <tbody ng-repeat="Torem in Tormim | orderBy : '-PayDate' ">
+            <tbody ng-repeat="Torem in Tormim | orderBy : 'PayDate' ">
                 <tr class="tab_info" ng-hide="loader1" style="">
                     <!-- ng-repeat="item in Tfilot.data  | orderBy : 'PayDate' "-->
                     <td>
@@ -23,7 +23,9 @@
                         <span dir="rtl">{{Torem.Total}} ש"ח </span>
                     </td>
                     <td style="direction: ltr;">
-                        <span>{{Torem.PayDate}}</span>
+                        <span>
+                        {{ Torem.PayDate | date : "dd.MM.y hh:mm" }}
+                        </span>
                     </td>
                     <td style="direction: rtl;">
                         <strong ng-show="Torem.Step == 3" style="color:green">הושלם</strong>

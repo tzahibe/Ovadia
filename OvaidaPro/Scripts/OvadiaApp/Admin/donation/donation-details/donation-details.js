@@ -18,7 +18,8 @@
                     $scope.Tormim = data.Data;
 
                     angular.forEach($scope.Tormim, function (value, index) {
-                        value.PayDate = $rootScope.DateToClient(value.PayDate);
+                        value.PayDate = $rootScope.FullDateToClient(value.PayDate);
+                       
                         if (value.Donates != null) {
                             var donates = value.Donates.split("$$$");
                             value.Donates1 = donates;

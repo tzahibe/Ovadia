@@ -785,7 +785,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:53</publishTime>
     </File>
     <File Include="pages/successfulPayment.html">
-      <publishTime>09/18/2017 13:10:40</publishTime>
+      <publishTime>10/01/2017 21:15:03</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>05/21/2017 10:00:37</publishTime>
@@ -908,7 +908,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2017 10:20:22</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/donation/donation-details/donation-details.html">
-      <publishTime>09/27/2017 10:11:42</publishTime>
+      <publishTime>10/01/2017 21:23:47</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/donation/donation-details/donation-details.js">
       <publishTime>10/01/2017 21:03:35</publishTime>
