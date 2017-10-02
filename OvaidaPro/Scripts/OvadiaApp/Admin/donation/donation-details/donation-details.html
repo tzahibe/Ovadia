@@ -74,7 +74,9 @@
                             </div>
                             <div class="">
                                 <label for="fullname">תאריך תשלום:</label>
-                                <span ng-bind-html="Torem.PayDate"></span>
+                                <span>
+                                    {{ Torem.PayDate | date : "dd.MM.y hh:mm a" }}
+                                </span>
                             </div>
                             <div class="">
                                 <label for="fullname">דואר אלקטרוני:</label>

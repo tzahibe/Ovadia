@@ -908,7 +908,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/24/2017 10:20:22</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/donation/donation-details/donation-details.html">
-      <publishTime>10/01/2017 21:43:33</publishTime>
+      <publishTime>10/02/2017 17:07:59</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/donation/donation-details/donation-details.js">
       <publishTime>10/01/2017 21:39:34</publishTime>
@@ -1124,7 +1124,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2017 11:53:23</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/donation-screen/donation-wizard/donation-wizard.css">
-      <publishTime>09/25/2017 15:34:18</publishTime>
+      <publishTime>10/01/2017 21:46:22</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/donation-screen/donation-wizard/donation-wizard.html">
       <publishTime>09/26/2017 15:37:09</publishTime>
