@@ -23890,7 +23890,7 @@ OvadiaApp.controller('donationWizardCtrl', ['$scope', '$timeout', '$http', '$roo
 
             var param = url + "&titles=hide&cur=" + 1 + "&tz=" + $scope.TrumaPerson.NumberId + "&tl=" + $scope.TrumaPerson.Phone1
                 + "&total=" + $scope.TrumaPerson.Total + "&ml=" + $scope.TrumaPerson.Email + "&nm=" + $scope.TrumaPerson.Payment_FullName
-                + "&adrs=" + $scope.TrumaPerson.Address + "&cmnt=" + $scope.TrumaPerson.Comment; 
+                + "&adrs=" + $scope.TrumaPerson.Address + " " +$scope.TrumaPerson.City + "&cmnt=" + $scope.TrumaPerson.Comment; 
 
             angular.forEach($scope.items, function (value, key) {
                 if (value.Pray != null && value.model_son != null && value.model_son != "" && value.model_father != "" && value.model_father != null) {
