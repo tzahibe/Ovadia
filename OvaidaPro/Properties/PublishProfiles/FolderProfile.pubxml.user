@@ -1127,7 +1127,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2017 21:46:22</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/donation-screen/donation-wizard/donation-wizard.html">
-      <publishTime>09/26/2017 15:37:09</publishTime>
+      <publishTime>10/02/2017 17:23:10</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/donation-screen/donation-wizard/donation-wizard.js">
       <publishTime>10/01/2017 21:04:11</publishTime>
