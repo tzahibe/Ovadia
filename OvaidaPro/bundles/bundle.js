@@ -26325,7 +26325,7 @@ OvadiaApp.controller('headerComponentCtrl', ['$scope','$rootScope',
         $rootScope.menu = 'ראשי';
         $scope.menuItems = [
             { name: 'ראשי', state: 'index', url:'/index' },
-            { name: 'ניהול', state: 'admin.home', url:'/admin/home' },
+            //{ name: 'ניהול', state: 'admin.home', url:'/admin/home' },
             { name: 'אודות', state: 'profile',  url: '/profile' },
             { name: 'מפת הגעה', state: 'map', url: '/map' },
             { name: 'גלריית תמונות', state: 'image-gallery', url: '/image-gallery' },
