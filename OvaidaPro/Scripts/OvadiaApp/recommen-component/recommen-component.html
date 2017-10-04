@@ -5,9 +5,9 @@
         <div ng-hide="loader">
             <h3 class="box-title">המלצות רבנים</h3>
 
-            <div ng-repeat="recom in Recomm">
+            <!--<div ng-repeat="recom in Recomm">
                 <div class="background-css">
-                    <div class="rabi-profile">
+                    <div class="col-xs-4 rabi-profile">
                         <img class="rabi-image" src="{{recom.ProfilePic}}" />
                         {{recom.Title}}
                     </div>
@@ -17,8 +17,18 @@
                         לקריאת המכתב <a href="#" ng-click="OpenLetter(recom)">לחץ כאן</a>
                     </div>
                 </div>
+            </div>-->
+            <div ng-repeat="recom in Recomm">
+                <div class="box-rabi" style="cursor:pointer" ng-click="OpenLetter(recom)">
+                    <span class="read-te    xt">לחץ לקריאה</span>
+                    <img class="rabi-image" src="{{recom.ProfilePic}}" />
+                    <div class="rabi-title">
+                        {{recom.Title}}
+                    </div>
+                </div>
             </div>
-        </div>
+
+            </div>
 
         <div class="modal-body center" ng-show="loader">
             <img src="/Content/images/loader.gif" />

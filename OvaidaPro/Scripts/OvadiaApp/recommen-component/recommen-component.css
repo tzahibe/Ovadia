@@ -1,5 +1,5 @@
 ﻿.background-css {
-    background: #d7dfe8;
+    /*background: #d7dfe8;*/
     width:100%;
 }
 .text-1 {
@@ -24,7 +24,7 @@
     border-left: 3px solid #284B75;
     border-right: 3px solid #284B75;
 }
-.rabi-profile {
+/*.rabi-profile {
     font-size: 17px;
     font-family: OpenSansHebrew-Bold;
     text-align: center;
@@ -35,11 +35,76 @@
     position: absolute;
     margin-top: -18px;
     background: #284B75;
+}*/
+.rabi-profile {
+    font-size: 17px;
+    font-family: OpenSansHebrew-Bold;
+    text-align: center;
+    color: #D8DCE1;
+    overflow: hidden;
+    width: 160px;
+    height: 215px;
+    float:right;
+    /*position: absolute;*/
+    margin-top: -18px;
+    background: #284B75;
 }
 
+.box-rabi {
+    width: 161px;
+    background: #284B75;
+    font-size: 17px;
+    color: #D8DCE1;
+    font-family: OpenSansHebrew-Bold;
+    float: right;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.rabi-title {
+    height: 48px;
+    overflow: hidden;
+    padding: 4px;
+    font-size: 15px;
+}
+.read-text {
+    position: absolute;
+    background: #fafafa;
+    color: #284b75;
+    padding: 4px;
+    border-radius: 8px;
+    margin-top: 3px;
+    margin-right: 3px;
+    font-size: 12px;
+}
 
 @media screen and (max-width: 768px) {
-
+    .box-rabi {
+        padding-top: 11px;
+    }
+    .read-text {
+        margin-top: 5px;
+        margin-right: 18px;
+        font-size: 19px;
+        z-index: 9;
+    }
+    .rabi-image {
+        width: 257px;
+        height: 233px;
+        border-left: 3px solid #284B75;
+        border-right: 3px solid #284B75;
+        position: relative;
+        right: 11px;
+    }
+    .box-rabi {
+        width: 98%;
+        margin-bottom: 5px;
+    }
+    .rabi-title {
+        height: 48px;
+        overflow: hidden;
+        font-size: 20px;
+        padding: 6px;
+    }
     .ngdialog.ngdialog-theme-default {
         padding: 0;
         width: 100%;
