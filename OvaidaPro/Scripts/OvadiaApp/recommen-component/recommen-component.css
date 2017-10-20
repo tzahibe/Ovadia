@@ -68,12 +68,13 @@
 }
 .read-text {
     position: absolute;
-    background: #fafafa;
-    color: #284b75;
+    background: #738ca8;
+    color: #ffffff;
     padding: 4px;
     border-radius: 8px;
-    margin-top: 3px;
-    margin-right: 3px;
+    margin-top: 7px;
+    margin-right: 4px;
+    border:1px solid #fff;
     font-size: 12px;
 }
 

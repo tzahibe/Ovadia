@@ -295,6 +295,7 @@
         }
 
         $scope.addEvent = function (fixed) {
+            debugger;
             var obj = fixed == 1 ? obj = $scope.currentFixedEvent : obj = $scope.currentEvent;
             if (!self.FormVadlidation()) {
                 return;
@@ -309,7 +310,7 @@
                         $scope.fixedEvents.push($scope.currentFixedEvent);
                         self.addFixedEventCalendar();
                     }
-                    else if (data.ErrorCode == 5) {
+                    else if (response.data.ErrorCode == 5) {
                         $rootScope.LogOut();
                     }
                     else {

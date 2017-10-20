@@ -41,6 +41,10 @@
                         {{weekEvents.Day_1[0].Event_Name}}<br />
                         בשעה {{weekEvents.Day_1[0].From_Hour}}:{{weekEvents.Day_1[0].From_Minutes}}
                     </span>
+                    <span ng-show="weekEvents.Day_1.length > 1">
+                        {{weekEvents.Day_1[1].Event_Name}}<br />
+                        בשעה {{weekEvents.Day_1[1].From_Hour}}:{{weekEvents.Day_1[1].From_Minutes}}
+                    </span>
                     <span ng-show="weekEvents.Day_1.length == 0">
                         אין שיעורים היום.
                     </span>
@@ -58,6 +62,10 @@
                     <span ng-show="weekEvents.Day_2.length > 0">
                         {{weekEvents.Day_2[0].Event_Name}}<br />
                         בשעה {{weekEvents.Day_2[0].From_Hour}}:{{weekEvents.Day_2[0].From_Minutes}}
+                    </span>
+                    <span ng-show="weekEvents.Day_2.length > 1">
+                        {{weekEvents.Day_2[1].Event_Name}}<br />
+                        בשעה {{weekEvents.Day_2[1].From_Hour}}:{{weekEvents.Day_2[1].From_Minutes}}
                     </span>
                    <span  ng-show="weekEvents.Day_2.length == 0">
                        אין שיעורים מחר.
