@@ -377,7 +377,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2017 14:37:12</publishTime>
     </File>
     <File Include="Content/images/logozakai.png">
-      <publishTime>07/11/2017 23:51:52</publishTime>
+      <publishTime>10/21/2017 19:51:09</publishTime>
     </File>
     <File Include="Content/images/magenDavid.png">
       <publishTime>07/24/2017 13:09:29</publishTime>
