@@ -37,14 +37,14 @@
                 <div class="text">
                     <strong class="title">שיעור בהלכה!</strong>
                     <br />
-                    <span ng-show="weekEvents.Day_1.length > 0">
-                        {{weekEvents.Day_1[0].Event_Name}}<br />
+                    <div ng-show="weekEvents.Day_1.length > 0">
+                        {{weekEvents.Day_1[0].Event_Name}} 
                         בשעה {{weekEvents.Day_1[0].From_Hour}}:{{weekEvents.Day_1[0].From_Minutes}}
-                    </span>
-                    <span ng-show="weekEvents.Day_1.length > 1">
-                        {{weekEvents.Day_1[1].Event_Name}}<br />
+                    </div>
+                    <div ng-show="weekEvents.Day_1.length > 1">
+                        {{weekEvents.Day_1[1].Event_Name}} 
                         בשעה {{weekEvents.Day_1[1].From_Hour}}:{{weekEvents.Day_1[1].From_Minutes}}
-                    </span>
+                    </div>
                     <span ng-show="weekEvents.Day_1.length == 0">
                         אין שיעורים היום.
                     </span>
@@ -59,14 +59,14 @@
                 <div class="text">
                     <strong class="title">שיעור בהלכה!</strong>
                     <br />
-                    <span ng-show="weekEvents.Day_2.length > 0">
-                        {{weekEvents.Day_2[0].Event_Name}}<br />
+                    <div ng-show="weekEvents.Day_2.length > 0">
+                        {{weekEvents.Day_2[0].Event_Name}} 
                         בשעה {{weekEvents.Day_2[0].From_Hour}}:{{weekEvents.Day_2[0].From_Minutes}}
-                    </span>
-                    <span ng-show="weekEvents.Day_2.length > 1">
-                        {{weekEvents.Day_2[1].Event_Name}}<br />
+                    </div>
+                    <div ng-show="weekEvents.Day_2.length > 1">
+                        {{weekEvents.Day_2[1].Event_Name}} 
                         בשעה {{weekEvents.Day_2[1].From_Hour}}:{{weekEvents.Day_2[1].From_Minutes}}
-                    </span>
+                    </div>
                    <span  ng-show="weekEvents.Day_2.length == 0">
                        אין שיעורים מחר.
                    </span>

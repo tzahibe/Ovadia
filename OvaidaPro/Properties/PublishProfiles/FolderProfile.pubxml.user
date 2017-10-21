@@ -377,7 +377,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2017 14:37:12</publishTime>
     </File>
     <File Include="Content/images/logozakai.png">
-      <publishTime>10/21/2017 19:51:09</publishTime>
+      <publishTime>10/21/2017 19:55:00</publishTime>
     </File>
     <File Include="Content/images/magenDavid.png">
       <publishTime>07/24/2017 13:09:29</publishTime>
@@ -779,10 +779,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/18/2017 13:37:09</publishTime>
     </File>
     <File Include="pages/errorRemoveMail.html">
-      <publishTime>07/11/2017 23:51:53</publishTime>
+      <publishTime>10/21/2017 19:59:52</publishTime>
     </File>
     <File Include="pages/removeEmail.html">
-      <publishTime>07/11/2017 23:51:53</publishTime>
+      <publishTime>10/21/2017 19:57:22</publishTime>
     </File>
     <File Include="pages/successfulPayment.html">
       <publishTime>10/01/2017 21:15:03</publishTime>
