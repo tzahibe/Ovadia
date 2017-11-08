@@ -1,31 +1,24 @@
 ﻿<link href="/Scripts/OvadiaApp/my-app/my-app.css" rel="stylesheet" />
-<div> <!--- class="container"-->
-    <!--- תפריט -->
-    <div class="row">
-        <header-component></header-component>
-        <div class="col-xs-12 odaot-for-zibur">
-            <div class="container">
-                <strong style="position: relative;top: -5px;"> הודעות לציבור: </strong>
-                <marquee class="slide-script" width="80%" Loop="infinite" direction="right" scrollamount="5" scrolldelay="2">
-                    <div ng-bind-html="Comment.Text"></div>
-                </marquee>
 
-                <!--<div id="display2" class="col-xs-12">
-                    <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non magna ut orci pretium molestie. ही मार्क्वी खूपच कूल आहे!!!</p>
-                </div>-->
-
+<!--- תפריט -->
+<div class="row">
+    <header-component></header-component>
+    <div class="col-xs-12 odaot-for-zibur">
+        <div class="container">
+            <strong style="position: relative;top: -5px;"> הודעות לציבור: </strong>
+            <marquee class="slide-script" width="80%" Loop="infinite" direction="right" scrollamount="5" scrolldelay="2">
+                <div ng-bind-html="Comment.Text"></div>
+            </marquee>
         </div>
         <div class="visible-xs spcae-from-header"></div>
         <br />
     </div>
 
-    <!--<home-component></home-component>-->
     <div class="container">
         <div ui-view></div>
     </div>
-    
+
     <home-fixed></home-fixed>
-    <!--<router-outlet> </router-outlet>-->
 
 </div>
 
