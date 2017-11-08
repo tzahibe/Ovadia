@@ -17,9 +17,9 @@
             <tags-input ng-model="tags" minTags="1" add-from-autocomplete-only="true" placeholder="הוסף קטגוריה">
                 <auto-complete source="loadTags($query)"></auto-complete>
             </tags-input>
-            <h3 ng-show="toShow()">המאמרים שיוצגו בקרוסלה</h3>
+            <h3 ng-show="toShow()">המאמרים שיוצגו בקרוסלה לאחר שמירה</h3>
 
-            <div class="articles-list" ng-repeat="article in (FilteredData =  (Articles | filter: tagsFilter)) ">
+            <div class="articles-list" ng-repeat="article in FilteredData = (Articles | filter: tagsFilter) ">
                 <div class="article-box col-md-4_5 col-xs-12" 
                      style="{{myStyle(article)}}">
                     <div class="article-title">
@@ -28,14 +28,21 @@
                 </div>
             </div>
 
-            <div class="articles-list" ng-repeat="article1 in datSaved" ng-hide="FilteredData != null && FilteredData.length > 0">
-                <div class="article-box col-md-4_5 col-xs-12"
-                     style="{{myStyle(article1)}}">
-                    <div class="article-title">
-                        {{article1.Title}}
+            <br />
+            <div class="col-xs-12">
+                <h3 ng-show="datSaved != null && datSaved.length > 0 ">
+                    המאמרים ששמורים כרגע במערכת -  יוסרו רק לאחר שמירה של העדכון
+                </h3>
+                <div class="articles-list" ng-repeat="article1 in datSaved" ng-hide="datSaved == null && datSaved.length > 0">
+                    <div class="article-box col-md-4_5 col-xs-12"
+                         style="{{myStyle(article1)}}">
+                        <div class="article-title">
+                            {{article1.Title}}
+                        </div>
                     </div>
                 </div>
             </div>
+            
 
             <!--<div ng-show="Articles == null || Articles.length == 0">
                 אין מאמרים תחת התגיות/הקטגוריותת שנבחרו
