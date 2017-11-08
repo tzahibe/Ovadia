@@ -1,0 +1,42 @@
+﻿<link href="/Scripts/OvadiaApp/home-fixed/home-fixed.css" rel="stylesheet" />
+<div class="row">
+    <div class="body-center col-xs-12">
+
+        <div class="col-xs-12 container">
+            <div class="col-xs-12 col-sm-6">
+                <img class="email-icon" src="/Content/images/63ecff_cc4f7c1c9e324e54854af1333240abc6-mv2.png" />
+                <h3 class="box-title-white">
+                    קבל עדכונים חשובים במייל!
+                </h3>
+                <p class="text-col">
+                    הכנס את הדואר האלקטרוני שלך על מנת להתעדכן בשיעורים, בזמני תפילות, חברותות והודעות על כל מה שקורה בכולל.
+                </p>
+            </div>
+
+            <form class="col-xs-12 col-sm-6 send-mail-margin" name="sendMail" novalidate style="">
+                <div ng-hide="successMail">
+                    <div class="col-xs-10 remove-padding">
+                        <input type="text" ng-model="email_input"
+                               ng-pattern="/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i"
+                               class="form-control email" placeholder="הכנס דואר אלקטרוני" dir="ltr" />
+                        <div class="error-msg" ng-show="email_error">אנא הזן מייל חוקי</div>
+                        <div class="error-msg" ng-show="email_exist_error">מייל זה כבר קיים</div>
+                    </div>
+                    <div class="col-xs-2 remove-padding">
+                        <input type="button" ng-click="AddEmail()" value="שלח" ng-class="email_input != '' ? 'btn btn-success mail' :'btn btn-default mail'" />
+                    </div>
+                </div>
+                <div ng-show="successMail">
+                    <h3>נוספת לתפוצה בהצלחה !</h3>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<p style="    background: #284b75;
+    color: #fff; padding:7px">
+    להערות, הארות, הצעות, ושאלות ניתן לפנות אלינו <a href="mailto:hocolel@gmail.com">במייל</a>
+    שכתובתו hocolel@gmail.com
+    <br />
+    או בטלפון לאפי 052-5845183  ולאבי 052-7617430
+</p>

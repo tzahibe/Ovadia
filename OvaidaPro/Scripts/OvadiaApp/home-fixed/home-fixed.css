@@ -1,0 +1,150 @@
+﻿
+/*h1 {
+    font-size: 300%;
+    color: #34495e;
+}*/
+
+/*home-component .row {
+    margin: 0;
+}*/
+.ngdialog-theme-default {
+    width: auto;
+    position: absolute;
+}
+
+.box-title {
+    padding-right: 8px;
+    color: #686868;
+    /*font-family: kalisher,Arial;*/
+    font-weight: bold;
+}
+
+.send-mail-margin {
+    margin-top: 37px;
+}
+
+.body-center {
+    background-color: #bdc9d9;
+    background-size: 100%;
+    /*background: url('/Content/images/purple-wallpaper-background-25.jpg');
+    background-repeat: no-repeat;*/
+    border: 1px solid #f8f8f8;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    margin-top: 12px;
+    /*background: -moz-linear-gradient(top, #294d77 0%, #2989d8 50%, #7db9e8 100%);
+    background: -webkit-linear-gradient(top, #294d77 0%,#2989d8 50%,#7db9e8 100%);
+    background: linear-gradient(to bottom, #294d77 0%,#425769 50%,#405261 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#294d77', endColorstr='#7db9e8',GradientType=0 );*/
+}
+
+.btn-success.mail {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    position: relative;
+    right: -74px;
+    padding-bottom: 6px;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.form-control.email {
+    height: 42px;
+    text-indent: 84px;
+}
+
+.right-box {
+    height: 340px;
+}
+
+
+
+.send-mail p {
+    font-size: 16px;
+}
+
+.send-mail {
+    color: #fff;
+}
+
+.center-block {
+    background: #f8f8f8;
+    border-radius: 10px;
+}
+
+.box-title-white {
+    font-size: 16px;
+    font-family: OpenSansHebrew-ExtraBold;
+    margin-bottom: 0;
+    color: #284B75;
+}
+
+input.btn.btn-success.mail {
+    background: #284b75;
+}
+
+.text-col {
+    margin-top: 0;
+    padding-left: 7px;
+    color: #284B75;
+}
+
+.email-icon {
+    float: right;
+    margin-top: 12px;
+    padding-left: 7px;
+}
+
+.remove-padding {
+    padding: 0;
+    margin: 0;
+}
+
+.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5,
+.col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    float: right;
+}
+
+.center-block ul {
+    list-style-type: none;
+    padding: 0;
+    padding-right: 11px;
+}
+
+.center-block {
+    min-height: 132px;
+}
+
+.lessonBlocks {
+    padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .send-mail-margin {
+        margin-top: 0;
+        margin-right: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+
+    .right-box {
+        height: auto;
+    }
+
+    .form-control.email {
+        text-indent: 84px;
+    }
+
+    .center-block {
+        min-height: unset;
+    }
+
+    .btn-success.mail {
+        right: -46px;
+    }
+}
