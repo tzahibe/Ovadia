@@ -151,7 +151,11 @@
 }
 .col-xs-12.odaot-for-zibur .container {
     margin-top: 1px;
-}@media screen and (max-width: 768px) {
+}
+home-fixed {
+    display: none;
+}
+@media screen and (max-width: 768px) {
     .containerX{
         width:100%;
     }
