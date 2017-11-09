@@ -81,9 +81,8 @@
                 item.CategoriesList.length == 0)
                 return false;
 
-            
-            if (item.CategoriesList != null && item.CategoriesList.length > 0 && $scope.tags != null &&
-                $scope.tags.length == 1) {
+             if (item.CategoriesList != null && item.CategoriesList.length > 0 && $scope.tags != null &&
+                $scope.tags.length > 0) {
                 for (var i = 0; i < item.CategoriesList.length; i++) {
                     for (var j = 0; j < $scope.tags.length; j++) {
                         if (item.CategoriesList[i].CategoryId == $scope.tags[j].CategoryId)
@@ -91,19 +90,26 @@
                     }
                 }
             }
-            if (item.CategoriesList.length == 6) {
-                debugger;
-            }
-            if (item.CategoriesList != null && item.CategoriesList.length > 1 && $scope.tags != null &&
-                $scope.tags.length > 1) {
-                var result = item.CategoriesList.filter(function (fs) {
-                    return $scope.tags.some(function (ff) { return fs.CategoryId == ff.CategoryId });
-                });
+            //if (item.CategoriesList != null && item.CategoriesList.length > 0 && $scope.tags != null &&
+            //    $scope.tags.length == 1) {
+            //    for (var i = 0; i < item.CategoriesList.length; i++) {
+            //        for (var j = 0; j < $scope.tags.length; j++) {
+            //            if (item.CategoriesList[i].CategoryId == $scope.tags[j].CategoryId)
+            //                return true;
+            //        }
+            //    }
+            //}
+            
+            //if (item.CategoriesList != null && item.CategoriesList.length > 1 && $scope.tags != null &&
+            //    $scope.tags.length > 1) {
+            //    var result = item.CategoriesList.filter(function (fs) {
+            //        return $scope.tags.some(function (ff) { return fs.CategoryId == ff.CategoryId });
+            //    });
 
-                if (result.length == $scope.tags.length) {
-                    return true;
-                }
-            }
+            //    if (result.length == $scope.tags.length) {
+            //        return true;
+            //    }
+            //}
            
         }
 
