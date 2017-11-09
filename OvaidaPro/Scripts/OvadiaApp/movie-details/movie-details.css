@@ -1,6 +1,10 @@
 ﻿.right{
     float:right !important;
 }
+.remove-padding.image-css.right.marginbottom10{
+margin-bottom:10px;
+}
+
 .iframe {
     width: 600px;
     height: 394px;
