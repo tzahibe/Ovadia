@@ -46,6 +46,8 @@
       "Scripts/OvadiaApp/admin/ng-file-model/ng-file-model.js",
       "Scripts/OvadiaApp/admin/upload-recom/upload-recom.js",
       "Scripts/OvadiaApp/recommen-component/recommen-component.js",
+      "Scripts/OvadiaApp/sidur-component/sidur-component.js",
+      "Scripts/OvadiaApp/admin/sidur-admin/sidur-admin.js",
       "Scripts/OvadiaApp/admin/recommen/add-recommen/add-recommen.js",
       "Scripts/OvadiaApp/admin/recommen/edit-recommen/edit-recommen.js",
       "Scripts/OvadiaApp/admin/recommen/home-recommen/home-recommen.js",

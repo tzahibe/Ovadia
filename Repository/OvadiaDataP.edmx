@@ -138,6 +138,19 @@
           <Property Name="IP" Type="nvarchar" MaxLength="50" />
           <Property Name="Function" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Sidur1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Body" Type="nvarchar(max)" />
+          <Property Name="Publish" Type="int" />
+          <Property Name="ProfilePic" Type="nvarchar(max)" />
+          <Property Name="isCategory" Type="int" />
+          <Property Name="Parent" Type="int" />
+          <Property Name="Views" Type="int" />
+        </EntityType>
         <EntityType Name="Tfila">
           <Key>
             <PropertyRef Name="ID" />
@@ -175,6 +188,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySet Name="db_TrumaPerson" EntityType="Self.db_TrumaPerson" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Emails" EntityType="Self.Emails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sidur1" EntityType="Self.Sidur1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tfila" EntityType="Self.Tfila" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -223,6 +237,7 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <EntitySet Name="db_Comment" EntityType="DB_A25801_OvadiaModel.db_Comment" />
           <EntitySet Name="db_Truma" EntityType="DB_A25801_OvadiaModel.db_Truma" />
           <EntitySet Name="db_TrumaPerson" EntityType="DB_A25801_OvadiaModel.db_TrumaPerson" />
+          <EntitySet Name="Sidur1" EntityType="DB_A25801_OvadiaModel.Sidur1" />
         </EntityContainer>
         <EntityType Name="Emails">
           <Key>
@@ -364,6 +379,19 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Donates" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Step" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sidur1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Publish" Type="Int32" />
+          <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isCategory" Type="Int32" />
+          <Property Name="Parent" Type="Int32" />
+          <Property Name="Views" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -537,6 +565,20 @@ warning 6002: The table/view 'DB_A25801_Ovadia.dbo.Users' does not have a primar
                 <ScalarProperty Name="Payment_FullName" ColumnName="Payment_FullName" />
                 <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sidur1">
+            <EntityTypeMapping TypeName="DB_A25801_OvadiaModel.Sidur1">
+              <MappingFragment StoreEntitySet="Sidur1">
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="isCategory" ColumnName="isCategory" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="Publish" ColumnName="Publish" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

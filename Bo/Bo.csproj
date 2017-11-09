@@ -51,6 +51,7 @@
     <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result.cs" />
+    <Compile Include="Sidur.cs" />
     <Compile Include="Truma.cs" />
     <Compile Include="TrumaPerson.cs" />
     <Compile Include="User.cs" />

@@ -21247,6 +21247,14 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
                 access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
             }
         })
+        .state("sidur", {
+            url: '/sidur',
+            templateUrl: '/Scripts/OvadiaApp/sidur-component/sidur-component.html',
+            controller: 'sidurComponentCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
+            }
+        })
         .state("movie-details", {
             url: '/movie-category/movie-details/:articleId',
             templateUrl: '/Scripts/OvadiaApp/movie-details/movie-details.html',
@@ -21295,6 +21303,15 @@ OvadiaApp.config(function ($stateProvider, $locationProvider, ngClipProvider, Us
             url: '/home',
             templateUrl: '/Scripts/OvadiaApp/Admin/admin-home/admin-home.html',
             controller: 'adminHomeCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+
+        })
+        .state("admin.sidur", {
+            url: '/sidur',
+            templateUrl: '/Scripts/OvadiaApp/Admin/sidur-admin/sidur-admin.html',
+            controller: 'sidurAdmintCtrl',
             data: {
                 access: [UserRole.Admin, UserRole.Editor]
             }
@@ -23708,6 +23725,121 @@ OvadiaApp.directive('recommenComponent', function () {
         templateUrl: '/Scripts/OvadiaApp/recommen-component/recommen-component.html'
     }
 });
+OvadiaApp.controller('sidurComponentCtrl', ['$scope', 'appServices', 'UserAccount', '$rootScope', '$interval',
+    function ($scope, appServices, UserAccount, $rootScope, $interval) {
+        var self = this;
+
+        self.init = function () {
+
+        }
+
+
+        self.init();
+
+    }]);
+
+OvadiaApp.directive('sidurComponent', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'sidurComponentCtrl',
+        templateUrl: '/Scripts/OvadiaApp/sidur-component/sidur-component.html'
+    }
+});
+
+
+OvadiaApp.controller('sidurAdmintCtrl', ['$scope', 'appServices', 'UserAccount', '$rootScope', '$interval','ngDialog',
+    function ($scope, appServices, UserAccount, $rootScope, $interval, ngDialog) {
+        var self = this;
+        $scope.radio = 2;
+        $scope.Categories = [];
+        $scope.category = {};
+
+        self.init = function () {
+            $scope.getAllSidurCategory();
+        }
+
+        $scope.NewCateogry = function () {
+            $scope.loader = true;
+            $scope.category.isCategory = 1;
+            appServices.AddSidurCategory($scope.category).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.category = data.Data;
+                    $scope.getAllSidurCategory();
+                    $scope.OpenPopup("קטגוריה נוצרה בהצלחה!", "תוכל להמשיך לערוך את הקטגוריה");
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+
+                $scope.loader = false;
+            });
+        }
+
+        $scope.getAllSidurCategory = function () {
+            $scope.loader = true;
+            appServices.GetAllSidurCateogires().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.Categories = data.Data;
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+
+                $scope.loader = false;
+            });
+        }
+
+        $scope.chooseCategory = function (category) {
+            if (category != null && category.Title != null) {
+                $scope.category.Parent = category.Id;
+            }
+        }
+
+        $scope.editCateogryselect2 = function (category) {
+            if (category != null && category.Title != null ) {
+                $scope.category = category;
+            }
+        }
+
+        $scope.OpenPopup = function (title, msg) {
+            $scope.Title = title;
+            $scope.Msg = msg;
+            ngDialog.open({
+                template: '/Scripts/OvadiaApp/Admin/events-dialog/Movies/Movie-change.html',
+                //className: 'ngdialog-theme-default',
+                scope: $scope
+            });
+        }
+
+        $scope.notEqualChoosen = function (item) {
+           
+            if (item.Title == $scope.category.Title ) {
+                return false
+            }
+            return true;
+        }
+
+        self.init();
+
+    }]);
+
+OvadiaApp.directive('sidurAdmin', function () {
+    return {
+        restrict: 'E',
+        bindToController: true,
+        controller: 'sidurAdmintCtrl',
+        templateUrl: '/Scripts/OvadiaApp/Admin/sidur-admin/sidur-admin.html'
+    }
+});
+
+
 OvadiaApp.controller('addRecommenCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout', '$http', '$stateParams',
     '$state','$rootScope',
     function ($scope, appServices, ngDialog, $timeout, $http, $stateParams, $state, $rootScope) {
@@ -24598,7 +24730,7 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         });
     }
 
-     /* TRUMA -----------------> */
+     /* TRUMA ---------------------> */
 
     this.SaveTruma = function (truma) {
 
@@ -24687,6 +24819,54 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         return $http({
             url: url + '/TrummaPersonSer/GetAllTormim',
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+     /* Sidur ----------------------> */
+    this.EditSidurCategory = function (sidur) {
+        return $http({
+            url: url + '/Sidur1/EditCategory',
+            method: 'POST',
+            data: sidur,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllSidurCateogires = function () {
+        return $http({
+            url: url + '/Sidur1/GetCateogires',
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetsSidurSubCateogires = function (parent_id) {
+        var param = {
+            parentId : parent_id
+        }
+
+        return $http({
+            url: url + '/Sidur1/GetsSubCateogires',
+            method: 'POST',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.AddSidurCategory = function (sidur) {
+        return $http({
+            url: url + '/Sidur1/AddCategory',
+            method: 'Post',
+            data: sidur,
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
             return response.data;

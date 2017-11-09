@@ -482,7 +482,7 @@
         });
     }
 
-     /* TRUMA -----------------> */
+     /* TRUMA ---------------------> */
 
     this.SaveTruma = function (truma) {
 
@@ -571,6 +571,54 @@
         return $http({
             url: url + '/TrummaPersonSer/GetAllTormim',
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+     /* Sidur ----------------------> */
+    this.EditSidurCategory = function (sidur) {
+        return $http({
+            url: url + '/Sidur1/EditCategory',
+            method: 'POST',
+            data: sidur,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllSidurCateogires = function () {
+        return $http({
+            url: url + '/Sidur1/GetCateogires',
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetsSidurSubCateogires = function (parent_id) {
+        var param = {
+            parentId : parent_id
+        }
+
+        return $http({
+            url: url + '/Sidur1/GetsSubCateogires',
+            method: 'POST',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.AddSidurCategory = function (sidur) {
+        return $http({
+            url: url + '/Sidur1/AddCategory',
+            method: 'Post',
+            data: sidur,
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
             return response.data;

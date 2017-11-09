@@ -123,6 +123,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sidur1.cs">
+      <DependentUpon>OvadiaDataP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SidurResult.cs" />
     <Compile Include="Tfila.cs">
       <DependentUpon>OvadiaDataP.tt</DependentUpon>
     </Compile>

@@ -8,6 +8,14 @@
                 access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
             }
         })
+        .state("sidur", {
+            url: '/sidur',
+            templateUrl: '/Scripts/OvadiaApp/sidur-component/sidur-component.html',
+            controller: 'sidurComponentCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Guest, UserRole.Editor]
+            }
+        })
         .state("movie-details", {
             url: '/movie-category/movie-details/:articleId',
             templateUrl: '/Scripts/OvadiaApp/movie-details/movie-details.html',
@@ -56,6 +64,15 @@
             url: '/home',
             templateUrl: '/Scripts/OvadiaApp/Admin/admin-home/admin-home.html',
             controller: 'adminHomeCtrl',
+            data: {
+                access: [UserRole.Admin, UserRole.Editor]
+            }
+
+        })
+        .state("admin.sidur", {
+            url: '/sidur',
+            templateUrl: '/Scripts/OvadiaApp/Admin/sidur-admin/sidur-admin.html',
+            controller: 'sidurAdmintCtrl',
             data: {
                 access: [UserRole.Admin, UserRole.Editor]
             }

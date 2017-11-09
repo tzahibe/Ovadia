@@ -213,6 +213,9 @@
     <Content Include="Scripts\OvadiaApp\Admin\Movies\home-movies\home-movies.css" />
     <Content Include="Scripts\OvadiaApp\Admin\Movies\home-movies\home-movies.html" />
     <Content Include="Scripts\OvadiaApp\Admin\Movies\home-movies\home-movies.js" />
+    <Content Include="Scripts\OvadiaApp\Admin\sidur-admin\sidur-admin.css" />
+    <Content Include="Scripts\OvadiaApp\Admin\sidur-admin\sidur-admin.html" />
+    <Content Include="Scripts\OvadiaApp\Admin\sidur-admin\sidur-admin.js" />
     <Content Include="Scripts\OvadiaApp\Admin\upload-recom\upload-recom.css" />
     <Content Include="Scripts\OvadiaApp\Admin\upload-recom\upload-recom.html" />
     <Content Include="Scripts\OvadiaApp\Admin\upload-recom\upload-recom.js" />
@@ -262,6 +265,9 @@
     <Content Include="Scripts\OvadiaApp\home-fixed\home-fixed.css" />
     <Content Include="Scripts\OvadiaApp\home-fixed\home-fixed.html" />
     <Content Include="Scripts\OvadiaApp\home-fixed\home-fixed.js" />
+    <Content Include="Scripts\OvadiaApp\sidur-component\sidur-component.css" />
+    <Content Include="Scripts\OvadiaApp\sidur-component\sidur-component.html" />
+    <Content Include="Scripts\OvadiaApp\sidur-component\sidur-component.js" />
     <Content Include="Scripts\Plugins\blueimp-gallery-video.js" />
     <Content Include="Scripts\Plugins\blueimp-gallery-youtube.js" />
     <Content Include="Scripts\Plugins\blueimp-gallery.min.js" />
@@ -394,6 +400,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\RecommendationSerController.cs" />
+    <Compile Include="Controllers\Sidur1Controller.cs" />
     <Compile Include="Controllers\TfilaController.cs" />
     <Compile Include="Controllers\TrumaSerController.cs" />
     <Compile Include="Controllers\TrummaPersonSerController.cs" />
@@ -445,6 +452,7 @@
     <Folder Include="Views\CommentSer\" />
     <Folder Include="Views\Message\" />
     <Folder Include="Views\RecommendationSer\" />
+    <Folder Include="Views\Sidur1\" />
     <Folder Include="Views\Tfila\" />
     <Folder Include="Views\TrumaPersonSer\" />
     <Folder Include="Views\TrumaSer\" />

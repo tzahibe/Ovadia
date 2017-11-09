@@ -36,5 +36,6 @@ namespace Repository
         public virtual DbSet<db_Comment> db_Comment { get; set; }
         public virtual DbSet<db_Truma> db_Truma { get; set; }
         public virtual DbSet<db_TrumaPerson> db_TrumaPerson { get; set; }
+        public virtual DbSet<Sidur1> Sidur1 { get; set; }
     }
 }

@@ -1,0 +1,75 @@
+﻿<link href="/Scripts/OvadiaApp/Admin/sidur-admin/sidur-admin.css" rel="stylesheet" />
+<link href="/Content/select2.min.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-xs-12">
+        סידור תפילה
+    </div>
+
+    <div class="btn-group view_buttons" data-toggle="buttons">
+        <label ng-class="radio == 1 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 1">
+            <input type="radio" name="options" ng-model="radio" value="2" id="option2" autocomplete="off">
+         יצירת ברכה\תפילה
+        </label>
+        <label ng-class="radio == 2 ? 'active btn btn-primary' : 'btn btn-primary'" ng-click="radio = 2">
+            <input type="radio" name="options" ng-model="radio" value="3" id="option2" autocomplete="off">
+            יצירת\ עריכת קטגוריה
+        </label>
+    </div>
+
+
+    <div class="col-xs-12" ng-show="radio == 2">
+        <h3>יצירת\עריכת קטגוריה</h3>
+        <div class="col-xs-12 select2con">
+            <select id="myselect2" class="form-control"
+                    ng-change="editCateogryselect2(select3)"
+                    ui-select2 ng-model="select3" data-placeholder="בחר קטגוריה" style="width:100% !important">
+                <option value=""></option>
+                <option ng-repeat="cat2 in Categories " ng-value="{{cat2}}">{{cat2.Title}}</option>
+            </select>
+        </div>
+
+        <form name="tfilaForm" novalidate>
+            <div class="form-group">
+                <label for="titleId">כותרת קטגוריה</label>
+                <input type="text" ng-model="category.Title" class="form-control" id="titleId" />
+            </div>
+
+            <div class="form-group">
+                <label for="ProfilePic2">תמונת פרופיל</label>
+                <input type="text" ng-model="category.ProfilePic" class="form-control" id="ProfilePic2" />
+            </div>
+
+            <div class="form-group">
+                <label for="subCategoryId">הכנס כתת קטגוריה</label>
+                <div class="col-xs-12 select2con">
+                    <select id="myselect" class="form-control"
+                            ng-change="chooseCategory(select2)"
+                            ui-select2 ng-model="select2" data-placeholder="בחר קטגוריה" style="width:100% !important">
+                        <option value=""></option>
+                        <option ng-repeat="cat in Categories | filter: notEqualChoosen" ng-value="{{cat}}">{{cat.Title}}</option>
+                    </select>
+                </div>
+                    
+                </div>
+
+            <div class="form-group">
+                <label for="publishId">פרסם</label>
+                <select name="categoryChoose"
+                        class="form-control parentCat hebrew"
+                        ng-model="category.Publish"
+                        required>
+                    <option value="0" ng-selected="category.Publish == 0">אל תפרסם</option>
+                    <option value="1" ng-selected="category.Publish == 1">פרסם</option>
+                </select>
+            </div>
+
+            <!--<button ng-hide="isNewArticle" class="btn btn-danger btn-block" ng-click="RemoveArticleById()">
+                הסר מאמר
+            </button>-->
+            <button ng-hide="isNewArticle" class="btn btn-success btn-block" ng-click="NewCateogry()">
+               שמור
+            </button>
+        </form>
+    </div>
+    
+</div>
