@@ -22325,6 +22325,7 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
             
             if ($stateParams.articleId != null) {
                 $scope.articleId = $stateParams.articleId;
+                $scope.UpdateArticleViews($scope.articleId);
                 $scope.GetArticle();
             }
 
@@ -22333,8 +22334,11 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
 
                 if (split != null && split.length > 0) {
                     $scope.articleId = split[1];
+                    $scope.UpdateArticleViews($scope.articleId);
                 }
+               
                 $scope.GetArticle();
+              
             }
         }
 
@@ -22443,6 +22447,25 @@ OvadiaApp.controller('movieDetailsCtrl', ['$scope', 'appServices', 'ngDialog', '
                     }
                     $scope.loader = false;
                 });
+        }
+
+        $scope.UpdateArticleViews = function (id) {
+            appServices.UpdateArticleViews(id).then(function (data) {
+                var ErrorCode;
+                try {
+                    ErrorCode = data.ErrorCode;
+                }
+                catch (e) {
+                    ErrorCode = 1;
+                }
+                if (ErrorCode == 0) {
+                  
+                    $scope.Views = data.Data.Views;
+                }
+                else {
+
+                }
+            });
         }
 
         self.init();
@@ -24419,6 +24442,21 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         return $http({
             url: url + '/ArticleSer/GetAllActiveArticles',
             method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.UpdateArticleViews = function (article_id) {
+        var param = {
+            articleId: article_id
+        }
+
+        return $http({
+            url: url + '/ArticleSer/UpdateArticleViews',
+            method: 'Post',
+            data: param,
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
             return response.data;

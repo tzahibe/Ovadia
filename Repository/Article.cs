@@ -32,5 +32,6 @@ namespace Repository
         public string Death_date { get; set; }
         public string Lesson_info { get; set; }
         public string Writer { get; set; }
+        public Nullable<int> Views { get; set; }
     }
 }

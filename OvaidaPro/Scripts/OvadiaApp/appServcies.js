@@ -332,6 +332,21 @@
         });
     }
 
+    this.UpdateArticleViews = function (article_id) {
+        var param = {
+            articleId: article_id
+        }
+
+        return $http({
+            url: url + '/ArticleSer/UpdateArticleViews',
+            method: 'Post',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
    /* Comment Services -------------------> */
     this.CommentSave = function (comment) {
         return $http({

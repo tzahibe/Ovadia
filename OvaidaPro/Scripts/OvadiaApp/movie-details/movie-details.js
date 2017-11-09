@@ -14,6 +14,7 @@
             
             if ($stateParams.articleId != null) {
                 $scope.articleId = $stateParams.articleId;
+                $scope.UpdateArticleViews($scope.articleId);
                 $scope.GetArticle();
             }
 
@@ -22,8 +23,11 @@
 
                 if (split != null && split.length > 0) {
                     $scope.articleId = split[1];
+                    $scope.UpdateArticleViews($scope.articleId);
                 }
+               
                 $scope.GetArticle();
+              
             }
         }
 
@@ -132,6 +136,25 @@
                     }
                     $scope.loader = false;
                 });
+        }
+
+        $scope.UpdateArticleViews = function (id) {
+            appServices.UpdateArticleViews(id).then(function (data) {
+                var ErrorCode;
+                try {
+                    ErrorCode = data.ErrorCode;
+                }
+                catch (e) {
+                    ErrorCode = 1;
+                }
+                if (ErrorCode == 0) {
+                  
+                    $scope.Views = data.Data.Views;
+                }
+                else {
+
+                }
+            });
         }
 
         self.init();

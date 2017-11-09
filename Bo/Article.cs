@@ -24,6 +24,7 @@ namespace Bo
         public string Death_date { get; set; }
         public string Lesson_info { get; set; }
         public string Writer { get; set; }
+        public int Views { get; set; }
         public List<Art_Cat> CategoriesList { get; set; }
     }
 }

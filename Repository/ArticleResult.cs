@@ -436,6 +436,44 @@ namespace Repository
                 return result;
             }
         }
+        public static Result UpdateArticleViews(int articleId)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    Article articleRep = (from r in context.Article where r.ArticleId == articleId select r).FirstOrDefault();
+                    if (articleRep != null)
+                    {
+
+                        articleRep.Views = articleRep.Views + 1; ;
+
+                        context.Article.Attach(articleRep);
+                        var entry = context.Entry(articleRep);
+                        entry.Property(e => e.Views).IsModified = true;
+                  
+                        context.SaveChanges();
+                        result.Data = articleRep;
+                        return result;
+                    }
+                    else
+                    {
+                        result.ErrorCode = 2; //article not exist
+                        result.ErrorMsg = "Article Not Exist";
+                        return result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorCode = 1;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("ArticleResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+        }
 
         //Recomm
         public static Result GetAllRecomm()

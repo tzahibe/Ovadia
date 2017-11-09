@@ -77,6 +77,13 @@ namespace BL
             result = ArticleResult.GetArtCat(articleId);
             return result;
         }
+
+        public static Result UpdateArticleViews(int articleId)
+        {
+            Result result = new Result();
+            result = ArticleResult.UpdateArticleViews(articleId);
+            return result;
+        }
         //carusel
         public static Result SaveCaruselArticles(List<Bo.Article> articles)
         {

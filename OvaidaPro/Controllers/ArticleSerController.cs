@@ -64,6 +64,13 @@ namespace OvaidaPro.Controllers
             Result result = ArticleLogic.GetNewActiveArticles();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult UpdateArticleViews(int articleId)
+        {
+            Result result = ArticleLogic.UpdateArticleViews(articleId);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         //Carusel
         public ActionResult SaveCaruselArticles(List<Bo.Article> articles)
         {
