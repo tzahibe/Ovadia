@@ -70,6 +70,52 @@
                שמור
             </button>
         </form>
-    </div>
+    </div>  <!--radio == 2-->
+
+    <div class="col-xs-12" ng-show="radio == 1">
+        <h3>יצירת\עריכת קטגוריה</h3>
+
+        <form name="tfilaForm" novalidate>
+            <div class="form-group">
+                <label for="titleId">כותרת קטגוריה</label>
+                <input type="text" ng-model="category2.Title" class="form-control" id="titleId" required/>
+            </div>
+
+            <div text-angular ng-model="category2.Body" required placeholder="אנא הזן תוכן"></div>
+
+            <div class="form-group">
+                <label for="ProfilePic2">תמונת פרופיל</label>
+                <input type="text" ng-model="category2.ProfilePic" class="form-control" id="ProfilePic2" />
+            </div>
+
+            <div class="form-group">
+                <label for="subCategoryId">הכנס כתת קטגוריה</label>
+                <div class="col-xs-12 select2con">
+                    <select id="myselect34" class="form-control"
+                            ng-change="chooseCategory2(select4)"
+                            ui-select2 ng-model="select4" data-placeholder="בחר קטגוריה" style="width:100% !important">
+                        <option value=""></option>
+                        <option ng-repeat="cat in Categories" ng-value="{{cat}}">{{cat.Title}}</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="publishId">פרסם</label>
+                <select name="categoryChoose"
+                        class="form-control parentCat hebrew"
+                        ng-model="category.Publish"
+                        required>
+                    <option value="0" ng-selected="category2.Publish == 0">אל תפרסם</option>
+                    <option value="1" ng-selected="category2.Publish == 1">פרסם</option>
+                </select>
+            </div>
+            
+            <button ng-hide="isNewArticle" class="btn btn-success btn-block" ng-click="NewTfila()">
+                שמור
+            </button>
+        </form>
+    </div>  
     
 </div>

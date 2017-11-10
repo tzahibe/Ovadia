@@ -29,6 +29,26 @@
             });
         }
 
+        $scope.NewTfila = function () {
+            $scope.loader = true;
+            $scope.category.isCategory = 0;
+            appServices.AddSidurCategory($scope.category2).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.category = data.Data;
+                    $scope.getAllSidurCategory();
+                    $scope.OpenPopup("קטגוריה נוצרה בהצלחה!", "תוכל להמשיך לערוך את הקטגוריה");
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+
+                $scope.loader = false;
+            });
+        }
+
         $scope.getAllSidurCategory = function () {
             $scope.loader = true;
             appServices.GetAllSidurCateogires().then(function (data) {
@@ -49,6 +69,12 @@
         $scope.chooseCategory = function (category) {
             if (category != null && category.Title != null) {
                 $scope.category.Parent = category.Id;
+            }
+        }
+
+        $scope.chooseCategory2 = function (category) {
+            if (category != null && category.Title != null) {
+                $scope.category2.Parent = category.Id;
             }
         }
 
