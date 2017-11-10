@@ -11,69 +11,69 @@ namespace Repository
     public static class SidurResult
     {
 
-        //public static Result EditCategory(Sidur sidur)
-        //{
-        //    Result result = new Result();
-        //    try
-        //    {
-        //        using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
-        //        {
-        //            Sidur1 categoryRep = (from r in context.Sidur1 where r.Id == sidur.Id select r).FirstOrDefault();
-        //            if (categoryRep != null)
-        //            {
+        public static Result EditCategory(Sidur sidur)
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    Sidur1 categoryRep = (from r in context.Sidur1 where r.Id == sidur.Id select r).FirstOrDefault();
+                    if (categoryRep != null)
+                    {
 
-        //                categoryRep.Title = sidur.Title;
-        //                categoryRep.ProfilePic = sidur.ProfilePic;
-        //                categoryRep.Publish = sidur.Publish;
-        //                categoryRep.isCategory = sidur.isCategory;
-        //                categoryRep.Body = sidur.Body;
-        //                categoryRep.Parent = sidur.Parent;
+                        categoryRep.Title = sidur.Title;
+                        categoryRep.ProfilePic = sidur.ProfilePic;
+                        categoryRep.Publish = sidur.Publish;
+                        categoryRep.isCategory = sidur.isCategory;
+                        categoryRep.Body = sidur.Body;
+                        categoryRep.Parent = sidur.Parent;
 
-        //                context.Sidur1.Attach(categoryRep);
-        //                var entry = context.Entry(categoryRep);
-        //                entry.Property(e => e.Title).IsModified = true;
-        //                entry.Property(e => e.ProfilePic).IsModified = true;
-        //                entry.Property(e => e.Publish).IsModified = true;
-        //                entry.Property(e => e.isCategory).IsModified = true;
-        //                entry.Property(e => e.Body).IsModified = true;
-        //                entry.Property(e => e.Publish).IsModified = true;
-        //                context.SaveChanges();
-        //                result.Data = categoryRep;
-        //                return result;
-        //            }
-        //            else
-        //            {
-        //                categoryRep = new Sidur1();
-        //                categoryRep.Title = sidur.Title;
-        //                categoryRep.ProfilePic = sidur.ProfilePic;
-        //                categoryRep.Publish = sidur.Publish;
-        //                categoryRep.isCategory = sidur.isCategory;
-        //                categoryRep.Body = sidur.Body;
-        //                categoryRep.Parent = sidur.Parent;
+                        context.Sidur1.Attach(categoryRep);
+                        var entry = context.Entry(categoryRep);
+                        entry.Property(e => e.Title).IsModified = true;
+                        entry.Property(e => e.ProfilePic).IsModified = true;
+                        entry.Property(e => e.Publish).IsModified = true;
+                        entry.Property(e => e.isCategory).IsModified = true;
+                        entry.Property(e => e.Body).IsModified = true;
+                        entry.Property(e => e.Publish).IsModified = true;
+                        context.SaveChanges();
+                        result.Data = categoryRep;
+                        return result;
+                    }
+                    else
+                    {
+                        categoryRep = new Sidur1();
+                        categoryRep.Title = sidur.Title;
+                        categoryRep.ProfilePic = sidur.ProfilePic;
+                        categoryRep.Publish = sidur.Publish;
+                        categoryRep.isCategory = sidur.isCategory;
+                        categoryRep.Body = sidur.Body;
+                        categoryRep.Parent = sidur.Parent;
 
-        //                context.Sidur1.Attach(categoryRep);
-        //                var entry = context.Entry(categoryRep);
-        //                entry.Property(e => e.Title).IsModified = true;
-        //                entry.Property(e => e.ProfilePic).IsModified = true;
-        //                entry.Property(e => e.Publish).IsModified = true;
-        //                entry.Property(e => e.isCategory).IsModified = true;
-        //                entry.Property(e => e.Body).IsModified = true;
-        //                entry.Property(e => e.Publish).IsModified = true;
-        //                context.SaveChanges();
-        //                result.Data = categoryRep;
-        //                return result;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        result.Data = false;
-        //        result.ErrorCode = 1;
-        //        result.ErrorMsg = Consts.CODE_1_MSG;
-        //        Logger.Write("SidurResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
-        //        return result;
-        //    }
-        //}
+                        context.Sidur1.Attach(categoryRep);
+                        var entry = context.Entry(categoryRep);
+                        entry.Property(e => e.Title).IsModified = true;
+                        entry.Property(e => e.ProfilePic).IsModified = true;
+                        entry.Property(e => e.Publish).IsModified = true;
+                        entry.Property(e => e.isCategory).IsModified = true;
+                        entry.Property(e => e.Body).IsModified = true;
+                        entry.Property(e => e.Publish).IsModified = true;
+                        context.SaveChanges();
+                        result.Data = categoryRep;
+                        return result;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorCode = 1;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("SidurResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+        }
         public static Result AddCategory(Sidur sidur)
         {
 
