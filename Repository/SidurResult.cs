@@ -82,7 +82,7 @@ namespace Repository
             {
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
-                    Sidur1 sidurRep = (from r in context.Sidur1 where r.Title.Equals(sidur.Title) select r).FirstOrDefault();
+                    Sidur1 sidurRep = (from r in context.Sidur1 where r.Id.Equals(sidur.Id) select r).FirstOrDefault();
                     if (sidurRep == null)
                     {
                         sidurRep = new Sidur1();
@@ -100,7 +100,6 @@ namespace Repository
                     }
                     else
                     {
-                        sidurRep = new Sidur1();
                         sidurRep.Title = sidur.Title;
                         sidurRep.ProfilePic = sidur.ProfilePic;
                         sidurRep.Publish = sidur.Publish;

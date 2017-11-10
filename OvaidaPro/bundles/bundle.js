@@ -23764,9 +23764,15 @@ OvadiaApp.controller('sidurAdmintCtrl', ['$scope', 'appServices', 'UserAccount',
             $scope.category.isCategory = 1;
             appServices.AddSidurCategory($scope.category).then(function (data) {
                 if (data.ErrorCode == 0) {
+                    var id = $scope.category.Id;
                     $scope.category = data.Data;
                     $scope.getAllSidurCategory();
-                    $scope.OpenPopup("קטגוריה נוצרה בהצלחה!", "תוכל להמשיך לערוך את הקטגוריה");
+                    if (id == null) {
+                        $scope.OpenPopup("קטגוריה נוצרה בהצלחה!", "תוכל להמשיך לערוך את הקטגוריה");
+                    }
+                    else {
+                        $scope.OpenPopup("קטגוריה עודכנה בהצלחה!", "תוכל להמשיך לערוך את הקטגוריה");
+                    }
                 }
                 else if (data.ErrorCode == 5) {
                     $rootScope.LogOut();
@@ -23784,9 +23790,16 @@ OvadiaApp.controller('sidurAdmintCtrl', ['$scope', 'appServices', 'UserAccount',
             $scope.category.isCategory = 0;
             appServices.AddSidurCategory($scope.category2).then(function (data) {
                 if (data.ErrorCode == 0) {
-                    $scope.category = data.Data;
+                    var id = $scope.category2.Id;
+                    $scope.category2 = data.Data;
                     $scope.getAllSidurCategory();
-                    $scope.OpenPopup("קטגוריה נוצרה בהצלחה!", "תוכל להמשיך לערוך את הקטגוריה");
+                    if (id == null) {
+                        $scope.OpenPopup("תפילה נוצרה בהצלחה!", "תוכל להמשיך לערוך את התפילה");
+                    }
+                    else {
+                        $scope.OpenPopup("תפילה עודכנה בהצלחה!", "תוכל להמשיך לערוך את התפילה");
+                    }
+                  
                 }
                 else if (data.ErrorCode == 5) {
                     $rootScope.LogOut();
