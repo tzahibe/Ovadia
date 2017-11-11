@@ -63,9 +63,9 @@
                 </select>
             </div>
 
-            <!--<button ng-hide="isNewArticle" class="btn btn-danger btn-block" ng-click="RemoveArticleById()">
-                הסר מאמר
-            </button>-->
+            <button ng-hide="category.Id != null" class="btn btn-success btn-block" ng-click="resetCategory()">
+                צור תפילה חדשה
+            </button>
             <button ng-hide="isNewArticle" class="btn btn-success btn-block" ng-click="NewCateogry()">
                שמור
             </button>
@@ -73,7 +73,16 @@
     </div>  <!--radio == 2-->
 
     <div class="col-xs-12" ng-show="radio == 1">
-        <h3>יצירת\עריכת קטגוריה</h3>
+        <h3>יצירת\עריכת תפילה</h3>
+
+        <div class="col-xs-12 select2con">
+            <select id="myselect32" class="form-control"
+                    ng-change="editTfilaSelect2(select311)"
+                    ui-select2 ng-model="select311" data-placeholder="בחר קטגוריה" style="width:100% !important">
+                <option value=""></option>
+                <option ng-repeat="cat in tfilaCategories " ng-value="{{cat}}">{{cat.Title}}</option>
+            </select>
+        </div>
 
         <form name="tfilaForm" novalidate>
             <div class="form-group">
@@ -112,8 +121,11 @@
                 </select>
             </div>
             
-            <button ng-hide="isNewArticle" class="btn btn-success btn-block" ng-click="NewTfila()">
+            <button class="btn btn-success btn-block" ng-click="NewTfila()">
                 שמור
+            </button>
+            <button ng-hide="category2.Id != null" class="btn btn-success btn-block" ng-click="restTfila()">
+                צור תפילה חדשה
             </button>
         </form>
     </div>  

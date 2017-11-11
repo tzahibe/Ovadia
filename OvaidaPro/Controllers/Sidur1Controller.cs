@@ -42,5 +42,11 @@ namespace OvaidaPro.Controllers
             Result result = SidorLogic.GetsSubCateogires(parentId);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetAllSidurTfilot()
+        {
+            Result result = SidorLogic.GetAllSidurTfilot();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

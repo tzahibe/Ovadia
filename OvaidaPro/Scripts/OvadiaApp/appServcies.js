@@ -624,4 +624,14 @@
             return response.data;
         });
     }
+
+    this.GetAllSidurTfilot = function () {
+        return $http({
+            url: url + '/Sidur1/GetAllSidurTfilot',
+            method: 'Post',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);

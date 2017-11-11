@@ -27,5 +27,10 @@ namespace BL
         {
             return SidurResult.GetsSubCateogires(parentId);
         }
+
+        public static Result GetAllSidurTfilot()
+        {
+            return SidurResult.GetAllSidurTfilot();
+        }
     }
 }

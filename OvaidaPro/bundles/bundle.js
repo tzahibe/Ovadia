@@ -23757,6 +23757,7 @@ OvadiaApp.controller('sidurAdmintCtrl', ['$scope', 'appServices', 'UserAccount',
 
         self.init = function () {
             $scope.getAllSidurCategory();
+            $scope.GetAllSidurTfilot();
         }
 
         $scope.NewCateogry = function () {
@@ -23829,6 +23830,23 @@ OvadiaApp.controller('sidurAdmintCtrl', ['$scope', 'appServices', 'UserAccount',
             });
         }
 
+        $scope.GetAllSidurTfilot = function () {
+            $scope.loader = true;
+            appServices.GetAllSidurTfilot().then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.tfilaCategories = data.Data;
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+
+                $scope.loader = false;
+            });
+        }
+
         $scope.chooseCategory = function (category) {
             if (category != null && category.Title != null) {
                 $scope.category.Parent = category.Id;
@@ -23838,6 +23856,23 @@ OvadiaApp.controller('sidurAdmintCtrl', ['$scope', 'appServices', 'UserAccount',
         $scope.chooseCategory2 = function (category) {
             if (category != null && category.Title != null) {
                 $scope.category2.Parent = category.Id;
+            }
+        }
+
+        $scope.restTfila = function () {
+            $scope.category2 = {};
+            $scope.category2.isCategory = 0;
+        }
+
+        $scope.resetCategory = function () {
+            $scope.category = {};
+            $scope.category.isCategory = 1;
+        }
+
+        $scope.editTfilaSelect2 = function (tfila) {
+            debugger;
+            if (tfila != null && tfila.Title != null) {
+                $scope.category2 = tfila;
             }
         }
 
@@ -24906,6 +24941,16 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
             url: url + '/Sidur1/AddCategory',
             method: 'Post',
             data: sidur,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.GetAllSidurTfilot = function () {
+        return $http({
+            url: url + '/Sidur1/GetAllSidurTfilot',
+            method: 'Post',
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
             return response.data;

@@ -139,8 +139,8 @@ namespace Repository
                 using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
                 {
                     List<Sidur1> categories = (from r in context.Sidur1
-                                         where r.isCategory == 1
-                                             select r).ToList<Sidur1>();
+                                               where r.isCategory == 1
+                                               select r).ToList<Sidur1>();
 
                     result.Data = categories;
                     result.ErrorCode = 0;
@@ -181,6 +181,33 @@ namespace Repository
                 return result;
             }
             return result;
+        }
+
+        public static Result GetAllSidurTfilot()
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    List<Sidur1> categories = (from r in context.Sidur1
+                                               where r.isCategory == 0
+                                               select r).ToList<Sidur1>();
+
+                    result.Data = categories;
+                    result.ErrorCode = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("SidurResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+            return result;
+
         }
 
     }
