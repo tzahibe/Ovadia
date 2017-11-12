@@ -23870,7 +23870,6 @@ OvadiaApp.controller('sidurAdmintCtrl', ['$scope', 'appServices', 'UserAccount',
         }
 
         $scope.editTfilaSelect2 = function (tfila) {
-            debugger;
             if (tfila != null && tfila.Title != null) {
                 $scope.category2 = tfila;
             }
