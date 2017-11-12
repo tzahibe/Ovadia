@@ -4,16 +4,12 @@
         <h3 class="box-title">סידור תפילה</h3>
     </div>
 
-    <div class="col-xs-12">
-        <div class="title-tag">
-            סידור ספרדי
-        </div>
-        <div class="title-tag">
-            סידור אשכנז
-        </div>
-
-        <div class="title-tag">
-           ברכת המזון
+    <div class="loader" ng-show="loader">
+        <img src="/Content/images/loader.gif" />
+    </div>
+    <div class="col-xs-12" ng-hide="loader">
+        <div class="title-tag" ng-repeat="item in Categories | filter: {Parent : 0}">
+          {{item.Title}}
         </div>
     </div>
 </div>
