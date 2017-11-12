@@ -69,6 +69,9 @@
             <button ng-hide="isNewArticle" class="btn btn-success btn-block" ng-click="NewCateogry()">
                שמור
             </button>
+            <button ng-show="category.Id != null" class="btn btn-danger btn-block" ng-click="RemoveSidurCategory()">
+                הסר תפילה
+            </button>
         </form>
     </div>  <!--radio == 2-->
 
@@ -126,6 +129,9 @@
             </button>
             <button ng-show="category2.Id != null" class="btn btn-info btn-block" ng-click="restTfila()">
                 צור תפילה חדשה
+            </button>
+            <button ng-show="category2.Id != null" class="btn btn-danger btn-block" ng-click="RemoveSidurTfila()">
+                הסר תפילה
             </button>
         </form>
     </div>  

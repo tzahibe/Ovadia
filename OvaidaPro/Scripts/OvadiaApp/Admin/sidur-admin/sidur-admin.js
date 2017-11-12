@@ -149,6 +149,42 @@
             return true;
         }
 
+        $scope.RemoveSidurCategory = function () {
+            appServices.RemoveSidurCategory($scope.category.Id).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.OpenPopup("הפריט הוסר בהצלחה!", "תוכל להמשיך לערוך");
+                    $scope.getAllSidurCategory();
+                    $scope.category = {};
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+
+                $scope.loader = false;
+            });
+        }
+
+        $scope.RemoveSidurTfila = function () {
+            appServices.RemoveSidurCategory($scope.category2.Id).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.OpenPopup("הפריט הוסר בהצלחה!", "תוכל להמשיך לערוך");
+                    $scope.getAllSidurCategory();
+                    $scope.category2 = {};
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+
+                $scope.loader = false;
+            });
+        }
+
         self.init();
 
     }]);

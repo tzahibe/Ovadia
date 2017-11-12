@@ -48,5 +48,15 @@ namespace OvaidaPro.Controllers
             Result result = SidorLogic.GetAllSidurTfilot();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult RemoveSidurCategory(int Id)
+        {
+            Result result = isAllow();
+            if (result.ErrorCode == 0)
+            {
+                result = SidorLogic.RemoveSidurCategory(Id);
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

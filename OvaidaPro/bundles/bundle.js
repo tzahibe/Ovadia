@@ -23899,6 +23899,42 @@ OvadiaApp.controller('sidurAdmintCtrl', ['$scope', 'appServices', 'UserAccount',
             return true;
         }
 
+        $scope.RemoveSidurCategory = function () {
+            appServices.RemoveSidurCategory($scope.category.Id).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.OpenPopup("הפריט הוסר בהצלחה!", "תוכל להמשיך לערוך");
+                    $scope.getAllSidurCategory();
+                    $scope.category = {};
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+
+                $scope.loader = false;
+            });
+        }
+
+        $scope.RemoveSidurTfila = function () {
+            appServices.RemoveSidurCategory($scope.category2.Id).then(function (data) {
+                if (data.ErrorCode == 0) {
+                    $scope.OpenPopup("הפריט הוסר בהצלחה!", "תוכל להמשיך לערוך");
+                    $scope.getAllSidurCategory();
+                    $scope.category2 = {};
+                }
+                else if (data.ErrorCode == 5) {
+                    $rootScope.LogOut();
+                }
+                else {
+                    $scope.OpenPopup("שגיאה בלתי צפויה!", "נסה להתחבר מחדש, ואם הבעיה איננה נפתרת פנה למנהל האתר");
+                }
+
+                $scope.loader = false;
+            });
+        }
+
         self.init();
 
     }]);
@@ -24950,6 +24986,20 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
         return $http({
             url: url + '/Sidur1/GetAllSidurTfilot',
             method: 'Post',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.RemoveSidurCategory = function (id) {
+        var param = {
+            Id: id
+        }
+        return $http({
+            url: url + '/Sidur1/RemoveSidurCategory',
+            method: 'Post',
+            data: param,
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
             return response.data;

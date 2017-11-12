@@ -634,4 +634,18 @@
             return response.data;
         });
     }
+
+    this.RemoveSidurCategory = function (id) {
+        var param = {
+            Id: id
+        }
+        return $http({
+            url: url + '/Sidur1/RemoveSidurCategory',
+            method: 'Post',
+            data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);

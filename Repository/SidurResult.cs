@@ -131,6 +131,34 @@ namespace Repository
                 return result;
             }
         }
+        public static Result RemoveSidurCategory(int id)
+        {
+            Result result = new Result();
+
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    Repository.Sidur1  
+                        db_result = (from r in context.Sidur1 where r.Id == id select r).FirstOrDefault();
+
+                    context.Sidur1.Attach(db_result);
+                    context.Sidur1.Remove(db_result);
+                    context.SaveChanges();
+                    result.ErrorCode = 0;
+                    result.Data = db_result;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Exception = ex.ToString();
+                result.ErrorCode = 1;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("SidurResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+            }
+
+            return result;
+        }
         public static Result GetCateogires()
         {
             Result result = new Result();
@@ -182,7 +210,6 @@ namespace Repository
             }
             return result;
         }
-
         public static Result GetAllSidurTfilot()
         {
             Result result = new Result();
