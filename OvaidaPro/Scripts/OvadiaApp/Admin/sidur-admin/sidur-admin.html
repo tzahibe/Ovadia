@@ -63,7 +63,7 @@
                 </select>
             </div>
 
-            <button ng-hide="category.Id != null" class="btn btn-success btn-block" ng-click="resetCategory()">
+            <button ng-show="category.Id != null" class="btn btn-info btn-block" ng-click="resetCategory()">
                 צור תפילה חדשה
             </button>
             <button ng-hide="isNewArticle" class="btn btn-success btn-block" ng-click="NewCateogry()">
@@ -124,7 +124,7 @@
             <button class="btn btn-success btn-block" ng-click="NewTfila()">
                 שמור
             </button>
-            <button ng-hide="category2.Id != null" class="btn btn-success btn-block" ng-click="restTfila()">
+            <button ng-show="category2.Id != null" class="btn btn-info btn-block" ng-click="restTfila()">
                 צור תפילה חדשה
             </button>
         </form>
