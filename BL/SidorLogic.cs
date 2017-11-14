@@ -37,5 +37,10 @@ namespace BL
         {
             return SidurResult.RemoveSidurCategory(id);
         }
+
+        public static Result GetAll()
+        {
+            return SidurResult.GetAll();
+        }
     }
 }

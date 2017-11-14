@@ -23729,6 +23729,9 @@ OvadiaApp.controller('sidurComponentCtrl', ['$scope', 'appServices', 'UserAccoun
     function ($scope, appServices, UserAccount, $rootScope, $interval) {
         var self = this;
         $scope.Categories = [];
+        $scope.node = {};
+        $scope.node.Id = -1;
+        $scope.breadcamp = [];
 
         self.init = function () {
             $scope.getAllCategories();
@@ -23736,7 +23739,7 @@ OvadiaApp.controller('sidurComponentCtrl', ['$scope', 'appServices', 'UserAccoun
 
         $scope.getAllCategories = function () {
             $scope.loader = true;
-            appServices.GetAllSidurCateogires().then(function (data) {
+            appServices.Siduer_GetAll().then(function (data) {
                 if (data.ErrorCode == 0) {
                     $scope.Categories = data.Data;
                 }
@@ -23749,6 +23752,39 @@ OvadiaApp.controller('sidurComponentCtrl', ['$scope', 'appServices', 'UserAccoun
 
                 $scope.loader = false;
             });
+        }
+
+        $scope.getOutToCategory = function (item) {
+            if (item.isCategory == 0) {
+                return;
+            }
+            $scope.Tfila = {};
+            $scope.node = item;
+        }
+       
+        $scope.getTfilaOrSubCat = function (item) {
+            if ($scope.node.Id == -1) {
+                $scope.breadcamp = [];
+                $scope.breadcamp.push(item);
+                $scope.Tfila = {};
+            }
+
+            if (item.isCategory == 0) {
+                $scope.Tfila = item;
+                $scope.breadcamp.push(item);
+            }
+            $scope.node = item;
+        }
+
+        $scope.filterCategory = function (item) {
+            if ($scope.node.Id == item.Parent) {
+                return true;
+            }
+            if ($scope.node.Id == -1 && item.isCategory == 1 && item.Parent == 0) {
+                return true;
+            }
+
+            return false;
         }
 
         self.init();
@@ -23805,7 +23841,7 @@ OvadiaApp.controller('sidurAdmintCtrl', ['$scope', 'appServices', 'UserAccount',
 
         $scope.NewTfila = function () {
             $scope.loader = true;
-            $scope.category.isCategory = 0;
+            $scope.category2.isCategory = 0;
             appServices.AddSidurCategory($scope.category2).then(function (data) {
                 if (data.ErrorCode == 0) {
                     var id = $scope.category2.Id;
@@ -23871,8 +23907,8 @@ OvadiaApp.controller('sidurAdmintCtrl', ['$scope', 'appServices', 'UserAccount',
         }
 
         $scope.chooseCategory2 = function (category) {
-            if (category != null && category.Title != null) {
-                $scope.category2.Parent = category.Id;
+            if (category != null && category != 0) {
+                $scope.category2.Parent = category;
             }
         }
 
@@ -23889,6 +23925,13 @@ OvadiaApp.controller('sidurAdmintCtrl', ['$scope', 'appServices', 'UserAccount',
         $scope.editTfilaSelect2 = function (tfila) {
             if (tfila != null && tfila.Title != null) {
                 $scope.category2 = tfila;
+            }
+
+            for (var i = 0; i < $scope.Categories; i++) {
+                if ($scope.Categories[i].Id == Parent) {
+                    $scope.category2Name = $scope.Categories[i].Title;
+                }
+
             }
         }
 
@@ -25017,6 +25060,16 @@ OvadiaApp.service('appServices', ['$http', function ($http) {
             url: url + '/Sidur1/RemoveSidurCategory',
             method: 'Post',
             data: param,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
+
+    this.Siduer_GetAll = function () {
+        return $http({
+            url: url + '/Sidur1/GetAll',
+            method: 'Post',
             headers: { 'Content-Type': 'application/json' }
         }).then(function (response) {
             return response.data;

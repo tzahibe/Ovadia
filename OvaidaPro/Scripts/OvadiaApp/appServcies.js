@@ -648,4 +648,14 @@
             return response.data;
         });
     }
+
+    this.Siduer_GetAll = function () {
+        return $http({
+            url: url + '/Sidur1/GetAll',
+            method: 'Post',
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            return response.data;
+        });
+    }
 }]);

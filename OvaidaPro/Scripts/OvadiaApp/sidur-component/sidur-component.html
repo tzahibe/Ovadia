@@ -7,9 +7,21 @@
     <div class="loader" ng-show="loader">
         <img src="/Content/images/loader.gif" />
     </div>
+    
     <div class="col-xs-12" ng-hide="loader">
-        <div class="title-tag" ng-repeat="item in Categories | filter: {Parent : 0}">
+        <div class="title-tag" ng-repeat="item in Categories | filter: filterCategory" ng-click="getTfilaOrSubCat(item)">
           {{item.Title}}
         </div>
+    </div>
+
+    <div class="col-xs-12" ng-show="Tfila.Title != null">
+        <a ng-repeat="item in breadcamp" ng-click="getOutToCategory(item)">
+        {{item.Title}} 
+        <span ng-show="$index != breadcamp.length -1">></span></a>
+    </div>
+
+    <div class="col-xs-12">
+        <h2>{{Tfila.Title}}</h2>
+        <div ng-bind-html="Tfila.Body"></div>
     </div>
 </div>

@@ -114,6 +114,7 @@ namespace Repository
                         entry.Property(e => e.Publish).IsModified = true;
                         entry.Property(e => e.isCategory).IsModified = true;
                         entry.Property(e => e.Body).IsModified = true;
+                        entry.Property(e => e.Parent).IsModified = true;
                         entry.Property(e => e.Publish).IsModified = true;
                         context.SaveChanges();
                         result.Data = sidurRep;
@@ -235,6 +236,30 @@ namespace Repository
             }
             return result;
 
+        }
+        public static Result GetAll()
+        {
+            Result result = new Result();
+            try
+            {
+                using (DB_A25801_OvadiaEntities context = new DB_A25801_OvadiaEntities())
+                {
+                    List<Sidur1> categories = (from r in context.Sidur1
+                                               select r).ToList<Sidur1>();
+
+                    result.Data = categories;
+                    result.ErrorCode = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Data = false;
+                result.ErrorCode = (int)ErrorEnumcs.ErrorServer;
+                result.ErrorMsg = Consts.CODE_1_MSG;
+                Logger.Write("SidurResult.cs", ex.StackTrace, ex.Source, DateTime.Now);
+                return result;
+            }
+            return result;
         }
 
     }

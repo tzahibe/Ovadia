@@ -23,7 +23,6 @@
             <select id="myselect2" class="form-control"
                     ng-change="editCateogryselect2(select3)"
                     ui-select2 ng-model="select3" data-placeholder="בחר קטגוריה" style="width:100% !important">
-                <option value=""></option>
                 <option ng-repeat="cat2 in Categories " ng-value="{{cat2}}">{{cat2.Title}}</option>
             </select>
         </div>
@@ -45,7 +44,6 @@
                     <select id="myselect" class="form-control"
                             ng-change="chooseCategory(select2)"
                             ui-select2 ng-model="select2" data-placeholder="בחר קטגוריה" style="width:100% !important">
-                        <option value=""></option>
                         <option ng-repeat="cat in Categories | filter: notEqualChoosen" ng-value="{{cat}}">{{cat.Title}}</option>
                     </select>
                 </div>
@@ -82,8 +80,8 @@
             <select id="myselect32" class="form-control"
                     ng-change="editTfilaSelect2(select311)"
                     ui-select2 ng-model="select311" data-placeholder="בחר קטגוריה" style="width:100% !important">
-                <option value=""></option>
-                <option ng-repeat="cat in tfilaCategories " ng-value="{{cat}}">{{cat.Title}}</option>
+                <option ng-repeat="cat in tfilaCategories"
+                ng-value="{{cat}}">{{cat.Title}}</option>
             </select>
         </div>
 
@@ -99,25 +97,27 @@
                 <label for="ProfilePic2">תמונת פרופיל</label>
                 <input type="text" ng-model="category2.ProfilePic" class="form-control" id="ProfilePic2" />
             </div>
-
+            
+            
             <div class="form-group">
                 <label for="subCategoryId">הכנס כתת קטגוריה</label>
+                <span>תת קטגוריה: {{category2Name}}</span>
                 <div class="col-xs-12 select2con">
                     <select id="myselect34" class="form-control"
                             ng-change="chooseCategory2(select4)"
                             ui-select2 ng-model="select4" data-placeholder="בחר קטגוריה" style="width:100% !important">
-                        <option value=""></option>
-                        <option ng-repeat="cat in Categories" ng-value="{{cat}}">{{cat.Title}}</option>
+                        <option ng-repeat="cat in Categories"
+                                value="{{cat.Id}}">{{cat.Title}}</option>
                     </select>
                 </div>
 
             </div>
-
+            
             <div class="form-group">
                 <label for="publishId">פרסם</label>
                 <select name="categoryChoose"
                         class="form-control parentCat hebrew"
-                        ng-model="category.Publish"
+                        ng-model="category2.Publish"
                         required>
                     <option value="0" ng-selected="category2.Publish == 0">אל תפרסם</option>
                     <option value="1" ng-selected="category2.Publish == 1">פרסם</option>

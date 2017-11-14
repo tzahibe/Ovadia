@@ -38,7 +38,7 @@
 
         $scope.NewTfila = function () {
             $scope.loader = true;
-            $scope.category.isCategory = 0;
+            $scope.category2.isCategory = 0;
             appServices.AddSidurCategory($scope.category2).then(function (data) {
                 if (data.ErrorCode == 0) {
                     var id = $scope.category2.Id;
@@ -104,8 +104,8 @@
         }
 
         $scope.chooseCategory2 = function (category) {
-            if (category != null && category.Title != null) {
-                $scope.category2.Parent = category.Id;
+            if (category != null && category != 0) {
+                $scope.category2.Parent = category;
             }
         }
 
@@ -122,6 +122,13 @@
         $scope.editTfilaSelect2 = function (tfila) {
             if (tfila != null && tfila.Title != null) {
                 $scope.category2 = tfila;
+            }
+
+            for (var i = 0; i < $scope.Categories; i++) {
+                if ($scope.Categories[i].Id == Parent) {
+                    $scope.category2Name = $scope.Categories[i].Title;
+                }
+
             }
         }
 
