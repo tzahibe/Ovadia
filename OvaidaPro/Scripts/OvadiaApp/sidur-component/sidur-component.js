@@ -32,6 +32,7 @@
                 return;
             }
             $scope.Tfila = {};
+            $scope.breadcamp.splice(-1, 1)
             $scope.node = item;
         }
        
