@@ -31,7 +31,14 @@
             if (item.isCategory == 0) {
                 return;
             }
-            $scope.Tfila = {};                                  
+            if (item.Parent == 0) {
+                $scope.breadcamp = [];
+                $scope.breadcamp.push(item);
+                $scope.node = item;
+                $scope.Tfila = {};
+                return;
+            }
+            $scope.Tfila = {};
             $scope.breadcamp.splice(-1, 1)
             $scope.node = item;
         }
@@ -39,14 +46,14 @@
         $scope.getTfilaOrSubCat = function (item) {
             if ($scope.node.Id == -1) {
                 $scope.breadcamp = [];
-                $scope.breadcamp.push(item);
                 $scope.Tfila = {};
             }
 
-            if (item.isCategory == 0) {
+            if (item.isCategory == 0) { 
                 $scope.Tfila = item;
-                $scope.breadcamp.push(item);
             }
+
+            $scope.breadcamp.push(item);
             $scope.node = item;
         }
 
@@ -59,6 +66,16 @@
             }
 
             return false;
+        }
+
+        $scope.getItemFromCategories = function(id){
+            for (var i = 0; i < $scope.Categories.length; i++) {
+                if ($scope.Categories[i].Id == id) {
+                    return $scope.Categories[i];
+                }
+            }
+
+            return null;
         }
 
         self.init();

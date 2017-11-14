@@ -13,3 +13,15 @@
     .title-tag:hover {
         background: #07f4ff;
     }
+.Link {
+    cursor:pointer;
+}
+.removeLink {
+    text-decoration: none;
+    color: #000;
+}
+.removeLink:hover {
+    cursor:default;
+    text-decoration: none;
+    color: #000;
+}

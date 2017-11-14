@@ -15,7 +15,7 @@
     </div>
 
     <div class="col-xs-12" ng-show="Tfila.Title != null">
-        <a ng-repeat="item in breadcamp" ng-click="getOutToCategory(item)">
+        <a ng-class="item.isCategory == 0 ? 'removeLink': 'Link'" ng-repeat="item in breadcamp" ng-click="getOutToCategory(item)">
         {{item.Title}} 
         <span ng-show="item.isCategory == 1">></span></a>
     </div>
