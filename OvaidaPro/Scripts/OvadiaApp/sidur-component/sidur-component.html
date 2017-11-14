@@ -17,7 +17,7 @@
     <div class="col-xs-12" ng-show="Tfila.Title != null">
         <a ng-repeat="item in breadcamp" ng-click="getOutToCategory(item)">
         {{item.Title}} 
-        <span ng-show="$index != breadcamp.length -1">></span></a>
+        <span ng-show="item.isCategory == 1">></span></a>
     </div>
 
     <div class="col-xs-12">
