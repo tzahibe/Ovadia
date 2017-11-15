@@ -296,7 +296,10 @@ donation-wizard label.btn-primary {
     display:block;
     width:100%;
 }
-
+/*.btn.btn-primary {
+    background-image: linear-gradient(to bottom,#787a7b 0,#a5a8ab 100%);
+    border-color: #2d2e2e;
+}*/
 @media screen and (max-width: 768px) {
     .mob-btn {
         margin-top: 1px;

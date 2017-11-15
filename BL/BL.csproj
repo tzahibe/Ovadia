@@ -38,6 +38,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Zmanim">
+      <HintPath>..\..\..\Users\Tzahi\Downloads\Zmanim-master\src\Zmanim\bin\Debug\Zmanim.dll</HintPath>
+    </Reference>
+    <Reference Include="Zmanim.TzDatebase">
+      <HintPath>..\..\..\Users\Tzahi\Downloads\Zmanim-master\src\Zmanim.TzDatebase\bin\Debug\Zmanim.TzDatebase.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticleLogic.cs" />
@@ -54,6 +60,7 @@
     <Compile Include="TrumaLogic.cs" />
     <Compile Include="TrumaPersonLogic.cs" />
     <Compile Include="UsersLogic.cs" />
+    <Compile Include="Zmanim.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">

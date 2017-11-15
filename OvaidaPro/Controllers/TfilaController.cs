@@ -13,6 +13,12 @@ namespace OvaidaPro.Controllers
     {
         // GET: Tfila
 
+        public ActionResult Zmanim()
+        {
+            ZmanimLogic zman = new ZmanimLogic("Lakewood, NJ", 40.09596, -74.22213,0);
+            return Json(zman.zc, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult AddTfila(Bo_Tfila Tfila)
         {
             Result result = isAllow();
