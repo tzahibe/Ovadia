@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://api.myzmanim.com/engine1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Engine.ParamDay">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coding" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InputDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Language" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocationID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Engine.ParamDay" nillable="true" type="tns:Engine.ParamDay" />
+  <xs:complexType name="Engine.ResultDay">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Copyright" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Html" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lang" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Place" type="tns:Engine.LocationInfo" />
+      <xs:element minOccurs="0" name="Time" type="tns:Engine.DateInfo" />
+      <xs:element minOccurs="0" name="Zman" type="tns:ZmnType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Engine.ResultDay" nillable="true" type="tns:Engine.ResultDay" />
+  <xs:complexType name="Engine.LocationInfo">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirportCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CandlelightingMinutes" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityHebrew" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="County" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DavenDirectionGC" type="xs:int" />
+      <xs:element minOccurs="0" name="DavenDirectionRL" type="xs:int" />
+      <xs:element minOccurs="0" name="ElevationEast" type="xs:int" />
+      <xs:element minOccurs="0" name="ElevationObserver" type="xs:int" />
+      <xs:element minOccurs="0" name="ElevationWest" type="xs:int" />
+      <xs:element minOccurs="0" name="LocationID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameHtml" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameShort" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ObservesDST" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="YakirDegreesDefault" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Engine.LocationInfo" nillable="true" type="tns:Engine.LocationInfo" />
+  <xs:complexType name="Engine.DateInfo">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DafYomi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DafYomiPage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DafYomiTract" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateCivil" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateCivilLong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateFullLong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateFullShort" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateJewish" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateJewishLong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateJewishShort" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateSemiLong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateSemiShort" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DaylightTime" type="xs:int" />
+      <xs:element minOccurs="0" name="Holiday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HolidayShort" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAsaraBiteves" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCholHamoed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsErevPesach" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsErevShabbos" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsErevTishaBav" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsErevYomKipper" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsErevYomTov" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsFastDay" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRoshChodesh" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsShabbos" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsShivaAsarBitammuz" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTaanisEsther" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTishaBav" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTuBeshvat" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTzomGedalia" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsYomKipper" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsYomTov" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Omer" type="xs:int" />
+      <xs:element minOccurs="0" name="Parsha" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParshaAndHoliday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParshaShort" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TomorrowNightIsYomTov" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TomorrowParsha" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TomorrowParshaOrHoliday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TonightIsYomTov" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Weekday" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WeekdayShort" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Engine.DateInfo" nillable="true" type="tns:Engine.DateInfo" />
+  <xs:complexType name="ZmnType">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Candles" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChametzBurnGra" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChametzBurnMA72" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChametzBurnMA72fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChametzBurnRMF" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChametzEatGra" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChametzEatMA72" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChametzEatMA72fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChametzEatRMF" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CurrentTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Dawn72" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Dawn72fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Dawn90" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DawnRMF" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="KetanaGra" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="KetanaMA72fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Midday" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MiddayRMF" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Midnight" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Mincha30fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MinchaGra" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MinchaMA72fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MinchaStrict" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Night50fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Night60fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Night72" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Night72fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Night72fixLevel" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Night90" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NightChazonIsh" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NightFastRMF" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NightFastTuc" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NightGra180" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NightGra225" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NightGra240" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NightMoed" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NightShabbos" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NightZalman" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PlagBenIsh72ToFastTuc" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PlagBenIsh72ToShabbos" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PlagBenIsh90ToFastTuc" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PlagGra" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PlagMA72fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PropBenIsh72ToFastTuc" type="xs:long" />
+      <xs:element minOccurs="0" name="PropBenIsh72ToShabbos" type="xs:long" />
+      <xs:element minOccurs="0" name="PropBenIsh90ToFastTuc" type="xs:long" />
+      <xs:element minOccurs="0" name="PropGra" type="xs:long" />
+      <xs:element minOccurs="0" name="PropMA72" type="xs:long" />
+      <xs:element minOccurs="0" name="PropMA72fix" type="xs:long" />
+      <xs:element minOccurs="0" name="PropMA90" type="xs:long" />
+      <xs:element minOccurs="0" name="PropRmfMorning" type="xs:long" />
+      <xs:element minOccurs="0" name="ShachrisGra" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShachrisMA72" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShachrisMA72fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShachrisMA90" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShachrisRMF" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShemaBenIsh72ToFastTuc" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShemaBenIsh72ToShabbos" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShemaBenIsh90ToFastTuc" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShemaGra" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShemaMA72" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShemaMA72fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShemaMA90" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShemaRMF" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SunriseDefault" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SunriseElevated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SunriseLevel" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SunsetDefault" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SunsetElevated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SunsetLevel" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Tomorrow2Night72fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Tomorrow2NightChazonIsh" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Tomorrow2NightShabbos" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Tomorrow2SunsetDefault" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Tomorrow2SunsetElevated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Tomorrow2SunsetLevel" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TomorrowNight72fix" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TomorrowNightChazonIsh" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TomorrowNightShabbos" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TomorrowSunriseDefault" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TomorrowSunriseElevated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TomorrowSunriseLevel" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TomorrowSunsetDefault" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TomorrowSunsetElevated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TomorrowSunsetLevel" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Yakir102" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Yakir110" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Yakir115" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="YakirDefault" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZmnType" nillable="true" type="tns:ZmnType" />
+  <xs:complexType name="Engine.ParamGps">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coding" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Point" type="tns:Engine.Coordinates" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Engine.ParamGps" nillable="true" type="tns:Engine.ParamGps" />
+  <xs:complexType name="Engine.Coordinates">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lat" type="xs:double" />
+      <xs:element minOccurs="0" name="Lon" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Engine.Coordinates" nillable="true" type="tns:Engine.Coordinates" />
+  <xs:complexType name="Engine.ResultGps">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocationID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Engine.ResultGps" nillable="true" type="tns:Engine.ResultGps" />
+  <xs:complexType name="Engine.ParamPostal">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Coding" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Query" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeZone" type="xs:double" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Engine.ParamPostal" nillable="true" type="tns:Engine.ParamPostal" />
+  <xs:complexType name="Engine.ResultPostal">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocationID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Engine.ResultPostal" nillable="true" type="tns:Engine.ResultPostal" />
+</xs:schema>

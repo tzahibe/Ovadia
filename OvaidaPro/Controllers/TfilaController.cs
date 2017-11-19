@@ -13,10 +13,13 @@ namespace OvaidaPro.Controllers
     {
         // GET: Tfila
 
-        public ActionResult Zmanim()
+        public ActionResult Zmanim(string zoneName)
         {
-            ZmanimLogic zman = new ZmanimLogic("Lakewood, NJ", 40.09596, -74.22213,0);
-            return Json(zman.zc, JsonRequestBehavior.AllowGet);
+            //double latitude = 32.109333; //Lakewood, NJ
+            //double longitude = 34.855499; //Lakewood, NJ
+            ZmanimLogic zman = new ZmanimLogic(zoneName, 32.109333, 34.855499, 0);
+           // ZmanimLogic.GetZmanim();
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult AddTfila(Bo_Tfila Tfila)

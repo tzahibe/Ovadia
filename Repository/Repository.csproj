@@ -48,6 +48,7 @@
     <Reference Include="System.Runtime" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -70,6 +71,11 @@
     <Compile Include="CategoriesResult.cs" />
     <Compile Include="CommentResult.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="Connected Services\myZmanimService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="db_Comment.cs">
       <DependentUpon>OvadiaDataP.tt</DependentUpon>
     </Compile>
@@ -91,6 +97,7 @@
     <Compile Include="EventResult.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="MessageResult.cs" />
+    <Compile Include="MyZmanim.cs" />
     <Compile Include="OvadiaData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,6 +151,25 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>OvadiaData.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Connected Services\myZmanimService\Engine.wsdl" />
+    <None Include="Connected Services\myZmanimService\engine1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\myZmanimService\engine11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\myZmanimService\engine12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\myZmanimService\Repository.myZmanimService.EngineResultDay.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\myZmanimService\Repository.myZmanimService.EngineResultGps.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\myZmanimService\Repository.myZmanimService.EngineResultPostal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="OvadiaData.edmx.diagram">
       <DependentUpon>OvadiaData.edmx</DependentUpon>
     </None>
@@ -158,6 +184,13 @@
     <None Include="sql" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\myZmanimService\engine1.disco" />
+    <None Include="Connected Services\myZmanimService\configuration91.svcinfo" />
+    <None Include="Connected Services\myZmanimService\configuration.svcinfo" />
+    <None Include="Connected Services\myZmanimService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="OvadiaData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OvadiaData.edmx</DependentUpon>
@@ -188,6 +221,12 @@
       <Project>{3198ee24-6745-413f-af29-65530adc8647}</Project>
       <Name>BO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\myZmanimService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
