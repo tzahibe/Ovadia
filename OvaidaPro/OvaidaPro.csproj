@@ -387,6 +387,7 @@
     <Content Include="Scripts\Plugins\textAngular\textAngular.umd.js" />
     <Content Include="Scripts\Plugins\textAngular\textAngularSetup.js" />
     <Content Include="Scripts\Plugins\ZeroClipboard.swf" />
+    <Content Include="Scripts\Plugins\zmanim.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
   {
     "outputFileName": "bundles/bundle.js",
     "inputFiles": [
+      "Scripts/plugins/zmanim.js",
       "Scripts/Plugins/fontawesome.js",
       "Scripts/Plugins/angular.min.js",
       "Scripts/plugins/blueimp-gallery.min.js",

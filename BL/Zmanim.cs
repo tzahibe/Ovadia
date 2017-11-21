@@ -33,11 +33,10 @@ namespace BL
             this.zc = new ComplexZmanimCalendar(location);
 
             Daf daf = YomiCalculator.GetDafYomiBavli(DateTime.Now);
-               
-           
-
 
             ZmaneYom zman = new ZmaneYom();
+            string t2 = Common.ReplaceNumberToHebrew(daf.Page);
+
             zman.Alot_Ashachar_Early = this.zc.GetAlos120();
             zman.Alot_Ashachar_Later = this.zc.GetAlosHashachar();
             zman.Netz = this.zc.GetSunrise();

@@ -27,6 +27,7 @@ namespace BO
         public DateTime? Knisat_Shabat { get; set; }
         public DateTime? Zman_Shkia { get; set; }
         public string Parashat_Shavua { get; set; }
+        public string Daf_Yomi { get; set; }
     }
 
 
