@@ -221,8 +221,9 @@ function adj(x) {
  * email: abumami@kaluach.org
  */
 
+var x = new Date();
 
-var month = 10, day = 20, year = 2017;
+var month = x.getMonth(), day = x.getDate() - 1, year = x.getFullYear();
 var lat = 0, lng = 0;	// sun's location
 var latd = 32, latm = 5;// lat on earth
 var lngd = 34, lngm = 46;// long on earth
