@@ -28,11 +28,16 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">גוף ההודעה</label>
-                            <textarea required type="t" #Subject="ngModel" name="Subject"
+                            <!--<textarea required type="t" #Subject="ngModel" name="Subject"
                                       ng-trim="false"
                                       rows="15" cols="40"
                                       ng-model="Mail.Body" class="form-control hugeSize" id="Event_Name">
-                        </textarea>
+                        </textarea>-->
+                            <div text-angular ng-model="Mail.Body" placeholder="אנא הזן תוכן" 
+                                 id="Event_Name"
+                                 class="form-control hugeSize"
+                                 ng-hide="readOnly"></div>
+
                             <div ng-show="EventName.errors && (EventName.dirty || EventName.touched)"
                                  class="alert alert-danger">
                                 <div ng-hide="!EventName.errors.required" class="alert alert-danger">

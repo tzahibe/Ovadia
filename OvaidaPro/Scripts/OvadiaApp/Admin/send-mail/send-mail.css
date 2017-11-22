@@ -6,8 +6,9 @@
 #mailsAdm .bg-info th{
     text-align:center;
 }
-
-#mailsAdm .table-hover:hover {
+home-fixed{
+    display:none;
+}#mailsAdm .table-hover:hover {
     background: #123b5e;
     color: #fff;
 }

@@ -18,7 +18,17 @@ namespace BL
             Result result = new Result();
             try
             {
+                //prod
                 List<Message> members = (List<Message>)GetAllMembers().Data;
+                
+                //for test
+                //List<Message> members = new List<Message>();
+                //Message msg1 = new Message();
+                //msg1.Email = "tzachi222@gmail.com";
+                //msg1.ID = "5";
+                //msg1.Full_Name = "tzachi";
+                //members.Add(msg1);
+                
 
                 MailAddress fromAddress = new MailAddress("colel.ovadia@gmail.com", "כולל חזון עובדיה");
                 String fromPassword = "qwrtqwrt1988";
@@ -38,9 +48,9 @@ namespace BL
                     //4.The Email Body Message
                     String body = "<div style='text-align:right'; text-align:right'>";
                     body += "<img style='    position: relative;top: 24px;' src='http://www.colel.co.il/Content/images/logozakai.png'/>";
-                    body += "<h2>עדכונים - כולל חזון עובדיה - מושב בן זכאי</h2>";
-                    body += "<h3>" + MessageSend.Subject + "</h3>";
-                    body += MessageSend.Body;
+                    body += "<h3>עדכונים - כולל חזון עובדיה - מושב בן זכאי</h3>";
+                    body += "<h1>" + MessageSend.Subject + "</h1>";
+                    body += "<h2>" + MessageSend.Body + "</h2>";
                     body += "<br><br>" +
                         "על מנת להסיר את עצמך מרשימת הדיוור " +
                         "<a href='http://www.colel.co.il/message/RemoveEmailByToken?msgId=" + curr_address.ID + "&token=" + token + " '>לחץ כאן</a></div>";
