@@ -4,6 +4,13 @@
     height:76px;
     background: #b3ada9;
 }
+.moreButton {
+    background: #949494;
+    color: #fff;
+    width:100%;
+    font-weight: bold;
+    border: 1px solid #949494;
+}
 .col-xs-12.removePaddingMargin-Mobile {
     margin: 0;
     padding: 0;

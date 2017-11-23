@@ -269,6 +269,7 @@
     <Content Include="Scripts\OvadiaApp\sidur-component\sidur-component.css" />
     <Content Include="Scripts\OvadiaApp\sidur-component\sidur-component.html" />
     <Content Include="Scripts\OvadiaApp\sidur-component\sidur-component.js" />
+    <Content Include="Scripts\Plugins\angular.jquery.lazyload.min.js" />
     <Content Include="Scripts\Plugins\blueimp-gallery-video.js" />
     <Content Include="Scripts\Plugins\blueimp-gallery-youtube.js" />
     <Content Include="Scripts\Plugins\blueimp-gallery.min.js" />
@@ -365,6 +366,12 @@
     <Content Include="Scripts\Plugins\jquery-ui.js" />
     <Content Include="Scripts\Plugins\jquery-ui.min.css" />
     <Content Include="Scripts\Plugins\locale-all.js" />
+    <Content Include="Scripts\Plugins\modules\adapter.js" />
+    <Content Include="Scripts\Plugins\modules\buffer.js" />
+    <Content Include="Scripts\Plugins\modules\elementRoutines.js" />
+    <Content Include="Scripts\Plugins\modules\jqLiteExtras.js" />
+    <Content Include="Scripts\Plugins\modules\padding.js" />
+    <Content Include="Scripts\Plugins\modules\viewport.js" />
     <Content Include="Scripts\Plugins\moment.js" />
     <Content Include="Scripts\Plugins\ng-file-upload.min.js" />
     <Content Include="Scripts\Plugins\ng-image-gallery.min.css" />
@@ -386,6 +393,7 @@
     <Content Include="Scripts\Plugins\textAngular\textAngular.min.js" />
     <Content Include="Scripts\Plugins\textAngular\textAngular.umd.js" />
     <Content Include="Scripts\Plugins\textAngular\textAngularSetup.js" />
+    <Content Include="Scripts\Plugins\ui-scroll.js" />
     <Content Include="Scripts\Plugins\ZeroClipboard.swf" />
     <Content Include="Scripts\Plugins\zmanim.js" />
     <Content Include="Web.config" />

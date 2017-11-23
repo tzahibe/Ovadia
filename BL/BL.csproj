@@ -41,6 +41,9 @@
     <Reference Include="Zmanim">
       <HintPath>..\..\..\Users\Tzahi\Downloads\Zmanim-master\src\Zmanim\bin\Debug\Zmanim.dll</HintPath>
     </Reference>
+    <Reference Include="Zmanim.Scheduling">
+      <HintPath>..\..\..\Users\Tzahi\Downloads\Zmanim-master\src\Zmanim.Scheduling\bin\Debug\Zmanim.Scheduling.dll</HintPath>
+    </Reference>
     <Reference Include="Zmanim.TzDatebase">
       <HintPath>..\..\..\Users\Tzahi\Downloads\Zmanim-master\src\Zmanim.TzDatebase\bin\Debug\Zmanim.TzDatebase.dll</HintPath>
     </Reference>

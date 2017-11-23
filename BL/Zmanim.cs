@@ -11,6 +11,7 @@ using Bo;
 using BO;
 using Repository;
 using Zmanim.JewishCalendar;
+using Zmanim.Scheduling;
 
 namespace BL
 {
@@ -36,6 +37,11 @@ namespace BL
 
             ZmaneYom zman = new ZmaneYom();
             string t2 = Common.ReplaceNumberToHebrew(daf.Page);
+
+            Location loca = new Location();
+            loca.Latitude = latitude;
+            loca.Longitude = longitude;
+            loca.LocationName = locationName;
 
             zman.Alot_Ashachar_Early = this.zc.GetAlos120();
             zman.Alot_Ashachar_Later = this.zc.GetAlosHashachar();

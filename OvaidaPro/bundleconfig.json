@@ -6,6 +6,8 @@
       "Scripts/Plugins/fontawesome.js",
       "Scripts/Plugins/angular.min.js",
       "Scripts/plugins/blueimp-gallery.min.js",
+      "Scripts/plugins/angular.jquery.lazyload.min.js",
+      "scripts/plugins/ui-scroll.js",
       "Scripts/plugins/blueimp-gallery-video.js",
       "Scripts/plugins/blueimp-gallery-youtube.js",
       "Scripts/Plugins/textAngular/textAngular-rangy.min.js",

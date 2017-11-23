@@ -1081,6 +1081,1788 @@ c){var e=a|0,f=c;void 0===f&&(f=Math.min(b(a),3));Math.pow(10,f);return 1==e&&0=
 
 !function(){"use strict";function t(t,e){var i;for(i in e)e.hasOwnProperty(i)&&(t[i]=e[i]);return t}function e(t){if(!this||this.find!==e.prototype.find)return new e(t);if(this.length=0,t)if("string"==typeof t&&(t=this.find(t)),t.nodeType||t===t.window)this.length=1,this[0]=t;else{var i=t.length;for(this.length=i;i;)this[i-=1]=t[i]}}e.extend=t,e.contains=function(t,e){do{if((e=e.parentNode)===t)return!0}while(e);return!1},e.parseJSON=function(t){return window.JSON&&JSON.parse(t)},t(e.prototype,{find:function(t){var i=this[0]||document;return"string"==typeof t&&(t=i.querySelectorAll?i.querySelectorAll(t):"#"===t.charAt(0)?i.getElementById(t.slice(1)):i.getElementsByTagName(t)),new e(t)},hasClass:function(t){return!!this[0]&&new RegExp("(^|\\s+)"+t+"(\\s+|$)").test(this[0].className)},addClass:function(t){for(var e,i=this.length;i;){if(i-=1,!(e=this[i]).className)return e.className=t,this;if(this.hasClass(t))return this;e.className+=" "+t}return this},removeClass:function(t){for(var e,i=new RegExp("(^|\\s+)"+t+"(\\s+|$)"),s=this.length;s;)(e=this[s-=1]).className=e.className.replace(i," ");return this},on:function(t,e){for(var i,s,n=t.split(/\s+/);n.length;)for(t=n.shift(),i=this.length;i;)(s=this[i-=1]).addEventListener?s.addEventListener(t,e,!1):s.attachEvent&&s.attachEvent("on"+t,e);return this},off:function(t,e){for(var i,s,n=t.split(/\s+/);n.length;)for(t=n.shift(),i=this.length;i;)(s=this[i-=1]).removeEventListener?s.removeEventListener(t,e,!1):s.detachEvent&&s.detachEvent("on"+t,e);return this},empty:function(){for(var t,e=this.length;e;)for(t=this[e-=1];t.hasChildNodes();)t.removeChild(t.lastChild);return this},first:function(){return new e(this[0])}}),"function"==typeof define&&define.amd?define(function(){return e}):(window.blueimp=window.blueimp||{},window.blueimp.helper=e)}(),function(t){"use strict";"function"==typeof define&&define.amd?define(["./blueimp-helper"],t):(window.blueimp=window.blueimp||{},window.blueimp.Gallery=t(window.blueimp.helper||window.jQuery))}(function(t){"use strict";function e(t,i){return void 0===document.body.style.maxHeight?null:this&&this.options===e.prototype.options?void(t&&t.length?(this.list=t,this.num=t.length,this.initOptions(i),this.initialize()):this.console.log("blueimp Gallery: No or empty list provided as first argument.",t)):new e(t,i)}return t.extend(e.prototype,{options:{container:"#blueimp-gallery",slidesContainer:"div",titleElement:"h3",displayClass:"blueimp-gallery-display",controlsClass:"blueimp-gallery-controls",singleClass:"blueimp-gallery-single",leftEdgeClass:"blueimp-gallery-left",rightEdgeClass:"blueimp-gallery-right",playingClass:"blueimp-gallery-playing",slideClass:"slide",slideLoadingClass:"slide-loading",slideErrorClass:"slide-error",slideContentClass:"slide-content",toggleClass:"toggle",prevClass:"prev",nextClass:"next",closeClass:"close",playPauseClass:"play-pause",typeProperty:"type",titleProperty:"title",urlProperty:"href",srcsetProperty:"urlset",displayTransition:!0,clearSlides:!0,stretchImages:!1,toggleControlsOnReturn:!0,toggleControlsOnSlideClick:!0,toggleSlideshowOnSpace:!0,enableKeyboardNavigation:!0,closeOnEscape:!0,closeOnSlideClick:!0,closeOnSwipeUpOrDown:!0,emulateTouchEvents:!0,stopTouchEventsPropagation:!1,hidePageScrollbars:!0,disableScroll:!0,carousel:!1,continuous:!0,unloadElements:!0,startSlideshow:!1,slideshowInterval:5e3,index:0,preloadRange:2,transitionSpeed:400,slideshowTransitionSpeed:void 0,event:void 0,onopen:void 0,onopened:void 0,onslide:void 0,onslideend:void 0,onslidecomplete:void 0,onclose:void 0,onclosed:void 0},carouselOptions:{hidePageScrollbars:!1,toggleControlsOnReturn:!1,toggleSlideshowOnSpace:!1,enableKeyboardNavigation:!1,closeOnEscape:!1,closeOnSlideClick:!1,closeOnSwipeUpOrDown:!1,disableScroll:!1,startSlideshow:!0},console:window.console&&"function"==typeof window.console.log?window.console:{log:function(){}},support:function(e){function i(){var t,i,s=n.transition;document.body.appendChild(e),s&&(t=s.name.slice(0,-9)+"ransform",void 0!==e.style[t]&&(e.style[t]="translateZ(0)",i=window.getComputedStyle(e).getPropertyValue(s.prefix+"transform"),n.transform={prefix:s.prefix,name:t,translate:!0,translateZ:!!i&&"none"!==i})),void 0!==e.style.backgroundSize&&(n.backgroundSize={},e.style.backgroundSize="contain",n.backgroundSize.contain="contain"===window.getComputedStyle(e).getPropertyValue("background-size"),e.style.backgroundSize="cover",n.backgroundSize.cover="cover"===window.getComputedStyle(e).getPropertyValue("background-size")),document.body.removeChild(e)}var s,n={touch:void 0!==window.ontouchstart||window.DocumentTouch&&document instanceof DocumentTouch},o={webkitTransition:{end:"webkitTransitionEnd",prefix:"-webkit-"},MozTransition:{end:"transitionend",prefix:"-moz-"},OTransition:{end:"otransitionend",prefix:"-o-"},transition:{end:"transitionend",prefix:""}};for(s in o)if(o.hasOwnProperty(s)&&void 0!==e.style[s]){n.transition=o[s],n.transition.name=s;break}return document.body?i():t(document).on("DOMContentLoaded",i),n}(document.createElement("div")),requestAnimationFrame:window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame,initialize:function(){if(this.initStartIndex(),!1===this.initWidget())return!1;this.initEventListeners(),this.onslide(this.index),this.ontransitionend(),this.options.startSlideshow&&this.play()},slide:function(t,e){window.clearTimeout(this.timeout);var i,s,n,o=this.index;if(o!==t&&1!==this.num){if(e||(e=this.options.transitionSpeed),this.support.transform){for(this.options.continuous||(t=this.circle(t)),i=Math.abs(o-t)/(o-t),this.options.continuous&&(s=i,(i=-this.positions[this.circle(t)]/this.slideWidth)!==s&&(t=-i*this.num+t)),n=Math.abs(o-t)-1;n;)n-=1,this.move(this.circle((t>o?t:o)-n-1),this.slideWidth*i,0);t=this.circle(t),this.move(o,this.slideWidth*i,e),this.move(t,0,e),this.options.continuous&&this.move(this.circle(t-i),-this.slideWidth*i,0)}else t=this.circle(t),this.animate(o*-this.slideWidth,t*-this.slideWidth,e);this.onslide(t)}},getIndex:function(){return this.index},getNumber:function(){return this.num},prev:function(){(this.options.continuous||this.index)&&this.slide(this.index-1)},next:function(){(this.options.continuous||this.index<this.num-1)&&this.slide(this.index+1)},play:function(t){var e=this;window.clearTimeout(this.timeout),this.interval=t||this.options.slideshowInterval,this.elements[this.index]>1&&(this.timeout=this.setTimeout(!this.requestAnimationFrame&&this.slide||function(t,i){e.animationFrameId=e.requestAnimationFrame.call(window,function(){e.slide(t,i)})},[this.index+1,this.options.slideshowTransitionSpeed],this.interval)),this.container.addClass(this.options.playingClass)},pause:function(){window.clearTimeout(this.timeout),this.interval=null,this.container.removeClass(this.options.playingClass)},add:function(t){var e;for(t.concat||(t=Array.prototype.slice.call(t)),this.list.concat||(this.list=Array.prototype.slice.call(this.list)),this.list=this.list.concat(t),this.num=this.list.length,this.num>2&&null===this.options.continuous&&(this.options.continuous=!0,this.container.removeClass(this.options.leftEdgeClass)),this.container.removeClass(this.options.rightEdgeClass).removeClass(this.options.singleClass),e=this.num-t.length;e<this.num;e+=1)this.addSlide(e),this.positionSlide(e);this.positions.length=this.num,this.initSlides(!0)},resetSlides:function(){this.slidesContainer.empty(),this.unloadAllSlides(),this.slides=[]},handleClose:function(){var t=this.options;this.destroyEventListeners(),this.pause(),this.container[0].style.display="none",this.container.removeClass(t.displayClass).removeClass(t.singleClass).removeClass(t.leftEdgeClass).removeClass(t.rightEdgeClass),t.hidePageScrollbars&&(document.body.style.overflow=this.bodyOverflowStyle),this.options.clearSlides&&this.resetSlides(),this.options.onclosed&&this.options.onclosed.call(this)},close:function(){function t(i){i.target===e.container[0]&&(e.container.off(e.support.transition.end,t),e.handleClose())}var e=this;this.options.onclose&&this.options.onclose.call(this),this.support.transition&&this.options.displayTransition?(this.container.on(this.support.transition.end,t),this.container.removeClass(this.options.displayClass)):this.handleClose()},circle:function(t){return(this.num+t%this.num)%this.num},move:function(t,e,i){this.translateX(t,e,i),this.positions[t]=e},translate:function(t,e,i,s){var n=this.slides[t].style,o=this.support.transition,r=this.support.transform;n[o.name+"Duration"]=s+"ms",n[r.name]="translate("+e+"px, "+i+"px)"+(r.translateZ?" translateZ(0)":"")},translateX:function(t,e,i){this.translate(t,e,0,i)},translateY:function(t,e,i){this.translate(t,0,e,i)},animate:function(t,e,i){if(i)var s=this,n=(new Date).getTime(),o=window.setInterval(function(){var r=(new Date).getTime()-n;if(r>i)return s.slidesContainer[0].style.left=e+"px",s.ontransitionend(),void window.clearInterval(o);s.slidesContainer[0].style.left=(e-t)*(Math.floor(r/i*100)/100)+t+"px"},4);else this.slidesContainer[0].style.left=e+"px"},preventDefault:function(t){t.preventDefault?t.preventDefault():t.returnValue=!1},stopPropagation:function(t){t.stopPropagation?t.stopPropagation():t.cancelBubble=!0},onresize:function(){this.initSlides(!0)},onmousedown:function(t){t.which&&1===t.which&&"VIDEO"!==t.target.nodeName&&(t.preventDefault(),(t.originalEvent||t).touches=[{pageX:t.pageX,pageY:t.pageY}],this.ontouchstart(t))},onmousemove:function(t){this.touchStart&&((t.originalEvent||t).touches=[{pageX:t.pageX,pageY:t.pageY}],this.ontouchmove(t))},onmouseup:function(t){this.touchStart&&(this.ontouchend(t),delete this.touchStart)},onmouseout:function(e){if(this.touchStart){var i=e.target,s=e.relatedTarget;s&&(s===i||t.contains(i,s))||this.onmouseup(e)}},ontouchstart:function(t){this.options.stopTouchEventsPropagation&&this.stopPropagation(t);var e=(t.originalEvent||t).touches[0];this.touchStart={x:e.pageX,y:e.pageY,time:Date.now()},this.isScrolling=void 0,this.touchDelta={}},ontouchmove:function(t){this.options.stopTouchEventsPropagation&&this.stopPropagation(t);var e,i,s=(t.originalEvent||t).touches[0],n=(t.originalEvent||t).scale,o=this.index;if(!(s.length>1||n&&1!==n))if(this.options.disableScroll&&t.preventDefault(),this.touchDelta={x:s.pageX-this.touchStart.x,y:s.pageY-this.touchStart.y},e=this.touchDelta.x,void 0===this.isScrolling&&(this.isScrolling=this.isScrolling||Math.abs(e)<Math.abs(this.touchDelta.y)),this.isScrolling)this.translateY(o,this.touchDelta.y+this.positions[o],0);else for(t.preventDefault(),window.clearTimeout(this.timeout),this.options.continuous?i=[this.circle(o+1),o,this.circle(o-1)]:(this.touchDelta.x=e/=!o&&e>0||o===this.num-1&&e<0?Math.abs(e)/this.slideWidth+1:1,i=[o],o&&i.push(o-1),o<this.num-1&&i.unshift(o+1));i.length;)o=i.pop(),this.translateX(o,e+this.positions[o],0)},ontouchend:function(t){this.options.stopTouchEventsPropagation&&this.stopPropagation(t);var e,i,s,n,o,r=this.index,a=this.options.transitionSpeed,l=this.slideWidth,h=Number(Date.now()-this.touchStart.time)<250,d=h&&Math.abs(this.touchDelta.x)>20||Math.abs(this.touchDelta.x)>l/2,c=!r&&this.touchDelta.x>0||r===this.num-1&&this.touchDelta.x<0,u=!d&&this.options.closeOnSwipeUpOrDown&&(h&&Math.abs(this.touchDelta.y)>20||Math.abs(this.touchDelta.y)>this.slideHeight/2);this.options.continuous&&(c=!1),e=this.touchDelta.x<0?-1:1,this.isScrolling?u?this.close():this.translateY(r,0,a):d&&!c?(i=r+e,s=r-e,n=l*e,o=-l*e,this.options.continuous?(this.move(this.circle(i),n,0),this.move(this.circle(r-2*e),o,0)):i>=0&&i<this.num&&this.move(i,n,0),this.move(r,this.positions[r]+n,a),this.move(this.circle(s),this.positions[this.circle(s)]+n,a),r=this.circle(s),this.onslide(r)):this.options.continuous?(this.move(this.circle(r-1),-l,a),this.move(r,0,a),this.move(this.circle(r+1),l,a)):(r&&this.move(r-1,-l,a),this.move(r,0,a),r<this.num-1&&this.move(r+1,l,a))},ontouchcancel:function(t){this.touchStart&&(this.ontouchend(t),delete this.touchStart)},ontransitionend:function(t){var e=this.slides[this.index];t&&e!==t.target||(this.interval&&this.play(),this.setTimeout(this.options.onslideend,[this.index,e]))},oncomplete:function(e){var i,s=e.target||e.srcElement,n=s&&s.parentNode;s&&n&&(i=this.getNodeIndex(n),t(n).removeClass(this.options.slideLoadingClass),"error"===e.type?(t(n).addClass(this.options.slideErrorClass),this.elements[i]=3):this.elements[i]=2,s.clientHeight>this.container[0].clientHeight&&(s.style.maxHeight=this.container[0].clientHeight),this.interval&&this.slides[this.index]===n&&this.play(),this.setTimeout(this.options.onslidecomplete,[i,n]))},onload:function(t){this.oncomplete(t)},onerror:function(t){this.oncomplete(t)},onkeydown:function(t){switch(t.which||t.keyCode){case 13:this.options.toggleControlsOnReturn&&(this.preventDefault(t),this.toggleControls());break;case 27:this.options.closeOnEscape&&(this.close(),t.stopImmediatePropagation());break;case 32:this.options.toggleSlideshowOnSpace&&(this.preventDefault(t),this.toggleSlideshow());break;case 37:this.options.enableKeyboardNavigation&&(this.preventDefault(t),this.prev());break;case 39:this.options.enableKeyboardNavigation&&(this.preventDefault(t),this.next())}},handleClick:function(e){function i(e){return t(n).hasClass(e)||t(o).hasClass(e)}var s=this.options,n=e.target||e.srcElement,o=n.parentNode;i(s.toggleClass)?(this.preventDefault(e),this.toggleControls()):i(s.prevClass)?(this.preventDefault(e),this.prev()):i(s.nextClass)?(this.preventDefault(e),this.next()):i(s.closeClass)?(this.preventDefault(e),this.close()):i(s.playPauseClass)?(this.preventDefault(e),this.toggleSlideshow()):o===this.slidesContainer[0]?s.closeOnSlideClick?(this.preventDefault(e),this.close()):s.toggleControlsOnSlideClick&&(this.preventDefault(e),this.toggleControls()):o.parentNode&&o.parentNode===this.slidesContainer[0]&&s.toggleControlsOnSlideClick&&(this.preventDefault(e),this.toggleControls())},onclick:function(t){if(!(this.options.emulateTouchEvents&&this.touchDelta&&(Math.abs(this.touchDelta.x)>20||Math.abs(this.touchDelta.y)>20)))return this.handleClick(t);delete this.touchDelta},updateEdgeClasses:function(t){t?this.container.removeClass(this.options.leftEdgeClass):this.container.addClass(this.options.leftEdgeClass),t===this.num-1?this.container.addClass(this.options.rightEdgeClass):this.container.removeClass(this.options.rightEdgeClass)},handleSlide:function(t){this.options.continuous||this.updateEdgeClasses(t),this.loadElements(t),this.options.unloadElements&&this.unloadElements(t),this.setTitle(t)},onslide:function(t){this.index=t,this.handleSlide(t),this.setTimeout(this.options.onslide,[t,this.slides[t]])},setTitle:function(t){var e=this.slides[t].firstChild.title,i=this.titleElement;i.length&&(this.titleElement.empty(),e&&i[0].appendChild(document.createTextNode(e)))},setTimeout:function(t,e,i){var s=this;return t&&window.setTimeout(function(){t.apply(s,e||[])},i||0)},imageFactory:function(e,i){function s(e){if(!n){if(e={type:e.type,target:o},!o.parentNode)return a.setTimeout(s,[e]);n=!0,t(l).off("load error",s),d&&"load"===e.type&&(o.style.background='url("'+h+'") center no-repeat',o.style.backgroundSize=d),i(e)}}var n,o,r,a=this,l=this.imagePrototype.cloneNode(!1),h=e,d=this.options.stretchImages;return"string"!=typeof h&&(h=this.getItemProperty(e,this.options.urlProperty),r=this.getItemProperty(e,this.options.titleProperty)),!0===d&&(d="contain"),(d=this.support.backgroundSize&&this.support.backgroundSize[d]&&d)?o=this.elementPrototype.cloneNode(!1):(o=l,l.draggable=!1),r&&(o.title=r),t(l).on("load error",s),l.src=h,o},createElement:function(e,i){var s=e&&this.getItemProperty(e,this.options.typeProperty),n=s&&this[s.split("/")[0]+"Factory"]||this.imageFactory,o=e&&n.call(this,e,i),r=this.getItemProperty(e,this.options.srcsetProperty);return o||(o=this.elementPrototype.cloneNode(!1),this.setTimeout(i,[{type:"error",target:o}])),r&&o.setAttribute("srcset",r),t(o).addClass(this.options.slideContentClass),o},loadElement:function(e){this.elements[e]||(this.slides[e].firstChild?this.elements[e]=t(this.slides[e]).hasClass(this.options.slideErrorClass)?3:2:(this.elements[e]=1,t(this.slides[e]).addClass(this.options.slideLoadingClass),this.slides[e].appendChild(this.createElement(this.list[e],this.proxyListener))))},loadElements:function(t){var e,i=Math.min(this.num,2*this.options.preloadRange+1),s=t;for(e=0;e<i;e+=1)s+=e*(e%2==0?-1:1),s=this.circle(s),this.loadElement(s)},unloadElements:function(t){var e,i;for(e in this.elements)this.elements.hasOwnProperty(e)&&(i=Math.abs(t-e))>this.options.preloadRange&&i+this.options.preloadRange<this.num&&(this.unloadSlide(e),delete this.elements[e])},addSlide:function(t){var e=this.slidePrototype.cloneNode(!1);e.setAttribute("data-index",t),this.slidesContainer[0].appendChild(e),this.slides.push(e)},positionSlide:function(t){var e=this.slides[t];e.style.width=this.slideWidth+"px",this.support.transform&&(e.style.left=t*-this.slideWidth+"px",this.move(t,this.index>t?-this.slideWidth:this.index<t?this.slideWidth:0,0))},initSlides:function(e){var i,s;for(e||(this.positions=[],this.positions.length=this.num,this.elements={},this.imagePrototype=document.createElement("img"),this.elementPrototype=document.createElement("div"),this.slidePrototype=document.createElement("div"),t(this.slidePrototype).addClass(this.options.slideClass),this.slides=this.slidesContainer[0].children,i=this.options.clearSlides||this.slides.length!==this.num),this.slideWidth=this.container[0].offsetWidth,this.slideHeight=this.container[0].offsetHeight,this.slidesContainer[0].style.width=this.num*this.slideWidth+"px",i&&this.resetSlides(),s=0;s<this.num;s+=1)i&&this.addSlide(s),this.positionSlide(s);this.options.continuous&&this.support.transform&&(this.move(this.circle(this.index-1),-this.slideWidth,0),this.move(this.circle(this.index+1),this.slideWidth,0)),this.support.transform||(this.slidesContainer[0].style.left=this.index*-this.slideWidth+"px")},unloadSlide:function(t){var e,i;null!==(i=(e=this.slides[t]).firstChild)&&e.removeChild(i)},unloadAllSlides:function(){var t,e;for(t=0,e=this.slides.length;t<e;t++)this.unloadSlide(t)},toggleControls:function(){var t=this.options.controlsClass;this.container.hasClass(t)?this.container.removeClass(t):this.container.addClass(t)},toggleSlideshow:function(){this.interval?this.pause():this.play()},getNodeIndex:function(t){return parseInt(t.getAttribute("data-index"),10)},getNestedProperty:function(t,e){return e.replace(/\[(?:'([^']+)'|"([^"]+)"|(\d+))\]|(?:(?:^|\.)([^\.\[]+))/g,function(e,i,s,n,o){var r=o||i||s||n&&parseInt(n,10);e&&t&&(t=t[r])}),t},getDataProperty:function(e,i){var s,n;if(e.dataset?(s=i.replace(/-([a-z])/g,function(t,e){return e.toUpperCase()}),n=e.dataset[s]):e.getAttribute&&(n=e.getAttribute("data-"+i.replace(/([A-Z])/g,"-$1").toLowerCase())),"string"==typeof n){if(/^(true|false|null|-?\d+(\.\d+)?|\{[\s\S]*\}|\[[\s\S]*\])$/.test(n))try{return t.parseJSON(n)}catch(t){}return n}},getItemProperty:function(t,e){var i=this.getDataProperty(t,e);return void 0===i&&(i=t[e]),void 0===i&&(i=this.getNestedProperty(t,e)),i},initStartIndex:function(){var t,e=this.options.index,i=this.options.urlProperty;if(e&&"number"!=typeof e)for(t=0;t<this.num;t+=1)if(this.list[t]===e||this.getItemProperty(this.list[t],i)===this.getItemProperty(e,i)){e=t;break}this.index=this.circle(parseInt(e,10)||0)},initEventListeners:function(){function e(t){var e=i.support.transition&&i.support.transition.end===t.type?"transitionend":t.type;i["on"+e](t)}var i=this,s=this.slidesContainer;t(window).on("resize",e),t(document.body).on("keydown",e),this.container.on("click",e),this.support.touch?s.on("touchstart touchmove touchend touchcancel",e):this.options.emulateTouchEvents&&this.support.transition&&s.on("mousedown mousemove mouseup mouseout",e),this.support.transition&&s.on(this.support.transition.end,e),this.proxyListener=e},destroyEventListeners:function(){var e=this.slidesContainer,i=this.proxyListener;t(window).off("resize",i),t(document.body).off("keydown",i),this.container.off("click",i),this.support.touch?e.off("touchstart touchmove touchend touchcancel",i):this.options.emulateTouchEvents&&this.support.transition&&e.off("mousedown mousemove mouseup mouseout",i),this.support.transition&&e.off(this.support.transition.end,i)},handleOpen:function(){this.options.onopened&&this.options.onopened.call(this)},initWidget:function(){function e(t){t.target===i.container[0]&&(i.container.off(i.support.transition.end,e),i.handleOpen())}var i=this;return this.container=t(this.options.container),this.container.length?(this.slidesContainer=this.container.find(this.options.slidesContainer).first(),this.slidesContainer.length?(this.titleElement=this.container.find(this.options.titleElement).first(),1===this.num&&this.container.addClass(this.options.singleClass),this.options.onopen&&this.options.onopen.call(this),this.support.transition&&this.options.displayTransition?this.container.on(this.support.transition.end,e):this.handleOpen(),this.options.hidePageScrollbars&&(this.bodyOverflowStyle=document.body.style.overflow,document.body.style.overflow="hidden"),this.container[0].style.display="block",this.initSlides(),void this.container.addClass(this.options.displayClass)):(this.console.log("blueimp Gallery: Slides container not found.",this.options.slidesContainer),!1)):(this.console.log("blueimp Gallery: Widget container not found.",this.options.container),!1)},initOptions:function(e){this.options=t.extend({},this.options),(e&&e.carousel||this.options.carousel&&(!e||!1!==e.carousel))&&t.extend(this.options,this.carouselOptions),t.extend(this.options,e),this.num<3&&(this.options.continuous=!!this.options.continuous&&null),this.support.transition||(this.options.emulateTouchEvents=!1),this.options.event&&this.preventDefault(this.options.event)}}),e}),function(t){"use strict";"function"==typeof define&&define.amd?define(["./blueimp-helper","./blueimp-gallery"],t):t(window.blueimp.helper||window.jQuery,window.blueimp.Gallery)}(function(t,e){"use strict";t.extend(e.prototype.options,{fullScreen:!1});var i=e.prototype.initialize,s=e.prototype.close;return t.extend(e.prototype,{getFullScreenElement:function(){return document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement},requestFullScreen:function(t){t.requestFullscreen?t.requestFullscreen():t.webkitRequestFullscreen?t.webkitRequestFullscreen():t.mozRequestFullScreen?t.mozRequestFullScreen():t.msRequestFullscreen&&t.msRequestFullscreen()},exitFullScreen:function(){document.exitFullscreen?document.exitFullscreen():document.webkitCancelFullScreen?document.webkitCancelFullScreen():document.mozCancelFullScreen?document.mozCancelFullScreen():document.msExitFullscreen&&document.msExitFullscreen()},initialize:function(){i.call(this),this.options.fullScreen&&!this.getFullScreenElement()&&this.requestFullScreen(this.container[0])},close:function(){this.getFullScreenElement()===this.container[0]&&this.exitFullScreen(),s.call(this)}}),e}),function(t){"use strict";"function"==typeof define&&define.amd?define(["./blueimp-helper","./blueimp-gallery"],t):t(window.blueimp.helper||window.jQuery,window.blueimp.Gallery)}(function(t,e){"use strict";t.extend(e.prototype.options,{indicatorContainer:"ol",activeIndicatorClass:"active",thumbnailProperty:"thumbnail",thumbnailIndicators:!0});var i=e.prototype.initSlides,s=e.prototype.addSlide,n=e.prototype.resetSlides,o=e.prototype.handleClick,r=e.prototype.handleSlide,a=e.prototype.handleClose;return t.extend(e.prototype,{createIndicator:function(e){var i,s,n=this.indicatorPrototype.cloneNode(!1),o=this.getItemProperty(e,this.options.titleProperty),r=this.options.thumbnailProperty;return this.options.thumbnailIndicators&&(r&&(i=this.getItemProperty(e,r)),void 0===i&&(s=e.getElementsByTagName&&t(e).find("img")[0])&&(i=s.src),i&&(n.style.backgroundImage='url("'+i+'")')),o&&(n.title=o),n},addIndicator:function(t){if(this.indicatorContainer.length){var e=this.createIndicator(this.list[t]);e.setAttribute("data-index",t),this.indicatorContainer[0].appendChild(e),this.indicators.push(e)}},setActiveIndicator:function(e){this.indicators&&(this.activeIndicator&&this.activeIndicator.removeClass(this.options.activeIndicatorClass),this.activeIndicator=t(this.indicators[e]),this.activeIndicator.addClass(this.options.activeIndicatorClass))},initSlides:function(t){t||(this.indicatorContainer=this.container.find(this.options.indicatorContainer),this.indicatorContainer.length&&(this.indicatorPrototype=document.createElement("li"),this.indicators=this.indicatorContainer[0].children)),i.call(this,t)},addSlide:function(t){s.call(this,t),this.addIndicator(t)},resetSlides:function(){n.call(this),this.indicatorContainer.empty(),this.indicators=[]},handleClick:function(t){var e=t.target||t.srcElement,i=e.parentNode;if(i===this.indicatorContainer[0])this.preventDefault(t),this.slide(this.getNodeIndex(e));else{if(i.parentNode!==this.indicatorContainer[0])return o.call(this,t);this.preventDefault(t),this.slide(this.getNodeIndex(i))}},handleSlide:function(t){r.call(this,t),this.setActiveIndicator(t)},handleClose:function(){this.activeIndicator&&this.activeIndicator.removeClass(this.options.activeIndicatorClass),a.call(this)}}),e}),function(t){"use strict";"function"==typeof define&&define.amd?define(["./blueimp-helper","./blueimp-gallery"],t):t(window.blueimp.helper||window.jQuery,window.blueimp.Gallery)}(function(t,e){"use strict";t.extend(e.prototype.options,{videoContentClass:"video-content",videoLoadingClass:"video-loading",videoPlayingClass:"video-playing",videoPosterProperty:"poster",videoSourcesProperty:"sources"});var i=e.prototype.handleSlide;return t.extend(e.prototype,{handleSlide:function(t){i.call(this,t),this.playingVideo&&this.playingVideo.pause()},videoFactory:function(e,i,s){var n,o,r,a,l,h=this,d=this.options,c=this.elementPrototype.cloneNode(!1),u=t(c),p=[{type:"error",target:c}],m=s||document.createElement("video"),y=this.getItemProperty(e,d.urlProperty),f=this.getItemProperty(e,d.typeProperty),g=this.getItemProperty(e,d.titleProperty),v=this.getItemProperty(e,d.videoPosterProperty),C=this.getItemProperty(e,d.videoSourcesProperty);if(u.addClass(d.videoContentClass),g&&(c.title=g),m.canPlayType)if(y&&f&&m.canPlayType(f))m.src=y;else if(C)for(;C.length;)if(o=C.shift(),y=this.getItemProperty(o,d.urlProperty),f=this.getItemProperty(o,d.typeProperty),y&&f&&m.canPlayType(f)){m.src=y;break}return v&&(m.poster=v,n=this.imagePrototype.cloneNode(!1),t(n).addClass(d.toggleClass),n.src=v,n.draggable=!1,c.appendChild(n)),(r=document.createElement("a")).setAttribute("target","_blank"),s||r.setAttribute("download",g),r.href=y,m.src&&(m.controls=!0,(s||t(m)).on("error",function(){h.setTimeout(i,p)}).on("pause",function(){m.seeking||(a=!1,u.removeClass(h.options.videoLoadingClass).removeClass(h.options.videoPlayingClass),l&&h.container.addClass(h.options.controlsClass),delete h.playingVideo,h.interval&&h.play())}).on("playing",function(){a=!1,u.removeClass(h.options.videoLoadingClass).addClass(h.options.videoPlayingClass),h.container.hasClass(h.options.controlsClass)?(l=!0,h.container.removeClass(h.options.controlsClass)):l=!1}).on("play",function(){window.clearTimeout(h.timeout),a=!0,u.addClass(h.options.videoLoadingClass),h.playingVideo=m}),t(r).on("click",function(t){h.preventDefault(t),a?m.pause():m.play()}),c.appendChild(s&&s.element||m)),c.appendChild(r),this.setTimeout(i,[{type:"load",target:c}]),c}}),e}),function(t){"use strict";"function"==typeof define&&define.amd?define(["./blueimp-helper","./blueimp-gallery-video"],t):t(window.blueimp.helper||window.jQuery,window.blueimp.Gallery)}(function(t,e){"use strict";if(!window.postMessage)return e;t.extend(e.prototype.options,{vimeoVideoIdProperty:"vimeo",vimeoPlayerUrl:"//player.vimeo.com/video/VIDEO_ID?api=1&player_id=PLAYER_ID",vimeoPlayerIdPrefix:"vimeo-player-",vimeoClickToPlay:!0});var i=e.prototype.textFactory||e.prototype.imageFactory,s=function(t,e,i,s){this.url=t,this.videoId=e,this.playerId=i,this.clickToPlay=s,this.element=document.createElement("div"),this.listeners={}},n=0;return t.extend(s.prototype,{canPlayType:function(){return!0},on:function(t,e){return this.listeners[t]=e,this},loadAPI:function(){function e(){!s&&n.playOnReady&&n.play(),s=!0}for(var i,s,n=this,o="//f.vimeocdn.com/js/froogaloop2.min.js",r=document.getElementsByTagName("script"),a=r.length;a;)if(a-=1,r[a].src===o){i=r[a];break}i||((i=document.createElement("script")).src=o),t(i).on("load",e),r[0].parentNode.insertBefore(i,r[0]),/loaded|complete/.test(i.readyState)&&e()},onReady:function(){var t=this;this.ready=!0,this.player.addEvent("play",function(){t.hasPlayed=!0,t.onPlaying()}),this.player.addEvent("pause",function(){t.onPause()}),this.player.addEvent("finish",function(){t.onPause()}),this.playOnReady&&this.play()},onPlaying:function(){this.playStatus<2&&(this.listeners.playing(),this.playStatus=2)},onPause:function(){this.listeners.pause(),delete this.playStatus},insertIframe:function(){var t=document.createElement("iframe");t.src=this.url.replace("VIDEO_ID",this.videoId).replace("PLAYER_ID",this.playerId),t.id=this.playerId,this.element.parentNode.replaceChild(t,this.element),this.element=t},play:function(){var t=this;this.playStatus||(this.listeners.play(),this.playStatus=1),this.ready?!this.hasPlayed&&(this.clickToPlay||window.navigator&&/iP(hone|od|ad)/.test(window.navigator.platform))?this.onPlaying():this.player.api("play"):(this.playOnReady=!0,window.$f?this.player||(this.insertIframe(),this.player=$f(this.element),this.player.addEvent("ready",function(){t.onReady()})):this.loadAPI())},pause:function(){this.ready?this.player.api("pause"):this.playStatus&&(delete this.playOnReady,this.listeners.pause(),delete this.playStatus)}}),t.extend(e.prototype,{VimeoPlayer:s,textFactory:function(t,e){var o=this.options,r=this.getItemProperty(t,o.vimeoVideoIdProperty);return r?(void 0===this.getItemProperty(t,o.urlProperty)&&(t[o.urlProperty]="//vimeo.com/"+r),n+=1,this.videoFactory(t,e,new s(o.vimeoPlayerUrl,r,o.vimeoPlayerIdPrefix+n,o.vimeoClickToPlay))):i.call(this,t,e)}}),e}),function(t){"use strict";"function"==typeof define&&define.amd?define(["./blueimp-helper","./blueimp-gallery-video"],t):t(window.blueimp.helper||window.jQuery,window.blueimp.Gallery)}(function(t,e){"use strict";if(!window.postMessage)return e;t.extend(e.prototype.options,{youTubeVideoIdProperty:"youtube",youTubePlayerVars:{wmode:"transparent"},youTubeClickToPlay:!0});var i=e.prototype.textFactory||e.prototype.imageFactory,s=function(t,e,i){this.videoId=t,this.playerVars=e,this.clickToPlay=i,this.element=document.createElement("div"),this.listeners={}};return t.extend(s.prototype,{canPlayType:function(){return!0},on:function(t,e){return this.listeners[t]=e,this},loadAPI:function(){var t,e=this,i=window.onYouTubeIframeAPIReady,s="//www.youtube.com/iframe_api",n=document.getElementsByTagName("script"),o=n.length;for(window.onYouTubeIframeAPIReady=function(){i&&i.apply(this),e.playOnReady&&e.play()};o;)if(o-=1,n[o].src===s)return;(t=document.createElement("script")).src=s,n[0].parentNode.insertBefore(t,n[0])},onReady:function(){this.ready=!0,this.playOnReady&&this.play()},onPlaying:function(){this.playStatus<2&&(this.listeners.playing(),this.playStatus=2)},onPause:function(){e.prototype.setTimeout.call(this,this.checkSeek,null,2e3)},checkSeek:function(){this.stateChange!==YT.PlayerState.PAUSED&&this.stateChange!==YT.PlayerState.ENDED||(this.listeners.pause(),delete this.playStatus)},onStateChange:function(t){switch(t.data){case YT.PlayerState.PLAYING:this.hasPlayed=!0,this.onPlaying();break;case YT.PlayerState.PAUSED:case YT.PlayerState.ENDED:this.onPause()}this.stateChange=t.data},onError:function(t){this.listeners.error(t)},play:function(){var t=this;this.playStatus||(this.listeners.play(),this.playStatus=1),this.ready?!this.hasPlayed&&(this.clickToPlay||window.navigator&&/iP(hone|od|ad)/.test(window.navigator.platform))?this.onPlaying():this.player.playVideo():(this.playOnReady=!0,window.YT&&YT.Player?this.player||(this.player=new YT.Player(this.element,{videoId:this.videoId,playerVars:this.playerVars,events:{onReady:function(){t.onReady()},onStateChange:function(e){t.onStateChange(e)},onError:function(e){t.onError(e)}}})):this.loadAPI())},pause:function(){this.ready?this.player.pauseVideo():this.playStatus&&(delete this.playOnReady,this.listeners.pause(),delete this.playStatus)}}),t.extend(e.prototype,{YouTubePlayer:s,textFactory:function(t,e){var n=this.options,o=this.getItemProperty(t,n.youTubeVideoIdProperty);return o?(void 0===this.getItemProperty(t,n.urlProperty)&&(t[n.urlProperty]="//www.youtube.com/watch?v="+o),void 0===this.getItemProperty(t,n.videoPosterProperty)&&(t[n.videoPosterProperty]="//img.youtube.com/vi/"+o+"/maxresdefault.jpg"),this.videoFactory(t,e,new s(o,n.youTubePlayerVars,n.youTubeClickToPlay))):i.call(this,t,e)}}),e});
 //# sourceMappingURL=blueimp-gallery.min.js.map
+angular.module("angular.jquery.lazyload",[]),angular.module("angular.jquery.lazyload").directive("imgLazy",[function(){"use strict";return{restrict:"E",scope:{src:"@",effect:"@",event:"@",threshold:"@"},replace:!0,template:'<img class="lazy" data-original="{{ src }}">',link:function(e,t,n){t.removeAttr("src"),t.lazyload({effect:e.effect||"fadeIn",event:e.event,threshold:e.threshold}),e.event&&e.$on(e.event,function(n){t.trigger(e.event)})}}}]),angular.module("angular.jquery.lazyload").directive("imgLazyBg",[function(){"use strict";return{restrict:"A",scope:{imgLazyBg:"@",effect:"@",event:"@",threshold:"@"},compile:function(e,t){return{pre:function(e,t,n,r){t.attr("data-original",e.imgLazyBg)},post:function(e,t,n){t.lazyload({effect:e.effect||"fadeIn",event:e.event,threshold:e.threshold}),e.event&&e.$on(e.event,function(n){t.trigger(e.event)})}}}}}]);
+/*!
+ * angular-ui-scroll (uncompressed)
+ * https://github.com/angular-ui/ui-scroll
+ * Version: 1.7.0-rc.6 -- 2017-11-17T18:27:05.558Z
+ * License: MIT
+ */
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Adapter = function () {
+  function Adapter($scope, $parse, $attr, viewport, buffer, doAdjust, reload) {
+    _classCallCheck(this, Adapter);
+
+    this.$parse = $parse;
+    this.$attr = $attr;
+    this.viewport = viewport;
+    this.buffer = buffer;
+
+    this.doAdjust = doAdjust;
+    this.reload = reload;
+
+    this.isLoading = false;
+    this.disabled = false;
+
+    var viewportScope = viewport.getScope();
+    this.startScope = viewportScope.$parent ? viewportScope : $scope;
+
+    this.publicContext = {};
+    this.assignAdapter($attr.adapter);
+    this.generatePublicContext();
+  }
+
+  _createClass(Adapter, [{
+    key: 'assignAdapter',
+    value: function assignAdapter(adapterAttr) {
+      if (!adapterAttr || !(adapterAttr = adapterAttr.replace(/^\s+|\s+$/gm, ''))) {
+        return;
+      }
+      var adapterOnScope = void 0;
+
+      try {
+        this.$parse(adapterAttr).assign(this.startScope, {});
+        adapterOnScope = this.$parse(adapterAttr)(this.startScope);
+      } catch (error) {
+        error.message = 'Angular ui-scroll Adapter assignment exception.\n' + ('Can\'t parse "' + adapterAttr + '" expression.\n') + error.message;
+        throw error;
+      }
+
+      Object.assign(adapterOnScope, this.publicContext);
+      this.publicContext = adapterOnScope;
+    }
+  }, {
+    key: 'generatePublicContext',
+    value: function generatePublicContext() {
+      var _this = this;
+
+      // these methods will be accessible out of ui-scroll via user defined adapter
+      var publicMethods = ['reload', 'applyUpdates', 'append', 'prepend', 'isBOF', 'isEOF', 'isEmpty'];
+      for (var i = publicMethods.length - 1; i >= 0; i--) {
+        this.publicContext[publicMethods[i]] = this[publicMethods[i]].bind(this);
+      }
+
+      // these read-only props will be accessible out of ui-scroll via user defined adapter
+      var publicProps = ['isLoading', 'topVisible', 'topVisibleElement', 'topVisibleScope', 'bottomVisible', 'bottomVisibleElement', 'bottomVisibleScope'];
+
+      var _loop = function _loop(_i) {
+        var property = void 0,
+            attr = _this.$attr[publicProps[_i]];
+        Object.defineProperty(_this, publicProps[_i], {
+          get: function get() {
+            return property;
+          },
+          set: function set(value) {
+            property = value;
+            _this.publicContext[publicProps[_i]] = value;
+            if (attr) {
+              _this.$parse(attr).assign(_this.startScope, value);
+            }
+          }
+        });
+      };
+
+      for (var _i = publicProps.length - 1; _i >= 0; _i--) {
+        _loop(_i);
+      }
+
+      // non-read-only public property
+      Object.defineProperty(this.publicContext, 'disabled', {
+        get: function get() {
+          return _this.disabled;
+        },
+        set: function set(value) {
+          return !(_this.disabled = value) ? _this.doAdjust() : null;
+        }
+      });
+    }
+  }, {
+    key: 'loading',
+    value: function loading(value) {
+      this.isLoading = value;
+    }
+  }, {
+    key: 'isBOF',
+    value: function isBOF() {
+      return this.buffer.bof;
+    }
+  }, {
+    key: 'isEOF',
+    value: function isEOF() {
+      return this.buffer.eof;
+    }
+  }, {
+    key: 'isEmpty',
+    value: function isEmpty() {
+      return !this.buffer.length;
+    }
+  }, {
+    key: 'append',
+    value: function append(newItems) {
+      this.buffer.append(newItems);
+      this.doAdjust();
+      this.viewport.clipTop();
+      this.viewport.clipBottom();
+    }
+  }, {
+    key: 'prepend',
+    value: function prepend(newItems) {
+      this.buffer.prepend(newItems);
+      this.doAdjust();
+      this.viewport.clipTop();
+      this.viewport.clipBottom();
+    }
+  }, {
+    key: 'applyUpdates',
+    value: function applyUpdates(arg1, arg2) {
+      if (typeof arg1 === 'function') {
+        this.applyUpdatesFunc(arg1);
+      } else {
+        this.applyUpdatesIndex(arg1, arg2);
+      }
+      this.doAdjust();
+    }
+  }, {
+    key: 'applyUpdatesFunc',
+    value: function applyUpdatesFunc(cb) {
+      var _this2 = this;
+
+      this.buffer.slice(0).forEach(function (wrapper) {
+        // we need to do it on the buffer clone, because buffer content
+        // may change as we iterate through
+        _this2.applyUpdate(wrapper, cb(wrapper.item, wrapper.scope, wrapper.element));
+      });
+    }
+  }, {
+    key: 'applyUpdatesIndex',
+    value: function applyUpdatesIndex(index, newItems) {
+      if (index % 1 !== 0) {
+        throw new Error('applyUpdates - ' + index + ' is not a valid index (should be an integer)');
+      }
+      var _index = index - this.buffer.first;
+
+      // apply updates only within buffer
+      if (_index >= 0 && _index < this.buffer.length) {
+        this.applyUpdate(this.buffer[_index], newItems);
+      }
+      // out-of-buffer case: deletion may affect Paddings
+      else if (index >= this.buffer.getAbsMinIndex() && index <= this.buffer.getAbsMaxIndex()) {
+          if (Array.isArray(newItems) && !newItems.length) {
+            this.viewport.removeCacheItem(index, index === this.buffer.minIndex);
+            if (index === this.buffer.getAbsMinIndex()) {
+              this.buffer.incrementMinIndex();
+            } else {
+              this.buffer.decrementMaxIndex();
+            }
+          }
+        }
+    }
+  }, {
+    key: 'applyUpdate',
+    value: function applyUpdate(wrapper, newItems) {
+      var _this3 = this;
+
+      if (!Array.isArray(newItems)) {
+        return;
+      }
+      var position = this.buffer.indexOf(wrapper);
+      if (!newItems.reverse().some(function (newItem) {
+        return newItem === wrapper.item;
+      })) {
+        wrapper.op = 'remove';
+        if (position === 0 && !newItems.length) {
+          wrapper._op = 'isTop'; // to catch "first" edge case on remove
+        }
+      }
+      newItems.forEach(function (newItem) {
+        if (newItem === wrapper.item) {
+          position--;
+        } else {
+          // 3 parameter (isTop) is to catch "first" edge case on insert
+          _this3.buffer.insert(position + 1, newItem, position === -1);
+        }
+      });
+    }
+  }, {
+    key: 'calculateProperties',
+    value: function calculateProperties() {
+      var rowTop = null,
+          topHeight = 0;
+      var topDone = false,
+          bottomDone = false;
+      var length = this.buffer.length;
+
+      for (var i = 0; i < length; i++) {
+        var item = this.buffer[i];
+        var itemTop = item.element.offset().top;
+
+        if (rowTop !== itemTop) {
+          // a new row condition
+          var itemHeight = item.element.outerHeight(true);
+          var top = this.viewport.topDataPos() + topHeight + itemHeight;
+
+          if (!topDone && top > this.viewport.topVisiblePos()) {
+            topDone = true;
+            this['topVisible'] = item.item;
+            this['topVisibleElement'] = item.element;
+            this['topVisibleScope'] = item.scope;
+          }
+          if (!bottomDone && (top >= this.viewport.bottomVisiblePos() || i === length - 1 && this.isEOF())) {
+            bottomDone = true;
+            this['bottomVisible'] = item.item;
+            this['bottomVisibleElement'] = item.element;
+            this['bottomVisibleScope'] = item.scope;
+          }
+          topHeight += itemHeight;
+        }
+        rowTop = itemTop;
+
+        if (topDone && bottomDone) {
+          break;
+        }
+      }
+    }
+  }]);
+
+  return Adapter;
+}();
+
+exports.default = Adapter;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ScrollBuffer;
+function ScrollBuffer(elementRoutines, bufferSize, startIndex) {
+  var buffer = Object.create(Array.prototype);
+
+  Object.assign(buffer, {
+    size: bufferSize,
+
+    reset: function reset(startIndex) {
+      buffer.remove(0, buffer.length);
+      buffer.eof = false;
+      buffer.bof = false;
+      buffer.first = startIndex;
+      buffer.next = startIndex;
+      buffer.minIndex = startIndex;
+      buffer.maxIndex = startIndex;
+      buffer.minIndexUser = null;
+      buffer.maxIndexUser = null;
+    },
+    append: function append(items) {
+      items.forEach(function (item) {
+        ++buffer.next;
+        buffer.insert('append', item);
+      });
+      buffer.maxIndex = buffer.eof ? buffer.next - 1 : Math.max(buffer.next - 1, buffer.maxIndex);
+    },
+    prepend: function prepend(items) {
+      items.reverse().forEach(function (item) {
+        --buffer.first;
+        buffer.insert('prepend', item);
+      });
+      buffer.minIndex = buffer.bof ? buffer.minIndex = buffer.first : Math.min(buffer.first, buffer.minIndex);
+    },
+
+
+    /**
+     * inserts wrapped element in the buffer
+     * the first argument is either operation keyword (see below) or a number for operation 'insert'
+     * for insert the number is the index for the buffer element the new one have to be inserted after
+     * operations: 'append', 'prepend', 'insert', 'remove', 'update', 'none'
+     */
+    insert: function insert(operation, item, isTop) {
+      var wrapper = {
+        item: item
+      };
+
+      if (operation % 1 === 0) {
+        // it is an insert
+        wrapper.op = 'insert';
+        buffer.splice(operation, 0, wrapper);
+        if (isTop) {
+          buffer.first--;
+        } else {
+          buffer.next++;
+        }
+      } else {
+        wrapper.op = operation;
+        switch (operation) {
+          case 'append':
+            buffer.push(wrapper);
+            break;
+          case 'prepend':
+            buffer.unshift(wrapper);
+            break;
+        }
+      }
+    },
+
+
+    // removes elements from buffer
+    remove: function remove(arg1, arg2) {
+      if (Number.isInteger(arg1)) {
+        // removes items from arg1 (including) through arg2 (excluding)
+        for (var i = arg1; i < arg2; i++) {
+          elementRoutines.removeElement(buffer[i]);
+        }
+        return buffer.splice(arg1, arg2 - arg1);
+      }
+      // removes single item(wrapper) from the buffer
+      buffer.splice(buffer.indexOf(arg1), 1);
+      if (arg1._op === 'isTop' && buffer.first === this.getAbsMinIndex()) {
+        this.incrementMinIndex();
+      } else {
+        this.decrementMaxIndex();
+      }
+      if (arg1._op === 'isTop') {
+        buffer.first++;
+      } else {
+        buffer.next--;
+      }
+      if (!buffer.length) {
+        buffer.first = 1;
+        buffer.next = 1;
+      }
+
+      return elementRoutines.removeElementAnimated(arg1);
+    },
+    incrementMinIndex: function incrementMinIndex() {
+      if (buffer.minIndexUser !== null) {
+        if (buffer.minIndex > buffer.minIndexUser) {
+          buffer.minIndexUser++;
+          return;
+        }
+        if (buffer.minIndex === buffer.minIndexUser) {
+          buffer.minIndexUser++;
+        }
+      }
+      buffer.minIndex++;
+    },
+    decrementMaxIndex: function decrementMaxIndex() {
+      if (buffer.maxIndexUser !== null && buffer.maxIndex <= buffer.maxIndexUser) {
+        buffer.maxIndexUser--;
+      }
+      buffer.maxIndex--;
+    },
+    getAbsMinIndex: function getAbsMinIndex() {
+      if (buffer.minIndexUser !== null) {
+        return Math.min(buffer.minIndexUser, buffer.minIndex);
+      }
+      return buffer.minIndex;
+    },
+    getAbsMaxIndex: function getAbsMaxIndex() {
+      if (buffer.maxIndexUser !== null) {
+        return Math.max(buffer.maxIndexUser, buffer.maxIndex);
+      }
+      return buffer.maxIndex;
+    },
+    effectiveHeight: function effectiveHeight(elements) {
+      if (!elements.length) {
+        return 0;
+      }
+      var top = Number.MAX_VALUE;
+      var bottom = Number.NEGATIVE_INFINITY;
+      elements.forEach(function (wrapper) {
+        if (wrapper.element[0].offsetParent) {
+          // element style is not display:none
+          top = Math.min(top, wrapper.element.offset().top);
+          bottom = Math.max(bottom, wrapper.element.offset().top + wrapper.element.outerHeight(true));
+        }
+      });
+      return Math.max(0, bottom - top);
+    }
+  });
+
+  buffer.reset(startIndex);
+
+  return buffer;
+}
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var hideClassToken = 'ng-ui-scroll-hide';
+
+function addCSSRule(sheet, selector, rules, index) {
+  if ('insertRule' in sheet) {
+    sheet.insertRule(selector + '{' + rules + '}', index);
+  } else if ('addRule' in sheet) {
+    sheet.addRule(selector, rules, index);
+  }
+}
+
+var ElementRoutines = function () {
+  function ElementRoutines($injector, $q) {
+    _classCallCheck(this, ElementRoutines);
+
+    this.$animate = $injector.has && $injector.has('$animate') ? $injector.get('$animate') : null;
+    this.isAngularVersionLessThen1_3 = angular.version.major === 1 && angular.version.minor < 3;
+    this.$q = $q;
+    addCSSRule(document.styleSheets[0], '.' + hideClassToken, 'display: none');
+  }
+
+  _createClass(ElementRoutines, [{
+    key: 'hideElement',
+    value: function hideElement(wrapper) {
+      wrapper.element.addClass(hideClassToken);
+    }
+  }, {
+    key: 'showElement',
+    value: function showElement(wrapper) {
+      wrapper.element.removeClass(hideClassToken);
+    }
+  }, {
+    key: 'insertElement',
+    value: function insertElement(newElement, previousElement) {
+      previousElement.after(newElement);
+      return [];
+    }
+  }, {
+    key: 'removeElement',
+    value: function removeElement(wrapper) {
+      wrapper.element.remove();
+      wrapper.scope.$destroy();
+      return [];
+    }
+  }, {
+    key: 'insertElementAnimated',
+    value: function insertElementAnimated(newElement, previousElement) {
+      if (!this.$animate) {
+        return this.insertElement(newElement, previousElement);
+      }
+
+      if (this.isAngularVersionLessThen1_3) {
+        var deferred = this.$q.defer();
+        // no need for parent - previous element is never null
+        this.$animate.enter(newElement, null, previousElement, function () {
+          return deferred.resolve();
+        });
+
+        return [deferred.promise];
+      }
+
+      // no need for parent - previous element is never null
+      return [this.$animate.enter(newElement, null, previousElement)];
+    }
+  }, {
+    key: 'removeElementAnimated',
+    value: function removeElementAnimated(wrapper) {
+      if (!this.$animate) {
+        return this.removeElement(wrapper);
+      }
+
+      if (this.isAngularVersionLessThen1_3) {
+        var deferred = this.$q.defer();
+        this.$animate.leave(wrapper.element, function () {
+          wrapper.scope.$destroy();
+          return deferred.resolve();
+        });
+
+        return [deferred.promise];
+      }
+
+      return [this.$animate.leave(wrapper.element).then(function () {
+        return wrapper.scope.$destroy();
+      })];
+    }
+  }]);
+
+  return ElementRoutines;
+}();
+
+exports.default = ElementRoutines;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/*!
+ globals: angular, window
+ List of used element methods available in JQuery but not in JQuery Lite
+ element.before(elem)
+ element.height()
+ element.outerHeight(true)
+ element.height(value) = only for Top/Bottom padding elements
+ element.scrollTop()
+ element.scrollTop(value)
+ */
+
+var JQLiteExtras = function () {
+  function JQLiteExtras() {
+    _classCallCheck(this, JQLiteExtras);
+  }
+
+  _createClass(JQLiteExtras, [{
+    key: 'registerFor',
+    value: function registerFor(element) {
+      var convertToPx = void 0,
+          css = void 0,
+          getStyle = void 0,
+          isWindow = void 0;
+      // angular implementation blows up if elem is the window
+      css = angular.element.prototype.css;
+
+      element.prototype.css = function (name, value) {
+        var self = this;
+        var elem = self[0];
+        if (!(!elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style)) {
+          return css.call(self, name, value);
+        }
+      };
+
+      // as defined in angularjs v1.0.5
+      isWindow = function isWindow(obj) {
+        return obj && obj.document && obj.location && obj.alert && obj.setInterval;
+      };
+
+      function scrollTo(self, direction, value) {
+        var elem = self[0];
+
+        var _top$left$direction = _slicedToArray({
+          top: ['scrollTop', 'pageYOffset', 'scrollLeft'],
+          left: ['scrollLeft', 'pageXOffset', 'scrollTop']
+        }[direction], 3),
+            method = _top$left$direction[0],
+            prop = _top$left$direction[1],
+            preserve = _top$left$direction[2];
+
+        var isValueDefined = typeof value !== 'undefined';
+        if (isWindow(elem)) {
+          if (isValueDefined) {
+            return elem.scrollTo(self[preserve].call(self), value);
+          }
+          return prop in elem ? elem[prop] : elem.document.documentElement[method];
+        } else {
+          if (isValueDefined) {
+            elem[method] = value;
+          }
+          return elem[method];
+        }
+      }
+
+      if (window.getComputedStyle) {
+        getStyle = function getStyle(elem) {
+          return window.getComputedStyle(elem, null);
+        };
+        convertToPx = function convertToPx(elem, value) {
+          return parseFloat(value);
+        };
+      } else {
+        getStyle = function getStyle(elem) {
+          return elem.currentStyle;
+        };
+        convertToPx = function convertToPx(elem, value) {
+          var left = void 0,
+              result = void 0,
+              rs = void 0,
+              rsLeft = void 0,
+              style = void 0;
+          var core_pnum = /[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/.source;
+          var rnumnonpx = new RegExp('^(' + core_pnum + ')(?!px)[a-z%]+$', 'i');
+
+          if (!rnumnonpx.test(value)) {
+            return parseFloat(value);
+          }
+
+          // ported from JQuery
+          style = elem.style;
+          left = style.left;
+          rs = elem.runtimeStyle;
+          rsLeft = rs && rs.left;
+          if (rs) {
+            rs.left = style.left;
+          }
+          // put in the new values to get a computed style out
+          style.left = value;
+          result = style.pixelLeft;
+          style.left = left;
+          if (rsLeft) {
+            rs.left = rsLeft;
+          }
+          return result;
+        };
+      }
+
+      function getMeasurements(elem, measure) {
+        var base = void 0,
+            borderA = void 0,
+            borderB = void 0,
+            computedMarginA = void 0,
+            computedMarginB = void 0,
+            computedStyle = void 0,
+            dirA = void 0,
+            dirB = void 0,
+            marginA = void 0,
+            marginB = void 0,
+            paddingA = void 0,
+            paddingB = void 0;
+
+        if (isWindow(elem)) {
+          base = document.documentElement[{ height: 'clientHeight', width: 'clientWidth' }[measure]];
+
+          return {
+            base: base,
+            padding: 0,
+            border: 0,
+            margin: 0
+          };
+        }
+
+        // Start with offset property
+
+        var _width$height$measure = _slicedToArray({
+          width: [elem.offsetWidth, 'Left', 'Right'],
+          height: [elem.offsetHeight, 'Top', 'Bottom']
+        }[measure], 3);
+
+        base = _width$height$measure[0];
+        dirA = _width$height$measure[1];
+        dirB = _width$height$measure[2];
+
+
+        computedStyle = getStyle(elem);
+        paddingA = convertToPx(elem, computedStyle['padding' + dirA]) || 0;
+        paddingB = convertToPx(elem, computedStyle['padding' + dirB]) || 0;
+        borderA = convertToPx(elem, computedStyle['border' + dirA + 'Width']) || 0;
+        borderB = convertToPx(elem, computedStyle['border' + dirB + 'Width']) || 0;
+        computedMarginA = computedStyle['margin' + dirA];
+        computedMarginB = computedStyle['margin' + dirB];
+
+        // I do not care for width for now, so this hack is irrelevant
+        // if ( !supportsPercentMargin )
+        // computedMarginA = hackPercentMargin( elem, computedStyle, computedMarginA )
+        // computedMarginB = hackPercentMargin( elem, computedStyle, computedMarginB )
+        marginA = convertToPx(elem, computedMarginA) || 0;
+        marginB = convertToPx(elem, computedMarginB) || 0;
+
+        return {
+          base: base,
+          padding: paddingA + paddingB,
+          border: borderA + borderB,
+          margin: marginA + marginB
+        };
+      }
+
+      function getWidthHeight(elem, direction, measure) {
+        var computedStyle = void 0,
+            result = void 0;
+
+        var measurements = getMeasurements(elem, direction);
+
+        if (measurements.base > 0) {
+          return {
+            base: measurements.base - measurements.padding - measurements.border,
+            outer: measurements.base,
+            outerfull: measurements.base + measurements.margin
+          }[measure];
+        }
+
+        // Fall back to computed then uncomputed css if necessary
+        computedStyle = getStyle(elem);
+        result = computedStyle[direction];
+
+        if (result < 0 || result === null) {
+          result = elem.style[direction] || 0;
+        }
+
+        // Normalize "", auto, and prepare for extra
+        result = parseFloat(result) || 0;
+
+        return {
+          base: result - measurements.padding - measurements.border,
+          outer: result,
+          outerfull: result + measurements.padding + measurements.border + measurements.margin
+        }[measure];
+      }
+
+      // define missing methods
+      return angular.forEach({
+        before: function before(newElem) {
+          var children, elem, i, j, parent, ref, self;
+          self = this;
+          elem = self[0];
+          parent = self.parent();
+          children = parent.contents();
+          if (children[0] === elem) {
+            return parent.prepend(newElem);
+          } else {
+            for (i = j = 1, ref = children.length - 1; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
+              if (children[i] === elem) {
+                angular.element(children[i - 1]).after(newElem);
+                return;
+              }
+            }
+            throw new Error('invalid DOM structure ' + elem.outerHTML);
+          }
+        },
+        height: function height(value) {
+          var self;
+          self = this;
+          if (typeof value !== 'undefined') {
+            if (Number.isInteger(value)) {
+              value = value + 'px';
+            }
+            return css.call(self, 'height', value);
+          } else {
+            return getWidthHeight(this[0], 'height', 'base');
+          }
+        },
+        outerHeight: function outerHeight(option) {
+          return getWidthHeight(this[0], 'height', option ? 'outerfull' : 'outer');
+        },
+        outerWidth: function outerWidth(option) {
+          return getWidthHeight(this[0], 'width', option ? 'outerfull' : 'outer');
+        },
+
+
+        /*
+         The offset setter method is not implemented
+         */
+        offset: function offset(value) {
+          var docElem = void 0,
+              win = void 0;
+          var self = this;
+          var box = {
+            top: 0,
+            left: 0
+          };
+          var elem = self[0];
+          var doc = elem && elem.ownerDocument;
+
+          if (arguments.length) {
+            if (value === undefined) {
+              return self;
+            }
+            // TODO: implement setter
+            throw new Error('offset setter method is not implemented');
+          }
+
+          if (!doc) {
+            return;
+          }
+
+          docElem = doc.documentElement;
+
+          // TODO: Make sure it's not a disconnected DOM node
+
+          if (elem.getBoundingClientRect != null) {
+            box = elem.getBoundingClientRect();
+          }
+
+          win = doc.defaultView || doc.parentWindow;
+
+          return {
+            top: box.top + (win.pageYOffset || docElem.scrollTop) - (docElem.clientTop || 0),
+            left: box.left + (win.pageXOffset || docElem.scrollLeft) - (docElem.clientLeft || 0)
+          };
+        },
+        scrollTop: function scrollTop(value) {
+          return scrollTo(this, 'top', value);
+        },
+        scrollLeft: function scrollLeft(value) {
+          return scrollTo(this, 'left', value);
+        }
+      }, function (value, key) {
+        if (!element.prototype[key]) {
+          return element.prototype[key] = value;
+        }
+      });
+    }
+  }]);
+
+  return JQLiteExtras;
+}();
+
+exports.default = JQLiteExtras;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Viewport;
+
+var _padding = __webpack_require__(5);
+
+var _padding2 = _interopRequireDefault(_padding);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Viewport(elementRoutines, buffer, element, viewportController, $rootScope, padding) {
+  var topPadding = null;
+  var bottomPadding = null;
+  var viewport = viewportController && viewportController.viewport ? viewportController.viewport : angular.element(window);
+  var container = viewportController && viewportController.container ? viewportController.container : undefined;
+  var scope = viewportController && viewportController.scope ? viewportController.scope : $rootScope;
+
+  viewport.css({
+    'overflow-anchor': 'none',
+    'overflow-y': 'auto',
+    'display': 'block'
+  });
+
+  function bufferPadding() {
+    return viewport.outerHeight() * padding; // some extra space to initiate preload
+  }
+
+  Object.assign(viewport, {
+    getScope: function getScope() {
+      return scope;
+    },
+    createPaddingElements: function createPaddingElements(template) {
+      topPadding = new _padding2.default(template);
+      bottomPadding = new _padding2.default(template);
+      element.before(topPadding.element);
+      element.after(bottomPadding.element);
+      topPadding.height(0);
+      bottomPadding.height(0);
+    },
+    applyContainerStyle: function applyContainerStyle() {
+      if (!container) {
+        return true;
+      }
+      if (container !== viewport) {
+        viewport.css('height', window.getComputedStyle(container[0]).height);
+      }
+      return viewport.height() > 0;
+    },
+    bottomDataPos: function bottomDataPos() {
+      var scrollHeight = viewport[0].scrollHeight;
+      scrollHeight = scrollHeight != null ? scrollHeight : viewport[0].document.documentElement.scrollHeight;
+      return scrollHeight - bottomPadding.height();
+    },
+    topDataPos: function topDataPos() {
+      return topPadding.height();
+    },
+    bottomVisiblePos: function bottomVisiblePos() {
+      return viewport.scrollTop() + viewport.outerHeight();
+    },
+    topVisiblePos: function topVisiblePos() {
+      return viewport.scrollTop();
+    },
+    insertElement: function insertElement(e, sibling) {
+      return elementRoutines.insertElement(e, sibling || topPadding.element);
+    },
+    insertElementAnimated: function insertElementAnimated(e, sibling) {
+      return elementRoutines.insertElementAnimated(e, sibling || topPadding.element);
+    },
+    shouldLoadBottom: function shouldLoadBottom() {
+      return !buffer.eof && viewport.bottomDataPos() < viewport.bottomVisiblePos() + bufferPadding();
+    },
+    clipBottom: function clipBottom() {
+      // clip the invisible items off the bottom
+      var overage = 0;
+      var overageHeight = 0;
+      var itemHeight = 0;
+      var emptySpaceHeight = viewport.bottomDataPos() - viewport.bottomVisiblePos() - bufferPadding();
+
+      for (var i = buffer.length - 1; i >= 0; i--) {
+        itemHeight = buffer[i].element.outerHeight(true);
+        if (overageHeight + itemHeight > emptySpaceHeight) {
+          break;
+        }
+        bottomPadding.cache.add(buffer[i]);
+        overageHeight += itemHeight;
+        overage++;
+      }
+
+      if (overage > 0) {
+        buffer.eof = false;
+        buffer.remove(buffer.length - overage, buffer.length);
+        buffer.next -= overage;
+        viewport.adjustPaddings();
+      }
+    },
+    shouldLoadTop: function shouldLoadTop() {
+      return !buffer.bof && viewport.topDataPos() > viewport.topVisiblePos() - bufferPadding();
+    },
+    clipTop: function clipTop() {
+      // clip the invisible items off the top
+      var overage = 0;
+      var overageHeight = 0;
+      var itemHeight = 0;
+      var emptySpaceHeight = viewport.topVisiblePos() - viewport.topDataPos() - bufferPadding();
+
+      for (var i = 0; i < buffer.length; i++) {
+        itemHeight = buffer[i].element.outerHeight(true);
+        if (overageHeight + itemHeight > emptySpaceHeight) {
+          break;
+        }
+        topPadding.cache.add(buffer[i]);
+        overageHeight += itemHeight;
+        overage++;
+      }
+
+      if (overage > 0) {
+        // we need to adjust top padding element before items are removed from top
+        // to avoid strange behaviour of scroll bar during remove top items when we are at the very bottom
+        topPadding.height(topPadding.height() + overageHeight);
+        buffer.bof = false;
+        buffer.remove(0, overage);
+        buffer.first += overage;
+      }
+    },
+    adjustPaddings: function adjustPaddings() {
+      if (!buffer.length) {
+        return;
+      }
+
+      // precise heights calculation based on items that are in buffer or that were in buffer once
+      var visibleItemsHeight = buffer.reduce(function (summ, item) {
+        return summ + item.element.outerHeight(true);
+      }, 0);
+
+      var topPaddingHeight = 0,
+          topCount = 0;
+      topPadding.cache.forEach(function (item) {
+        if (item.index < buffer.first) {
+          topPaddingHeight += item.height;
+          topCount++;
+        }
+      });
+
+      var bottomPaddingHeight = 0,
+          bottomCount = 0;
+      bottomPadding.cache.forEach(function (item) {
+        if (item.index >= buffer.next) {
+          bottomPaddingHeight += item.height;
+          bottomCount++;
+        }
+      });
+
+      var totalHeight = visibleItemsHeight + topPaddingHeight + bottomPaddingHeight;
+      var averageItemHeight = totalHeight / (topCount + bottomCount + buffer.length);
+
+      // average heights calculation, items that have never been reached
+      var adjustTopPadding = buffer.minIndexUser !== null && buffer.minIndex > buffer.minIndexUser;
+      var adjustBottomPadding = buffer.maxIndexUser !== null && buffer.maxIndex < buffer.maxIndexUser;
+      var topPaddingHeightAdd = adjustTopPadding ? (buffer.minIndex - buffer.minIndexUser) * averageItemHeight : 0;
+      var bottomPaddingHeightAdd = adjustBottomPadding ? (buffer.maxIndexUser - buffer.maxIndex) * averageItemHeight : 0;
+
+      // paddings combine adjustment
+      topPadding.height(topPaddingHeight + topPaddingHeightAdd);
+      bottomPadding.height(bottomPaddingHeight + bottomPaddingHeightAdd);
+    },
+    onAfterMinIndexSet: function onAfterMinIndexSet(topPaddingHeightOld) {
+      // additional scrollTop adjustment in case of datasource.minIndex external set
+      if (buffer.minIndexUser !== null && buffer.minIndex > buffer.minIndexUser) {
+        var diff = topPadding.height() - topPaddingHeightOld;
+        viewport.scrollTop(viewport.scrollTop() + diff);
+        while ((diff -= viewport.scrollTop()) > 0) {
+          bottomPadding.height(bottomPadding.height() + diff);
+          viewport.scrollTop(viewport.scrollTop() + diff);
+        }
+      }
+    },
+    onAfterPrepend: function onAfterPrepend(updates) {
+      if (!updates.prepended.length) return;
+      var height = buffer.effectiveHeight(updates.prepended);
+      var paddingHeight = topPadding.height() - height;
+      if (paddingHeight >= 0) {
+        topPadding.height(paddingHeight);
+      } else {
+        topPadding.height(0);
+        viewport.scrollTop(viewport.scrollTop() - paddingHeight);
+      }
+    },
+    resetTopPadding: function resetTopPadding() {
+      topPadding.height(0);
+      topPadding.cache.clear();
+    },
+    resetBottomPadding: function resetBottomPadding() {
+      bottomPadding.height(0);
+      bottomPadding.cache.clear();
+    },
+    removeCacheItem: function removeCacheItem(item, isTop) {
+      topPadding.cache.remove(item, isTop);
+      bottomPadding.cache.remove(item, isTop);
+    },
+    removeItem: function removeItem(item) {
+      this.removeCacheItem(item);
+      return buffer.remove(item);
+    }
+  });
+
+  return viewport;
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// Can't just extend the Array, due to Babel does not support built-in classes extending
+// This solution was taken from https://stackoverflow.com/questions/46897414/es6-class-extends-array-workaround-for-es5-babel-transpile
+var CacheProto = function () {
+  function CacheProto() {
+    _classCallCheck(this, CacheProto);
+  }
+
+  _createClass(CacheProto, [{
+    key: 'add',
+    value: function add(item) {
+      for (var i = this.length - 1; i >= 0; i--) {
+        if (this[i].index === item.scope.$index) {
+          this[i].height = item.element.outerHeight();
+          return;
+        }
+      }
+      this.push({
+        index: item.scope.$index,
+        height: item.element.outerHeight()
+      });
+      this.sort(function (a, b) {
+        return a.index < b.index ? -1 : a.index > b.index ? 1 : 0;
+      });
+    }
+  }, {
+    key: 'remove',
+    value: function remove(argument, _isTop) {
+      var index = argument % 1 === 0 ? argument : argument.scope.$index;
+      var isTop = argument % 1 === 0 ? _isTop : argument._op === 'isTop';
+      for (var i = this.length - 1; i >= 0; i--) {
+        if (this[i].index === index) {
+          this.splice(i, 1);
+          break;
+        }
+      }
+      if (!isTop) {
+        for (var _i = this.length - 1; _i >= 0; _i--) {
+          if (this[_i].index > index) {
+            this[_i].index--;
+          }
+        }
+      }
+    }
+  }, {
+    key: 'clear',
+    value: function clear() {
+      this.length = 0;
+    }
+  }]);
+
+  return CacheProto;
+}();
+
+function Cache() {
+  var instance = [];
+  instance.push.apply(instance, arguments);
+  Object.setPrototypeOf(instance, Cache.prototype);
+  return instance;
+}
+Cache.prototype = Object.create(Array.prototype);
+Object.getOwnPropertyNames(CacheProto.prototype).forEach(function (methodName) {
+  return Cache.prototype[methodName] = CacheProto.prototype[methodName];
+});
+
+function generateElement(template) {
+  if (template.nodeType !== Node.ELEMENT_NODE) {
+    throw new Error('ui-scroll directive requires an Element node for templating the view');
+  }
+  var element = void 0;
+  switch (template.tagName.toLowerCase()) {
+    case 'dl':
+      throw new Error('ui-scroll directive does not support <' + template.tagName + '> as a repeating tag: ' + template.outerHTML);
+    case 'tr':
+      var table = angular.element('<table><tr><td><div></div></td></tr></table>');
+      element = table.find('tr');
+      break;
+    case 'li':
+      element = angular.element('<li></li>');
+      break;
+    default:
+      element = angular.element('<div></div>');
+  }
+  return element;
+}
+
+var Padding = function () {
+  function Padding(template) {
+    _classCallCheck(this, Padding);
+
+    this.element = generateElement(template);
+    this.cache = new Cache();
+  }
+
+  _createClass(Padding, [{
+    key: 'height',
+    value: function height() {
+      return this.element.height.apply(this.element, arguments);
+    }
+  }]);
+
+  return Padding;
+}();
+
+exports.default = Padding;
+
+/***/ }),
+/* 6 */,
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _jqLiteExtras = __webpack_require__(3);
+
+var _jqLiteExtras2 = _interopRequireDefault(_jqLiteExtras);
+
+var _elementRoutines = __webpack_require__(2);
+
+var _elementRoutines2 = _interopRequireDefault(_elementRoutines);
+
+var _buffer = __webpack_require__(1);
+
+var _buffer2 = _interopRequireDefault(_buffer);
+
+var _viewport = __webpack_require__(4);
+
+var _viewport2 = _interopRequireDefault(_viewport);
+
+var _adapter = __webpack_require__(0);
+
+var _adapter2 = _interopRequireDefault(_adapter);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+angular.module('ui.scroll', []).service('jqLiteExtras', function () {
+  return new _jqLiteExtras2.default();
+}).run(['jqLiteExtras', function (jqLiteExtras) {
+  return !window.jQuery ? jqLiteExtras.registerFor(angular.element) : null;
+}]).directive('uiScrollViewport', function () {
+  return {
+    restrict: 'A',
+    controller: ['$scope', '$element', function (scope, element) {
+      var _this = this;
+
+      this.container = element;
+      this.viewport = element;
+      this.scope = scope;
+
+      angular.forEach(element.children(), function (child) {
+        if (child.tagName.toLowerCase() === 'tbody') {
+          _this.viewport = angular.element(child);
+        }
+      });
+
+      return this;
+    }]
+  };
+}).directive('uiScroll', ['$log', '$injector', '$rootScope', '$timeout', '$interval', '$q', '$parse', function (console, $injector, $rootScope, $timeout, $interval, $q, $parse) {
+
+  return {
+    require: ['?^uiScrollViewport'],
+    restrict: 'A',
+    transclude: 'element',
+    priority: 1000,
+    terminal: true,
+    link: link
+  };
+
+  function link($scope, element, $attr, controllers, linker) {
+    var match = $attr.uiScroll.match(/^\s*(\w+)\s+in\s+([(\w|\$)\.]+)\s*$/);
+    if (!match) {
+      throw new Error('Expected uiScroll in form of \'_item_ in _datasource_\' but got \'' + $attr.uiScroll + '\'');
+    }
+
+    function parseNumericAttr(value, defaultValue) {
+      var result = $parse(value)($scope);
+      return isNaN(result) ? defaultValue : result;
+    }
+
+    var BUFFER_MIN = 3;
+    var BUFFER_DEFAULT = 10;
+    var PADDING_MIN = 0.3;
+    var PADDING_DEFAULT = 0.5;
+    var MAX_VIEWPORT_DELAY = 500;
+    var VIEWPORT_POLLING_INTERVAL = 50;
+
+    var datasource = null;
+    var itemName = match[1];
+    var datasourceName = match[2];
+    var viewportController = controllers[0];
+    var bufferSize = Math.max(BUFFER_MIN, parseNumericAttr($attr.bufferSize, BUFFER_DEFAULT));
+    var padding = Math.max(PADDING_MIN, parseNumericAttr($attr.padding, PADDING_DEFAULT));
+    var startIndex = parseNumericAttr($attr.startIndex, 1);
+    var ridActual = 0; // current data revision id
+    var pending = [];
+
+    var elementRoutines = new _elementRoutines2.default($injector, $q);
+    var buffer = new _buffer2.default(elementRoutines, bufferSize, startIndex);
+    var viewport = new _viewport2.default(elementRoutines, buffer, element, viewportController, $rootScope, padding);
+    var adapter = new _adapter2.default($scope, $parse, $attr, viewport, buffer, doAdjust, reload);
+
+    if (viewportController) {
+      viewportController.adapter = adapter;
+    }
+
+    var isDatasourceValid = function isDatasourceValid() {
+      return Object.prototype.toString.call(datasource) === '[object Object]' && typeof datasource.get === 'function';
+    };
+
+    datasource = $parse(datasourceName)($scope); // try to get datasource on scope
+    if (!isDatasourceValid()) {
+      datasource = $injector.get(datasourceName); // try to inject datasource as service
+      if (!isDatasourceValid()) {
+        throw new Error(datasourceName + ' is not a valid datasource');
+      }
+    }
+
+    var onRenderHandlers = [];
+    function onRenderHandlersRunner() {
+      onRenderHandlers.forEach(function (handler) {
+        return handler.run();
+      });
+      onRenderHandlers = [];
+    }
+    function persistDatasourceIndex(datasource, propName) {
+      var getter = void 0;
+      // need to postpone min/maxIndexUser processing if the view is empty
+      if (Number.isInteger(datasource[propName])) {
+        getter = datasource[propName];
+        if (Number.isInteger(getter)) {
+          onRenderHandlers = onRenderHandlers.filter(function (handler) {
+            return handler.id !== propName;
+          });
+          onRenderHandlers.push({
+            id: propName,
+            run: function run() {
+              return datasource[propName] = getter;
+            }
+          });
+        }
+      }
+    }
+
+    function defineDatasourceIndex(datasource, propName, propUserName) {
+      var descriptor = Object.getOwnPropertyDescriptor(datasource, propName);
+      if (descriptor && (descriptor.set || descriptor.get)) {
+        return;
+      }
+      var getter = void 0;
+      persistDatasourceIndex(datasource, propName);
+      Object.defineProperty(datasource, propName, {
+        set: function set(value) {
+          getter = value;
+          if (pending.length && !buffer.length) {
+            persistDatasourceIndex(datasource, propName);
+            return;
+          }
+          buffer[propUserName] = value;
+          var topPaddingHeightOld = viewport.topDataPos();
+          viewport.adjustPaddings();
+          if (propName === 'minIndex') {
+            viewport.onAfterMinIndexSet(topPaddingHeightOld);
+          }
+        },
+        get: function get() {
+          return getter;
+        }
+      });
+    }
+
+    defineDatasourceIndex(datasource, 'minIndex', 'minIndexUser');
+    defineDatasourceIndex(datasource, 'maxIndex', 'maxIndexUser');
+
+    var fetchNext = datasource.get.length !== 2 ? function (success) {
+      return datasource.get(buffer.next, bufferSize, success);
+    } : function (success) {
+      datasource.get({
+        index: buffer.next,
+        append: buffer.length ? buffer[buffer.length - 1].item : void 0,
+        count: bufferSize
+      }, success);
+    };
+
+    var fetchPrevious = datasource.get.length !== 2 ? function (success) {
+      return datasource.get(buffer.first - bufferSize, bufferSize, success);
+    } : function (success) {
+      datasource.get({
+        index: buffer.first - bufferSize,
+        prepend: buffer.length ? buffer[0].item : void 0,
+        count: bufferSize
+      }, success);
+    };
+
+    var initialize = function initialize() {
+      var tryCount = 0;
+      if (!viewport.applyContainerStyle()) {
+        var timer = $interval(function () {
+          tryCount++;
+          if (viewport.applyContainerStyle()) {
+            $interval.cancel(timer);
+            doAdjust();
+          }
+          if (tryCount * VIEWPORT_POLLING_INTERVAL >= MAX_VIEWPORT_DELAY) {
+            $interval.cancel(timer);
+            throw Error('ui-scroll directive requires a viewport with non-zero height in ' + MAX_VIEWPORT_DELAY + 'ms');
+          }
+        }, VIEWPORT_POLLING_INTERVAL);
+      } else {
+        doAdjust();
+      }
+    };
+
+    /**
+     * Build padding elements
+     *
+     * Calling linker is the only way I found to get access to the tag name of the template
+     * to prevent the directive scope from pollution a new scope is created and destroyed
+     * right after the builder creation is completed
+     */
+    linker(function (clone, scope) {
+      viewport.createPaddingElements(clone[0]);
+      // we do not include the clone in the DOM. It means that the nested directives will not
+      // be able to reach the parent directives, but in this case it is intentional because we
+      // created the clone to access the template tag name
+      scope.$destroy();
+      clone.remove();
+    });
+
+    $scope.$on('$destroy', function () {
+      unbindEvents();
+      viewport.unbind('mousewheel', wheelHandler);
+    });
+
+    viewport.bind('mousewheel', wheelHandler);
+
+    initialize();
+
+    /* Private function definitions */
+
+    function isInvalid(rid) {
+      return rid && rid !== ridActual || $scope.$$destroyed;
+    }
+
+    function bindEvents() {
+      viewport.bind('resize', resizeAndScrollHandler);
+      viewport.bind('scroll', resizeAndScrollHandler);
+    }
+
+    function unbindEvents() {
+      viewport.unbind('resize', resizeAndScrollHandler);
+      viewport.unbind('scroll', resizeAndScrollHandler);
+    }
+
+    function reload() {
+      viewport.resetTopPadding();
+      viewport.resetBottomPadding();
+      if (arguments.length) {
+        startIndex = arguments[0];
+      }
+      buffer.reset(startIndex);
+      persistDatasourceIndex(datasource, 'minIndex');
+      persistDatasourceIndex(datasource, 'maxIndex');
+      doAdjust();
+    }
+
+    function isElementVisible(wrapper) {
+      return wrapper.element.height() && wrapper.element[0].offsetParent;
+    }
+
+    function visibilityWatcher(wrapper) {
+      if (isElementVisible(wrapper)) {
+        buffer.forEach(function (item) {
+          if (typeof item.unregisterVisibilityWatcher === 'function') {
+            item.unregisterVisibilityWatcher();
+            delete item.unregisterVisibilityWatcher;
+          }
+        });
+        if (!pending.length) {
+          $timeout(function () {
+            return doAdjust();
+          });
+        }
+      }
+    }
+
+    function insertWrapperContent(wrapper, insertAfter) {
+      createElement(wrapper, insertAfter, viewport.insertElement);
+      if (!isElementVisible(wrapper)) {
+        wrapper.unregisterVisibilityWatcher = wrapper.scope.$watch(function () {
+          return visibilityWatcher(wrapper);
+        });
+      }
+      elementRoutines.hideElement(wrapper); // hide inserted elements before data binding
+    }
+
+    function createElement(wrapper, insertAfter, insertElement) {
+      var promises = null;
+      var sibling = insertAfter > 0 ? buffer[insertAfter - 1].element : undefined;
+      linker(function (clone, scope) {
+        promises = insertElement(clone, sibling);
+        wrapper.element = clone;
+        wrapper.scope = scope;
+        scope[itemName] = wrapper.item;
+      });
+      // ui-scroll-grid apply
+      if (adapter.transform) {
+        var tdInitializer = wrapper.scope.uiScrollTdInitializer;
+        if (tdInitializer && tdInitializer.linking) {
+          adapter.transform(wrapper.scope, wrapper.element);
+        } else {
+          wrapper.scope.uiScrollTdInitializer = {
+            onLink: function onLink() {
+              return adapter.transform(wrapper.scope, wrapper.element);
+            },
+            scope: wrapper.scope
+          };
+        }
+      }
+      return promises;
+    }
+
+    function updateDOM() {
+      var promises = [];
+      var toBePrepended = [];
+      var toBeRemoved = [];
+      var inserted = [];
+
+      buffer.forEach(function (wrapper, i) {
+        switch (wrapper.op) {
+          case 'prepend':
+            toBePrepended.unshift(wrapper);
+            break;
+          case 'append':
+            insertWrapperContent(wrapper, i);
+            wrapper.op = 'none';
+            inserted.push(wrapper);
+            break;
+          case 'insert':
+            promises = promises.concat(createElement(wrapper, i, viewport.insertElementAnimated));
+            wrapper.op = 'none';
+            inserted.push(wrapper);
+            break;
+          case 'remove':
+            toBeRemoved.push(wrapper);
+        }
+      });
+
+      toBeRemoved.forEach(function (wrapper) {
+        return promises = promises.concat(viewport.removeItem(wrapper));
+      });
+
+      if (toBePrepended.length) toBePrepended.forEach(function (wrapper) {
+        insertWrapperContent(wrapper);
+        wrapper.op = 'none';
+      });
+
+      buffer.forEach(function (item, i) {
+        return item.scope.$index = buffer.first + i;
+      });
+
+      return {
+        prepended: toBePrepended,
+        removed: toBeRemoved,
+        inserted: inserted,
+        animated: promises
+      };
+    }
+
+    function updatePaddings(rid, updates) {
+      // schedule another doAdjust after animation completion
+      if (updates.animated.length) {
+        $q.all(updates.animated).then(function () {
+          viewport.adjustPaddings();
+          doAdjust(rid);
+        });
+      } else {
+        viewport.adjustPaddings();
+      }
+    }
+
+    function enqueueFetch(rid, updates) {
+      if (viewport.shouldLoadBottom()) {
+        if (!updates || buffer.effectiveHeight(updates.inserted) > 0) {
+          // this means that at least one item appended in the last batch has height > 0
+          if (pending.push(true) === 1) {
+            adapter.loading(true);
+            fetch(rid);
+          }
+        }
+      } else if (viewport.shouldLoadTop()) {
+        if (!updates || buffer.effectiveHeight(updates.prepended) > 0 || pending[0]) {
+          // this means that at least one item appended in the last batch has height > 0
+          // pending[0] = true means that previous fetch was appending. We need to force at least one prepend
+          // BTW there will always be at least 1 element in the pending array because bottom is fetched first
+          if (pending.push(false) === 1) {
+            adapter.loading(true);
+            fetch(rid);
+          }
+        }
+      }
+    }
+
+    function processUpdates() {
+      var updates = updateDOM();
+
+      // We need the item bindings to be processed before we can do adjustments
+      !$scope.$$phase && !$rootScope.$$phase && $scope.$digest();
+
+      updates.inserted.forEach(function (w) {
+        return elementRoutines.showElement(w);
+      });
+      updates.prepended.forEach(function (w) {
+        return elementRoutines.showElement(w);
+      });
+      return updates;
+    }
+
+    function doAdjust(rid) {
+      if (!rid) {
+        // dismiss pending requests
+        pending = [];
+        rid = ++ridActual;
+      }
+
+      var updates = processUpdates();
+
+      if (isInvalid(rid)) {
+        return;
+      }
+
+      updatePaddings(rid, updates);
+      enqueueFetch(rid);
+
+      if (!pending.length) {
+        adapter.calculateProperties();
+      }
+    }
+
+    function doAdjustAfterFetch(rid) {
+      var updates = processUpdates();
+
+      viewport.onAfterPrepend(updates);
+
+      if (isInvalid(rid)) {
+        return;
+      }
+
+      updatePaddings(rid, updates);
+      onRenderHandlersRunner();
+      enqueueFetch(rid, updates);
+      pending.shift();
+
+      if (pending.length) fetch(rid);else {
+        adapter.loading(false);
+        bindEvents();
+        adapter.calculateProperties();
+      }
+    }
+
+    function fetch(rid) {
+      if (pending[0]) {
+        // scrolling down
+        if (buffer.length && !viewport.shouldLoadBottom()) {
+          doAdjustAfterFetch(rid);
+        } else {
+          fetchNext(function (result) {
+            if (isInvalid(rid)) {
+              return;
+            }
+
+            if (result.length < bufferSize) {
+              buffer.eof = true;
+            }
+
+            if (result.length > 0) {
+              viewport.clipTop();
+              buffer.append(result);
+            }
+
+            doAdjustAfterFetch(rid);
+          });
+        }
+      } else {
+        // scrolling up
+        if (buffer.length && !viewport.shouldLoadTop()) {
+          doAdjustAfterFetch(rid);
+        } else {
+          fetchPrevious(function (result) {
+            if (isInvalid(rid)) {
+              return;
+            }
+
+            if (result.length < bufferSize) {
+              buffer.bof = true;
+              // log 'bof is reached'
+            }
+
+            if (result.length > 0) {
+              if (buffer.length) {
+                viewport.clipBottom();
+              }
+              buffer.prepend(result);
+            }
+
+            doAdjustAfterFetch(rid);
+          });
+        }
+      }
+    }
+
+    function resizeAndScrollHandler() {
+      if (!$rootScope.$$phase && !adapter.isLoading && !adapter.disabled) {
+
+        enqueueFetch(ridActual);
+
+        if (pending.length) {
+          unbindEvents();
+        } else {
+          adapter.calculateProperties();
+          !$scope.$$phase && $scope.$digest();
+        }
+      }
+    }
+
+    function wheelHandler(event) {
+      if (!adapter.disabled) {
+        var scrollTop = viewport[0].scrollTop;
+        var yMax = viewport[0].scrollHeight - viewport[0].clientHeight;
+
+        if (scrollTop === 0 && !buffer.bof || scrollTop === yMax && !buffer.eof) {
+          event.preventDefault();
+        }
+      }
+    }
+  }
+}]);
+
+/***/ })
+/******/ ]);
+//# sourceMappingURL=ui-scroll.js.map
 /*
  * blueimp Gallery Video Factory JS
  * https://github.com/blueimp/Gallery
@@ -20285,7 +22067,8 @@ var OvadiaApp = angular.module('OvadiaApp',
         'ui.bootstrap.carousel',
         'ngTagsInput',
         'ui.select2',
-        'angularUtils.directives.dirPagination'
+        'angularUtils.directives.dirPagination',
+        'ui.scroll'
     ]
 )
 
@@ -23352,6 +25135,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
     function ($scope, appServices, ngDialog, $timeout, $interval, $rootScope) {
         var self = this;
         $scope.Articles = [];
+        $scope.limitVideos = 10;
         $scope.showSubSub = false, $scope.showSub = false;
         var promisse;
 
@@ -23362,6 +25146,9 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
             $scope.GetAllCategoires_rabi();
         }
 
+        $scope.loadMore = function () {
+            $scope.limitVideos += 10;
+        }
 
         $scope.getAllArticles = function () {
             appServices.GetAllActiveArticles().then(function (data) {
@@ -23439,6 +25226,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
         }
 
         $scope.ChangeCategory = function (item) {
+            $scope.limitVideos = 10;
             $scope.select2_1 = null;
             $scope.select2_1_1 = null;
             if (item.Name == "הכל") {
@@ -23467,6 +25255,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
         }
 
         $scope.ChangeSubCategory = function (item) {
+            $scope.limitVideos = 10;
             $scope.select2_1_1 = null;
             if (item.Name == "הכל") {
                 return;

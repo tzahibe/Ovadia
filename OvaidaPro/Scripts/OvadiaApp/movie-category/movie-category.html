@@ -62,9 +62,9 @@
         
         </div>
         <div class="all_articles">
-            <div class="articles-list" ng-repeat="article in Articles | filter: search
+            <div class="articles-list" ng-repeat="article in (filteredItems = (Articles | filter: search
                 | filter: parentCategoryFilter | filter: subCategoryFilter
-                | filter: subSubCategoryFilter | filter: rabiFilter">
+                | filter: subSubCategoryFilter | filter: rabiFilter)) |limitTo:limitVideos">
                 <div class="article-box col-md-4_5 col-xs-12" ng-click="goToArticle(article)"
                      style="{{myStyle(article)}}">
                     <div class="article-title">
@@ -75,7 +75,9 @@
             <div ng-show="Articles == null || Articles.length == 0 && categorySelected != null">
                 אין מאמרים תחת קטגוריה זו
             </div>
-
+            <div class="col-xs-12">
+                <input type="button" class="btn btn-block btn-success moreButton" value="טען עוד" ng-click="loadMore()" ng-show="filteredItems.length > limitVideos " />
+            </div>
             <!--<dir-pagination-controls class="col-xs-12" ng-hide="Articles == [] || search != null"></dir-pagination-controls>-->
 
         </div>
@@ -87,9 +89,9 @@
 <div class="col-xs-12 removePaddingMargin-Mobile" ng-show="isMobile">
     <div class="containerX">
         <div class="all_articles">
-            <div class="articles-list" ng-repeat="article in Articles | filter: search
+            <div class="articles-list" ng-repeat="article in (filteredItems = Articles | filter: search
                 | filter: parentCategoryFilter | filter: subCategoryFilter
-                | filter: subSubCategoryFilter | filter: rabiFilter">
+                | filter: subSubCategoryFilter | filter: rabiFilter)) | limitTo:limitVideos">
                 <div class="article-box col-md-4_5 col-xs-12" ng-click="goToArticle(article)"
                      style="{{myStyle(article)}}">
                     <div class="article-title">
@@ -100,12 +102,15 @@
             <div ng-show="Articles == null || Articles.length == 0 && categorySelected != null">
                 אין מאמרים תחת קטגוריה זו
             </div>
-
+            <div class="col-xs-12">
+                <input type="button" class="btn btn-block btn-success moreButton" value="טען עוד" ng-click="loadMore()" ng-show="filteredItems.length > limitVideos " />
+            </div>
             <!--<dir-pagination-controls class="col-xs-12" ng-hide="Articles == [] || search != null"></dir-pagination-controls>-->
 
         </div>
     </div>
 </div>
+
 
 
 <div ng-show="loader" class="loader1 col-xs-12 center">

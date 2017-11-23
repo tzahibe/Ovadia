@@ -12,7 +12,8 @@
         'ui.bootstrap.carousel',
         'ngTagsInput',
         'ui.select2',
-        'angularUtils.directives.dirPagination'
+        'angularUtils.directives.dirPagination',
+        'ui.scroll'
     ]
 )
 
