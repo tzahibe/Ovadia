@@ -25135,7 +25135,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
     function ($scope, appServices, ngDialog, $timeout, $interval, $rootScope) {
         var self = this;
         $scope.Articles = [];
-        $scope.limitVideos = 10;
+        $scope.limitVideos = 9;
         $scope.showSubSub = false, $scope.showSub = false;
         var promisse;
 
@@ -25147,7 +25147,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
         }
 
         $scope.loadMore = function () {
-            $scope.limitVideos += 10;
+            $scope.limitVideos += 9;
         }
 
         $scope.getAllArticles = function () {
@@ -25226,7 +25226,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
         }
 
         $scope.ChangeCategory = function (item) {
-            $scope.limitVideos = 10;
+            $scope.limitVideos = 9;
             $scope.select2_1 = null;
             $scope.select2_1_1 = null;
             if (item.Name == "הכל") {
@@ -25255,7 +25255,7 @@ OvadiaApp.controller('movieCategoryCtrl', ['$scope', 'appServices', 'ngDialog', 
         }
 
         $scope.ChangeSubCategory = function (item) {
-            $scope.limitVideos = 10;
+            $scope.limitVideos = 9;
             $scope.select2_1_1 = null;
             if (item.Name == "הכל") {
                 return;

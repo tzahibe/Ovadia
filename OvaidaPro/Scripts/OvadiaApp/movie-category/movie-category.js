@@ -3,7 +3,7 @@
     function ($scope, appServices, ngDialog, $timeout, $interval, $rootScope) {
         var self = this;
         $scope.Articles = [];
-        $scope.limitVideos = 10;
+        $scope.limitVideos = 9;
         $scope.showSubSub = false, $scope.showSub = false;
         var promisse;
 
@@ -15,7 +15,7 @@
         }
 
         $scope.loadMore = function () {
-            $scope.limitVideos += 10;
+            $scope.limitVideos += 9;
         }
 
         $scope.getAllArticles = function () {
@@ -94,7 +94,7 @@
         }
 
         $scope.ChangeCategory = function (item) {
-            $scope.limitVideos = 10;
+            $scope.limitVideos = 9;
             $scope.select2_1 = null;
             $scope.select2_1_1 = null;
             if (item.Name == "הכל") {
@@ -123,7 +123,7 @@
         }
 
         $scope.ChangeSubCategory = function (item) {
-            $scope.limitVideos = 10;
+            $scope.limitVideos = 9;
             $scope.select2_1_1 = null;
             if (item.Name == "הכל") {
                 return;
