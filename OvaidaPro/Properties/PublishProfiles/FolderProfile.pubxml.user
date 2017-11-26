@@ -56,10 +56,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2017 23:51:54</publishTime>
     </File>
     <File Include="bin/OvaidaPro.dll">
-      <publishTime>11/26/2017 18:48:02</publishTime>
+      <publishTime>11/26/2017 20:02:55</publishTime>
     </File>
     <File Include="bin/OvaidaPro.pdb">
-      <publishTime>11/26/2017 18:48:02</publishTime>
+      <publishTime>11/26/2017 20:02:55</publishTime>
     </File>
     <File Include="bin/Quartz.dll">
       <publishTime>10/17/2017 08:09:02</publishTime>
@@ -435,6 +435,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/images/truma-image.png">
       <publishTime>08/21/2017 11:32:51</publishTime>
+    </File>
+    <File Include="Content/images/Untitlesdasded.png">
+      <publishTime>11/26/2017 20:01:30</publishTime>
     </File>
     <File Include="Content/images/zmani-icon.png">
       <publishTime>07/24/2017 13:26:00</publishTime>
@@ -1088,7 +1091,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2017 21:15:10</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/send-mail/send-mail.html">
-      <publishTime>11/22/2017 21:11:17</publishTime>
+      <publishTime>11/26/2017 20:02:34</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/Admin/send-mail/send-mail.js">
       <publishTime>08/10/2017 09:22:29</publishTime>
