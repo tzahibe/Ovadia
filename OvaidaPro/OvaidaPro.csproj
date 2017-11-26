@@ -169,6 +169,7 @@
     <Content Include="Content\textAngular.css" />
     <Content Include="Content\images\tfila-background.png" />
     <Content Include="Content\images\text_shadow.png" />
+    <Content Include="Content\images\Untitlesdasded.png" />
     <Content Include="Global.asax" />
     <Content Include="Iqndex.html" />
     <Content Include="pages\ErrorPayment.html" />

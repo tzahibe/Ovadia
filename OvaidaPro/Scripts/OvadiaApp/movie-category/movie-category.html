@@ -86,7 +86,7 @@
 
 
 <!--mobile-->
-<div class="col-xs-12 removePaddingMargin-Mobile" ng-show="isMobile">
+<div class="col-xs-12 removePaddingMargin-Mobile" infinite-scroll="loadMore()" infinite-scroll-distance="3" ng-show="isMobile">
     <div class="containerX">
         <div class="all_articles">
             <div class="articles-list" ng-repeat="article in (filteredItems = (Articles | filter: search
