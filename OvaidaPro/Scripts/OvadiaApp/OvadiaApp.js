@@ -13,7 +13,7 @@
         'ngTagsInput',
         'ui.select2',
         'angularUtils.directives.dirPagination',
-        'ui.scroll'
+        'infinite-scroll'
     ]
 )
 

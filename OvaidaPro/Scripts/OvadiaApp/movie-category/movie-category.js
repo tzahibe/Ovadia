@@ -15,7 +15,7 @@
         }
 
         $scope.loadMore = function () {
-            $scope.limitVideos += 9;
+            $scope.limitVideos += 3;
         }
 
         $scope.getAllArticles = function () {
@@ -224,6 +224,15 @@
         $scope.goToArticle = function (article) {
             window.location.href = '/movie-category/movie-details/' + article.ArticleId;
         }
+
+        //$(window).scroll(function () {
+        //    if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+        //        $scope.limitVideos += 9;
+        //        $('html, body').animate({
+        //            scrollTop: $(".all_articles").offset().top
+        //        }, 800);
+        //    }
+        //});
 
         self.init();
     }]);

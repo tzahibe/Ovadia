@@ -48,7 +48,7 @@
         
     </div>
 </div>
-<div class="col-xs-12 removePaddingMargin blueLine" ng-hide="isMobile">
+<div class="col-xs-12 removePaddingMargin blueLine"  infinite-scroll="loadMore()" infinite-scroll-distance="3"  ng-hide="isMobile">
     <div class="containerX">
         <div class="blueLine-title" >חפש שיעור\רב
             <!---Search-->
@@ -75,9 +75,9 @@
             <div ng-show="Articles == null || Articles.length == 0 && categorySelected != null">
                 אין מאמרים תחת קטגוריה זו
             </div>
-            <div>
+            <!--<div>
                 <input type="button" class="btn btn-block btn-success moreButton" value="טען עוד" ng-click="loadMore()" ng-show="filteredItems.length > limitVideos " />
-            </div>
+            </div>-->
             <!--<dir-pagination-controls class="col-xs-12" ng-hide="Articles == [] || search != null"></dir-pagination-controls>-->
 
         </div>
@@ -102,9 +102,9 @@
             <div ng-show="Articles == null || Articles.length == 0 && categorySelected != null">
                 אין מאמרים תחת קטגוריה זו
             </div>
-            <div>
+            <!--<div>
                 <input type="button" class="btn btn-block btn-success moreButton" value="טען עוד" ng-click="loadMore()" ng-show="filteredItems.length > limitVideos " />
-            </div>
+            </div>-->
             <!--<dir-pagination-controls class="col-xs-12" ng-hide="Articles == [] || search != null"></dir-pagination-controls>-->
 
         </div>
