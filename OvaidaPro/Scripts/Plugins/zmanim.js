@@ -369,7 +369,6 @@ function set_dst1(bValue) {
 
 
 function list_pos(w) {
-    debugger;
     var str, place, desc
     str = w;
     var i;

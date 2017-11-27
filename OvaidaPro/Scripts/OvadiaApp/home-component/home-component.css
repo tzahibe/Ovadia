@@ -1,12 +1,45 @@
-﻿
- /*h1 {
-    font-size: 300%;
-    color: #34495e;
-}*/
-
-/*home-component .row {
+﻿.body .box-title {
+    padding-right: 8px;
+    color: #fff;
+    /* font-family: kalisher,Arial; */
+    font-weight: bold;
     margin: 0;
-}*/
+    height: 44px;
+    font-size: 21px;
+    padding: 10px;
+    padding-right: 35px;
+    text-align: right;
+    background: #294d77;
+}
+.block-tfila.zmanim {
+    margin-top: 8px;
+    width:62%;
+}
+.zmanim.body {
+    background: url(/Content/images/1_YmfwQXL77P-uZk0ne-qeqg.jpeg);
+    overflow: hidden;
+    background-size: 100% 100%;
+    padding: 0;
+    width: 41%;
+}
+ul.zmanimUl {
+    list-style-type: none;
+    padding-top: 11px;
+}
+#blueimp-video-carousel {
+    margin: 0;
+}
+.col-xs-12.col-md-7{
+    float:left;
+}
+.mic-icon2 {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+.body .box-title.padding-right40 {
+    padding-right: 40px;
+}
 .ngdialog-theme-default {
     width: auto;
     position: absolute;
@@ -111,6 +144,7 @@ input.btn.btn-success.mail {
 padding:0;
 }
 @media screen and (max-width: 768px) {
+
     .send-mail-margin {
         margin-top: 0;
         margin-right: 10px;

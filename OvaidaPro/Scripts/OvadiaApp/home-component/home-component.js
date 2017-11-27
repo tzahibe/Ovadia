@@ -1,21 +1,45 @@
-﻿OvadiaApp.controller('homeComponentCtrl', ['$scope', 'appServices','ngDialog','$timeout',
+﻿OvadiaApp.controller('homeComponentCtrl', ['$scope', 'appServices', 'ngDialog', '$timeout',
     function ($scope, appServices, ngDialog, $timeout) {
         var self = this;
         //$scope.Tfilot = [];
         var currentDialog;
+        $scope.cities = [];
+        $scope.cities.push( " N, 32,  5, E, 34, 46, 2");
+        console.log($scope.cities);
 
         self.init = function () {
-            //$scope.tfilot_loader = true;
-            //appServices.getAllTfilot().then(function (response) {
-            //    if (response.data.ErrorCode == 0) {
-            //        $scope.tfilot_loader = false;
-            //        $scope.Tfilot = response.data.Data;
-            //    }
-            //    else {
-            //        $scope.tfilot_loader = false;
-            //        $scope.errorTfilot = true;
-            //    }
-            //});
+            $scope.zmanim_loader = true;
+            try {
+                list_pos(" N, 32,  5, E, 34, 46, 2");
+                doit("title");
+                $scope.updateZmanimScope();
+                $scope.zmanim_loader = false;
+            }
+            catch (e) {
+                $scope.zmanim_loader = false;
+            }
+
+
+        }
+
+        $scope.updateZmanimScope = function () {
+            $scope.hatzot = document.data.chatzot;
+            $scope.hanetz = document.data.hanetz;
+            $scope.minchag = document.data.minchag;
+            $scope.minchak = document.data.minchak;
+            $scope.shkia = document.data.shkia;
+            $scope.zet_kohavim = document.data.tzeit;
+            $scope.plag = document.data.plag;
+            $scope.shema = document.data.shema;
+            $scope.tefillah = document.data.tefillah;
+            $scope.alotearly = document.data.alotearly;
+            $scope.alotlate = document.data.alotlate;
+            $scope.misheyakir = document.data.misheyakir;
+        }
+
+        $scope.selectArea = function () {
+            list_pos($scope.areaSelect);
+            $scope.updateZmanimScope();
         }
 
         $scope.successMail = false;

@@ -1,14 +1,117 @@
 ﻿        <!--- קרוסלת כתבות-->
 <link href="/Scripts/OvadiaApp/home-component/home-component.css" rel="stylesheet" />
 <div class="row space-from-header">
-    <div class="col-xs-12 col-md-5 right-box">
-        <h4 class="box-title">
-            <i class="fa fa-commenting-o" aria-hidden="true"></i>
-         לידיעת הציבור:
+    <div class="body col-xs-12 col-sm-4 col-md-5 zmanim">
+        <img src="/Content/images/magenDavid.png" class="mic-icon2" />
+        <h4 class="box-title padding-right40 hidden-xs">
+            זמני היום
         </h4>
-
-        <!--<img class="img-responsive" src="http://www.colel.co.il/Recom/lg_IMG-20171020-WA0004.jpg" ng-click="OpenLetter('http://www.colel.co.il/Recom/lg_IMG-20171020-WA0004.jpg')"/>
-         <strong style="font-weight:bold;cursor:pointer" ng-click="OpenLetter('http://www.colel.co.il/Recom/lg_IMG-20171020-WA0004.jpg')">לחץ להגדלה</strong>-->
+        <div class="block-tfila zmanim hidden-xs" >
+            <select ng-model="areaSelect"
+                    ng-init="areaSelect = cities[0]"
+                    class="form-control" ng-change="selectArea()" name="israel_city" id="ctlIsrael_city" size="1">
+                <option value=" N, 29, 33, E, 34, 56, 2">אילת</option>
+                <option value=" N, 32,  5, E, 34, 50, 2">בני ברק</option>
+                <option value=" N, 31, 15, E, 34, 47, 2">באר שבע</option>
+                <option value=" N, 31, 36, E, 35, 53, 2">חברון</option>
+                <option value=" N, 32, 49, E, 34, 59, 2">חיפה</option>
+                <option value=" N, 32, 48, E, 35, 30, 2">טבריה</option>
+                <option value=" N, 31, 46, E, 35, 14, 2">ירושלים</option>
+                <option value=" N, 31, 52, E, 35, 27, 2">יריחו</option>
+                <option value=" N, 31, 59, E, 34, 51, 2">כפר חב"ד</option>
+                <option value=" N, 32, 40, E, 35, 14, 2">מגדל העמק</option>
+                <option value=" N, 32, 20, E, 34, 51, 2">נתניה</option>
+                <option value=" N, 32,  5, E, 34, 46, 2">תל אביב</option>
+                <option value=" N, 32,  5, E, 34, 46, 2">פתח תקוה</option>
+                <option value=" N, 33,  0, E, 35, 30, 2">צפת</option>
+                <option value=" N, 31, 43, E, 34, 43, 2">קרית מלאכי</option>
+                <option value=" N, 33, 12, E, 35, 34, 2">קרית שמונה</option>
+                <option value=" N, 32, 10, E, 35,  6, 2">קרני שומרון</option>
+                <option value=" N, 32, 12, E, 35, 18, 2">שכם</option>
+            </select>
+            <ul class="zmanimUl" ng-hide="tfilot_loader">
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                       {{hanetz}}
+                    </div>
+                    <strong>נץ החמה</strong>
+                </li>
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        {{alotearly}}
+                    </div>
+                    <strong>ע' השחר -המקדימה</strong>
+                </li>
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        {{alotlate}}
+                    </div>
+                    <strong>ע' השחר המאוחרת</strong>
+                </li>
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        {{hanetz}}
+                    </div>
+                    <strong>זמן ציצית ותפילין</strong>
+                </li>
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        {{hanetz}}
+                    </div>
+                    <strong>סוף זמן ק' שמע</strong>
+                </li>
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        {{shema}}
+                    </div>
+                    <strong>סוף זמן תפילה </strong>
+                </li>
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        {{tefillah}}
+                    </div>
+                    <strong>חצות היום</strong>
+                </li>
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        {{minchag}}
+                    </div>
+                    <strong>מנחה גדולה</strong>
+                </li>
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        {{minchak}}
+                    </div>
+                    <strong>מנחה קטנה</strong>
+                </li>
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        {{plag}}
+                    </div>
+                    <strong>פלג המנחה</strong>
+                </li>
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        {{shkia}}
+                    </div>
+                    <strong>שקיעה</strong>
+                </li>
+                <li class="lesson" style="direction:rtl">
+                    <div class="yellow-bold" style="direction:ltr;display:inline-block">
+                        {{zet_kohavim}}
+                    </div>
+                    <strong>צאת הכוכבים</strong>
+                </li>
+                <li class="lesson" ng-show="errorTzmanim">
+                    {{errorTfilot}}
+                </li>
+            </ul>
+            <ul ng-show="zmanim_loader">
+                <li class="modal-body center">
+                    <img src="/Content/images/loader.gif" />
+                </li>
+            </ul>
+        </div>
     </div>
     <carousel-component></carousel-component>
 </div>
@@ -17,3 +120,5 @@
 <div class="row">
     <lesson-component></lesson-component>
 </div>
+
+
