@@ -20,7 +20,7 @@ namespace BL
             {
                 //prod
                 List<Message> members = (List<Message>)GetAllMembers().Data;
-                
+
                 //for test
                 //List<Message> members = new List<Message>();
                 //Message msg1 = new Message();
@@ -28,7 +28,7 @@ namespace BL
                 //msg1.ID = "5";
                 //msg1.Full_Name = "tzachi";
                 //members.Add(msg1);
-                
+
 
                 MailAddress fromAddress = new MailAddress("colel.ovadia@gmail.com", "כולל חזון עובדיה");
                 String fromPassword = "qwrtqwrt1988";

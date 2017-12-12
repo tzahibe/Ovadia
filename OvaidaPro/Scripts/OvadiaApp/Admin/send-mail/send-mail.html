@@ -36,18 +36,22 @@
                             <div text-angular ng-model="Mail.Body" placeholder="אנא הזן תוכן" 
                                  id="Event_Name"
                                  class="form-control hugeSize"
-                                 ng-hide="readOnly"></div>
-                            <a class="col-xs-12" style="cursor:pointer" ng-click="showeXP = !showeXP">* לחץ להסבר</a>
-                           
-                            <img src="../../../../Content/images/Untitlesdasded.png" ng-show="showeXP"/>
+                                 ng-hide="readOnly">
+                            </div>
+                         
                             <div ng-show="EventName.errors && (EventName.dirty || EventName.touched)"
-                                 class="alert alert-danger">
+                                 class="col-xs-12 alert alert-danger">
                                 <div ng-hide="!EventName.errors.required" class="alert alert-danger">
                                     אנא מלא שדה זה
                                 </div>
                             </div>
+                            
                         </div>
+                    </div>
+                    <div class="col-xs-12" style="">
                         <button type="button" class="btn btn-success" ng-click="SendMail()">שלח לכולם</button>
+                        <div class="" style="cursor:pointer; color:blue" ng-click="showeXP = !showeXP">* לחץ להסבר</div>
+                        <img src="../../../../Content/images/Untitlesdasded.png" ng-show="showeXP" />
                     </div>
                     <div class="modal-body center" ng-show="loaderSend">
                         <img src="/Content/images/loader.gif" />

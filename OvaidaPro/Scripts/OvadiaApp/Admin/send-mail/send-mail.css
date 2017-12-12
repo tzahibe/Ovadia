@@ -40,7 +40,7 @@ h4 {
     font-weight: bold;
 }
 .hugeSize {
-    height: 200px !important;
+    /*height: 200px !important;*/
 }
 .fa.fa-times {
     cursor: pointer;
