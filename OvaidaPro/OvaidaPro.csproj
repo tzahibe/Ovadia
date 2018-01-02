@@ -134,6 +134,7 @@
       <DependentUpon>bundle.js</DependentUpon>
     </Content>
     <Content Include="Content\images\1_YmfwQXL77P-uZk0ne-qeqg.jpeg" />
+    <Content Include="Content\images\donation\bottom-arrow.png" />
     <Content Include="Content\images\eluy.png" />
     <Content Include="Content\images\icon-plus.png" />
     <Content Include="Content\images\icon-v.png" />
