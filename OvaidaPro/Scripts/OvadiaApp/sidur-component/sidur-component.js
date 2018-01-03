@@ -1,5 +1,5 @@
-﻿OvadiaApp.controller('sidurComponentCtrl', ['$scope', 'appServices', 'UserAccount', '$rootScope', '$interval',
-    function ($scope, appServices, UserAccount, $rootScope, $interval) {
+﻿OvadiaApp.controller('sidurComponentCtrl', ['$scope', 'appServices', 'UserAccount', '$rootScope', '$interval','ngDialog',
+    function ($scope, appServices, UserAccount, $rootScope, $interval, ngDialog) {
         var self = this;
         $scope.Categories = [];
         $scope.node = {};
@@ -8,6 +8,16 @@
 
         self.init = function () {
             $scope.getAllCategories();
+        }
+
+        $scope.OpenPopup = function (title, msg) {
+            $scope.Title = title;
+            $scope.Msg = msg;
+            ngDialog.open({
+                template: '/Scripts/OvadiaApp/Admin/events-dialog/popup-screen.html',
+                className: 'ngdialog-theme-default',
+                scope: $scope
+            });
         }
 
         $scope.getAllCategories = function () {

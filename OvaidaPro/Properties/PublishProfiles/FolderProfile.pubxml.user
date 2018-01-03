@@ -278,7 +278,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/23/2017 18:47:25</publishTime>
     </File>
     <File Include="bundles/bundle.js">
-      <publishTime>11/27/2017 11:30:29</publishTime>
+      <publishTime>01/02/2018 09:42:49</publishTime>
     </File>
     <File Include="bundles/bundle.min.js">
       <publishTime>07/12/2017 00:06:28</publishTime>
@@ -1154,7 +1154,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/31/2017 10:39:11</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/donation-screen/donation-screen.css">
-      <publishTime>09/14/2017 10:45:47</publishTime>
+      <publishTime>01/02/2018 09:38:39</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/donation-screen/donation-screen.html">
       <publishTime>01/02/2018 09:36:48</publishTime>
@@ -1298,7 +1298,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/14/2017 16:27:49</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/sidur-component/sidur-component.js">
-      <publishTime>11/14/2017 19:14:37</publishTime>
+      <publishTime>01/02/2018 09:42:49</publishTime>
     </File>
     <File Include="Scripts/OvadiaApp/tfila-time-container/tfila-time-container.css">
       <publishTime>07/12/2017 00:04:52</publishTime>
